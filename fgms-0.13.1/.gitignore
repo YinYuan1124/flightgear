@@ -1,0 +1,8 @@
+*.tar.gz
+build/
+build_docs/
+*.bak
+temp*
+*~
+build*/*
+

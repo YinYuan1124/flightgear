@@ -1,0 +1,119 @@
+# ============================================================
+# FlightGear 二次开发 — 根目录 .gitignore
+# 覆盖 simgear / flightgear / terragear / fgms 各子项目构建产物
+# ============================================================
+
+# ---------- 下载的源码压缩包（如需保留请删除本行） ----------
+zips/
+
+# ---------- 构建目录 ----------
+build/
+build-*/
+build_*/
+_build/
+Build/
+Debug/
+Release/
+RelWithDebInfo/
+MinSizeRel/
+cmake-build-*/
+cmake-build-*_/
+out/
+dist/
+install/
+installdir/
+
+# ---------- CMake 生成物 ----------
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakeUserPresets.json
+CTestTestfile.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+cmake_uninstall.cmake
+install_manifest.txt
+compile_commands.json
+Makefile
+*.cmake.stamp
+
+# ---------- 编译产物 ----------
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.dll.a
+*.exe
+*.out
+*.lo
+*.la
+*.lai
+
+# ---------- Visual Studio / MSVC ----------
+.vs/
+.vscode/
+.idea/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ncb
+*.aps
+*.opendb
+*.db
+x64/
+x86/
+Win32/
+[Ii]pc/
+*.tlog/
+
+# ---------- 编辑器 / IDE 临时文件 ----------
+*.swp
+*.swo
+*~
+.#*
+\#*\#
+*.kdev4
+.kdev4/
+nbproject/
+.project
+.classpath
+.settings/
+.cache/
+.DS_Store
+*.qmlc
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# ---------- 系统文件 ----------
+Thumbs.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+
+# ---------- 打包 ----------
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.rar
+
+# ---------- 日志 / 临时 ----------
+*.log
+*.bak
+*.tmp
+temp*
