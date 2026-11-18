@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
  * gui.cxx
  *
  * Written 1998 by Durk Talsma, started Juni, 1998.  For the flight gear
@@ -83,7 +83,12 @@ public:
         flightgear::PUICamera::initPUI();
         
         puSetDefaultStyle         ( PUSTYLE_SMALL_SHADED ); //PUSTYLE_DEFAULT
-        puSetDefaultColourScheme  (0.8, 0.8, 0.9, 1);
+        // 全局默认配色改为与默认样式 anthrax.xml 一致的深灰蓝背景：
+        // 原硬编码的亮色 (0.8,0.8,0.9) 经 plib load_colour_scheme 的
+        // "4g+3r+b > 4" 规则会把 LEGEND 槽导出为黑色，在深色样式下产生
+        // "黑字灰底"、几乎不可见。NewGUI::setStyle 随后还会用所选样式的
+        // background 再次覆盖本表，这里只需与默认样式保持一致即可。
+        puSetDefaultColourScheme  (0.41f, 0.4f, 0.42f, 1);
 
         // ensure we set a non-NULL paste buffer so Ctrl-V doesn't crash us,
         // with older versions of PLIB (pre 1.8.6)

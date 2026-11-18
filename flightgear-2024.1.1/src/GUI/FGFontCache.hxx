@@ -1,4 +1,4 @@
-//  This program is free software; you can redistribute it and/or
+﻿//  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License as
 //  published by the Free Software Foundation; either version 2 of the
 //  License, or (at your option) any later version.
@@ -23,7 +23,9 @@
 // forward decls
 class SGPropertyNode;
 class puFont;
-class fntTexFont;
+// 前向声明：纹理字体基类。中文化后字体可能是 fntTexFont（.txf 纹理字体）
+// 或 fntUnicodeFont（FreeType 渲染的 .ttf/.otf 字体），统一按基类持有。
+class fntFont;
 
 /**
  * A class to keep all fonts available for future use.
@@ -58,8 +60,9 @@ private:
 
         // Font used by plib GUI code
         puFont *pufont;
-        // TXF font
-        fntTexFont *texfont;
+        // 底层字体对象（中文化后为 fntFont 基类指针）：
+        // 既可能是 .txf 的 fntTexFont，也可能是 .ttf/.otf 的 fntUnicodeFont。
+        fntFont *texfont;
 
         bool ownsPUFont = false;
     };
@@ -67,7 +70,7 @@ private:
     // Path to the font directory
     SGPath _path;
 
-    typedef std::map<const std::string, fntTexFont*> TexFontMap;
+    typedef std::map<const std::string, fntFont*> TexFontMap;
     typedef std::map<const FntParams, FontCacheEntry*> PuFontMap;
     TexFontMap _texFonts;
     PuFontMap _cache;
@@ -86,7 +89,7 @@ public:
     puFont *get(const std::string& name, float size=15.0, float slant=0.0);
     puFont *get(SGPropertyNode *node);
 
-    fntTexFont *getTexFont(const std::string& name, float size=15.0, float slant=0.0);
+    fntFont *getTexFont(const std::string& name, float size=15.0, float slant=0.0);
 
     SGPath getfntpath(const std::string& name);
     /**

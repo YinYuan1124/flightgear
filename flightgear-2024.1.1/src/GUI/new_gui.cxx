@@ -1,4 +1,4 @@
-// new_gui.cxx: implementation of XML-configurable GUI support.
+﻿// new_gui.cxx: implementation of XML-configurable GUI support.
 
 /*
  * SPDX-License-Identifier: GPL-2.0-or-later
@@ -546,9 +546,13 @@ NewGUI::setStyle (void)
     _colors["background"] = new FGColor(0.8f, 0.8f, 0.9f, 0.85f);
     _colors["foreground"] = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
     _colors["highlight"]  = new FGColor(0.7f, 0.7f, 0.7f, 1.0f);
-    _colors["label"]      = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
-    _colors["legend"]     = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
-    _colors["misc"]       = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
+    // 文字槽兜底色改为近白（原为纯黑）：样式未定义 label/legend/misc 时，
+    // 深色背景样式（如默认的 anthrax.xml）不再出现"黑字灰底"。若某个
+    // 浅色样式未定义这些键，FGPUIDialog::setColor 里的自动对比度调整
+    // 会把它们再自动改回深色，两种背景方向都安全。
+    _colors["label"]      = new FGColor(0.95f, 0.95f, 0.97f, 1.0f);
+    _colors["legend"]     = new FGColor(0.95f, 0.95f, 0.97f, 1.0f);
+    _colors["misc"]       = new FGColor(0.95f, 0.95f, 0.97f, 1.0f);
     _colors["inputfield"] = new FGColor(0.8f, 0.7f, 0.7f, 1.0f);
 
     //puSetDefaultStyle();

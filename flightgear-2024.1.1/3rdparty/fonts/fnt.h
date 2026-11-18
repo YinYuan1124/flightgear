@@ -1,4 +1,4 @@
-/*
+﻿/*
      PLIB - A Suite of Portable Game Libraries
      Copyright (C) 1998,2002  Steve Baker
  
@@ -301,6 +301,51 @@ class fntBitmapFont : public fntFont
 #define FNT_BITMAP_TIMES_ROMAN_24  6
 
 fntBitmapFont *fntGetBitmapFont(int id);
+
+
+
+// 基于 FreeType 的 Unicode 字体（中文化新增）。加载 .ttf/.otf 文件，
+// 把 UTF-8 字符串按需光栅化进一张"覆盖率图集"纹理并动态绘制，
+// 因此能显示中文等 CJK 多字节文字（fntTexFont 只能渲染 .txf 纹理字体
+// 里的 256 个单字节字符，无法显示 CJK）。
+class fntUnicodeFont : public fntFont
+{
+public:
+  fntUnicodeFont ();
+  virtual ~fntUnicodeFont ();
+
+  int load ( const SGPath& fname, GLenum mag = GL_NEAREST,
+                                  GLenum min = GL_LINEAR_MIPMAP_LINEAR ) override;
+
+  void getBBox ( const char *s, float pointsize, float italic,
+                 float *left, float *right,
+                 float *bot , float *top  ) override;
+
+  void putch ( sgVec3 curpos, float pointsize, float italic, char c ) override;
+  void puts  ( sgVec3 curpos, float pointsize, float italic, const char *s ) override;
+
+  void begin () override;
+  void end   () override;
+
+  void setFixedPitch ( int fix ) override { fixed_pitch = fix ; }
+  int  isFixedPitch () const override  { return fixed_pitch ; }
+
+  void  setWidth     ( float w ) override { width = w ; }
+  void  setGap       ( float g ) override { gap = g ; }
+  float getWidth     () const override { return width ; }
+  float getGap       () const override { return gap ; }
+
+  int hasGlyph ( char c ) const override { return 1 ; }
+
+private:
+  struct Impl ;
+  Impl *impl ;
+
+  float width ;
+  float gap ;
+  int fixed_pitch ;
+  int bound ;
+} ;
 
 
 

@@ -1,4 +1,4 @@
-// dialog.cxx: implementation of an XML-configurable dialog box.
+﻿// dialog.cxx: implementation of an XML-configurable dialog box.
 
 #include "MouseCursor.hxx"
 #ifdef HAVE_CONFIG_H
@@ -13,6 +13,7 @@
 #include <Main/fg_os.hxx>
 #include <Main/fg_props.hxx>
 #include <Main/globals.hxx>
+#include <Main/locale.hxx>
 #include <Scripting/NasalSys.hxx>
 
 #include "AirportList.hxx"
@@ -1130,13 +1131,22 @@ void FGPUIDialog::setupObject(puObject* object, SGPropertyNode* props)
     object->setLabelPlace(PUPLACE_CENTERED_RIGHT);
     object->makeReturnDefault(props->getBoolValue("default"));
     info->node = props;
+    // 中文化：<legend>/<label> 先按英文原文查翻译表
+    // （FGLocale::translateDialogString，表来自 Translations/zh_CN/dialog.xml），
+    // 命中则用中文译文替换，未命中保持原文显示。
     if (props->hasValue("legend")) {
         info->legend = props->getStringValue("legend");
+        const std::string translated = globals->get_locale()->translateDialogString(info->legend);
+        if (!translated.empty())
+            info->legend = translated;
         object->setLegend(info->legend.c_str());
     }
 
     if (props->hasValue("label")) {
         info->label = props->getStringValue("label");
+        const std::string translated = globals->get_locale()->translateDialogString(info->label);
+        if (!translated.empty())
+            info->label = translated;
         object->setLabel(info->label.c_str());
     }
 
@@ -1300,6 +1310,44 @@ void FGPUIDialog::setColor(puObject* object, SGPropertyNode* props, int which)
 
         if (c.isValid() && dirty)
             object->setColor(pucol[i].id, c.red(), c.green(), c.blue(), c.alpha());
+    }
+
+    // —— 自动对比度调整（中文化可读性修复）——
+    // plib 的 load_colour_scheme() 从不写 PUCOL_LABEL（其值一直是编译期
+    // 默认的黑色），而且当主题色较亮时（4g+3r+b > 4）会把 LEGEND 槽导出
+    // 为黑色；一旦样式没有 <type>-legend 之类的兜底键，深色面板上就会
+    // 出现"黑字灰底"、文字几乎不可见。这里做通用兜底：取面板主色
+    // （FOREGROUND 与 BACKGROUND 中较暗者）的感知亮度为基准，若
+    // LABEL/LEGEND 文字亮度与面板过于接近（视为对比不足），自动改成
+    // 深底浅字 / 浅底深字，保证任何主题样式下文字都清晰可读。
+    {
+        float fgr, fgg, fgb, bgr, bgg, bgb;
+        object->getColour(PUCOL_FOREGROUND, &fgr, &fgg, &fgb);
+        object->getColour(PUCOL_BACKGROUND, &bgr, &bgg, &bgb);
+
+        // 面板实际底色取两个颜色槽中对应分量的较暗者，
+        // 按 ITU-R BT.709 亮度公式加权得到人眼感知亮度。
+        const float panelY =
+            0.2126f * (fgr < bgr ? fgr : bgr) +
+            0.7152f * (fgg < bgg ? fgg : bgg) +
+            0.0722f * (fgb < bgb ? fgb : bgb);
+
+        // 深色面板（亮度 < 0.35）用近白文字，浅色面板用深灰文字。
+        const float textR = (panelY < 0.35f) ? 0.97f : 0.15f;
+        const float textG = (panelY < 0.35f) ? 0.97f : 0.15f;
+        const float textB = (panelY < 0.35f) ? 1.00f : 0.18f;
+
+        const int textSlots[] = { PUCOL_LABEL, PUCOL_LEGEND };
+        for (int id : textSlots)
+        {
+            float r, g, b;
+            object->getColour(id, &r, &g, &b);
+            const float textY = 0.2126f * r + 0.7152f * g + 0.0722f * b;
+            // 文字与面板亮度差不足 0.30 视为对比不足，强制替换为自动色；
+            // 该操作幂等：一旦替换完成，下次调用时对比已足够、不再触发。
+            if (textY - panelY < 0.30f && panelY - textY < 0.30f)
+                object->setColor(id, textR, textG, textB, 1.0f);
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-// locale.hxx -- FlightGear Localization Support
+﻿// locale.hxx -- FlightGear Localization Support
 //
 // Written by Thorsten Brehm, started April 2012.
 //
@@ -23,6 +23,7 @@
 
 #include <string>
 #include <cstdarg> // for va_start/_end
+#include <unordered_map>
 
 #include <simgear/props/propsfwd.hxx>
 #include <simgear/misc/strutils.hxx>
@@ -99,6 +100,13 @@ public:
     std::string getDefaultFont      (const char* fallbackFont);
 
     /**
+     * 翻译静态 GUI 对话框字符串（PUI 的 <label>/<legend>/标题文字）。
+     * 查找键是原始英文串（对 CJK 等任意字符都健壮，不依赖属性树节点名），
+     * 这是中文化新增的翻译通道。无译文时返回空串，调用方保持原文显示。
+     */
+    std::string translateDialogString(const std::string& source) const;
+
+    /**
      * Obtain a message string, from a localized resource ID, and use it as
      * a printf format string.
      */
@@ -160,6 +168,12 @@ protected:
      * the provided locale node
      */
     void parseXLIFF(SGPropertyNode* node);
+
+    /**
+     * 加载静态 GUI 对话框翻译表（英文原文 -> 本地化译文），
+     * 文件路径取自语言项的 "dialog-translations" 节点（中文化新增）。
+     */
+    void loadDialogTranslations();
 private:
     /** Return a new string with the character encoding part of the locale
      *  spec removed., i.e., "de_DE.UTF-8" becomes "de_DE". If there is no
@@ -173,6 +187,9 @@ private:
 
     string_list _languages;
     bool _inited = false;
+
+    // English source -> localized target for static PUI dialog strings.
+    std::unordered_map<std::string, std::string> _dialogTranslations;
 };
 
 // global translation wrappers

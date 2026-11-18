@@ -1,4 +1,4 @@
-//
+﻿//
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License as
 //  published by the Free Software Foundation; either version 2 of the
@@ -116,9 +116,9 @@ FGFontCache::getfnt(const std::string& fontName, float size, float slant)
     PuFontMap::iterator i = _cache.find(fntParams);
     if (i != _cache.end())
         return i->second;
-    // fntTexFont s are all preloaded into the _texFonts map
+    // fonts are all preloaded into the _texFonts map
     TexFontMap::iterator texi = _texFonts.find(fontName);
-    fntTexFont* texfont = 0;
+    fntFont* texfont = 0;
     puFont* pufont = 0;
     if (texi != _texFonts.end()) {
         texfont = texi->second;
@@ -140,7 +140,7 @@ FGFontCache::getfnt(const std::string& fontName, float size, float slant)
         f->texfont = texfont;
         f->ownsPUFont = true; // ensure it gets cleaned up
         f->pufont = new puFont;
-        f->pufont->initialize(static_cast<fntFont *>(f->texfont), size, slant);
+        f->pufont->initialize(f->texfont, size, slant);
     } else {
         f->pufont = guiFonts.begin()->font;
     }
@@ -156,7 +156,7 @@ FGFontCache::get(const std::string& name, float size, float slant)
     return getfnt(name, size, slant)->pufont;
 }
 
-fntTexFont *
+fntFont *
 FGFontCache::getTexFont(const std::string& name, float size, float slant)
 {
     init();
@@ -219,6 +219,19 @@ bool FGFontCache::initializeFonts()
             _texFonts[p.file()] = f;
         else
             delete f;
+    }
+
+    // 同时加载 TrueType/OpenType 字体（经 FreeType 渲染，中文化新增）：
+    // 这样 PUI 菜单栏/对话框才能显示中文等 Unicode 多字节文字
+    // （.txf 纹理字体只有 256 个单字节字形，无法显示 CJK）。
+    for (auto ext : { ".ttf", ".otf" }) {
+        for (auto p : dir.children(simgear::Dir::TYPE_FILE, ext)) {
+            fntUnicodeFont* f = new fntUnicodeFont;
+            if (f->load(p))
+                _texFonts[p.file()] = f;
+            else
+                delete f;
+        }
     }
 
     return true;

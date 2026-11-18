@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <!-- possible font names:
+		"default", "FIXED_8x13", "FIXED_9x15", "TIMES_10", "TIMES_24",
+		"HELVETICA_10", "HELVETICA_12", "HELVETICA_14", "HELVETICA_18",
+		"SANS_12B", and all font file names from $FG_ROOT/Fonts/, such as
+		"helvetica_bold.txf". "size" and "slant" take only effect on
+		texture fonts.
+	-->
+    <name>Anthrax</name>
+    <fonts>
+        <!-- 中文化字号说明：fonts/gui 的 size 是 FreeType 字体的 pointsize（即
+             ascender 高度的像素数）。原 HELVETICA_12 位图字体固定 12px，改为
+             simhei.ttf 后若不写 size 则走 FGFontCache 缺省 15，中文实心字高只有
+             约 11.5px，偏小；这里加大到 20（CJK 实心字高约 15px），并同步放大
+             baseline-height 以保证列表行高足够（20 + PUSTR_BGAP 5 = 25）。 -->
+        <gui>
+            <name type="string">simhei.ttf</name>
+            <size type="float">20</size>
+            <baseline-height type="float">25</baseline-height>
+        </gui>
+
+        <splash>
+            <name type="string">default.txf</name>
+            <size type="float">19</size>
+            <slant type="float">0</slant>
+        </splash>
+
+        <gui-large>
+            <name>simhei.ttf</name>
+            <size type="float">22</size>
+        </gui-large>
+
+        <fixed>
+            <name>FIXED_8x13</name>
+        </fixed>
+
+        <gui-small>
+            <name>simhei.ttf</name>
+            <size type="float">18</size>
+        </gui-small>
+
+        <mp-list>
+            <name>FIXED_8x13</name>
+        </mp-list>
+
+        <replay>
+            <name>SANS_12B</name>
+            <size type="float">14</size>
+        </replay>
+
+        <model-view>
+            <name type="string">HELVETICA_14</name>
+        </model-view>
+
+        <nasal-editor>
+            <name type="string">simhei.ttf</name>
+            <size>14</size>
+        </nasal-editor>
+
+        <message-display>
+            <name type="string">SANS_12B</name>
+        </message-display>
+
+        <screen>
+            <name type="string">HELVETICA_14</name>
+            <size type="float">13</size>
+        </screen>
+
+        <stopwatch>
+            <name>TIMES_24</name>
+        </stopwatch>
+    </fonts>
+
+    <colors>
+        <!-- 深灰蓝主题背景（保持不变）：面板绘制自 FOREGROUND 主题色渐变而来，
+             实测约 RGB(78~105)。文字必须用浅色才能与它形成高对比。 -->
+        <background>
+            <red type="float">0.41</red>
+            <green type="float">0.4</green>
+            <blue type="float">0.42</blue>
+            <alpha type="float">1.0</alpha>
+        </background>
+
+        <!-- 前景色（参考值）：样式文档化用；FGPUIDialog 逐槽循环读取
+             <type>-foreground 键时会用到。 -->
+        <foreground>
+            <red type="float">0.90</red>
+            <green type="float">0.90</green>
+            <blue type="float">0.92</blue>
+            <alpha type="float">1.0</alpha>
+        </foreground>
+
+        <!-- 静态标签：近白，深底高对比。 -->
+        <label>
+            <red type="float">0.97</red>
+            <green type="float">0.97</green>
+            <blue type="float">1.00</blue>
+            <alpha type="float">1.0</alpha>
+        </label>
+
+        <!-- 通用 legend 兜底（FGPUIDialog 逐槽循环读取 <type>-legend 键，
+             此键同时作为全局参考）。 -->
+        <legend>
+            <red type="float">0.97</red>
+            <green type="float">0.97</green>
+            <blue type="float">1.00</blue>
+            <alpha type="float">1.0</alpha>
+        </legend>
+
+        <!-- 下拉/选择框的可编辑区域文字：亮琥珀色，深底上清晰可读。
+             （该键只进入 EDITFIELD 槽，不作为控件主题色。） -->
+        <combo-editfield>
+            <red type="float">1.0</red>
+            <green type="float">0.85</green>
+            <blue type="float">0.45</blue>
+            <alpha type="float">1.0</alpha>
+        </combo-editfield>
+
+        <select-editfield>
+            <red type="float">1.0</red>
+            <green type="float">0.85</green>
+            <blue type="float">0.45</blue>
+            <alpha type="float">1.0</alpha>
+        </select-editfield>
+
+        <!-- 复选框勾选框颜色：原值与背景同色，深底上完全看不见，改为亮灰蓝。 -->
+        <checkbox-foreground>
+            <red type="float">0.90</red>
+            <green type="float">0.90</green>
+            <blue type="float">0.93</blue>
+            <alpha type="float">1.0</alpha>
+        </checkbox-foreground>
+
+        <checkbox-highlight>
+            <red type="float">1.0</red>
+            <green type="float">0.7</green>
+            <blue type="float">0.0</blue>
+            <alpha type="float">0.7</alpha>
+        </checkbox-highlight>
+
+        <checkbox-misc>
+            <red type="float">1.0</red>
+            <green type="float">0.7</green>
+            <blue type="float">0.0</blue>
+            <alpha type="float">1.0</alpha>
+        </checkbox-misc>
+
+        <radio-foreground>
+            <red type="float">1.0</red>
+            <green type="float">0.7</green>
+            <blue type="float">0.0</blue>
+            <alpha type="float">0.7</alpha>
+        </radio-foreground>
+
+        <!-- 输入框主题色：原来是亮橙 (0.9,0.6,0.0)。plib 的 load_colour_scheme
+             会把亮色主题（4g+3r+b > 4）的文字槽 LEGEND 导出为黑色，导致深底
+             黑字看不清；改成深灰蓝主题后 plib 自动导出白色 LEGEND，输入框
+             底色也变深、与整体主题一致。 -->
+        <input>
+            <red type="float">0.25</red>
+            <green type="float">0.25</green>
+            <blue type="float">0.28</blue>
+            <alpha type="float">1.0</alpha>
+        </input>
+
+        <!-- 输入框值文字：近白（原 0.3,0,0 是近黑暗红，深底上几乎不可见）。 -->
+        <input-legend>
+            <red type="float">0.97</red>
+            <green type="float">0.97</green>
+            <blue type="float">1.00</blue>
+            <alpha type="float">1.0</alpha>
+        </input-legend>
+
+        <input-misc>
+            <red type="float">1.0</red>
+            <green type="float">0.0</green>
+            <blue type="float">0.0</blue>
+            <alpha type="float">1.0</alpha>
+        </input-misc>
+
+        <button>
+            <red type="float">0.44</red>
+            <green type="float">0.43</green>
+            <blue type="float">0.45</blue>
+            <alpha type="float">1.0</alpha>
+        </button>
+
+        <button-legend>
+            <red type="float">1.0</red>
+            <green type="float">1.0</green>
+            <blue type="float">1.0</blue>
+            <alpha type="float">1.0</alpha>
+        </button-legend>
+
+        <dial-misc>
+            <red type="float">1.0</red>
+            <green type="float">0.7</green>
+            <blue type="float">0.0</blue>
+            <alpha type="float">0.7</alpha>
+        </dial-misc>
+
+        <hrule>
+            <red type="float">1.0</red>
+            <green type="float">0.7</green>
+            <blue type="float">0.0</blue>
+            <alpha type="float">1.0</alpha>
+        </hrule>
+
+        <vrule>
+            <red type="float">1.0</red>
+            <green type="float">0.7</green>
+            <blue type="float">0.0</blue>
+            <alpha type="float">1.0</alpha>
+        </vrule>
+
+        <!-- 滑条主题色：同 input，由亮橙改为深灰蓝，让 plib 自动导出白色
+             LEGEND（滑条刻度值文字）。 -->
+        <slider>
+            <red type="float">0.25</red>
+            <green type="float">0.25</green>
+            <blue type="float">0.28</blue>
+            <alpha type="float">1.0</alpha>
+        </slider>
+
+        <!-- 滑条刻度值文字：显式近白，双保险（FGPUIDialog 逐槽循环会读取
+             slider-legend 键，无需改代码即可生效）。 -->
+        <slider-legend>
+            <red type="float">0.97</red>
+            <green type="float">0.97</green>
+            <blue type="float">1.00</blue>
+            <alpha type="float">1.0</alpha>
+        </slider-legend>
+
+        <!-- 可编辑文本框主题色：同 input。 -->
+        <textbox-editable>
+            <red type="float">0.25</red>
+            <green type="float">0.25</green>
+            <blue type="float">0.28</blue>
+            <alpha type="float">1.0</alpha>
+        </textbox-editable>
+
+        <!-- 可编辑文本框文字：近白，双保险。 -->
+        <textbox-editable-legend>
+            <red type="float">0.97</red>
+            <green type="float">0.97</green>
+            <blue type="float">1.00</blue>
+            <alpha type="float">1.0</alpha>
+        </textbox-editable-legend>
+
+        <!-- splash screen colors -->
+
+        <splash-font>
+            <red type="float">1.0</red>
+            <green type="float">0.9</green>
+            <blue type="float">0.0</blue>
+        </splash-font>
+
+        <splash-screen>
+            <red type="float">0.0</red>
+            <green type="float">0.0</green>
+            <blue type="float">0.0</blue>
+        </splash-screen>
+    </colors>
+</PropertyList>

@@ -1,0 +1,4872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Static GUI dialog string translations (source -> target). -->
+<PropertyList>
+  <entry>
+    <source>AI Carrier Controls</source>
+    <target>AI 航母控制</target>
+  </entry>
+  <entry>
+    <source>X</source>
+    <target>关闭</target>
+  </entry>
+  <entry>
+    <source>Turn to launch course</source>
+    <target>转向起飞航向</target>
+  </entry>
+  <entry>
+    <source>Turn to recovery course</source>
+    <target>转向回收航向</target>
+  </entry>
+  <entry>
+    <source>Turn to base course</source>
+    <target>转向基准航向</target>
+  </entry>
+  <entry>
+    <source>Operate Deck Elevators</source>
+    <target>操作甲板升降机</target>
+  </entry>
+  <entry>
+    <source>Enable LSO Communications</source>
+    <target>启用 LSO 通信</target>
+  </entry>
+  <entry>
+    <source>Enable Deck Park</source>
+    <target>启用甲板停机</target>
+  </entry>
+  <entry>
+    <source>Deck Lights</source>
+    <target>甲板灯</target>
+  </entry>
+  <entry>
+    <source>Discrete Flightdeck Floodlights (Red)</source>
+    <target>分离式飞行甲板泛光灯（红色）</target>
+  </entry>
+  <entry>
+    <source>OK</source>
+    <target>确定</target>
+  </entry>
+  <entry>
+    <source>Apply</source>
+    <target>应用</target>
+  </entry>
+  <entry>
+    <source>Reset</source>
+    <target>重置</target>
+  </entry>
+  <entry>
+    <source>Cancel</source>
+    <target>取消</target>
+  </entry>
+  <entry>
+    <source>Target Task Selection</source>
+    <target>目标任务选择</target>
+  </entry>
+  <entry>
+    <source>Straight and Level</source>
+    <target>直线平飞</target>
+  </entry>
+  <entry>
+    <source>Level Turns</source>
+    <target>水平转弯</target>
+  </entry>
+  <entry>
+    <source>Straight Pitch Changes</source>
+    <target>直线俯仰变化</target>
+  </entry>
+  <entry>
+    <source>Lazy Eights</source>
+    <target>懒 8 字</target>
+  </entry>
+  <entry>
+    <source>Close</source>
+    <target>关闭</target>
+  </entry>
+  <entry>
+    <source>About FlightGear</source>
+    <target>关于 FlightGear</target>
+  </entry>
+  <entry>
+    <source>FlightGear Flight Simulator VX.X.X</source>
+    <target>FlightGear 飞行模拟器 VX.X.X</target>
+  </entry>
+  <entry>
+    <source>(c) 1996-2024, the FlightGear Contributors</source>
+    <target>(c) 1996-2024，FlightGear 贡献者</target>
+  </entry>
+  <entry>
+    <source>FlightGear is free and open source software, licensed</source>
+    <target>FlightGear 是自由开源软件，其许可为</target>
+  </entry>
+  <entry>
+    <source>under the GNU General Public License Version 2.</source>
+    <target>GNU 通用公共许可证第 2 版。</target>
+  </entry>
+  <entry>
+    <source>Get new versions, add-ons, forum, wiki and more</source>
+    <target>获取新版本、附加组件、论坛、Wiki 等</target>
+  </entry>
+  <entry>
+    <source>from the web-site at http://www.flightgear.org/ for free.</source>
+    <target>请访问 http://www.flightgear.org/，全部免费。</target>
+  </entry>
+  <entry>
+    <source>Have a nice flight!</source>
+    <target>祝您飞行愉快！</target>
+  </entry>
+  <entry>
+    <source>Version Information</source>
+    <target>版本信息</target>
+  </entry>
+  <entry>
+    <source>Graphics/OpenGL Information</source>
+    <target>图形 / OpenGL 信息</target>
+  </entry>
+  <entry>
+    <source>Take Screenshot</source>
+    <target>截图</target>
+  </entry>
+  <entry>
+    <source>Copy to Clipboard</source>
+    <target>复制到剪贴板</target>
+  </entry>
+  <entry>
+    <source>Advanced Graphics Options</source>
+    <target>高级图形选项</target>
+  </entry>
+  <entry>
+    <source>General</source>
+    <target>常规</target>
+  </entry>
+  <entry>
+    <source>Select Rendering Mode</source>
+    <target>选择渲染模式</target>
+  </entry>
+  <entry>
+    <source>Low Specifications</source>
+    <target>低配置</target>
+  </entry>
+  <entry>
+    <source>Use Shaders</source>
+    <target>使用着色器</target>
+  </entry>
+  <entry>
+    <source>Atmospheric Light Scattering (ALS)</source>
+    <target>大气光散射 (ALS)</target>
+  </entry>
+  <entry>
+    <source>Some of these settings can only be changed when using ALS.</source>
+    <target>其中部分设置仅在启用 ALS 时可更改。</target>
+  </entry>
+  <entry>
+    <source>Terrain Quality</source>
+    <target>地形质量</target>
+  </entry>
+  <entry>
+    <source>Model Effects</source>
+    <target>模型效果</target>
+  </entry>
+  <entry>
+    <source>Water Effects</source>
+    <target>水面效果</target>
+  </entry>
+  <entry>
+    <source>Clouds Detail</source>
+    <target>云细节</target>
+  </entry>
+  <entry>
+    <source>Wind Effects</source>
+    <target>风效果</target>
+  </entry>
+  <entry>
+    <source>Overlay</source>
+    <target>叠加层</target>
+  </entry>
+  <entry>
+    <source>Anti-aliasing</source>
+    <target>抗锯齿</target>
+  </entry>
+  <entry>
+    <source>Shadows and Lights</source>
+    <target>阴影与灯光</target>
+  </entry>
+  <entry>
+    <source>Shadow Quality</source>
+    <target>阴影质量</target>
+  </entry>
+  <entry>
+    <source>Dynamic lighting</source>
+    <target>动态光照</target>
+  </entry>
+  <entry>
+    <source>Limit the number of lights being displayed</source>
+    <target>限制显示的光源数量</target>
+  </entry>
+  <entry>
+    <source>Maximum number of point lights</source>
+    <target>最大点光源数量</target>
+  </entry>
+  <entry>
+    <source>Maximum number of spot lights</source>
+    <target>最大聚光灯数量</target>
+  </entry>
+  <entry>
+    <source>Scenery Layers</source>
+    <target>场景图层</target>
+  </entry>
+  <entry>
+    <source>Pylons and power lines</source>
+    <target>电线塔与输电线</target>
+  </entry>
+  <entry>
+    <source>Detailed Roads and Railways</source>
+    <target>精细道路与铁路</target>
+  </entry>
+  <entry>
+    <source>Buildings</source>
+    <target>建筑物</target>
+  </entry>
+  <entry>
+    <source>Random Scenery Objects</source>
+    <target>随机场景物体</target>
+  </entry>
+  <entry>
+    <source>Autogenerated Vegetation</source>
+    <target>自动生成植被</target>
+  </entry>
+  <entry>
+    <source>OpenStreetMap Trees</source>
+    <target>OpenStreetMap 树木</target>
+  </entry>
+  <entry>
+    <source>Vegetation Shadows</source>
+    <target>植被阴影</target>
+  </entry>
+  <entry>
+    <source>Scenery Objects</source>
+    <target>场景物体</target>
+  </entry>
+  <entry>
+    <source>Warning: Pylons, Detailed Roads, Buildings use a lot of memory</source>
+    <target>警告：电线塔、精细道路、建筑物会占用大量内存</target>
+  </entry>
+  <entry>
+    <source>and disk space, and are only available in limited areas.</source>
+    <target>和磁盘空间，且仅在有限区域可用。</target>
+  </entry>
+  <entry>
+    <source>Atmospheric Effects</source>
+    <target>大气效果</target>
+  </entry>
+  <entry>
+    <source>Particles (smoke, dust, spray)</source>
+    <target>粒子（烟雾、灰尘、水雾）</target>
+  </entry>
+  <entry>
+    <source>Precipitation</source>
+    <target>降水</target>
+  </entry>
+  <entry>
+    <source>3D clouds (required by Detailed Weather)</source>
+    <target>3D 云（精细天气所需）</target>
+  </entry>
+  <entry>
+    <source>Cloud density</source>
+    <target>云密度</target>
+  </entry>
+  <entry>
+    <source>Cloud visibility range</source>
+    <target>云可见范围</target>
+  </entry>
+  <entry>
+    <source>Back</source>
+    <target>返回</target>
+  </entry>
+  <entry>
+    <source>Control Nearby AI Objects</source>
+    <target>控制附近的 AI 对象</target>
+  </entry>
+  <entry>
+    <source>Select an AI object to bring up its own control dialog</source>
+    <target>选择一个 AI 对象以打开其控制对话框</target>
+  </entry>
+  <entry>
+    <source>Environment: Air</source>
+    <target>环境：空气</target>
+  </entry>
+  <entry>
+    <source>visibility (m)</source>
+    <target>能见度（米）</target>
+  </entry>
+  <entry>
+    <source>sea-level temperature (degC)</source>
+    <target>海平面温度（摄氏度）</target>
+  </entry>
+  <entry>
+    <source>sea-level dewpoint (degC)</source>
+    <target>海平面露点（摄氏度）</target>
+  </entry>
+  <entry>
+    <source>sea-level pressure (inHG)</source>
+    <target>海平面气压（英寸汞柱）</target>
+  </entry>
+  <entry>
+    <source>Select aircraft</source>
+    <target>选择飞机</target>
+  </entry>
+  <entry>
+    <source>Select an Airport</source>
+    <target>选择机场</target>
+  </entry>
+  <entry>
+    <source>Airport:</source>
+    <target>机场：</target>
+  </entry>
+  <entry>
+    <source>Search</source>
+    <target>搜索</target>
+  </entry>
+  <entry>
+    <source>&lt;100nm</source>
+    <target>&lt;100 海里</target>
+  </entry>
+  <entry>
+    <source>Helipads</source>
+    <target>直升机停机坪</target>
+  </entry>
+  <entry>
+    <source>METAR</source>
+    <target>METAR</target>
+  </entry>
+  <entry>
+    <source>Aircraft Position</source>
+    <target>飞机位置</target>
+  </entry>
+  <entry>
+    <source>Best runway</source>
+    <target>最佳跑道</target>
+  </entry>
+  <entry>
+    <source>(based on wind)</source>
+    <target>（基于风向）</target>
+  </entry>
+  <entry>
+    <source>Runway:</source>
+    <target>跑道：</target>
+  </entry>
+  <entry>
+    <source>Parking:</source>
+    <target>停机位：</target>
+  </entry>
+  <entry>
+    <source>Parking position not found</source>
+    <target>未找到停机位</target>
+  </entry>
+  <entry>
+    <source>Airfield Information</source>
+    <target>机场信息</target>
+  </entry>
+  <entry>
+    <source>Airfield Chart</source>
+    <target>机场图</target>
+  </entry>
+  <entry>
+    <source>Nav data</source>
+    <target>导航数据</target>
+  </entry>
+  <entry>
+    <source>Parking</source>
+    <target>停机位</target>
+  </entry>
+  <entry>
+    <source>Name:</source>
+    <target>名称：</target>
+  </entry>
+  <entry>
+    <source>Athens Intl Airport Elefterios Venizel</source>
+    <target>雅典国际机场 Elefterios Venizel</target>
+  </entry>
+  <entry>
+    <source>ICAO:</source>
+    <target>ICAO：</target>
+  </entry>
+  <entry>
+    <source>Lat / Lon:</source>
+    <target>纬度 / 经度：</target>
+  </entry>
+  <entry>
+    <source>Elevation:</source>
+    <target>海拔：</target>
+  </entry>
+  <entry>
+    <source>Longest runway:</source>
+    <target>最长跑道：</target>
+  </entry>
+  <entry>
+    <source>Distance:</source>
+    <target>距离：</target>
+  </entry>
+  <entry>
+    <source>Course:</source>
+    <target>航向：</target>
+  </entry>
+  <entry>
+    <source>Communications Frequencies</source>
+    <target>通信频率</target>
+  </entry>
+  <entry>
+    <source>ACTIVATE LIGHTS</source>
+    <target>开启灯光</target>
+  </entry>
+  <entry>
+    <source>Runways</source>
+    <target>跑道</target>
+  </entry>
+  <entry>
+    <source>Go To Airport</source>
+    <target>前往机场</target>
+  </entry>
+  <entry>
+    <source>ALS Filter Settings (experimental)</source>
+    <target>ALS 滤镜设置（实验性）</target>
+  </entry>
+  <entry>
+    <source>Enable filters</source>
+    <target>启用滤镜</target>
+  </entry>
+  <entry>
+    <source>Normal</source>
+    <target>正常</target>
+  </entry>
+  <entry>
+    <source>Night vision</source>
+    <target>夜视</target>
+  </entry>
+  <entry>
+    <source>Infrared vision</source>
+    <target>红外视觉</target>
+  </entry>
+  <entry>
+    <source>Brightness</source>
+    <target>亮度</target>
+  </entry>
+  <entry>
+    <source>Gamma</source>
+    <target>伽马</target>
+  </entry>
+  <entry>
+    <source>Reset filters</source>
+    <target>重置滤镜</target>
+  </entry>
+  <entry>
+    <source>ATC/AI Options</source>
+    <target>ATC/AI 选项</target>
+  </entry>
+  <entry>
+    <source>Enable ATC</source>
+    <target>启用 ATC</target>
+  </entry>
+  <entry>
+    <source>Enable AI traffic</source>
+    <target>启用 AI 交通</target>
+  </entry>
+  <entry>
+    <source>AI Carrier</source>
+    <target>AI 航母</target>
+  </entry>
+  <entry>
+    <source>ATC Communication</source>
+    <target>ATC 通信</target>
+  </entry>
+  <entry>
+    <source>LEGEND</source>
+    <target>图例</target>
+  </entry>
+  <entry>
+    <source>TITLE ("ICAO Frequencies")</source>
+    <target>标题（“ICAO 频率”）</target>
+  </entry>
+  <entry>
+    <source>LABEL</source>
+    <target>标签</target>
+  </entry>
+  <entry>
+    <source>FREQUENCY</source>
+    <target>频率</target>
+  </entry>
+  <entry>
+    <source>COM1</source>
+    <target>COM1</target>
+  </entry>
+  <entry>
+    <source>COM2</source>
+    <target>COM2</target>
+  </entry>
+  <entry>
+    <source>Display Nearest Airport Frequencies</source>
+    <target>显示最近机场频率</target>
+  </entry>
+  <entry>
+    <source>ICAO</source>
+    <target>ICAO</target>
+  </entry>
+  <entry>
+    <source>No ATC in range 50 nm.</source>
+    <target>50 海里内无 ATC。</target>
+  </entry>
+  <entry>
+    <source>Airport identifier:</source>
+    <target>机场标识：</target>
+  </entry>
+  <entry>
+    <source>Autopilot Settings</source>
+    <target>自动驾驶设置</target>
+  </entry>
+  <entry>
+    <source>Heading Control</source>
+    <target>航向控制</target>
+  </entry>
+  <entry>
+    <source>Wings Level</source>
+    <target>机翼水平</target>
+  </entry>
+  <entry>
+    <source>Heading Bug</source>
+    <target>航向游标</target>
+  </entry>
+  <entry>
+    <source>True Heading</source>
+    <target>真航向</target>
+  </entry>
+  <entry>
+    <source>GPS/FMS Heading</source>
+    <target>GPS/FMS 航向</target>
+  </entry>
+  <entry>
+    <source>NAV1 CDI Course</source>
+    <target>NAV1 CDI 航向</target>
+  </entry>
+  <entry>
+    <source>Velocity Control</source>
+    <target>速度控制</target>
+  </entry>
+  <entry>
+    <source>Speed with Throttle</source>
+    <target>油门控速</target>
+  </entry>
+  <entry>
+    <source>Speed with Pitch</source>
+    <target>俯仰控速</target>
+  </entry>
+  <entry>
+    <source>Pitch/Altitude Control</source>
+    <target>俯仰 / 高度控制</target>
+  </entry>
+  <entry>
+    <source>Vertical Speed</source>
+    <target>垂直速度</target>
+  </entry>
+  <entry>
+    <source>Pitch Hold</source>
+    <target>俯仰保持</target>
+  </entry>
+  <entry>
+    <source>FPA Hold</source>
+    <target>FPA 保持</target>
+  </entry>
+  <entry>
+    <source>Altitude Hold</source>
+    <target>高度保持</target>
+  </entry>
+  <entry>
+    <source>AGL Hold</source>
+    <target>AGL 保持</target>
+  </entry>
+  <entry>
+    <source>NAV1 Glideslope</source>
+    <target>NAV1 下滑道</target>
+  </entry>
+  <entry>
+    <source>Pushback</source>
+    <target>推出</target>
+  </entry>
+  <entry>
+    <source>Connect</source>
+    <target>连接</target>
+  </entry>
+  <entry>
+    <source>Steering:</source>
+    <target>转向：</target>
+  </entry>
+  <entry>
+    <source>Center</source>
+    <target>居中</target>
+  </entry>
+  <entry>
+    <source>Speed:</source>
+    <target>速度：</target>
+  </entry>
+  <entry>
+    <source>Stop</source>
+    <target>停止</target>
+  </entry>
+  <entry>
+    <source>km/h</source>
+    <target>公里/小时</target>
+  </entry>
+  <entry>
+    <source>Auto Push:</source>
+    <target>自动推出：</target>
+  </entry>
+  <entry>
+    <source>Start</source>
+    <target>开始</target>
+  </entry>
+  <entry>
+    <source>Pause</source>
+    <target>暂停</target>
+  </entry>
+  <entry>
+    <source>View</source>
+    <target>视图</target>
+  </entry>
+  <entry>
+    <source>Route:</source>
+    <target>航线：</target>
+  </entry>
+  <entry>
+    <source>Enter</source>
+    <target>确定</target>
+  </entry>
+  <entry>
+    <source>Done</source>
+    <target>完成</target>
+  </entry>
+  <entry>
+    <source>Always Show</source>
+    <target>始终显示</target>
+  </entry>
+  <entry>
+    <source>Last Point:</source>
+    <target>最后一点：</target>
+  </entry>
+  <entry>
+    <source>Sharp</source>
+    <target>急转</target>
+  </entry>
+  <entry>
+    <source>Delete</source>
+    <target>删除</target>
+  </entry>
+  <entry>
+    <source>Show Wingtip</source>
+    <target>显示翼尖</target>
+  </entry>
+  <entry>
+    <source>Joystick Axis Configuration</source>
+    <target>操纵杆轴配置</target>
+  </entry>
+  <entry>
+    <source>Select the operation to assign to this axis.</source>
+    <target>选择要分配给此轴的操作。</target>
+  </entry>
+  <entry>
+    <source>Flight Controls</source>
+    <target>飞行操纵</target>
+  </entry>
+  <entry>
+    <source>Aileron</source>
+    <target>副翼</target>
+  </entry>
+  <entry>
+    <source>Elevator</source>
+    <target>升降舵</target>
+  </entry>
+  <entry>
+    <source>Rudder</source>
+    <target>方向舵</target>
+  </entry>
+  <entry>
+    <source>Brake Left</source>
+    <target>左刹车</target>
+  </entry>
+  <entry>
+    <source>Brake Right</source>
+    <target>右刹车</target>
+  </entry>
+  <entry>
+    <source>Flaps</source>
+    <target>襟翼</target>
+  </entry>
+  <entry>
+    <source>Wings</source>
+    <target>机翼</target>
+  </entry>
+  <entry>
+    <source>Trim</source>
+    <target>配平</target>
+  </entry>
+  <entry>
+    <source>Aileron Trim to position</source>
+    <target>副翼配平至指定位置</target>
+  </entry>
+  <entry>
+    <source>Elevator Trim to position</source>
+    <target>升降舵配平至指定位置</target>
+  </entry>
+  <entry>
+    <source>Rudder Trim to position</source>
+    <target>方向舵配平至指定位置</target>
+  </entry>
+  <entry>
+    <source>Aileron Trim inc.</source>
+    <target>副翼配平增量</target>
+  </entry>
+  <entry>
+    <source>Elevator Trim inc.</source>
+    <target>升降舵配平增量</target>
+  </entry>
+  <entry>
+    <source>Rudder Trim inc.</source>
+    <target>方向舵配平增量</target>
+  </entry>
+  <entry>
+    <source>Engines</source>
+    <target>发动机</target>
+  </entry>
+  <entry>
+    <source>Throttle All Engines</source>
+    <target>全部发动机油门</target>
+  </entry>
+  <entry>
+    <source>Mixture All Engines</source>
+    <target>全部发动机混合比</target>
+  </entry>
+  <entry>
+    <source>Propeller All Engines</source>
+    <target>全部发动机螺旋桨</target>
+  </entry>
+  <entry>
+    <source>Throttle Engine 0</source>
+    <target>发动机 0 油门</target>
+  </entry>
+  <entry>
+    <source>Mixture Engine 0</source>
+    <target>发动机 0 混合比</target>
+  </entry>
+  <entry>
+    <source>Propeller Pitch Engine 0</source>
+    <target>发动机 0 桨距</target>
+  </entry>
+  <entry>
+    <source>Throttle Engine 1</source>
+    <target>发动机 1 油门</target>
+  </entry>
+  <entry>
+    <source>Mixture Engine 1</source>
+    <target>发动机 1 混合比</target>
+  </entry>
+  <entry>
+    <source>Propeller Pitch Engine 1</source>
+    <target>发动机 1 桨距</target>
+  </entry>
+  <entry>
+    <source>Reverser All Engines</source>
+    <target>全部发动机反推</target>
+  </entry>
+  <entry>
+    <source>Other</source>
+    <target>其他</target>
+  </entry>
+  <entry>
+    <source>View (horizontal)</source>
+    <target>视角（水平）</target>
+  </entry>
+  <entry>
+    <source>View (vertical)</source>
+    <target>视角（垂直）</target>
+  </entry>
+  <entry>
+    <source>View Horizontal Axis</source>
+    <target>水平视角轴</target>
+  </entry>
+  <entry>
+    <source>View Vertical Axis</source>
+    <target>垂直视角轴</target>
+  </entry>
+  <entry>
+    <source>Apply sensitivity</source>
+    <target>应用灵敏度</target>
+  </entry>
+  <entry>
+    <source>Remove assignment</source>
+    <target>移除分配</target>
+  </entry>
+  <entry>
+    <source>Button Configuration</source>
+    <target>按键配置</target>
+  </entry>
+  <entry>
+    <source>Select the command you wish to assign to this button.</source>
+    <target>选择要分配给此按键的命令。</target>
+  </entry>
+  <entry>
+    <source>Flight Surface Trim</source>
+    <target>舵面配平</target>
+  </entry>
+  <entry>
+    <source>Elevator Trim Up</source>
+    <target>升降舵配平向上</target>
+  </entry>
+  <entry>
+    <source>Elevator Trim Down</source>
+    <target>升降舵配平向下</target>
+  </entry>
+  <entry>
+    <source>Elevator Trim Pos</source>
+    <target>升降舵配平位置</target>
+  </entry>
+  <entry>
+    <source>Rudder Trim Left</source>
+    <target>方向舵配平向左</target>
+  </entry>
+  <entry>
+    <source>Rudder Trim Right</source>
+    <target>方向舵配平向右</target>
+  </entry>
+  <entry>
+    <source>Rudder Trim Pos</source>
+    <target>方向舵配平位置</target>
+  </entry>
+  <entry>
+    <source>Aileron Trim Left</source>
+    <target>副翼配平向左</target>
+  </entry>
+  <entry>
+    <source>Aileron Trim Right</source>
+    <target>副翼配平向右</target>
+  </entry>
+  <entry>
+    <source>Aileron Trim Pos</source>
+    <target>副翼配平位置</target>
+  </entry>
+  <entry>
+    <source>Trim to Positions</source>
+    <target>配平至位置</target>
+  </entry>
+  <entry>
+    <source>Control Surfaces</source>
+    <target>操纵面</target>
+  </entry>
+  <entry>
+    <source>Flaps Up</source>
+    <target>襟翼收起</target>
+  </entry>
+  <entry>
+    <source>Flaps Down</source>
+    <target>襟翼放下</target>
+  </entry>
+  <entry>
+    <source>Gear Up</source>
+    <target>起落架收起</target>
+  </entry>
+  <entry>
+    <source>Gear Down</source>
+    <target>起落架放下</target>
+  </entry>
+  <entry>
+    <source>Gear Toggle</source>
+    <target>起落架切换</target>
+  </entry>
+  <entry>
+    <source>Spoilers Retract</source>
+    <target>扰流板收回</target>
+  </entry>
+  <entry>
+    <source>Spoilers Deploy</source>
+    <target>扰流板展开</target>
+  </entry>
+  <entry>
+    <source>Powerplant Controls</source>
+    <target>动力装置控制</target>
+  </entry>
+  <entry>
+    <source>Throttle Up</source>
+    <target>油门增大</target>
+  </entry>
+  <entry>
+    <source>Throttle Down</source>
+    <target>油门减小</target>
+  </entry>
+  <entry>
+    <source>Mixture Rich</source>
+    <target>混合比加富</target>
+  </entry>
+  <entry>
+    <source>Mixture Lean</source>
+    <target>混合比减贫</target>
+  </entry>
+  <entry>
+    <source>Propeller Fine</source>
+    <target>螺旋桨小桨距</target>
+  </entry>
+  <entry>
+    <source>Propeller Coarse</source>
+    <target>螺旋桨大桨距</target>
+  </entry>
+  <entry>
+    <source>All Reverser Toggle</source>
+    <target>全部反推切换</target>
+  </entry>
+  <entry>
+    <source>Other Aircraft Controls</source>
+    <target>其他飞机控制</target>
+  </entry>
+  <entry>
+    <source>Brakes</source>
+    <target>刹车</target>
+  </entry>
+  <entry>
+    <source>Auto air/ground brakes</source>
+    <target>自动空/地刹车</target>
+  </entry>
+  <entry>
+    <source>Brakes (air/wheel)</source>
+    <target>刹车（空中/轮）</target>
+  </entry>
+  <entry>
+    <source>Parking brakes</source>
+    <target>停机刹车</target>
+  </entry>
+  <entry>
+    <source>FGCom PTT(1)</source>
+    <target>FGCom PTT(1)</target>
+  </entry>
+  <entry>
+    <source>FGCom PTT(2)</source>
+    <target>FGCom PTT(2)</target>
+  </entry>
+  <entry>
+    <source>Trigger</source>
+    <target>扳机</target>
+  </entry>
+  <entry>
+    <source>Custom</source>
+    <target>自定义</target>
+  </entry>
+  <entry>
+    <source>NWS toggle</source>
+    <target>前轮转向切换</target>
+  </entry>
+  <entry>
+    <source>Autopilot disconnect</source>
+    <target>自动驾驶断开</target>
+  </entry>
+  <entry>
+    <source>Simulator Controls</source>
+    <target>模拟器控制</target>
+  </entry>
+  <entry>
+    <source>View Decrease</source>
+    <target>视角缩小</target>
+  </entry>
+  <entry>
+    <source>View Increase</source>
+    <target>视角放大</target>
+  </entry>
+  <entry>
+    <source>View Cycle Forwards</source>
+    <target>视角循环向前</target>
+  </entry>
+  <entry>
+    <source>View Cycle Backwards</source>
+    <target>视角循环向后</target>
+  </entry>
+  <entry>
+    <source>View Left</source>
+    <target>视角向左</target>
+  </entry>
+  <entry>
+    <source>View Right</source>
+    <target>视角向右</target>
+  </entry>
+  <entry>
+    <source>View Up</source>
+    <target>视角向上</target>
+  </entry>
+  <entry>
+    <source>View Down</source>
+    <target>视角向下</target>
+  </entry>
+  <entry>
+    <source>Total Freeze</source>
+    <target>完全冻结</target>
+  </entry>
+  <entry>
+    <source>Military</source>
+    <target>军用</target>
+  </entry>
+  <entry>
+    <source>Pickle</source>
+    <target>投弹</target>
+  </entry>
+  <entry>
+    <source>Target next</source>
+    <target>下一目标</target>
+  </entry>
+  <entry>
+    <source>Target previous</source>
+    <target>上一目标</target>
+  </entry>
+  <entry>
+    <source>Weapon next</source>
+    <target>下一武器</target>
+  </entry>
+  <entry>
+    <source>Weapon previous</source>
+    <target>上一武器</target>
+  </entry>
+  <entry>
+    <source>Azimuth left</source>
+    <target>方位向左</target>
+  </entry>
+  <entry>
+    <source>Azimuth right</source>
+    <target>方位向右</target>
+  </entry>
+  <entry>
+    <source>Elevation up</source>
+    <target>仰角向上</target>
+  </entry>
+  <entry>
+    <source>Elevation down</source>
+    <target>仰角向下</target>
+  </entry>
+  <entry>
+    <source>Missile Reject</source>
+    <target>导弹拒收</target>
+  </entry>
+  <entry>
+    <source>0. Back</source>
+    <target>0. 返回</target>
+  </entry>
+  <entry>
+    <source>1. Edit</source>
+    <target>1. 编辑</target>
+  </entry>
+  <entry>
+    <source>More</source>
+    <target>更多</target>
+  </entry>
+  <entry>
+    <source>Send</source>
+    <target>发送</target>
+  </entry>
+  <entry>
+    <source>Multiplayer Chat</source>
+    <target>多人聊天</target>
+  </entry>
+  <entry>
+    <source>Aircraft Checklists</source>
+    <target>飞机检查单</target>
+  </entry>
+  <entry>
+    <source>Group:</source>
+    <target>分组：</target>
+  </entry>
+  <entry>
+    <source>Checklist:</source>
+    <target>检查单：</target>
+  </entry>
+  <entry>
+    <source>Toggle marker</source>
+    <target>切换标记</target>
+  </entry>
+  <entry>
+    <source>Transparent</source>
+    <target>透明</target>
+  </entry>
+  <entry>
+    <source>Previous page</source>
+    <target>上一页</target>
+  </entry>
+  <entry>
+    <source>Next page</source>
+    <target>下一页</target>
+  </entry>
+  <entry>
+    <source>Clemenceau Controls</source>
+    <target>克莱蒙梭号控制</target>
+  </entry>
+  <entry>
+    <source>Course</source>
+    <target>航向</target>
+  </entry>
+  <entry>
+    <source>Equipment</source>
+    <target>设备</target>
+  </entry>
+  <entry>
+    <source>Elevator 1</source>
+    <target>升降机 1</target>
+  </entry>
+  <entry>
+    <source>Elevator 2</source>
+    <target>升降机 2</target>
+  </entry>
+  <entry>
+    <source>JBD 1</source>
+    <target>挡焰板 1</target>
+  </entry>
+  <entry>
+    <source>JBD 2</source>
+    <target>挡焰板 2</target>
+  </entry>
+  <entry>
+    <source>Cockpit View Options</source>
+    <target>驾驶舱视角选项</target>
+  </entry>
+  <entry>
+    <source>Enable dynamic Cockpit View</source>
+    <target>启用动态驾驶舱视角</target>
+  </entry>
+  <entry>
+    <source>Enable View Movement due to G-Force</source>
+    <target>启用因过载引起的视角移动</target>
+  </entry>
+  <entry>
+    <source>Effect rate m/g</source>
+    <target>效果速率 米/重力加速度</target>
+  </entry>
+  <entry>
+    <source>Ground shake effect</source>
+    <target>地面震动效果</target>
+  </entry>
+  <entry>
+    <source>Enable Blackout and Redout due to G-Force</source>
+    <target>启用因过载引起的黑视/红视</target>
+  </entry>
+  <entry>
+    <source>Blackout</source>
+    <target>黑视</target>
+  </entry>
+  <entry>
+    <source>Onset</source>
+    <target>起始</target>
+  </entry>
+  <entry>
+    <source>Complete</source>
+    <target>完全</target>
+  </entry>
+  <entry>
+    <source>Redout</source>
+    <target>红视</target>
+  </entry>
+  <entry>
+    <source>Configure Development Extensions</source>
+    <target>配置开发扩展</target>
+  </entry>
+  <entry>
+    <source>Enable development dialog widgets (HUD and rendering dialog)</source>
+    <target>启用开发对话框部件（HUD 和渲染对话框）</target>
+  </entry>
+  <entry>
+    <source>Enable '/'-key property handler (see $FG_ROOT/Nasal/prop_key_handler.nas)</source>
+    <target>启用 '/' 键属性处理器（见 $FG_ROOT/Nasal/prop_key_handler.nas）</target>
+  </entry>
+  <entry>
+    <source>Local loopback of model</source>
+    <target>模型本地回环</target>
+  </entry>
+  <entry>
+    <source>OSG statistics</source>
+    <target>OSG 统计</target>
+  </entry>
+  <entry>
+    <source>OSG log level</source>
+    <target>OSG 日志级别</target>
+  </entry>
+  <entry>
+    <source>FG log level</source>
+    <target>FG 日志级别</target>
+  </entry>
+  <entry>
+    <source>New Canvas Map</source>
+    <target>新建 Canvas 地图</target>
+  </entry>
+  <entry>
+    <source>Canvas widgets factory</source>
+    <target>Canvas 部件工厂</target>
+  </entry>
+  <entry>
+    <source>Canvas property tree browser</source>
+    <target>Canvas 属性树浏览器</target>
+  </entry>
+  <entry>
+    <source>Reload Nasal canvas module</source>
+    <target>重新加载 Nasal canvas 模块</target>
+  </entry>
+  <entry>
+    <source>Reload GUI</source>
+    <target>重新加载 GUI</target>
+  </entry>
+  <entry>
+    <source>Reload Input</source>
+    <target>重新加载输入</target>
+  </entry>
+  <entry>
+    <source>Reload Hud</source>
+    <target>重新加载 HUD</target>
+  </entry>
+  <entry>
+    <source>Reload Panel</source>
+    <target>重新加载面板</target>
+  </entry>
+  <entry>
+    <source>Reload Autopilot</source>
+    <target>重新加载自动驾驶</target>
+  </entry>
+  <entry>
+    <source>Reload Network</source>
+    <target>重新加载网络</target>
+  </entry>
+  <entry>
+    <source>Reload Aircraft Model</source>
+    <target>重新加载飞机模型</target>
+  </entry>
+  <entry>
+    <source>Reload Shaders</source>
+    <target>重新加载着色器</target>
+  </entry>
+  <entry>
+    <source>Reload Materials</source>
+    <target>重新加载材质</target>
+  </entry>
+  <entry>
+    <source>Reload Scenery</source>
+    <target>重新加载场景</target>
+  </entry>
+  <entry>
+    <source>Reload Compositor</source>
+    <target>重新加载合成器</target>
+  </entry>
+  <entry>
+    <source>Documentation Browser</source>
+    <target>文档浏览器</target>
+  </entry>
+  <entry>
+    <source>Earthview Orbital Rendering</source>
+    <target>地球轨道渲染</target>
+  </entry>
+  <entry>
+    <source>Show cloud layer</source>
+    <target>显示云层</target>
+  </entry>
+  <entry>
+    <source>Show cloud shadows</source>
+    <target>显示云阴影</target>
+  </entry>
+  <entry>
+    <source>Automatic light scattering</source>
+    <target>自动光散射</target>
+  </entry>
+  <entry>
+    <source>Overlay textures</source>
+    <target>叠加纹理</target>
+  </entry>
+  <entry>
+    <source>Terrain normal mapping</source>
+    <target>地形法线贴图</target>
+  </entry>
+  <entry>
+    <source>Cloud normal mapping</source>
+    <target>云法线贴图</target>
+  </entry>
+  <entry>
+    <source>Cloudsphere Rotation</source>
+    <target>云球旋转</target>
+  </entry>
+  <entry>
+    <source>Rotation angle</source>
+    <target>旋转角度</target>
+  </entry>
+  <entry>
+    <source>Mie factor</source>
+    <target>米氏散射系数</target>
+  </entry>
+  <entry>
+    <source>Rayleigh factor</source>
+    <target>瑞利散射系数</target>
+  </entry>
+  <entry>
+    <source>Density factor</source>
+    <target>密度系数</target>
+  </entry>
+  <entry>
+    <source>Visibility</source>
+    <target>能见度</target>
+  </entry>
+  <entry>
+    <source>Relative dust density</source>
+    <target>相对沙尘密度</target>
+  </entry>
+  <entry>
+    <source>Cloudcover</source>
+    <target>云量</target>
+  </entry>
+  <entry>
+    <source>USS Dwight D. Eisenhower Controls</source>
+    <target>艾森豪威尔号控制</target>
+  </entry>
+  <entry>
+    <source>JBD 3</source>
+    <target>挡焰板 3</target>
+  </entry>
+  <entry>
+    <source>JBD 4</source>
+    <target>挡焰板 4</target>
+  </entry>
+  <entry>
+    <source>Options</source>
+    <target>选项</target>
+  </entry>
+  <entry>
+    <source>Enable Crew</source>
+    <target>启用机组</target>
+  </entry>
+  <entry>
+    <source>Deck lights</source>
+    <target>甲板灯</target>
+  </entry>
+  <entry>
+    <source>Environment Settings</source>
+    <target>环境设置</target>
+  </entry>
+  <entry>
+    <source>Ground conditions (require shader effects)</source>
+    <target>地面状况（需着色器效果）</target>
+  </entry>
+  <entry>
+    <source>Climate updates environment</source>
+    <target>气候更新环境</target>
+  </entry>
+  <entry>
+    <source>Set maximum snow level from weather</source>
+    <target>根据天气设置最大积雪高度</target>
+  </entry>
+  <entry>
+    <source>Snow line</source>
+    <target>雪线</target>
+  </entry>
+  <entry>
+    <source>Snow thickness</source>
+    <target>积雪厚度</target>
+  </entry>
+  <entry>
+    <source>thin</source>
+    <target>薄</target>
+  </entry>
+  <entry>
+    <source>thick</source>
+    <target>厚</target>
+  </entry>
+  <entry>
+    <source>Ice cover</source>
+    <target>冰层</target>
+  </entry>
+  <entry>
+    <source>none</source>
+    <target>无</target>
+  </entry>
+  <entry>
+    <source>Dust cover</source>
+    <target>沙尘覆盖</target>
+  </entry>
+  <entry>
+    <source>dusty</source>
+    <target>多尘</target>
+  </entry>
+  <entry>
+    <source>Wetness</source>
+    <target>湿度</target>
+  </entry>
+  <entry>
+    <source>dry</source>
+    <target>干燥</target>
+  </entry>
+  <entry>
+    <source>wet</source>
+    <target>潮湿</target>
+  </entry>
+  <entry>
+    <source>Vegetation</source>
+    <target>植被</target>
+  </entry>
+  <entry>
+    <source>mossy</source>
+    <target>苔藓</target>
+  </entry>
+  <entry>
+    <source>Season (experimental)</source>
+    <target>季节（实验性）</target>
+  </entry>
+  <entry>
+    <source>summer</source>
+    <target>夏季</target>
+  </entry>
+  <entry>
+    <source>late autumn</source>
+    <target>深秋</target>
+  </entry>
+  <entry>
+    <source>Aurora Borealis</source>
+    <target>北极光</target>
+  </entry>
+  <entry>
+    <source>weak</source>
+    <target>弱</target>
+  </entry>
+  <entry>
+    <source>strong</source>
+    <target>强</target>
+  </entry>
+  <entry>
+    <source>Error Report</source>
+    <target>错误报告</target>
+  </entry>
+  <entry>
+    <source>Save report to desktop</source>
+    <target>保存报告到桌面</target>
+  </entry>
+  <entry>
+    <source>Copy report to clipboard</source>
+    <target>复制报告到剪贴板</target>
+  </entry>
+  <entry>
+    <source>Previous error</source>
+    <target>上一错误</target>
+  </entry>
+  <entry>
+    <source>Next error</source>
+    <target>下一错误</target>
+  </entry>
+  <entry>
+    <source>Exit FlightGear?</source>
+    <target>退出 FlightGear？</target>
+  </entry>
+  <entry>
+    <source>Exit</source>
+    <target>退出</target>
+  </entry>
+  <entry>
+    <source>FGCom Settings</source>
+    <target>FGCom 设置</target>
+  </entry>
+  <entry>
+    <source>Enabled:</source>
+    <target>启用：</target>
+  </entry>
+  <entry>
+    <source>Display messages:</source>
+    <target>显示消息：</target>
+  </entry>
+  <entry>
+    <source>(for debug only)</source>
+    <target>（仅供调试）</target>
+  </entry>
+  <entry>
+    <source>Echo test:</source>
+    <target>回声测试：</target>
+  </entry>
+  <entry>
+    <source>PTT test:</source>
+    <target>PTT 测试：</target>
+  </entry>
+  <entry>
+    <source>(/controls/radios/comm-ptt)</source>
+    <target>(/controls/radios/comm-ptt)</target>
+  </entry>
+  <entry>
+    <source>Speaker volume:</source>
+    <target>扬声器音量：</target>
+  </entry>
+  <entry>
+    <source>Silence threshold:</source>
+    <target>静音阈值：</target>
+  </entry>
+  <entry>
+    <source>Server</source>
+    <target>服务器</target>
+  </entry>
+  <entry>
+    <source>Select File</source>
+    <target>选择文件</target>
+  </entry>
+  <entry>
+    <source>Load Flight Recorder Tape</source>
+    <target>加载飞行记录磁带</target>
+  </entry>
+  <entry>
+    <source>Tape Directory:</source>
+    <target>磁带目录：</target>
+  </entry>
+  <entry>
+    <source>Change</source>
+    <target>更改</target>
+  </entry>
+  <entry>
+    <source>Hide Mismatching Tapes:</source>
+    <target>隐藏不匹配的磁带：</target>
+  </entry>
+  <entry>
+    <source>(Don't show tapes from other aircraft)</source>
+    <target>（不显示其他飞机的磁带）</target>
+  </entry>
+  <entry>
+    <source>Selected Tape:</source>
+    <target>已选磁带：</target>
+  </entry>
+  <entry>
+    <source>Tape Recording Details</source>
+    <target>磁带录制详情</target>
+  </entry>
+  <entry>
+    <source>Author/Pilot:</source>
+    <target>作者/飞行员：</target>
+  </entry>
+  <entry>
+    <source>Aircraft:</source>
+    <target>飞机：</target>
+  </entry>
+  <entry>
+    <source>Aircraft Version:</source>
+    <target>飞机版本：</target>
+  </entry>
+  <entry>
+    <source>Airport (nearby):</source>
+    <target>机场（附近）：</target>
+  </entry>
+  <entry>
+    <source>Tape Duration:</source>
+    <target>磁带时长：</target>
+  </entry>
+  <entry>
+    <source>Tape Size (bytes)</source>
+    <target>磁带大小（字节）</target>
+  </entry>
+  <entry>
+    <source>FG Version (recorder):</source>
+    <target>FG 版本（记录器）：</target>
+  </entry>
+  <entry>
+    <source>Description:</source>
+    <target>描述：</target>
+  </entry>
+  <entry>
+    <source>Auto-create video</source>
+    <target>自动创建视频</target>
+  </entry>
+  <entry>
+    <source>Fixed dt</source>
+    <target>固定时间步长</target>
+  </entry>
+  <entry>
+    <source>Load</source>
+    <target>加载</target>
+  </entry>
+  <entry>
+    <source>Save Flight Recorder Tape</source>
+    <target>保存飞行记录磁带</target>
+  </entry>
+  <entry>
+    <source>Save</source>
+    <target>保存</target>
+  </entry>
+  <entry>
+    <source>Flight Recorder Control</source>
+    <target>飞行记录器控制</target>
+  </entry>
+  <entry>
+    <source>Replay in-memory recording &lt;Ctrl-R&gt;</source>
+    <target>回放内存记录 &lt;Ctrl-R&gt;</target>
+  </entry>
+  <entry>
+    <source>Replay recording from file...</source>
+    <target>从文件回放记录...</target>
+  </entry>
+  <entry>
+    <source>(Re)show replay dialogue</source>
+    <target>（重新）显示回放对话框</target>
+  </entry>
+  <entry>
+    <source>Save in-memory recording to file...</source>
+    <target>将内存记录保存到文件...</target>
+  </entry>
+  <entry>
+    <source>Maintain recovery snapshot</source>
+    <target>维护恢复快照</target>
+  </entry>
+  <entry>
+    <source>Continuous record</source>
+    <target>连续记录</target>
+  </entry>
+  <entry>
+    <source>Start Continuous recording to file</source>
+    <target>开始连续记录到文件</target>
+  </entry>
+  <entry>
+    <source>Stop Continuous recording to file</source>
+    <target>停止连续记录到文件</target>
+  </entry>
+  <entry>
+    <source>Use compression</source>
+    <target>使用压缩</target>
+  </entry>
+  <entry>
+    <source>Include user aircraft in Continuous recordings</source>
+    <target>连续记录包含本机</target>
+  </entry>
+  <entry>
+    <source>Include multiplayer aircraft in recordings</source>
+    <target>记录包含多人飞机</target>
+  </entry>
+  <entry>
+    <source>Record main window position and size</source>
+    <target>记录主窗口位置和大小</target>
+  </entry>
+  <entry>
+    <source>Record main window view</source>
+    <target>记录主窗口视图</target>
+  </entry>
+  <entry>
+    <source>Continuous replay</source>
+    <target>连续回放</target>
+  </entry>
+  <entry>
+    <source>Replay main window position</source>
+    <target>回放主窗口位置</target>
+  </entry>
+  <entry>
+    <source>Replay main window size</source>
+    <target>回放主窗口大小</target>
+  </entry>
+  <entry>
+    <source>Replay main window view</source>
+    <target>回放主窗口视图</target>
+  </entry>
+  <entry>
+    <source>AI Wingman Controls</source>
+    <target>AI 僚机控制</target>
+  </entry>
+  <entry>
+    <source>Formate</source>
+    <target>编队</target>
+  </entry>
+  <entry>
+    <source>Break Formation</source>
+    <target>脱离编队</target>
+  </entry>
+  <entry>
+    <source>Join</source>
+    <target>加入</target>
+  </entry>
+  <entry>
+    <source>Break Heading Degrees Relative</source>
+    <target>脱离相对航向角（度）</target>
+  </entry>
+  <entry>
+    <source>Left/Right</source>
+    <target>左/右</target>
+  </entry>
+  <entry>
+    <source>Target Heading Degrees True</source>
+    <target>目标真航向（度）</target>
+  </entry>
+  <entry>
+    <source>Set Formation</source>
+    <target>设置编队</target>
+  </entry>
+  <entry>
+    <source>Open/Close</source>
+    <target>打开/关闭</target>
+  </entry>
+  <entry>
+    <source>Generic pedals monitor</source>
+    <target>通用踏板监视器</target>
+  </entry>
+  <entry>
+    <source>GPS</source>
+    <target>GPS</target>
+  </entry>
+  <entry>
+    <source>TO</source>
+    <target>TO</target>
+  </entry>
+  <entry>
+    <source>FROM</source>
+    <target>FROM</target>
+  </entry>
+  <entry>
+    <source>Type:</source>
+    <target>类型：</target>
+  </entry>
+  <entry>
+    <source>Search:</source>
+    <target>搜索：</target>
+  </entry>
+  <entry>
+    <source>Search Names</source>
+    <target>搜索名称</target>
+  </entry>
+  <entry>
+    <source>Nrst</source>
+    <target>最近</target>
+  </entry>
+  <entry>
+    <source>Actv RTE WPT</source>
+    <target>激活航路点</target>
+  </entry>
+  <entry>
+    <source>Prev</source>
+    <target>上一个</target>
+  </entry>
+  <entry>
+    <source>Next</source>
+    <target>下一个</target>
+  </entry>
+  <entry>
+    <source>LEG</source>
+    <target>航段</target>
+  </entry>
+  <entry>
+    <source>DTO</source>
+    <target>直飞</target>
+  </entry>
+  <entry>
+    <source>OBS</source>
+    <target>OBS</target>
+  </entry>
+  <entry>
+    <source>Link NAV1 to GPS</source>
+    <target>将 NAV1 关联到 GPS</target>
+  </entry>
+  <entry>
+    <source>Property Browser Help</source>
+    <target>属性浏览器帮助</target>
+  </entry>
+  <entry>
+    <source>Press '/' on your keyboard to open a new property browser.</source>
+    <target>按键盘上的 '/' 打开新的属性浏览器。</target>
+  </entry>
+  <entry>
+    <source>'.' and '..' entry</source>
+    <target>'.' 和 '..' 条目</target>
+  </entry>
+  <entry>
+    <source>Ctrl click '.' = toggle verbose; Shift click '.' = dump props to console</source>
+    <target>Ctrl 单击 '.' = 切换详细模式；Shift 单击 '.' = 将属性输出到控制台</target>
+  </entry>
+  <entry>
+    <source>Ctrl click '..' = goto root</source>
+    <target>Ctrl 单击 '..' = 转到根</target>
+  </entry>
+  <entry>
+    <source>Other props:</source>
+    <target>其他属性：</target>
+  </entry>
+  <entry>
+    <source>Ctrl click = toggle bool value</source>
+    <target>Ctrl 单击 = 切换布尔值</target>
+  </entry>
+  <entry>
+    <source>Alt click = toggle trace_write; Ctrl+Alt click = toggle trace_read</source>
+    <target>Alt 单击 = 切换 trace_write；Ctrl+Alt 单击 = 切换 trace_read</target>
+  </entry>
+  <entry>
+    <source>Shift click add the selected property to the property display</source>
+    <target>Shift 单击将所选属性添加到属性显示</target>
+  </entry>
+  <entry>
+    <source>Shift-Alt click adds all children of the selected property to the property display</source>
+    <target>Shift-Alt 单击将所选属性的所有子项添加到属性显示</target>
+  </entry>
+  <entry>
+    <source>Shift-Ctrl click removes all properties from the display</source>
+    <target>Shift-Ctrl 单击从显示中移除所有属性</target>
+  </entry>
+  <entry>
+    <source>HID config</source>
+    <target>HID 配置</target>
+  </entry>
+  <entry>
+    <source>Not yet implemented</source>
+    <target>尚未实现</target>
+  </entry>
+  <entry>
+    <source>Highlighting</source>
+    <target>高亮</target>
+  </entry>
+  <entry>
+    <source>Enable highlighting</source>
+    <target>启用高亮</target>
+  </entry>
+  <entry>
+    <source>Hitch Configuration (Aerotow and Winch)</source>
+    <target>拖曳配置（空中拖航与绞盘）</target>
+  </entry>
+  <entry>
+    <source>Aerotow Settings</source>
+    <target>空中拖航设置</target>
+  </entry>
+  <entry>
+    <source>Rope Elastic Constant</source>
+    <target>绳索弹性系数</target>
+  </entry>
+  <entry>
+    <source>Weight per Meter</source>
+    <target>每米重量</target>
+  </entry>
+  <entry>
+    <source>Length</source>
+    <target>长度</target>
+  </entry>
+  <entry>
+    <source>Rope Diameter</source>
+    <target>绳索直径</target>
+  </entry>
+  <entry>
+    <source>Winch Settings</source>
+    <target>绞盘设置</target>
+  </entry>
+  <entry>
+    <source>Winch Type</source>
+    <target>绞盘类型</target>
+  </entry>
+  <entry>
+    <source>constant force</source>
+    <target>恒力</target>
+  </entry>
+  <entry>
+    <source>constant speed</source>
+    <target>恒速</target>
+  </entry>
+  <entry>
+    <source>Initial Length</source>
+    <target>初始长度</target>
+  </entry>
+  <entry>
+    <source>Max. Length</source>
+    <target>最大长度</target>
+  </entry>
+  <entry>
+    <source>Max. Spool Speed</source>
+    <target>最大卷轴速度</target>
+  </entry>
+  <entry>
+    <source>Force Acceleration</source>
+    <target>力加速度</target>
+  </entry>
+  <entry>
+    <source>Spool Acceleration</source>
+    <target>卷轴加速度</target>
+  </entry>
+  <entry>
+    <source>Max. Unspool Speed</source>
+    <target>最大放线速度</target>
+  </entry>
+  <entry>
+    <source>Max. Force</source>
+    <target>最大力</target>
+  </entry>
+  <entry>
+    <source>Max. Power</source>
+    <target>最大功率</target>
+  </entry>
+  <entry>
+    <source>Show winch messages</source>
+    <target>显示绞盘消息</target>
+  </entry>
+  <entry>
+    <source>Launch signaller</source>
+    <target>发射信号员</target>
+  </entry>
+  <entry>
+    <source>Winch driver</source>
+    <target>绞盘司机</target>
+  </entry>
+  <entry>
+    <source>Pilot</source>
+    <target>飞行员</target>
+  </entry>
+  <entry>
+    <source>Tow Aircraft</source>
+    <target>拖航飞机</target>
+  </entry>
+  <entry>
+    <source>Honeycomb Bravo Throttle Quadrant</source>
+    <target>Honeycomb Bravo 油门台</target>
+  </entry>
+  <entry>
+    <source>annunciators live</source>
+    <target>信号器实时</target>
+  </entry>
+  <entry>
+    <source>Cfg. Variant</source>
+    <target>配置变体</target>
+  </entry>
+  <entry>
+    <source>up</source>
+    <target>上</target>
+  </entry>
+  <entry>
+    <source>tr</source>
+    <target>配平</target>
+  </entry>
+  <entry>
+    <source>dn</source>
+    <target>下</target>
+  </entry>
+  <entry>
+    <source>Gear</source>
+    <target>起落架</target>
+  </entry>
+  <entry>
+    <source>Input select</source>
+    <target>输入选择</target>
+  </entry>
+  <entry>
+    <source>HDG</source>
+    <target>HDG</target>
+  </entry>
+  <entry>
+    <source>NAV</source>
+    <target>NAV</target>
+  </entry>
+  <entry>
+    <source>APR</source>
+    <target>APR</target>
+  </entry>
+  <entry>
+    <source>REW</source>
+    <target>REW</target>
+  </entry>
+  <entry>
+    <source>ALT</source>
+    <target>ALT</target>
+  </entry>
+  <entry>
+    <source>VS</source>
+    <target>VS</target>
+  </entry>
+  <entry>
+    <source>IAS</source>
+    <target>IAS</target>
+  </entry>
+  <entry>
+    <source>AP enabled</source>
+    <target>AP 已启用</target>
+  </entry>
+  <entry>
+    <source>&lt;&lt; Annunciators</source>
+    <target>&lt;&lt; 信号器</target>
+  </entry>
+  <entry>
+    <source>Switches</source>
+    <target>开关</target>
+  </entry>
+  <entry>
+    <source>s1</source>
+    <target>s1</target>
+  </entry>
+  <entry>
+    <source>s2</source>
+    <target>s2</target>
+  </entry>
+  <entry>
+    <source>s3</source>
+    <target>s3</target>
+  </entry>
+  <entry>
+    <source>s4</source>
+    <target>s4</target>
+  </entry>
+  <entry>
+    <source>s5</source>
+    <target>s5</target>
+  </entry>
+  <entry>
+    <source>s6</source>
+    <target>s6</target>
+  </entry>
+  <entry>
+    <source>s7</source>
+    <target>s7</target>
+  </entry>
+  <entry>
+    <source>Master Warning</source>
+    <target>主警告</target>
+  </entry>
+  <entry>
+    <source>Engine fire</source>
+    <target>发动机火警</target>
+  </entry>
+  <entry>
+    <source>Low oil pressure</source>
+    <target>滑油压力过低</target>
+  </entry>
+  <entry>
+    <source>Low fuel pressure</source>
+    <target>燃油压力过低</target>
+  </entry>
+  <entry>
+    <source>Anti ice</source>
+    <target>防冰</target>
+  </entry>
+  <entry>
+    <source>Starter engaged</source>
+    <target>起动机已接合</target>
+  </entry>
+  <entry>
+    <source>APU</source>
+    <target>APU</target>
+  </entry>
+  <entry>
+    <source>Master Caution</source>
+    <target>主戒备</target>
+  </entry>
+  <entry>
+    <source>Vacuum</source>
+    <target>真空</target>
+  </entry>
+  <entry>
+    <source>Low hyd pressure</source>
+    <target>液压压力过低</target>
+  </entry>
+  <entry>
+    <source>Aux fuel pump</source>
+    <target>辅助燃油泵</target>
+  </entry>
+  <entry>
+    <source>Parking brake</source>
+    <target>停机刹车</target>
+  </entry>
+  <entry>
+    <source>Low volts</source>
+    <target>电压过低</target>
+  </entry>
+  <entry>
+    <source>Doors</source>
+    <target>舱门</target>
+  </entry>
+  <entry>
+    <source>HUD Configuration</source>
+    <target>HUD 配置</target>
+  </entry>
+  <entry>
+    <source>Enable 3D</source>
+    <target>启用 3D</target>
+  </entry>
+  <entry>
+    <source>Antialiased</source>
+    <target>抗锯齿</target>
+  </entry>
+  <entry>
+    <source>Lat/Lon Format</source>
+    <target>经纬度格式</target>
+  </entry>
+  <entry>
+    <source>DDD format (37.618890N 122.375000W)</source>
+    <target>DDD 格式 (37.618890N 122.375000W)</target>
+  </entry>
+  <entry>
+    <source>DMM format (37*37.133'N 122*22.500'W)</source>
+    <target>DMM 格式 (37*37.133'N 122*22.500'W)</target>
+  </entry>
+  <entry>
+    <source>DMS format (37*37'08.0"N 122*22'30.0"W)</source>
+    <target>DMS 格式 (37*37'08.0"N 122*22'30.0"W)</target>
+  </entry>
+  <entry>
+    <source>Signed DDD format (37.618890 -122.375000)</source>
+    <target>带符号 DDD 格式 (37.618890 -122.375000)</target>
+  </entry>
+  <entry>
+    <source>Signed DMM format (37*37.133' -122*22.500')</source>
+    <target>带符号 DMM 格式 (37*37.133' -122*22.500')</target>
+  </entry>
+  <entry>
+    <source>Signed DMS format (37*37'08.0" -122*22'30.0")</source>
+    <target>带符号 DMS 格式 (37*37'08.0" -122*22'30.0")</target>
+  </entry>
+  <entry>
+    <source>Zero padded DDD (51.477500N 000.461389W)</source>
+    <target>补零 DDD (51.477500N 000.461389W)</target>
+  </entry>
+  <entry>
+    <source>Zero padded DMM (51*28.650'N 000*27.683'W)</source>
+    <target>补零 DMM (51*28.650'N 000*27.683'W)</target>
+  </entry>
+  <entry>
+    <source>Zero padded DMS (51*28'39.0"N 000*27'41.0"W)</source>
+    <target>补零 DMS (51*28'39.0"N 000*27'41.0"W)</target>
+  </entry>
+  <entry>
+    <source>Trinity House Navigation (51* 28'.650N 000* 27'.683W)</source>
+    <target>Trinity House 导航 (51* 28'.650N 000* 27'.683W)</target>
+  </entry>
+  <entry>
+    <source>Alpha:</source>
+    <target>透明度：</target>
+  </entry>
+  <entry>
+    <source>Clamp:</source>
+    <target>钳位：</target>
+  </entry>
+  <entry>
+    <source>Brightness:</source>
+    <target>亮度：</target>
+  </entry>
+  <entry>
+    <source>Red:</source>
+    <target>红色：</target>
+  </entry>
+  <entry>
+    <source>Green:</source>
+    <target>绿色：</target>
+  </entry>
+  <entry>
+    <source>Blue:</source>
+    <target>蓝色：</target>
+  </entry>
+  <entry>
+    <source>Configuration Selector</source>
+    <target>配置选择器</target>
+  </entry>
+  <entry>
+    <source>Available variants</source>
+    <target>可用变体</target>
+  </entry>
+  <entry>
+    <source>Selected:</source>
+    <target>已选：</target>
+  </entry>
+  <entry>
+    <source>Device dialog</source>
+    <target>设备对话框</target>
+  </entry>
+  <entry>
+    <source>Input Devices</source>
+    <target>输入设备</target>
+  </entry>
+  <entry>
+    <source>Mouse Config</source>
+    <target>鼠标配置</target>
+  </entry>
+  <entry>
+    <source>Joystick Config</source>
+    <target>操纵杆配置</target>
+  </entry>
+  <entry>
+    <source>Config Variant Selector</source>
+    <target>配置变体选择器</target>
+  </entry>
+  <entry>
+    <source>Input Systems Overview</source>
+    <target>输入系统概览</target>
+  </entry>
+  <entry>
+    <source>Joystick input</source>
+    <target>操纵杆输入</target>
+  </entry>
+  <entry>
+    <source>disabled</source>
+    <target>已禁用</target>
+  </entry>
+  <entry>
+    <source>USB HID input</source>
+    <target>USB HID 输入</target>
+  </entry>
+  <entry>
+    <source>Linux Event input</source>
+    <target>Linux 事件输入</target>
+  </entry>
+  <entry>
+    <source>Config variant</source>
+    <target>配置变体</target>
+  </entry>
+  <entry>
+    <source>Device:</source>
+    <target>设备：</target>
+  </entry>
+  <entry>
+    <source>Config file:</source>
+    <target>配置文件：</target>
+  </entry>
+  <entry>
+    <source>Last event:</source>
+    <target>最后事件：</target>
+  </entry>
+  <entry>
+    <source>Debug</source>
+    <target>调试</target>
+  </entry>
+  <entry>
+    <source>Instrument Failures</source>
+    <target>仪表故障</target>
+  </entry>
+  <entry>
+    <source>Uncheck an instrument to fail it, or set the Mean Time Between Failures.</source>
+    <target>取消勾选仪表使其故障，或设置平均故障间隔时间。</target>
+  </entry>
+  <entry>
+    <source>Instrument</source>
+    <target>仪表</target>
+  </entry>
+  <entry>
+    <source>MTBF (sec)</source>
+    <target>平均故障间隔时间（秒）</target>
+  </entry>
+  <entry>
+    <source>Nav 1 CDI</source>
+    <target>导航 1 CDI</target>
+  </entry>
+  <entry>
+    <source>Nav 2 CDI</source>
+    <target>导航 2 CDI</target>
+  </entry>
+  <entry>
+    <source>Nav 1 GS</source>
+    <target>导航 1 下滑道</target>
+  </entry>
+  <entry>
+    <source>Nav 2 GS</source>
+    <target>导航 2 下滑道</target>
+  </entry>
+  <entry>
+    <source>DME</source>
+    <target>DME</target>
+  </entry>
+  <entry>
+    <source>ADF</source>
+    <target>ADF</target>
+  </entry>
+  <entry>
+    <source>Airspeed Indicator</source>
+    <target>空速表</target>
+  </entry>
+  <entry>
+    <source>Attitude Indicator</source>
+    <target>姿态仪</target>
+  </entry>
+  <entry>
+    <source>Altimeter</source>
+    <target>高度表</target>
+  </entry>
+  <entry>
+    <source>Turn Indicator</source>
+    <target>转弯指示器</target>
+  </entry>
+  <entry>
+    <source>Slip/Skid Ball</source>
+    <target>侧滑球</target>
+  </entry>
+  <entry>
+    <source>Heading Indicator</source>
+    <target>航向指示器</target>
+  </entry>
+  <entry>
+    <source>Vertical Speed Ind.</source>
+    <target>垂直速度表</target>
+  </entry>
+  <entry>
+    <source>Magnetic Compass</source>
+    <target>磁罗盘</target>
+  </entry>
+  <entry>
+    <source>Refresh</source>
+    <target>刷新</target>
+  </entry>
+  <entry>
+    <source>Instrument Settings</source>
+    <target>仪表设置</target>
+  </entry>
+  <entry>
+    <source>QNH Setting:</source>
+    <target>QNH 设置：</target>
+  </entry>
+  <entry>
+    <source>hPa</source>
+    <target>百帕</target>
+  </entry>
+  <entry>
+    <source>ALT Setting:</source>
+    <target>高度设置：</target>
+  </entry>
+  <entry>
+    <source>inHg</source>
+    <target>英寸汞柱</target>
+  </entry>
+  <entry>
+    <source>HI Offset:</source>
+    <target>航向指示器偏移：</target>
+  </entry>
+  <entry>
+    <source>deg</source>
+    <target>度</target>
+  </entry>
+  <entry>
+    <source>Local magnetic variation:</source>
+    <target>当地磁差：</target>
+  </entry>
+  <entry>
+    <source>Instrument lighting:</source>
+    <target>仪表照明：</target>
+  </entry>
+  <entry>
+    <source>Jetway Editor</source>
+    <target>登机桥编辑器</target>
+  </entry>
+  <entry>
+    <source>near/far</source>
+    <target>近/远</target>
+  </entry>
+  <entry>
+    <source>left/right</source>
+    <target>左/右</target>
+  </entry>
+  <entry>
+    <source>altitude</source>
+    <target>高度</target>
+  </entry>
+  <entry>
+    <source>heading</source>
+    <target>航向</target>
+  </entry>
+  <entry>
+    <source>extension offset</source>
+    <target>伸展偏移</target>
+  </entry>
+  <entry>
+    <source>pitch offset</source>
+    <target>俯仰偏移</target>
+  </entry>
+  <entry>
+    <source>rotation offset</source>
+    <target>旋转偏移</target>
+  </entry>
+  <entry>
+    <source>entrance rotation offset</source>
+    <target>入口旋转偏移</target>
+  </entry>
+  <entry>
+    <source>Model:</source>
+    <target>型号：</target>
+  </entry>
+  <entry>
+    <source>Door:</source>
+    <target>舱门：</target>
+  </entry>
+  <entry>
+    <source>Airline sign:</source>
+    <target>航空公司标识：</target>
+  </entry>
+  <entry>
+    <source>Gate:</source>
+    <target>登机口：</target>
+  </entry>
+  <entry>
+    <source>Center sliders</source>
+    <target>居中滑块</target>
+  </entry>
+  <entry>
+    <source>Export</source>
+    <target>导出</target>
+  </entry>
+  <entry>
+    <source>STG converter</source>
+    <target>STG 转换器</target>
+  </entry>
+  <entry>
+    <source>Jetway Settings</source>
+    <target>登机桥设置</target>
+  </entry>
+  <entry>
+    <source>Enable animated jetways</source>
+    <target>启用动画登机桥</target>
+  </entry>
+  <entry>
+    <source>Connect to multiplayer aircraft</source>
+    <target>连接到多人飞机</target>
+  </entry>
+  <entry>
+    <source>Enable jetway editor</source>
+    <target>启用登机桥编辑器</target>
+  </entry>
+  <entry>
+    <source>Debug mode</source>
+    <target>调试模式</target>
+  </entry>
+  <entry>
+    <source>Open editor</source>
+    <target>打开编辑器</target>
+  </entry>
+  <entry>
+    <source>No airports loaded</source>
+    <target>未加载机场</target>
+  </entry>
+  <entry>
+    <source>Joystick Configuration</source>
+    <target>操纵杆配置</target>
+  </entry>
+  <entry>
+    <source>To configure your joystick/yoke/pedals:</source>
+    <target>配置您的操纵杆/操纵盘/踏板：</target>
+  </entry>
+  <entry>
+    <source>1) Select the device your wish to configure from the drop-down.</source>
+    <target>1) 从下拉列表中选择要配置的设备。</target>
+  </entry>
+  <entry>
+    <source>2) Identify the control you wish to configure by moving the joystick or pressing the button.  The result is shown in the Input column.</source>
+    <target>2) 通过移动操纵杆或按下按键来识别要配置的控制，结果显示在“输入”列。</target>
+  </entry>
+  <entry>
+    <source>3) Using the drop-down or dialog button, select what you want the control to do.  "Custom" indicates a manually configured command.</source>
+    <target>3) 使用下拉列表或对话框按钮，选择该控制的功能。“自定义”表示手动配置的命令。</target>
+  </entry>
+  <entry>
+    <source>Your selection will take effect immediately.</source>
+    <target>您的选择将立即生效。</target>
+  </entry>
+  <entry>
+    <source>4) Test your control.  Some joystick controls can be "inverted" if you wish the control to take effect in the opposite direction.</source>
+    <target>4) 测试您的控制。如果希望控制在相反方向生效，某些操纵杆控制可以“反转”。</target>
+  </entry>
+  <entry>
+    <source>Your modified joystick configuration is saved automatically.  You can reset the configuration to the default by pressing Reset Configuration.</source>
+    <target>修改后的操纵杆配置会自动保存。可按“重置配置”恢复默认配置。</target>
+  </entry>
+  <entry>
+    <source>Joystick:</source>
+    <target>操纵杆：</target>
+  </entry>
+  <entry>
+    <source>Reset Configuration</source>
+    <target>重置配置</target>
+  </entry>
+  <entry>
+    <source>Refresh Joysticks</source>
+    <target>刷新操纵杆</target>
+  </entry>
+  <entry>
+    <source>Configuration File:</source>
+    <target>配置文件：</target>
+  </entry>
+  <entry>
+    <source>Joystick Confgig</source>
+    <target>操纵杆配置</target>
+  </entry>
+  <entry>
+    <source>Axis</source>
+    <target>轴</target>
+  </entry>
+  <entry>
+    <source>Input</source>
+    <target>输入</target>
+  </entry>
+  <entry>
+    <source>Control</source>
+    <target>控制</target>
+  </entry>
+  <entry>
+    <source>Inverted?</source>
+    <target>反转？</target>
+  </entry>
+  <entry>
+    <source>Aileron:</source>
+    <target>副翼：</target>
+  </entry>
+  <entry>
+    <source>Elevator:</source>
+    <target>升降舵：</target>
+  </entry>
+  <entry>
+    <source>Rudder:</source>
+    <target>方向舵：</target>
+  </entry>
+  <entry>
+    <source>Throttle:</source>
+    <target>油门：</target>
+  </entry>
+  <entry>
+    <source>Joystick Information</source>
+    <target>操纵杆信息</target>
+  </entry>
+  <entry>
+    <source>Admiral Kuznetsov Controls</source>
+    <target>库兹涅佐夫号控制</target>
+  </entry>
+  <entry>
+    <source>Lag Correction Settings</source>
+    <target>延迟校正设置</target>
+  </entry>
+  <entry>
+    <source>Master switch:</source>
+    <target>总开关：</target>
+  </entry>
+  <entry>
+    <source>help (in browser)</source>
+    <target>帮助（在浏览器中）</target>
+  </entry>
+  <entry>
+    <source>Lag adjustment:</source>
+    <target>延迟调整：</target>
+  </entry>
+  <entry>
+    <source>Apply to close mp</source>
+    <target>应用于关闭多人</target>
+  </entry>
+  <entry>
+    <source>Spectator mode</source>
+    <target>观察者模式</target>
+  </entry>
+  <entry>
+    <source>Clock offset</source>
+    <target>时钟偏移</target>
+  </entry>
+  <entry>
+    <source>Seconds</source>
+    <target>秒</target>
+  </entry>
+  <entry>
+    <source>Max sim time /frame</source>
+    <target>每帧最大模拟时间</target>
+  </entry>
+  <entry>
+    <source>Liaoning Controls</source>
+    <target>辽宁号控制</target>
+  </entry>
+  <entry>
+    <source>Default light switches</source>
+    <target>默认灯光开关</target>
+  </entry>
+  <entry>
+    <source>Beacon</source>
+    <target>防撞灯</target>
+  </entry>
+  <entry>
+    <source>Nav lights</source>
+    <target>航行灯</target>
+  </entry>
+  <entry>
+    <source>Taxi light</source>
+    <target>滑行灯</target>
+  </entry>
+  <entry>
+    <source>Landing lights</source>
+    <target>着陆灯</target>
+  </entry>
+  <entry>
+    <source>Strobe</source>
+    <target>频闪灯</target>
+  </entry>
+  <entry>
+    <source>Logo lights</source>
+    <target>标志灯</target>
+  </entry>
+  <entry>
+    <source>Turn off lights</source>
+    <target>关闭灯光</target>
+  </entry>
+  <entry>
+    <source>Formation lights</source>
+    <target>编队灯</target>
+  </entry>
+  <entry>
+    <source>Panel</source>
+    <target>面板</target>
+  </entry>
+  <entry>
+    <source>Instruments</source>
+    <target>仪表</target>
+  </entry>
+  <entry>
+    <source>Dome</source>
+    <target>圆顶</target>
+  </entry>
+  <entry>
+    <source>Place a single cloud</source>
+    <target>放置单个云</target>
+  </entry>
+  <entry>
+    <source>Type</source>
+    <target>类型</target>
+  </entry>
+  <entry>
+    <source>subtype</source>
+    <target>子类型</target>
+  </entry>
+  <entry>
+    <source>lat (deg)</source>
+    <target>纬度（度）</target>
+  </entry>
+  <entry>
+    <source>lon (deg)</source>
+    <target>经度（度）</target>
+  </entry>
+  <entry>
+    <source>alt (ft)</source>
+    <target>高度（英尺）</target>
+  </entry>
+  <entry>
+    <source>dir (deg)</source>
+    <target>方向（度）</target>
+  </entry>
+  <entry>
+    <source>Place</source>
+    <target>放置</target>
+  </entry>
+  <entry>
+    <source>Place a cloud streak</source>
+    <target>放置云带</target>
+  </entry>
+  <entry>
+    <source>alt. (ft)</source>
+    <target>高度（英尺）</target>
+  </entry>
+  <entry>
+    <source>number x</source>
+    <target>数量 x</target>
+  </entry>
+  <entry>
+    <source>Delta x (m)</source>
+    <target>X 增量（米）</target>
+  </entry>
+  <entry>
+    <source>x edge</source>
+    <target>X 边缘</target>
+  </entry>
+  <entry>
+    <source>number y</source>
+    <target>数量 y</target>
+  </entry>
+  <entry>
+    <source>Delta y (m)</source>
+    <target>Y 增量（米）</target>
+  </entry>
+  <entry>
+    <source>y edge</source>
+    <target>Y 边缘</target>
+  </entry>
+  <entry>
+    <source>Dir. (deg)</source>
+    <target>方向（度）</target>
+  </entry>
+  <entry>
+    <source>Triang.</source>
+    <target>三角形</target>
+  </entry>
+  <entry>
+    <source>rand. x (m)</source>
+    <target>随机 X（米）</target>
+  </entry>
+  <entry>
+    <source>rand. y (m)</source>
+    <target>随机 Y（米）</target>
+  </entry>
+  <entry>
+    <source>rand. alt. (ft)</source>
+    <target>随机高度（英尺）</target>
+  </entry>
+  <entry>
+    <source>Draw streak</source>
+    <target>绘制云带</target>
+  </entry>
+  <entry>
+    <source>Start the convective system</source>
+    <target>启动对流系统</target>
+  </entry>
+  <entry>
+    <source>strength</source>
+    <target>强度</target>
+  </entry>
+  <entry>
+    <source>size (km)</source>
+    <target>大小（公里）</target>
+  </entry>
+  <entry>
+    <source>Create</source>
+    <target>创建</target>
+  </entry>
+  <entry>
+    <source>Create barrier clouds</source>
+    <target>创建屏障云</target>
+  </entry>
+  <entry>
+    <source>number</source>
+    <target>数量</target>
+  </entry>
+  <entry>
+    <source>wind (deg)</source>
+    <target>风（度）</target>
+  </entry>
+  <entry>
+    <source>dist (km)</source>
+    <target>距离（公里）</target>
+  </entry>
+  <entry>
+    <source>Place a cloud layer</source>
+    <target>放置云层</target>
+  </entry>
+  <entry>
+    <source>rad. x (km)</source>
+    <target>X 半径（公里）</target>
+  </entry>
+  <entry>
+    <source>rad. y (km)</source>
+    <target>Y 半径（公里）</target>
+  </entry>
+  <entry>
+    <source>thick. (ft)</source>
+    <target>厚度（英尺）</target>
+  </entry>
+  <entry>
+    <source>density</source>
+    <target>密度</target>
+  </entry>
+  <entry>
+    <source>edge</source>
+    <target>边缘</target>
+  </entry>
+  <entry>
+    <source>rain flag</source>
+    <target>降雨标志</target>
+  </entry>
+  <entry>
+    <source>rain dens.</source>
+    <target>降雨密度</target>
+  </entry>
+  <entry>
+    <source>Make a cloud box</source>
+    <target>创建云盒</target>
+  </entry>
+  <entry>
+    <source>x [m]</source>
+    <target>X（米）</target>
+  </entry>
+  <entry>
+    <source>y [m]</source>
+    <target>Y（米）</target>
+  </entry>
+  <entry>
+    <source>alt [ft]</source>
+    <target>高度（英尺）</target>
+  </entry>
+  <entry>
+    <source>core frac.</source>
+    <target>核心占比</target>
+  </entry>
+  <entry>
+    <source>core offset</source>
+    <target>核心偏移</target>
+  </entry>
+  <entry>
+    <source>core height</source>
+    <target>核心高度</target>
+  </entry>
+  <entry>
+    <source>core num.</source>
+    <target>核心数量</target>
+  </entry>
+  <entry>
+    <source>bottom size</source>
+    <target>底部大小</target>
+  </entry>
+  <entry>
+    <source>bot. height</source>
+    <target>底部高度</target>
+  </entry>
+  <entry>
+    <source>bot. num.</source>
+    <target>底部数量</target>
+  </entry>
+  <entry>
+    <source>Clear clouds</source>
+    <target>清除云</target>
+  </entry>
+  <entry>
+    <source>Enable local weather module</source>
+    <target>启用本地天气模块</target>
+  </entry>
+  <entry>
+    <source>Tile creation settings</source>
+    <target>瓦片创建设置</target>
+  </entry>
+  <entry>
+    <source>loading distance</source>
+    <target>加载距离</target>
+  </entry>
+  <entry>
+    <source>25 km</source>
+    <target>25 公里</target>
+  </entry>
+  <entry>
+    <source>55 km</source>
+    <target>55 公里</target>
+  </entry>
+  <entry>
+    <source>asymmetric range</source>
+    <target>非对称范围</target>
+  </entry>
+  <entry>
+    <source>Cloud buffering settings</source>
+    <target>云缓冲设置</target>
+  </entry>
+  <entry>
+    <source>visible range</source>
+    <target>可见范围</target>
+  </entry>
+  <entry>
+    <source>15 km</source>
+    <target>15 公里</target>
+  </entry>
+  <entry>
+    <source>45 km</source>
+    <target>45 公里</target>
+  </entry>
+  <entry>
+    <source>asymmetric buffering</source>
+    <target>非对称缓冲</target>
+  </entry>
+  <entry>
+    <source>angle:</source>
+    <target>角度：</target>
+  </entry>
+  <entry>
+    <source>tie range to framerate</source>
+    <target>将范围与帧率关联</target>
+  </entry>
+  <entry>
+    <source>10 fps</source>
+    <target>10 帧/秒</target>
+  </entry>
+  <entry>
+    <source>40 fps</source>
+    <target>40 帧/秒</target>
+  </entry>
+  <entry>
+    <source>Weather dynamics settings</source>
+    <target>天气动态设置</target>
+  </entry>
+  <entry>
+    <source>max. clouds in loop</source>
+    <target>循环中最大云量</target>
+  </entry>
+  <entry>
+    <source>Weather pattern scales</source>
+    <target>天气模式尺度</target>
+  </entry>
+  <entry>
+    <source>small</source>
+    <target>小</target>
+  </entry>
+  <entry>
+    <source>airmass</source>
+    <target>气团</target>
+  </entry>
+  <entry>
+    <source>large</source>
+    <target>大</target>
+  </entry>
+  <entry>
+    <source>cloud patterns</source>
+    <target>云模式</target>
+  </entry>
+  <entry>
+    <source>Advanced Weather Configuration</source>
+    <target>高级天气配置</target>
+  </entry>
+  <entry>
+    <source>General Settings</source>
+    <target>常规设置</target>
+  </entry>
+  <entry>
+    <source>Tile Selection Mode</source>
+    <target>瓦片选择模式</target>
+  </entry>
+  <entry>
+    <source>Altitude Offset (ft)</source>
+    <target>高度偏移（英尺）</target>
+  </entry>
+  <entry>
+    <source>Temperature Offset (C)</source>
+    <target>温度偏移（摄氏度）</target>
+  </entry>
+  <entry>
+    <source>Debug Output</source>
+    <target>调试输出</target>
+  </entry>
+  <entry>
+    <source>Terrain Effects</source>
+    <target>地形效果</target>
+  </entry>
+  <entry>
+    <source>Terrain Presampling</source>
+    <target>地形预采样</target>
+  </entry>
+  <entry>
+    <source>Wind Settings</source>
+    <target>风设置</target>
+  </entry>
+  <entry>
+    <source>Wind:</source>
+    <target>风：</target>
+  </entry>
+  <entry>
+    <source>degrees at</source>
+    <target>度，位于</target>
+  </entry>
+  <entry>
+    <source>kts</source>
+    <target>节</target>
+  </entry>
+  <entry>
+    <source>Gust Frequency (Hz)</source>
+    <target>阵风频率（赫兹）</target>
+  </entry>
+  <entry>
+    <source>Gust Factor</source>
+    <target>阵风系数</target>
+  </entry>
+  <entry>
+    <source>Gust Direction Variation</source>
+    <target>阵风方向变化</target>
+  </entry>
+  <entry>
+    <source>Wind Model</source>
+    <target>风模型</target>
+  </entry>
+  <entry>
+    <source>Thermic and Visibility Settings</source>
+    <target>热力与能见度设置</target>
+  </entry>
+  <entry>
+    <source>Generate Thermals</source>
+    <target>生成热气流</target>
+  </entry>
+  <entry>
+    <source>Realistic Visibility</source>
+    <target>真实能见度</target>
+  </entry>
+  <entry>
+    <source>Cloud Shadows</source>
+    <target>云阴影</target>
+  </entry>
+  <entry>
+    <source>(needs ALS shaders)</source>
+    <target>（需 ALS 着色器）</target>
+  </entry>
+  <entry>
+    <source>Convective Conditions:</source>
+    <target>对流条件：</target>
+  </entry>
+  <entry>
+    <source>rough day</source>
+    <target>强对流日</target>
+  </entry>
+  <entry>
+    <source>low convection</source>
+    <target>弱对流</target>
+  </entry>
+  <entry>
+    <source>Turbulence:</source>
+    <target>湍流：</target>
+  </entry>
+  <entry>
+    <source>Ground Haze:</source>
+    <target>地面雾霾：</target>
+  </entry>
+  <entry>
+    <source>Air Pollution:</source>
+    <target>空气污染：</target>
+  </entry>
+  <entry>
+    <source>clean</source>
+    <target>清洁</target>
+  </entry>
+  <entry>
+    <source>smog</source>
+    <target>雾霾</target>
+  </entry>
+  <entry>
+    <source>Fog Properties:</source>
+    <target>雾属性：</target>
+  </entry>
+  <entry>
+    <source>smooth</source>
+    <target>平滑</target>
+  </entry>
+  <entry>
+    <source>structured</source>
+    <target>结构化</target>
+  </entry>
+  <entry>
+    <source>Max. Visibility:</source>
+    <target>最大能见度：</target>
+  </entry>
+  <entry>
+    <source>20 km</source>
+    <target>20 公里</target>
+  </entry>
+  <entry>
+    <source>Weather Pattern Scales</source>
+    <target>天气模式尺度</target>
+  </entry>
+  <entry>
+    <source>Airmass</source>
+    <target>气团</target>
+  </entry>
+  <entry>
+    <source>Cloud Patterns</source>
+    <target>云模式</target>
+  </entry>
+  <entry>
+    <source>Wind Configuration ...</source>
+    <target>风配置...</target>
+  </entry>
+  <entry>
+    <source>Wind Configuration</source>
+    <target>风配置</target>
+  </entry>
+  <entry>
+    <source>Specify Aloft Wind Layers:</source>
+    <target>指定高空风层：</target>
+  </entry>
+  <entry>
+    <source>Lat:</source>
+    <target>纬度：</target>
+  </entry>
+  <entry>
+    <source>Lon:</source>
+    <target>经度：</target>
+  </entry>
+  <entry>
+    <source>FL50</source>
+    <target>FL50</target>
+  </entry>
+  <entry>
+    <source>FL100</source>
+    <target>FL100</target>
+  </entry>
+  <entry>
+    <source>FL180</source>
+    <target>FL180</target>
+  </entry>
+  <entry>
+    <source>FL240</source>
+    <target>FL240</target>
+  </entry>
+  <entry>
+    <source>FL300</source>
+    <target>FL300</target>
+  </entry>
+  <entry>
+    <source>FL340</source>
+    <target>FL340</target>
+  </entry>
+  <entry>
+    <source>FL390</source>
+    <target>FL390</target>
+  </entry>
+  <entry>
+    <source>FL450</source>
+    <target>FL450</target>
+  </entry>
+  <entry>
+    <source>Direction</source>
+    <target>方向</target>
+  </entry>
+  <entry>
+    <source>Speed (kt)</source>
+    <target>速度（节）</target>
+  </entry>
+  <entry>
+    <source>Set Waypoint</source>
+    <target>设置航路点</target>
+  </entry>
+  <entry>
+    <source>Clear Waypoints</source>
+    <target>清除航路点</target>
+  </entry>
+  <entry>
+    <source>Waypoints:</source>
+    <target>航路点：</target>
+  </entry>
+  <entry>
+    <source>Position Aircraft In Air</source>
+    <target>空中定位飞机</target>
+  </entry>
+  <entry>
+    <source>Position:</source>
+    <target>位置：</target>
+  </entry>
+  <entry>
+    <source>VOR:</source>
+    <target>VOR：</target>
+  </entry>
+  <entry>
+    <source>NDB:</source>
+    <target>NDB：</target>
+  </entry>
+  <entry>
+    <source>Fix:</source>
+    <target>定位点：</target>
+  </entry>
+  <entry>
+    <source>Aircraft Carrier:</source>
+    <target>航空母舰：</target>
+  </entry>
+  <entry>
+    <source>Longitude:</source>
+    <target>经度：</target>
+  </entry>
+  <entry>
+    <source>Latitude:</source>
+    <target>纬度：</target>
+  </entry>
+  <entry>
+    <source>Carrier:</source>
+    <target>航母：</target>
+  </entry>
+  <entry>
+    <source>Relative Position</source>
+    <target>相对位置</target>
+  </entry>
+  <entry>
+    <source>Distance (nm):</source>
+    <target>距离（海里）：</target>
+  </entry>
+  <entry>
+    <source>Azimuth (deg):</source>
+    <target>方位角（度）：</target>
+  </entry>
+  <entry>
+    <source>Altitude (ft):</source>
+    <target>高度（英尺）：</target>
+  </entry>
+  <entry>
+    <source>Glidepath (deg):</source>
+    <target>下滑道（度）：</target>
+  </entry>
+  <entry>
+    <source>Airspeed (kt):</source>
+    <target>空速（节）：</target>
+  </entry>
+  <entry>
+    <source>Heading (deg):</source>
+    <target>航向（度）：</target>
+  </entry>
+  <entry>
+    <source>Tower Position</source>
+    <target>塔台位置</target>
+  </entry>
+  <entry>
+    <source>Select Position of Tower for the Tower Views</source>
+    <target>为塔台视角选择塔台位置</target>
+  </entry>
+  <entry>
+    <source>Always use nearest tower</source>
+    <target>始终使用最近塔台</target>
+  </entry>
+  <entry>
+    <source>Airport ID:</source>
+    <target>机场 ID：</target>
+  </entry>
+  <entry>
+    <source>MHz</source>
+    <target>兆赫</target>
+  </entry>
+  <entry>
+    <source>Preset</source>
+    <target>预设</target>
+  </entry>
+  <entry>
+    <source>Logging</source>
+    <target>记录</target>
+  </entry>
+  <entry>
+    <source>Log File:</source>
+    <target>日志文件：</target>
+  </entry>
+  <entry>
+    <source>Interval (ms):</source>
+    <target>间隔（毫秒）：</target>
+  </entry>
+  <entry>
+    <source>Title</source>
+    <target>标题</target>
+  </entry>
+  <entry>
+    <source>Property</source>
+    <target>属性</target>
+  </entry>
+  <entry>
+    <source>Logging Enabled</source>
+    <target>已启用记录</target>
+  </entry>
+  <entry>
+    <source>Map (Canvas)</source>
+    <target>地图 (Canvas)</target>
+  </entry>
+  <entry>
+    <source>Display:</source>
+    <target>显示：</target>
+  </entry>
+  <entry>
+    <source>Airports</source>
+    <target>机场</target>
+  </entry>
+  <entry>
+    <source>Fixes</source>
+    <target>定位点</target>
+  </entry>
+  <entry>
+    <source>VORs</source>
+    <target>VOR</target>
+  </entry>
+  <entry>
+    <source>DMEs</source>
+    <target>DME</target>
+  </entry>
+  <entry>
+    <source>NDBs</source>
+    <target>NDB</target>
+  </entry>
+  <entry>
+    <source>Route</source>
+    <target>航线</target>
+  </entry>
+  <entry>
+    <source>Waypoints</source>
+    <target>航路点</target>
+  </entry>
+  <entry>
+    <source>APS</source>
+    <target>APS</target>
+  </entry>
+  <entry>
+    <source>Traffic</source>
+    <target>交通</target>
+  </entry>
+  <entry>
+    <source>Data</source>
+    <target>数据</target>
+  </entry>
+  <entry>
+    <source>Flight History</source>
+    <target>飞行历史</target>
+  </entry>
+  <entry>
+    <source>Weather</source>
+    <target>天气</target>
+  </entry>
+  <entry>
+    <source>OSM</source>
+    <target>OSM</target>
+  </entry>
+  <entry>
+    <source>VFRChart</source>
+    <target>VFR 图</target>
+  </entry>
+  <entry>
+    <source>STAMEN</source>
+    <target>STAMEN</target>
+  </entry>
+  <entry>
+    <source>Magnetic Hdgs</source>
+    <target>磁航向</target>
+  </entry>
+  <entry>
+    <source>Center on Acft</source>
+    <target>居中于本机</target>
+  </entry>
+  <entry>
+    <source>Aircraft Hdg Up</source>
+    <target>飞机航向向上</target>
+  </entry>
+  <entry>
+    <source>Map</source>
+    <target>地图</target>
+  </entry>
+  <entry>
+    <source>Heliports</source>
+    <target>直升机停机坪</target>
+  </entry>
+  <entry>
+    <source>Navaids</source>
+    <target>导航设施</target>
+  </entry>
+  <entry>
+    <source>Landmarks</source>
+    <target>地标</target>
+  </entry>
+  <entry>
+    <source>Aircraft</source>
+    <target>飞机</target>
+  </entry>
+  <entry>
+    <source>Pan with keys</source>
+    <target>用按键平移</target>
+  </entry>
+  <entry>
+    <source>Adjust marker</source>
+    <target>调整标记</target>
+  </entry>
+  <entry>
+    <source>fore/aft</source>
+    <target>前/后</target>
+  </entry>
+  <entry>
+    <source>down/up</source>
+    <target>下/上</target>
+  </entry>
+  <entry>
+    <source>size</source>
+    <target>大小</target>
+  </entry>
+  <entry>
+    <source>Dump</source>
+    <target>导出</target>
+  </entry>
+  <entry>
+    <source>MESSAGE</source>
+    <target>消息</target>
+  </entry>
+  <entry>
+    <source>Mouse Input Options</source>
+    <target>鼠标输入选项</target>
+  </entry>
+  <entry>
+    <source>Pressing TAB cycles the mouse mode through different behaviours</source>
+    <target>按 TAB 键循环切换鼠标模式</target>
+  </entry>
+  <entry>
+    <source>normal / flight-controls / view direction</source>
+    <target>正常 / 飞行操纵 / 视角方向</target>
+  </entry>
+  <entry>
+    <source>The right-mouse button can be used in two different ways:</source>
+    <target>鼠标右键有两种使用方式：</target>
+  </entry>
+  <entry>
+    <source>Press and hold right mouse to look around</source>
+    <target>按住右键环顾四周</target>
+  </entry>
+  <entry>
+    <source>Click right mouse to cycle mouse behaviour</source>
+    <target>单击右键循环切换鼠标行为</target>
+  </entry>
+  <entry>
+    <source>Disable flight-controls via mouse</source>
+    <target>禁用鼠标飞行操纵</target>
+  </entry>
+  <entry>
+    <source>Flight controls sensitivity</source>
+    <target>飞行操纵灵敏度</target>
+  </entry>
+  <entry>
+    <source>Reverse mouse wheel direction</source>
+    <target>反转鼠标滚轮方向</target>
+  </entry>
+  <entry>
+    <source>Mouse rudder also controls elevator</source>
+    <target>鼠标方向舵同时控制升降舵</target>
+  </entry>
+  <entry>
+    <source>Mouse wheel elevator-trim factor:</source>
+    <target>鼠标滚轮升降舵配平系数：</target>
+  </entry>
+  <entry>
+    <source>Multiplayer Settings</source>
+    <target>多人设置</target>
+  </entry>
+  <entry>
+    <source>Options:</source>
+    <target>选项：</target>
+  </entry>
+  <entry>
+    <source>Hide replay sessions over MP (less annoying to other players)</source>
+    <target>在多人中隐藏回放会话（减少对其他玩家的干扰）</target>
+  </entry>
+  <entry>
+    <source>Show AI Traffic (mixing MP and AI traffic may be confusing)</source>
+    <target>显示 AI 交通（混合多人交通和 AI 交通可能造成混淆）</target>
+  </entry>
+  <entry>
+    <source>Automatically enable AI scenarios and attach to multiplayer carriers</source>
+    <target>自动启用 AI 场景并连接到多人航母</target>
+  </entry>
+  <entry>
+    <source>Always latch MP and AI carrier.</source>
+    <target>始终锁定多人航母和 AI 航母。</target>
+  </entry>
+  <entry>
+    <source>Enable collisions with other players</source>
+    <target>启用与其他玩家的碰撞</target>
+  </entry>
+  <entry>
+    <source>Emesary only multiplayer mode</source>
+    <target>仅使者多人模式</target>
+  </entry>
+  <entry>
+    <source>Report problems with other pilots' models</source>
+    <target>报告其他飞行员模型的问题</target>
+  </entry>
+  <entry>
+    <source>Callsign:</source>
+    <target>呼号：</target>
+  </entry>
+  <entry>
+    <source>rxPort</source>
+    <target>接收端口</target>
+  </entry>
+  <entry>
+    <source>Server:</source>
+    <target>服务器：</target>
+  </entry>
+  <entry>
+    <source>Not connected</source>
+    <target>未连接</target>
+  </entry>
+  <entry>
+    <source>Disconnect</source>
+    <target>断开连接</target>
+  </entry>
+  <entry>
+    <source>Server Status</source>
+    <target>服务器状态</target>
+  </entry>
+  <entry>
+    <source>Nasal Console</source>
+    <target>Nasal 控制台</target>
+  </entry>
+  <entry>
+    <source>Paste from Clipboard</source>
+    <target>从剪贴板粘贴</target>
+  </entry>
+  <entry>
+    <source>Clear</source>
+    <target>清除</target>
+  </entry>
+  <entry>
+    <source>Execute</source>
+    <target>执行</target>
+  </entry>
+  <entry>
+    <source>Run Nasal test</source>
+    <target>运行 Nasal 测试</target>
+  </entry>
+  <entry>
+    <source>Specify .nut file in $FG_ROOT/Nasal</source>
+    <target>指定 $FG_ROOT/Nasal 中的 .nut 文件</target>
+  </entry>
+  <entry>
+    <source>.nut</source>
+    <target>.nut</target>
+  </entry>
+  <entry>
+    <source>Run test</source>
+    <target>运行测试</target>
+  </entry>
+  <entry>
+    <source>USS Nimitz Controls</source>
+    <target>尼米兹号控制</target>
+  </entry>
+  <entry>
+    <source>Adjust View Position</source>
+    <target>调整视角位置</target>
+  </entry>
+  <entry>
+    <source>left</source>
+    <target>左</target>
+  </entry>
+  <entry>
+    <source>m</source>
+    <target>米</target>
+  </entry>
+  <entry>
+    <source>right</source>
+    <target>右</target>
+  </entry>
+  <entry>
+    <source>down</source>
+    <target>下</target>
+  </entry>
+  <entry>
+    <source>fwd.</source>
+    <target>前</target>
+  </entry>
+  <entry>
+    <source>back</source>
+    <target>后</target>
+  </entry>
+  <entry>
+    <source>Hello, world</source>
+    <target>你好，世界</target>
+  </entry>
+  <entry>
+    <source>Clone</source>
+    <target>克隆</target>
+  </entry>
+  <entry>
+    <source>Set</source>
+    <target>设置</target>
+  </entry>
+  <entry>
+    <source>(Dis)Connect pushback</source>
+    <target>（断开）连接推出</target>
+  </entry>
+  <entry>
+    <source>fps</source>
+    <target>帧/秒</target>
+  </entry>
+  <entry>
+    <source>Radio Frequencies</source>
+    <target>无线电频率</target>
+  </entry>
+  <entry>
+    <source>Selected</source>
+    <target>已选</target>
+  </entry>
+  <entry>
+    <source>Standby</source>
+    <target>备用</target>
+  </entry>
+  <entry>
+    <source>Radial</source>
+    <target>径向</target>
+  </entry>
+  <entry>
+    <source>&lt;-&gt;</source>
+    <target>&lt;-&gt;</target>
+  </entry>
+  <entry>
+    <source>NAV1</source>
+    <target>NAV1</target>
+  </entry>
+  <entry>
+    <source>NAV2</source>
+    <target>NAV2</target>
+  </entry>
+  <entry>
+    <source>kHz</source>
+    <target>千赫</target>
+  </entry>
+  <entry>
+    <source>ATC Services in range</source>
+    <target>范围内 ATC 服务</target>
+  </entry>
+  <entry>
+    <source>ATIS Speech</source>
+    <target>ATIS 语音</target>
+  </entry>
+  <entry>
+    <source>Enabled</source>
+    <target>已启用</target>
+  </entry>
+  <entry>
+    <source>Speed</source>
+    <target>速度</target>
+  </entry>
+  <entry>
+    <source>Pitch</source>
+    <target>俯仰</target>
+  </entry>
+  <entry>
+    <source>TACAN</source>
+    <target>TACAN</target>
+  </entry>
+  <entry>
+    <source>Transponder</source>
+    <target>应答机</target>
+  </entry>
+  <entry>
+    <source>Mode</source>
+    <target>模式</target>
+  </entry>
+  <entry>
+    <source>IDENT</source>
+    <target>识别</target>
+  </entry>
+  <entry>
+    <source>Random Failures</source>
+    <target>随机故障</target>
+  </entry>
+  <entry>
+    <source>Configure MTBF/MCBF for all systems and instruments.</source>
+    <target>为所有系统和仪表配置平均故障间隔时间/次数。</target>
+  </entry>
+  <entry>
+    <source>Mean Time Between Failures</source>
+    <target>平均故障间隔时间</target>
+  </entry>
+  <entry>
+    <source>1 minute</source>
+    <target>1 分钟</target>
+  </entry>
+  <entry>
+    <source>5 minutes</source>
+    <target>5 分钟</target>
+  </entry>
+  <entry>
+    <source>10 minutes</source>
+    <target>10 分钟</target>
+  </entry>
+  <entry>
+    <source>30 minutes</source>
+    <target>30 分钟</target>
+  </entry>
+  <entry>
+    <source>1 hour</source>
+    <target>1 小时</target>
+  </entry>
+  <entry>
+    <source>6 hours</source>
+    <target>6 小时</target>
+  </entry>
+  <entry>
+    <source>24 hours</source>
+    <target>24 小时</target>
+  </entry>
+  <entry>
+    <source>0 (Disabled)</source>
+    <target>0（禁用）</target>
+  </entry>
+  <entry>
+    <source>Mean Cycles Between Failures</source>
+    <target>平均故障间隔次数</target>
+  </entry>
+  <entry>
+    <source>10</source>
+    <target>10</target>
+  </entry>
+  <entry>
+    <source>20</source>
+    <target>20</target>
+  </entry>
+  <entry>
+    <source>50</source>
+    <target>50</target>
+  </entry>
+  <entry>
+    <source>200</source>
+    <target>200</target>
+  </entry>
+  <entry>
+    <source>500</source>
+    <target>500</target>
+  </entry>
+  <entry>
+    <source>Display failure messages on screen</source>
+    <target>在屏幕上显示故障消息</target>
+  </entry>
+  <entry>
+    <source>Rendering Buffers</source>
+    <target>渲染缓冲</target>
+  </entry>
+  <entry>
+    <source>North West buffer</source>
+    <target>西北缓冲</target>
+  </entry>
+  <entry>
+    <source>Buffer</source>
+    <target>缓冲</target>
+  </entry>
+  <entry>
+    <source>North East buffer</source>
+    <target>东北缓冲</target>
+  </entry>
+  <entry>
+    <source>South West buffer</source>
+    <target>西南缓冲</target>
+  </entry>
+  <entry>
+    <source>South East buffer</source>
+    <target>东南缓冲</target>
+  </entry>
+  <entry>
+    <source>Rembrandt</source>
+    <target>Rembrandt</target>
+  </entry>
+  <entry>
+    <source>Bloom</source>
+    <target>泛光</target>
+  </entry>
+  <entry>
+    <source>Strength</source>
+    <target>强度</target>
+  </entry>
+  <entry>
+    <source>Ambient occlusion</source>
+    <target>环境光遮蔽</target>
+  </entry>
+  <entry>
+    <source>Shadows</source>
+    <target>阴影</target>
+  </entry>
+  <entry>
+    <source>Map size</source>
+    <target>贴图大小</target>
+  </entry>
+  <entry>
+    <source>Filtering</source>
+    <target>过滤</target>
+  </entry>
+  <entry>
+    <source>Number of cascades</source>
+    <target>级联数量</target>
+  </entry>
+  <entry>
+    <source>Cascades</source>
+    <target>级联</target>
+  </entry>
+  <entry>
+    <source>Vignette</source>
+    <target>暗角</target>
+  </entry>
+  <entry>
+    <source>Inner circle</source>
+    <target>内圈</target>
+  </entry>
+  <entry>
+    <source>Outer circle</source>
+    <target>外圈</target>
+  </entry>
+  <entry>
+    <source>Color shift</source>
+    <target>色彩偏移</target>
+  </entry>
+  <entry>
+    <source>Red shift</source>
+    <target>红色偏移</target>
+  </entry>
+  <entry>
+    <source>Green shift</source>
+    <target>绿色偏移</target>
+  </entry>
+  <entry>
+    <source>Blue shift</source>
+    <target>蓝色偏移</target>
+  </entry>
+  <entry>
+    <source>Distortion</source>
+    <target>畸变</target>
+  </entry>
+  <entry>
+    <source>Factors</source>
+    <target>系数</target>
+  </entry>
+  <entry>
+    <source>Color fringe</source>
+    <target>色差边缘</target>
+  </entry>
+  <entry>
+    <source>Factor</source>
+    <target>系数</target>
+  </entry>
+  <entry>
+    <source>Film wear</source>
+    <target>胶片磨损</target>
+  </entry>
+  <entry>
+    <source>Rendering Options</source>
+    <target>渲染选项</target>
+  </entry>
+  <entry>
+    <source>Warning: Your graphics card may not support complex graphics.</source>
+    <target>警告：您的显卡可能不支持复杂图形。</target>
+  </entry>
+  <entry>
+    <source>Throttle frame rate</source>
+    <target>限制帧率</target>
+  </entry>
+  <entry>
+    <source>99 Hz</source>
+    <target>99 赫兹</target>
+  </entry>
+  <entry>
+    <source>Compensate field of view for wider screens</source>
+    <target>为宽屏补偿视场</target>
+  </entry>
+  <entry>
+    <source>Use disk space for faster loading (DDS Texture Cache)</source>
+    <target>使用磁盘空间加快加载（DDS 纹理缓存）</target>
+  </entry>
+  <entry>
+    <source>Use point sprites for runway lights</source>
+    <target>跑道灯使用点精灵</target>
+  </entry>
+  <entry>
+    <source>Use triangles for directional lights</source>
+    <target>定向光使用三角形</target>
+  </entry>
+  <entry>
+    <source>Animated jetways</source>
+    <target>动画登机桥</target>
+  </entry>
+  <entry>
+    <source>Satellite Photoscenery</source>
+    <target>卫星照片场景</target>
+  </entry>
+  <entry>
+    <source>Wireframe</source>
+    <target>线框</target>
+  </entry>
+  <entry>
+    <source>Maximum number of aircraft and scenery tiles cached</source>
+    <target>缓存的飞机和场景瓦片最大数量</target>
+  </entry>
+  <entry>
+    <source>Warning: High values use a lot amount of memory and GPU</source>
+    <target>警告：高数值会占用大量内存和 GPU</target>
+  </entry>
+  <entry>
+    <source>Graphics Quality</source>
+    <target>图形质量</target>
+  </entry>
+  <entry>
+    <source>Advanced Options</source>
+    <target>高级选项</target>
+  </entry>
+  <entry>
+    <source>Save custom settings to file</source>
+    <target>将自定义设置保存到文件</target>
+  </entry>
+  <entry>
+    <source>WS3.0 (Experimental - requires OSG 3.6)</source>
+    <target>WS3.0（实验性 - 需 OSG 3.6）</target>
+  </entry>
+  <entry>
+    <source>Elevation delta below airports</source>
+    <target>机场下方高程差</target>
+  </entry>
+  <entry>
+    <source>Some changes require a complete restart to be applied.</source>
+    <target>部分更改需完全重启才能生效。</target>
+  </entry>
+  <entry>
+    <source>REPLAY</source>
+    <target>回放</target>
+  </entry>
+  <entry>
+    <source>Loop:</source>
+    <target>循环：</target>
+  </entry>
+  <entry>
+    <source>Show only last:</source>
+    <target>仅显示最后：</target>
+  </entry>
+  <entry>
+    <source>seconds</source>
+    <target>秒</target>
+  </entry>
+  <entry>
+    <source>Hide</source>
+    <target>隐藏</target>
+  </entry>
+  <entry>
+    <source>Mute</source>
+    <target>静音</target>
+  </entry>
+  <entry>
+    <source>My Controls!</source>
+    <target>我的控制！</target>
+  </entry>
+  <entry>
+    <source>End Replay</source>
+    <target>结束回放</target>
+  </entry>
+  <entry>
+    <source>Route Manager</source>
+    <target>航线管理器</target>
+  </entry>
+  <entry>
+    <source>Departure:</source>
+    <target>离场：</target>
+  </entry>
+  <entry>
+    <source>Rwy:</source>
+    <target>跑道：</target>
+  </entry>
+  <entry>
+    <source>SID:</source>
+    <target>SID：</target>
+  </entry>
+  <entry>
+    <source>Arrival:</source>
+    <target>进场：</target>
+  </entry>
+  <entry>
+    <source>Approach:</source>
+    <target>进近：</target>
+  </entry>
+  <entry>
+    <source>STAR:</source>
+    <target>STAR：</target>
+  </entry>
+  <entry>
+    <source>Cruise Speed (kts):</source>
+    <target>巡航速度（节）：</target>
+  </entry>
+  <entry>
+    <source>Cruise Altitude (ft/FL):</source>
+    <target>巡航高度（英尺/飞行高度层）：</target>
+  </entry>
+  <entry>
+    <source>Waypoint:</source>
+    <target>航路点：</target>
+  </entry>
+  <entry>
+    <source>Add</source>
+    <target>添加</target>
+  </entry>
+  <entry>
+    <source>Format: list of (airport|fix|nav|lon,lat) with optional @alt -- e.g. "KSFO@900", "SAHEY CIITY@6000"</source>
+    <target>格式：(机场|定位点|导航|经度,纬度) 列表，可选 @高度 -- 例如 "KSFO@900"、"SAHEY CIITY@6000"</target>
+  </entry>
+  <entry>
+    <source>Lon,lat can be entered signed, with NSEW, or as degrees and minutes, e.g. "-2.5,51.3", "2.5W,51.3N", "11*47.17'E,48*21.23'N"</source>
+    <target>经纬度可带符号、用 NSEW，或用度分表示，例如 "-2.5,51.3"、"2.5W,51.3N"、"11*47.17'E,48*21.23'N"</target>
+  </entry>
+  <entry>
+    <source>Any location can be be offset by a radial and distance in Nm, e.g. DCS/45/10 or 18.5E,33.9S/290/4.5</source>
+    <target>任何位置都可用径向和海里距离偏移，例如 DCS/45/10 或 18.5E,33.9S/290/4.5</target>
+  </entry>
+  <entry>
+    <source>Clear All</source>
+    <target>全部清除</target>
+  </entry>
+  <entry>
+    <source>Remove</source>
+    <target>移除</target>
+  </entry>
+  <entry>
+    <source>Jump To</source>
+    <target>跳转到</target>
+  </entry>
+  <entry>
+    <source>Activate</source>
+    <target>激活</target>
+  </entry>
+  <entry>
+    <source>Load ...</source>
+    <target>加载...</target>
+  </entry>
+  <entry>
+    <source>Save ...</source>
+    <target>保存...</target>
+  </entry>
+  <entry>
+    <source>USS San Antonio Controls</source>
+    <target>圣安东尼奥号控制</target>
+  </entry>
+  <entry>
+    <source>AI Traffic and Scenario Settings</source>
+    <target>AI 交通与场景设置</target>
+  </entry>
+  <entry>
+    <source>Timetable-Based AI Traffic</source>
+    <target>基于时刻表的 AI 交通</target>
+  </entry>
+  <entry>
+    <source>Enable AI aerodynamic wake</source>
+    <target>启用 AI 气动尾流</target>
+  </entry>
+  <entry>
+    <source>Max. radius of interaction (nm)</source>
+    <target>最大相互作用半径（海里）</target>
+  </entry>
+  <entry>
+    <source>Scenarios</source>
+    <target>场景</target>
+  </entry>
+  <entry>
+    <source>Scenery Loading...</source>
+    <target>场景加载中...</target>
+  </entry>
+  <entry>
+    <source>Scenery Sources</source>
+    <target>场景来源</target>
+  </entry>
+  <entry>
+    <source>Directory</source>
+    <target>目录</target>
+  </entry>
+  <entry>
+    <source>Source</source>
+    <target>来源</target>
+  </entry>
+  <entry>
+    <source>License</source>
+    <target>许可证</target>
+  </entry>
+  <entry>
+    <source>URL</source>
+    <target>URL</target>
+  </entry>
+  <entry>
+    <source>Location inappropriate for a seaplane</source>
+    <target>位置不适合水上飞机</target>
+  </entry>
+  <entry>
+    <source>Stay anyway</source>
+    <target>仍然停留</target>
+  </entry>
+  <entry>
+    <source>Go to seaport</source>
+    <target>前往水上机场</target>
+  </entry>
+  <entry>
+    <source>Sound Configuration</source>
+    <target>声音配置</target>
+  </entry>
+  <entry>
+    <source>Sound Device:</source>
+    <target>声音设备：</target>
+  </entry>
+  <entry>
+    <source>Channel</source>
+    <target>声道</target>
+  </entry>
+  <entry>
+    <source>Volume</source>
+    <target>音量</target>
+  </entry>
+  <entry>
+    <source>External</source>
+    <target>外部</target>
+  </entry>
+  <entry>
+    <source>Master</source>
+    <target>主音量</target>
+  </entry>
+  <entry>
+    <source>Effects</source>
+    <target>音效</target>
+  </entry>
+  <entry>
+    <source>Avionics</source>
+    <target>航电</target>
+  </entry>
+  <entry>
+    <source>ATC</source>
+    <target>ATC</target>
+  </entry>
+  <entry>
+    <source>AI/MP</source>
+    <target>AI/MP</target>
+  </entry>
+  <entry>
+    <source>Use voice synthesis for tutorials and comms (requires restart)</source>
+    <target>为教程和通信使用语音合成（需重启）</target>
+  </entry>
+  <entry>
+    <source>Adjust Level Of Detail Ranges</source>
+    <target>调整细节层次范围</target>
+  </entry>
+  <entry>
+    <source>Scenery (Tiles, Buildings, Roads, Railways)</source>
+    <target>场景（瓦片、建筑物、道路、铁路）</target>
+  </entry>
+  <entry>
+    <source>Detailed</source>
+    <target>精细</target>
+  </entry>
+  <entry>
+    <source>Rough</source>
+    <target>粗糙</target>
+  </entry>
+  <entry>
+    <source>Bare</source>
+    <target>光秃</target>
+  </entry>
+  <entry>
+    <source>AI/MP Aircraft</source>
+    <target>AI/MP 飞机</target>
+  </entry>
+  <entry>
+    <source>AI/MP in meters</source>
+    <target>AI/MP 以米计</target>
+  </entry>
+  <entry>
+    <source>High Detail</source>
+    <target>高细节</target>
+  </entry>
+  <entry>
+    <source>Low Detail</source>
+    <target>低细节</target>
+  </entry>
+  <entry>
+    <source>AI/MP Interior</source>
+    <target>AI/MP 内部</target>
+  </entry>
+  <entry>
+    <source>World Scenery 3.0 (Experimental)</source>
+    <target>世界场景 3.0（实验性）</target>
+  </entry>
+  <entry>
+    <source>WS3.0 uses 7 levels of detail, from 0 (least detailed) to 6 (most detailed).</source>
+    <target>WS3.0 使用 7 级细节，从 0（最简）到 6（最详细）。</target>
+  </entry>
+  <entry>
+    <source>You can control at which level features are rendered.</source>
+    <target>您可以控制要素在哪个级别渲染。</target>
+  </entry>
+  <entry>
+    <source>Detail range</source>
+    <target>细节范围</target>
+  </entry>
+  <entry>
+    <source>Line Feature minimum LOD</source>
+    <target>线要素最小 LOD</target>
+  </entry>
+  <entry>
+    <source>Vegetation minimum LOD</source>
+    <target>植被最小 LOD</target>
+  </entry>
+  <entry>
+    <source>LOD Level</source>
+    <target>LOD 级别</target>
+  </entry>
+  <entry>
+    <source>Minimum Line Feature Width (m)</source>
+    <target>最小线要素宽度（米）</target>
+  </entry>
+  <entry>
+    <source>Defaults</source>
+    <target>默认值</target>
+  </entry>
+  <entry>
+    <source>Stereoscopic View Options</source>
+    <target>立体视觉选项</target>
+  </entry>
+  <entry>
+    <source>Stereo Mode</source>
+    <target>立体模式</target>
+  </entry>
+  <entry>
+    <source>Screen Distance</source>
+    <target>屏幕距离</target>
+  </entry>
+  <entry>
+    <source>Eye Separation</source>
+    <target>眼距</target>
+  </entry>
+  <entry>
+    <source>Preserve original aspect ratio</source>
+    <target>保持原始宽高比</target>
+  </entry>
+  <entry>
+    <source>Swift Connection Settings</source>
+    <target>Swift 连接设置</target>
+  </entry>
+  <entry>
+    <source>Start server</source>
+    <target>启动服务器</target>
+  </entry>
+  <entry>
+    <source>Stop server</source>
+    <target>停止服务器</target>
+  </entry>
+  <entry>
+    <source>Address</source>
+    <target>地址</target>
+  </entry>
+  <entry>
+    <source>Port</source>
+    <target>端口</target>
+  </entry>
+  <entry>
+    <source>Apply setting changes</source>
+    <target>应用设置更改</target>
+  </entry>
+  <entry>
+    <source>System Failures</source>
+    <target>系统故障</target>
+  </entry>
+  <entry>
+    <source>Uncheck a system to fail it, or set the Mean Time/Cycles Between Failures.</source>
+    <target>取消勾选系统使其故障，或设置平均故障间隔时间/次数。</target>
+  </entry>
+  <entry>
+    <source>System</source>
+    <target>系统</target>
+  </entry>
+  <entry>
+    <source>Vacuum System</source>
+    <target>真空系统</target>
+  </entry>
+  <entry>
+    <source>Static System</source>
+    <target>静压系统</target>
+  </entry>
+  <entry>
+    <source>Pitot System</source>
+    <target>皮托管系统</target>
+  </entry>
+  <entry>
+    <source>Electrical System</source>
+    <target>电气系统</target>
+  </entry>
+  <entry>
+    <source>MCBF</source>
+    <target>平均故障间隔次数</target>
+  </entry>
+  <entry>
+    <source>Landing Gear</source>
+    <target>起落架</target>
+  </entry>
+  <entry>
+    <source>Speedbrake</source>
+    <target>减速板</target>
+  </entry>
+  <entry>
+    <source>Engine</source>
+    <target>发动机</target>
+  </entry>
+  <entry>
+    <source>MTBF</source>
+    <target>平均故障间隔时间</target>
+  </entry>
+  <entry>
+    <source>Air-to-Air Refueling Tanker</source>
+    <target>空中加油机</target>
+  </entry>
+  <entry>
+    <source>Tanker:</source>
+    <target>加油机：</target>
+  </entry>
+  <entry>
+    <source>Drogue and Probe</source>
+    <target>锥套与受油管</target>
+  </entry>
+  <entry>
+    <source>Boom</source>
+    <target>硬管</target>
+  </entry>
+  <entry>
+    <source>Contact radius:</source>
+    <target>接触半径：</target>
+  </entry>
+  <entry>
+    <source>Report refueling:</source>
+    <target>报告加油：</target>
+  </entry>
+  <entry>
+    <source>Request</source>
+    <target>请求</target>
+  </entry>
+  <entry>
+    <source>Get Position</source>
+    <target>获取位置</target>
+  </entry>
+  <entry>
+    <source>Automatic Download of Scenery and Data (TerraSync)</source>
+    <target>自动下载场景和数据 (TerraSync)</target>
+  </entry>
+  <entry>
+    <source>Enable automatic scenery download</source>
+    <target>启用自动场景下载</target>
+  </entry>
+  <entry>
+    <source>Update AI Traffic during FG start</source>
+    <target>FG 启动时更新 AI 交通</target>
+  </entry>
+  <entry>
+    <source>Update Now</source>
+    <target>立即更新</target>
+  </entry>
+  <entry>
+    <source>Information</source>
+    <target>信息</target>
+  </entry>
+  <entry>
+    <source>Log</source>
+    <target>日志</target>
+  </entry>
+  <entry>
+    <source>Status:</source>
+    <target>状态：</target>
+  </entry>
+  <entry>
+    <source>KBytes downloaded:</source>
+    <target>已下载千字节：</target>
+  </entry>
+  <entry>
+    <source>Processed elements:</source>
+    <target>已处理元素：</target>
+  </entry>
+  <entry>
+    <source>Processed scenery tiles:</source>
+    <target>已处理场景瓦片：</target>
+  </entry>
+  <entry>
+    <source>Number of errors:</source>
+    <target>错误数量：</target>
+  </entry>
+  <entry>
+    <source>Time Mode</source>
+    <target>时间模式</target>
+  </entry>
+  <entry>
+    <source>Real time</source>
+    <target>实时</target>
+  </entry>
+  <entry>
+    <source>Real time lag settings</source>
+    <target>实时滞后设置</target>
+  </entry>
+  <entry>
+    <source>Simple time</source>
+    <target>简单时间</target>
+  </entry>
+  <entry>
+    <source>Time Settings</source>
+    <target>时间设置</target>
+  </entry>
+  <entry>
+    <source>Year</source>
+    <target>年</target>
+  </entry>
+  <entry>
+    <source>Month</source>
+    <target>月</target>
+  </entry>
+  <entry>
+    <source>Day</source>
+    <target>日</target>
+  </entry>
+  <entry>
+    <source>UTC</source>
+    <target>UTC</target>
+  </entry>
+  <entry>
+    <source>Local</source>
+    <target>本地</target>
+  </entry>
+  <entry>
+    <source>Simulation Rate</source>
+    <target>模拟速率</target>
+  </entry>
+  <entry>
+    <source>Time Warp</source>
+    <target>时间加速</target>
+  </entry>
+  <entry>
+    <source>Time Presets</source>
+    <target>时间预设</target>
+  </entry>
+  <entry>
+    <source>Clock Time</source>
+    <target>时钟时间</target>
+  </entry>
+  <entry>
+    <source>Dawn</source>
+    <target>黎明</target>
+  </entry>
+  <entry>
+    <source>Morning</source>
+    <target>早晨</target>
+  </entry>
+  <entry>
+    <source>Noon</source>
+    <target>正午</target>
+  </entry>
+  <entry>
+    <source>Afternoon</source>
+    <target>下午</target>
+  </entry>
+  <entry>
+    <source>Dusk</source>
+    <target>黄昏</target>
+  </entry>
+  <entry>
+    <source>Evening</source>
+    <target>傍晚</target>
+  </entry>
+  <entry>
+    <source>Night</source>
+    <target>夜晚</target>
+  </entry>
+  <entry>
+    <source>USS Harry S. Truman Controls</source>
+    <target>杜鲁门号控制</target>
+  </entry>
+  <entry>
+    <source>Elevator 3</source>
+    <target>升降机 3</target>
+  </entry>
+  <entry>
+    <source>Elevator 4</source>
+    <target>升降机 4</target>
+  </entry>
+  <entry>
+    <source>Door 1</source>
+    <target>舱门 1</target>
+  </entry>
+  <entry>
+    <source>Door 2</source>
+    <target>舱门 2</target>
+  </entry>
+  <entry>
+    <source>Door 3</source>
+    <target>舱门 3</target>
+  </entry>
+  <entry>
+    <source>Door 4</source>
+    <target>舱门 4</target>
+  </entry>
+  <entry>
+    <source>Enable Wave motion</source>
+    <target>启用波浪运动</target>
+  </entry>
+  <entry>
+    <source>Select Tutorial</source>
+    <target>选择教程</target>
+  </entry>
+  <entry>
+    <source>Start Tutorial</source>
+    <target>开始教程</target>
+  </entry>
+  <entry>
+    <source>Stop Tutorial</source>
+    <target>停止教程</target>
+  </entry>
+  <entry>
+    <source>Video Control</source>
+    <target>视频控制</target>
+  </entry>
+  <entry>
+    <source>Container</source>
+    <target>容器</target>
+  </entry>
+  <entry>
+    <source>MP4</source>
+    <target>MP4</target>
+  </entry>
+  <entry>
+    <source>MPEG</source>
+    <target>MPEG</target>
+  </entry>
+  <entry>
+    <source>MKV</source>
+    <target>MKV</target>
+  </entry>
+  <entry>
+    <source>OGV</source>
+    <target>OGV</target>
+  </entry>
+  <entry>
+    <source>Codec</source>
+    <target>编码器</target>
+  </entry>
+  <entry>
+    <source>MPEG2</source>
+    <target>MPEG2</target>
+  </entry>
+  <entry>
+    <source>H.264</source>
+    <target>H.264</target>
+  </entry>
+  <entry>
+    <source>H.265</source>
+    <target>H.265</target>
+  </entry>
+  <entry>
+    <source>VP8</source>
+    <target>VP8</target>
+  </entry>
+  <entry>
+    <source>Theora</source>
+    <target>Theora</target>
+  </entry>
+  <entry>
+    <source>Settings</source>
+    <target>设置</target>
+  </entry>
+  <entry>
+    <source>Quality (-1 or 0..1)</source>
+    <target>质量（-1 或 0..1）</target>
+  </entry>
+  <entry>
+    <source>Speed (-1 or 0..1)</source>
+    <target>速度（-1 或 0..1）</target>
+  </entry>
+  <entry>
+    <source>Bitrate (bits/sec)</source>
+    <target>比特率（比特/秒）</target>
+  </entry>
+  <entry>
+    <source>View Options</source>
+    <target>视角选项</target>
+  </entry>
+  <entry>
+    <source>Select Active Views</source>
+    <target>选择活动视角</target>
+  </entry>
+  <entry>
+    <source>Standard Views</source>
+    <target>标准视角</target>
+  </entry>
+  <entry>
+    <source>Display Options</source>
+    <target>显示选项</target>
+  </entry>
+  <entry>
+    <source>Show frame rate</source>
+    <target>显示帧率</target>
+  </entry>
+  <entry>
+    <source>Show frame spacing</source>
+    <target>显示帧间隔</target>
+  </entry>
+  <entry>
+    <source>Show chat messages</source>
+    <target>显示聊天消息</target>
+  </entry>
+  <entry>
+    <source>Chat and event log position (requires restart):</source>
+    <target>聊天和事件日志位置（需重启）：</target>
+  </entry>
+  <entry>
+    <source>Show popup messages</source>
+    <target>显示弹窗消息</target>
+  </entry>
+  <entry>
+    <source>Show popup when cycling mouse behaviour</source>
+    <target>循环切换鼠标行为时显示弹窗</target>
+  </entry>
+  <entry>
+    <source>Show tooltips</source>
+    <target>显示提示</target>
+  </entry>
+  <entry>
+    <source>Show tooltip on mouse press</source>
+    <target>按下鼠标时显示提示</target>
+  </entry>
+  <entry>
+    <source>Show 2D panel</source>
+    <target>显示 2D 面板</target>
+  </entry>
+  <entry>
+    <source>Hide 2D panel in non-centered view</source>
+    <target>在非居中视角隐藏 2D 面板</target>
+  </entry>
+  <entry>
+    <source>Hide 2D panel in non-cockpit view</source>
+    <target>在非驾驶舱视角隐藏 2D 面板</target>
+  </entry>
+  <entry>
+    <source>Autohide menubar</source>
+    <target>自动隐藏菜单栏</target>
+  </entry>
+  <entry>
+    <source>Autohide cursor in</source>
+    <target>自动隐藏光标于</target>
+  </entry>
+  <entry>
+    <source>sec.</source>
+    <target>秒</target>
+  </entry>
+  <entry>
+    <source>Legacy multiplayer view selector</source>
+    <target>旧版多人视角选择器</target>
+  </entry>
+  <entry>
+    <source>Show Pilot Model</source>
+    <target>显示飞行员模型</target>
+  </entry>
+  <entry>
+    <source>Marker Pins</source>
+    <target>标记图钉</target>
+  </entry>
+  <entry>
+    <source>Show</source>
+    <target>显示</target>
+  </entry>
+  <entry>
+    <source>POI</source>
+    <target>兴趣点</target>
+  </entry>
+  <entry>
+    <source>USS Carl Vinson Controls</source>
+    <target>卡尔·文森号控制</target>
+  </entry>
+  <entry>
+    <source>Beerenberg Activity</source>
+    <target>贝伦贝格火山活动</target>
+  </entry>
+  <entry>
+    <source>Main crater activity</source>
+    <target>主火山口活动</target>
+  </entry>
+  <entry>
+    <source>dormant</source>
+    <target>休眠</target>
+  </entry>
+  <entry>
+    <source>active</source>
+    <target>活跃</target>
+  </entry>
+  <entry>
+    <source>Etna Activity</source>
+    <target>埃特纳火山活动</target>
+  </entry>
+  <entry>
+    <source>Southeast crater activity</source>
+    <target>东南火山口活动</target>
+  </entry>
+  <entry>
+    <source>Northeast crater activity</source>
+    <target>东北火山口活动</target>
+  </entry>
+  <entry>
+    <source>Eyjafjallajokull Activity</source>
+    <target>埃亚菲亚德拉火山活动</target>
+  </entry>
+  <entry>
+    <source>Katla Activity</source>
+    <target>卡特拉火山活动</target>
+  </entry>
+  <entry>
+    <source>Kilauea Activity</source>
+    <target>基拉韦厄火山活动</target>
+  </entry>
+  <entry>
+    <source>Halemaumau activity</source>
+    <target>哈勒玛乌玛乌活动</target>
+  </entry>
+  <entry>
+    <source>Puu Oo activity</source>
+    <target>普乌欧欧活动</target>
+  </entry>
+  <entry>
+    <source>Stromboli Activity</source>
+    <target>斯特龙博利火山活动</target>
+  </entry>
+  <entry>
+    <source>Central crater activity</source>
+    <target>中央火山口活动</target>
+  </entry>
+  <entry>
+    <source>Side crater activity</source>
+    <target>侧火山口活动</target>
+  </entry>
+  <entry>
+    <source>Surtsey Activity</source>
+    <target>叙尔特塞火山活动</target>
+  </entry>
+  <entry>
+    <source>Nearby Volcanic Activity</source>
+    <target>附近火山活动</target>
+  </entry>
+  <entry>
+    <source>Enable Volcanic Activity</source>
+    <target>启用火山活动</target>
+  </entry>
+  <entry>
+    <source>Select a nearby volcano from the list to set its activity</source>
+    <target>从列表中选择附近的火山以设置其活动</target>
+  </entry>
+  <entry>
+    <source>VR Options</source>
+    <target>VR 选项</target>
+  </entry>
+  <entry>
+    <source>Enable VR</source>
+    <target>启用 VR</target>
+  </entry>
+  <entry>
+    <source>OpenXR Information</source>
+    <target>OpenXR 信息</target>
+  </entry>
+  <entry>
+    <source>Desktop Mirror</source>
+    <target>桌面镜像</target>
+  </entry>
+  <entry>
+    <source>Basic Troposphere Weather Conditions</source>
+    <target>基本对流层天气状况</target>
+  </entry>
+  <entry>
+    <source>Cloud Layers (All Altitudes ft-AMSL)</source>
+    <target>云层（所有高度 英尺-平均海平面）</target>
+  </entry>
+  <entry>
+    <source>Altitude (ft)</source>
+    <target>高度（英尺）</target>
+  </entry>
+  <entry>
+    <source>Coverage</source>
+    <target>覆盖</target>
+  </entry>
+  <entry>
+    <source>Thickness (ft)</source>
+    <target>厚度（英尺）</target>
+  </entry>
+  <entry>
+    <source>Rain</source>
+    <target>雨</target>
+  </entry>
+  <entry>
+    <source>Snow</source>
+    <target>雪</target>
+  </entry>
+  <entry>
+    <source>QNH (inHg)</source>
+    <target>QNH（英寸汞柱）</target>
+  </entry>
+  <entry>
+    <source>Aloft (All Altitudes ft-AMSL)</source>
+    <target>高空（所有高度 英尺-平均海平面）</target>
+  </entry>
+  <entry>
+    <source>Altitude</source>
+    <target>高度</target>
+  </entry>
+  <entry>
+    <source>Wind (dir/kt)</source>
+    <target>风（方向/节）</target>
+  </entry>
+  <entry>
+    <source>Vis (m)</source>
+    <target>能见度（米）</target>
+  </entry>
+  <entry>
+    <source>Temp (C)</source>
+    <target>温度（摄氏度）</target>
+  </entry>
+  <entry>
+    <source>Dewpt (C)</source>
+    <target>露点（摄氏度）</target>
+  </entry>
+  <entry>
+    <source>Turbulence</source>
+    <target>湍流</target>
+  </entry>
+  <entry>
+    <source>Boundary (All Elevations ft-AGL)</source>
+    <target>边界层（所有海拔 英尺-地面）</target>
+  </entry>
+  <entry>
+    <source>Elevation</source>
+    <target>海拔</target>
+  </entry>
+  <entry>
+    <source>METAR Description</source>
+    <target>METAR 描述</target>
+  </entry>
+  <entry>
+    <source>Weather Conditions</source>
+    <target>天气状况</target>
+  </entry>
+  <entry>
+    <source>Select Weather Engine</source>
+    <target>选择天气引擎</target>
+  </entry>
+  <entry>
+    <source>Basic Weather</source>
+    <target>基本天气</target>
+  </entry>
+  <entry>
+    <source>Manual Configuration</source>
+    <target>手动配置</target>
+  </entry>
+  <entry>
+    <source>Manual Configuration...</source>
+    <target>手动配置...</target>
+  </entry>
+  <entry>
+    <source>Detailed Weather</source>
+    <target>精细天气</target>
+  </entry>
+  <entry>
+    <source>Weather help</source>
+    <target>天气帮助</target>
+  </entry>
+  <entry>
+    <source>Advanced Settings...</source>
+    <target>高级设置...</target>
+  </entry>
+  <entry>
+    <source>METAR Data</source>
+    <target>METAR 数据</target>
+  </entry>
+  <entry>
+    <source>Data is valid</source>
+    <target>数据有效</target>
+  </entry>
+  <entry>
+    <source>METAR Description...</source>
+    <target>METAR 描述...</target>
+  </entry>
+  <entry>
+    <source>Simulate Winch Failures</source>
+    <target>模拟绞盘故障</target>
+  </entry>
+  <entry>
+    <source>Tow Rope Breakage</source>
+    <target>拖绳断裂</target>
+  </entry>
+  <entry>
+    <source>Enable Rope Breakage</source>
+    <target>启用拖绳断裂</target>
+  </entry>
+  <entry>
+    <source>Breakage Height:</source>
+    <target>断裂高度：</target>
+  </entry>
+  <entry>
+    <source>500 m AGL</source>
+    <target>500 米 地面以上</target>
+  </entry>
+  <entry>
+    <source>- or -</source>
+    <target>- 或 -</target>
+  </entry>
+  <entry>
+    <source>Random Height</source>
+    <target>随机高度</target>
+  </entry>
+  <entry>
+    <source>Winch Loss of Power</source>
+    <target>绞盘失去动力</target>
+  </entry>
+  <entry>
+    <source>Enable Winch Loss of Power</source>
+    <target>启用绞盘失去动力</target>
+  </entry>
+  <entry>
+    <source>Loss of Power Height:</source>
+    <target>失去动力高度：</target>
+  </entry>
+  <entry>
+    <source>Environment: Winds</source>
+    <target>环境：风</target>
+  </entry>
+  <entry>
+    <source>wind direction (deg)</source>
+    <target>风向（度）</target>
+  </entry>
+  <entry>
+    <source>base wind speed (kt)</source>
+    <target>基础风速（节）</target>
+  </entry>
+  <entry>
+    <source>gust wind speed (kt)</source>
+    <target>阵风风速（节）</target>
+  </entry>
+  <entry>
+    <source>turbulence</source>
+    <target>湍流</target>
+  </entry>
+</PropertyList>

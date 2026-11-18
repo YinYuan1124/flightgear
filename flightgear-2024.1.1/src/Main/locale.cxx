@@ -1,4 +1,4 @@
-// locale.cxx -- FlightGear Localization Support
+﻿// locale.cxx -- FlightGear Localization Support
 //
 // Written by Thorsten Brehm, started April 2012.
 //
@@ -234,13 +234,16 @@ bool FGLocale::selectLanguage(const std::string& language)
     if (_currentLocale && _currentLocale->hasChild("xliff")) {
         parseXLIFF(_currentLocale);
     }
-   
-    
+
+
     // load resource for system messages (translations for fgfs internal messages)
     loadResource("sys");
     loadResource("atc");
     loadResource("tips");
     loadResource("weather-scenarios");
+
+    // 加载静态 GUI 对话框字符串翻译表（英文原文 -> 本地化译文）。
+    loadDialogTranslations();
 
     _inited = true;
     if (!_currentLocale && !_currentLocaleString.empty()) {
@@ -264,6 +267,7 @@ void FGLocale::clear()
     }
 
     _currentLocale.clear();
+    _dialogTranslations.clear();
 }
 
 // Return the preferred language according to user choice and/or settings
@@ -294,6 +298,64 @@ void FGLocale::parseXLIFF(SGPropertyNode* localeNode)
                    "\n\t" << ex.getMessage());
         }
     }
+}
+
+// 加载静态 PUI 对话框字符串的翻译表（英文原文 -> 本地化译文），
+// 供 translateDialogString() 查询。翻译文件由语言项的 "dialog-translations"
+// 节点指定（本工作区 zh_CN 指向 Translations/zh_CN/dialog.xml）。
+void
+FGLocale::loadDialogTranslations()
+{
+    _dialogTranslations.clear();
+
+    // 优先用当前语言项的翻译文件；没有时回退到默认语言项
+    // （默认语言项通常没有该节点，此时保持英文原文不翻译）。
+    std::string rel;
+    if (_currentLocale)
+        rel = _currentLocale->getStringValue("dialog-translations", "");
+    if (rel.empty() && _defaultLocale)
+        rel = _defaultLocale->getStringValue("dialog-translations", "");
+
+    if (rel.empty())
+        return;
+
+    SGPath path(globals->get_fg_root());
+    path.append(rel);
+
+    if (!path.exists()) {
+        SG_LOG(SG_GENERAL, SG_WARN, "No dialog translation file at " << path);
+        return;
+    }
+
+    SG_LOG(SG_GENERAL, SG_INFO, "Reading dialog translations from " << path);
+
+    SGPropertyNode_ptr root = new SGPropertyNode;
+    try {
+        readProperties(path, root);
+    } catch (const sg_exception &e) {
+        SG_LOG(SG_GENERAL, SG_ALERT, "Unable to read dialog translations from "
+               << path << ". Error: " << e.getFormattedMessage());
+        return;
+    }
+
+    // 每个 <entry> 一对 <source>/<target>：键是英文原文，值是译文。
+    for (SGPropertyNode* entry : root->getChildren("entry")) {
+        const std::string source = entry->getStringValue("source", "");
+        const std::string target = entry->getStringValue("target", "");
+        if (!source.empty() && !target.empty())
+            _dialogTranslations[source] = target;
+    }
+}
+
+// 按英文原文查找 PUI 对话框字符串的译文；没有匹配时返回空串
+// （调用方保持原文显示）。
+std::string
+FGLocale::translateDialogString(const std::string& source) const
+{
+    auto it = _dialogTranslations.find(source);
+    if (it != _dialogTranslations.end())
+        return it->second;
+    return {};
 }
 
 // Load strings for requested resource and locale.

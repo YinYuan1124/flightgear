@@ -1,4 +1,4 @@
-// HUD.hxx -- Head Up Display
+﻿// HUD.hxx -- Head Up Display
 //
 // Written by Michele America, started September 1997.
 //
@@ -36,7 +36,9 @@
 
 class FGFontCache;
 class fntRenderer;
-class fntTexFont;
+// 前向声明：HUD 字体统一按基类持有（中文化后可能是 fntTexFont 或
+// fntUnicodeFont，由 FGFontCache::getTexFont 按字体文件名决定）。
+class fntFont;
 class FGViewer;
 class ClipBox;
 
@@ -218,7 +220,7 @@ private:
 
     fntRenderer *_font_renderer;
     FGFontCache *_font_cache;
-    fntTexFont *_font;
+    fntFont *_font;
     float _font_size;
     int _style;
     bool _listener_active;

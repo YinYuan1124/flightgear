@@ -83,3 +83,13 @@ The runner selects suites by type flag: `--ctest -u <Suite>` (unit), `-s <Suite>
   C++ 源文件使用 `.cxx`/`.hxx` 扩展名，而不是 `.cpp`/`.hpp`。
 - Third-party code is vendored under each project's `3rdparty/` (e.g. `sqlite3`, `mongoose`, `cjson` in FlightGear; `expat`, `tiny_gltf`, `udns` in SimGear).
   第三方代码内置于各项目的 `3rdparty/` 下（如 FlightGear 中的 `sqlite3`、`mongoose`、`cjson`；SimGear 中的 `expat`、`tiny_gltf`、`udns`）。
+
+## Code comments / 代码注释（用户硬性要求）
+
+**All modified or newly written code MUST carry detailed Chinese comments.** Keep pre-existing English comments as they are; every comment you add or modify must be in Chinese (code identifiers, function names, and technical terms stay in English).
+**所有修改或新写的代码必须带详细的中文注释。** 原有英文注释保持不动；新增或修改的注释一律用中文（代码标识符、函数名、技术术语保持英文）。
+
+- **UTF-8 BOM pitfall:** a `.cxx`/`.hxx` file that gains Chinese comments MUST be saved with a UTF-8 BOM, otherwise MSVC decodes the source as GBK and the comment bytes corrupt preprocessor directives (error C1020 意外的 #endif). Add the BOM with: `python -c "..."` writing `\xef\xbb\xbf` prefix.
+  **UTF-8 BOM 坑：** 加入中文注释的 `.cxx`/`.hxx` 文件必须保存为带 UTF-8 BOM，否则 MSVC 按 GBK 解码源码，中文注释字节会破坏预处理指令（报 C1020 意外的 #endif）。给文件加 `\xef\xbb\xbf` 前缀即可。
+- XML/CMake/Python files are also expected to carry Chinese comments on changed lines.
+  XML/CMake/Python 文件修改的部分同样要写中文注释。
