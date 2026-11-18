@@ -125,8 +125,8 @@ option(OSG_FSTREAM_EXPORT_FIXED "Set to ON if the osgDB fstream export patch is 
 if (MSVC)
   # override CMake default RelWithDebInfo flags. This is important to ensure
   # good performance
-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zi /O2 /Ob2 /D NDEBUG")
-  set(CMAKE_C_FLAGS_RELWITHDEBINFO "/Zi /O2 /Ob2 /D NDEBUG")
+  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/MD /Zi /O2 /Ob2 /D NDEBUG")
+  set(CMAKE_C_FLAGS_RELWITHDEBINFO "/MD /Zi /O2 /Ob2 /D NDEBUG")
 endif ()
 
 # Setup MSVC 3rd party directories

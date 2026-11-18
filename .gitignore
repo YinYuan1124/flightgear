@@ -24,7 +24,9 @@ cmake-build-*_/
 out/
 dist/
 install/
+Install/
 installdir/
+
 
 # ---------- CMake 生成物 ----------
 CMakeCache.txt
@@ -120,3 +122,6 @@ $RECYCLE.BIN/
 *.bak
 *.tmp
 temp*
+
+# ---------- 其他 ----------
+jsbsim-1.3.3/UnrealEngine

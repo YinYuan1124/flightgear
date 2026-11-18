@@ -25,6 +25,7 @@
 #include <simgear/std/type_traits.hxx>
 #include <simgear/structure/map.hxx>
 #include <boost/iterator/iterator_facade.hpp>
+#include <boost/mpl/if.hpp>
 
 namespace nasal
 {
