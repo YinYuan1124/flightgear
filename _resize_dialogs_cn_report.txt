@@ -1,0 +1,76 @@
+PUI 对话框中文加宽扫改报告
+============================================================
+扫描对话框文件数：124
+修改文件数：10
+加宽控件数：13
+滚动条宽度修改数：6
+最大加宽值：+40 px（air.xml:50 <input> 200 -> 240）
+
+按文件明细（宽度修改）：
+  air.xml
+    行 32    <input> 宽 200 -> 220（估算中文宽 200.0px）
+      原文：'sea-level temperature (degC)'
+      译文：'海平面温度（摄氏度）'
+    行 41    <input> 宽 200 -> 220（估算中文宽 200.0px）
+      原文：'sea-level dewpoint (degC)'
+      译文：'海平面露点（摄氏度）'
+    行 50    <input> 宽 200 -> 240（估算中文宽 220.0px）
+      原文：'sea-level pressure (inHG)'
+      译文：'海平面气压（英寸汞柱）'
+  local_weather_config.xml
+    行 16    <checkbox> 宽 15 -> 20（估算中文宽 160.0px）
+      原文：'Enable local weather module'
+      译文：'启用本地天气模块'
+    行 66    <checkbox> 宽 15 -> 20（估算中文宽 100.0px）
+      原文：'asymmetric range'
+      译文：'非对称范围'
+    行 142   <checkbox> 宽 15 -> 20（估算中文宽 100.0px）
+      原文：'asymmetric buffering'
+      译文：'非对称缓冲'
+    行 211   <checkbox> 宽 15 -> 20（估算中文宽 160.0px）
+      原文：'tie range to framerate'
+      译文：'将范围与帧率关联'
+  radios.xml
+    行 125   <button> 宽 35 -> 50（估算中文宽 30.0px）
+      原文：'<->'
+      译文：'<->'
+    行 192   <button> 宽 35 -> 50（估算中文宽 30.0px）
+      原文：'<->'
+      译文：'<->'
+    行 259   <button> 宽 35 -> 50（估算中文宽 30.0px）
+      原文：'<->'
+      译文：'<->'
+    行 341   <button> 宽 35 -> 50（估算中文宽 30.0px）
+      原文：'<->'
+      译文：'<->'
+    行 423   <button> 宽 35 -> 50（估算中文宽 30.0px）
+      原文：'<->'
+      译文：'<->'
+  random-failures.xml
+    行 316   <checkbox> 宽 10 -> 15（估算中文宽 200.0px）
+      原文：'Display failure messages on screen'
+      译文：'在屏幕上显示故障消息'
+
+滚动条明细（<list>/<loglist>/<textbox> 的标量 <slider>）：
+  chat_full.xml:53 <textbox> 滚动条 20 -> 12
+  doc-browser.xml:65 <textbox> 滚动条 20 -> 12
+  error-report.xml:59 <textbox> 滚动条 20 -> 12
+  joystick-info.xml:183 <textbox> 滚动条 20 -> 12
+  nasal-console.xml:41 <textbox> 滚动条 20 -> 12
+  tutorial.xml:97 <textbox> 滚动条 20 -> 12
+
+修改文件列表：
+  air.xml
+  chat_full.xml
+  doc-browser.xml
+  error-report.xml
+  joystick-info.xml
+  local_weather_config.xml
+  nasal-console.xml
+  radios.xml
+  random-failures.xml
+  tutorial.xml
+
+原文件备份目录：C:\Users\ADMINI~1\AppData\Local\Temp\resize_dialogs_backup_vxp4731x
+
+#STATE# {"air.xml:32": 200, "air.xml:41": 200, "air.xml:50": 200, "local_weather_config.xml:142": 15, "local_weather_config.xml:16": 15, "local_weather_config.xml:211": 15, "local_weather_config.xml:66": 15, "radios.xml:125": 35, "radios.xml:192": 35, "radios.xml:259": 35, "radios.xml:341": 35, "radios.xml:423": 35, "random-failures.xml:316": 10}

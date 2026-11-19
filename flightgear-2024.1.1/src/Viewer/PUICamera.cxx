@@ -1,4 +1,4 @@
-// Copyright (C) 2017 James Turner
+﻿// Copyright (C) 2017 James Turner
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License as
@@ -27,6 +27,8 @@
 #include <osg/Geometry>
 #include <osg/Geode>
 #include <osg/BlendFunc>
+// osg::Depth：给合成 quad 显式声明"始终通过但不写深度"的深度状态（见 init）
+#include <osg/Depth>
 
 #include <osg/NodeVisitor>
 #include <osgGA/GUIEventAdapter>
@@ -37,6 +39,9 @@
 #include <simgear/scene/util/SGNodeMasks.hxx>
 
 #include <GUI/FlightGear_pu.h>
+// 主题配置：预乘 Alpha 开关与 frame-gating 开关（设计契约见 docs/pui-theme-design.md §3.5）。
+// Viewer 模块引用 GUI 模块的头文件在 MSVC 静态链接下无碍（最终都链进 fgfs）。
+#include <GUI/fgui_theme.hxx>
 #include <Main/fg_props.hxx>
 #include <Main/globals.hxx>
 #include <Main/locale.hxx>
@@ -62,19 +67,35 @@ double static_pixelRatio = 1.0;
 class PUIDrawable : public osg::Drawable
 {
 public:
-    PUIDrawable()
+    // 构造时记录所属 PUICamera：绘制期需要查询 UI 逻辑尺寸（glScissor 用），
+    // 并由所属相机判定 frame-gating 的尺寸/清屏行为。这里只保存裸指针——
+    // 本 drawable 是 PUICamera 的 Geode 子节点，相机生命周期必然覆盖它，
+    // 用 ref_ptr 反而会形成环引用。OSG 的 clone() 路径传 nullptr，
+    // 此时跳过 scissor（clone 路径不属于正常渲染流程）。
+    explicit PUIDrawable(PUICamera* camera) :
+        _camera(camera)
     {
         setUseDisplayList(false);
         setDataVariance(Object::DYNAMIC);
     }
-    
+
     void drawImplementation(osg::RenderInfo& renderInfo) const override
     {
+        // frame-gating（默认关闭）：主题启用且 frame-gating=1 时，只有 PUI 自己
+        // 报告需要刷新（puNeedRefresh() 为真）才重绘整层。puNeedRefresh() 为假说明
+        // 自上次 puDisplay() 以来没有任何控件状态变化，此时直接返回，不做任何
+        // GL 状态改动、也不清 FBO，上一帧的纹理内容原样保留。
+        // 对应的清屏行为由 PUICamera 的 initial draw callback 同步调整（见 init）。
+        // 门控关闭时该分支恒不进入，行为与改造前完全一致。
+        if (fguiTheme::enabled() && fguiTheme::metrics().frameGating && !puNeedRefresh()) {
+            return;
+        }
+
         osg::State* state = renderInfo.getState();
         state->setActiveTextureUnit(0);
         state->setClientActiveTextureUnit(0);
         state->disableAllVertexArrays();
-        
+
         state->applyMode(GL_FOG, false);
         state->applyMode(GL_DEPTH_TEST, false);
         state->applyMode(GL_LIGHTING, false);
@@ -83,25 +104,92 @@ public:
         glPushClientAttrib(~0u);
 
         glEnable    ( GL_BLEND        ) ;
-        glBlendFunc ( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA ) ;
-        
+        // 预乘 Alpha 修正（设计文档 §3.5）：
+        // FBO 每帧被清成 (0,0,0,0)，PUI 按直通 alpha 混合往里画时，写入纹理的
+        // 实际是 RGB=C*a、A=a*a（alpha 被平方）；而合成 quad 端一直按预乘色用
+        // glBlendFunc(ONE, ONE_MINUS_SRC_ALPHA) 采样，于是半透明面板比设定更透、
+        // 重叠控件 alpha 越叠越错。主题启用且 premultiplied=1 时，源因子改用
+        // GL_ONE（GL 1.1 即提供，无需 glBlendFuncSeparate——Windows 的 opengl32.lib
+        // 只导出 GL 1.1 符号），配合主题色加载阶段已预乘，得到 RGB=C*a、A=a 的
+        // 严格预乘结果，quad 端既有混合函数无需改动。premultiplied=0 时保持原函数。
+        if (fguiTheme::enabled() && fguiTheme::metrics().premultiplied) {
+            glBlendFunc ( GL_ONE, GL_ONE_MINUS_SRC_ALPHA ) ;
+        } else {
+            glBlendFunc ( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA ) ;
+        }
+
+        // 绘制期禁止深度写入：本 FBO 只挂颜色附件、没有深度缓冲，且合成 quad 已
+        // 关闭 GL_DEPTH_TEST；这里再显式关闭深度写掩码，防止 PUI/字形绘制路径
+        // （默认深度写为开启）意外推进深度值，污染同一 GUI pass 的后续绘制。
+        // 该状态位于 glPushAttrib 保护内，退出时会自动恢复。
+        glDepthMask ( GL_FALSE ) ;
+
         // reset pixel storage stuff for PLIB FNT drawing via glBitmap
         glPixelStorei(GL_PACK_ALIGNMENT, 4);
         glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
         glPixelStorei(GL_PACK_ROW_LENGTH, 0);
         glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
-        
+
+        // 把绘制范围裁剪到整个 UI 逻辑窗口。glScissor 的参数是窗口像素坐标
+        // （原点在窗口左下角），与当前投影矩阵/视图矩阵无关，因此这里直接用与
+        // puGetWindowSize 回调同源的 scaled 尺寸（已除以 static_pixelRatio），
+        // 而不是未缩放的窗口宽高。该裁剪位于 glPushAttrib 保护内，puDisplay()
+        // 结束后随 glPopAttrib() 一起恢复，不会泄漏给后续 GUI pass 的绘制。
+        if (_camera && _camera->uiWidth() > 0 && _camera->uiHeight() > 0) {
+            glEnable ( GL_SCISSOR_TEST );
+            glScissor( 0, 0, _camera->uiWidth(), _camera->uiHeight() );
+        }
+
         puDisplay();
 
         glPopClientAttrib();
         glPopAttrib();
     }
-    
-    osg::Object* cloneType() const override { return new PUIDrawable; }
-    osg::Object* clone(const osg::CopyOp&) const override { return new PUIDrawable; }
+
+    osg::Object* cloneType() const override { return new PUIDrawable(nullptr); }
+    osg::Object* clone(const osg::CopyOp&) const override { return new PUIDrawable(nullptr); }
 
 private:
+    // 所属 PUICamera（裸指针，理由见构造函数注释）
+    PUICamera* _camera = nullptr;
 };
+
+namespace
+{
+// PUICamera 的 cull 回调：frame-gating 开启时动态决定本帧是否清 FBO 颜色缓冲：
+//   - 需要刷新（puNeedRefresh() 为真）/ 门控关闭 → 清成透明（与既有行为一致）；
+//   - 跳过帧（门控开启且无需刷新）→ clearMask 置 0，保住上一帧的纹理内容。
+// 若跳过帧仍清缓冲，FBO 会变成全透明，UI 会整层消失。
+//
+// 用 cull 回调而不是 initial draw callback（修复审查发现的问题）：
+// RenderStage 在剔除阶段之后才建帧并缓存 clearMask，若在 draw 回调里
+// 修改会晚一帧生效——跳过帧的那一帧 UI 仍被清空，产生整层闪烁。
+// CullVisitor 的 handle_cull_callbacks_and_traverse 先跑本回调、再让
+// Camera::accept 创建 RenderStage，因此 cull 阶段修改本帧即生效。
+class PUICullUpdateCallback : public osg::NodeCallback
+{
+public:
+    explicit PUICullUpdateCallback(PUICamera* camera) :
+        _camera(camera)
+    {
+    }
+
+    void operator()(osg::Node* node, osg::NodeVisitor* nv) override
+    {
+        const bool gating = fguiTheme::enabled() && fguiTheme::metrics().frameGating;
+        if (gating && !puNeedRefresh()) {
+            _camera->setClearMask(0);
+        } else {
+            _camera->setClearMask(GL_COLOR_BUFFER_BIT);
+        }
+        traverse(node, nv);
+    }
+
+private:
+    // 所属 PUICamera（裸指针：本回调由该相机通过 ref_ptr 持有，生命周期更短）
+    PUICamera* _camera = nullptr;
+};
+} // 匿名命名空间
 
 class PUIEventHandler : public osgGA::GUIEventHandler
 {
@@ -296,6 +384,12 @@ void PUICamera::init(osg::Group* parent, osgViewer::View* view)
     setViewMatrix(osg::Matrix::identity());
     setClearMask( GL_COLOR_BUFFER_BIT );
     setClearColor( osg::Vec4( 0.0, 0.0, 0.0, 0.0 ) );
+    // 注册 cull 回调：frame-gating 开启且本帧无需刷新时把 clearMask 置 0，
+    // 避免跳过 puDisplay() 的帧仍被清成透明而丢失上一帧 UI 内容。
+    // 门控关闭时回调恒把 clearMask 恢复成 GL_COLOR_BUFFER_BIT，与上方初始值一致，
+    // 因此关闭门控时的行为与改造前完全相同。回调需由本对象持有（ref_ptr）以保活。
+    _drawCallback = new PUICullUpdateCallback(this);
+    setCullCallback(_drawCallback);
     setAllowEventFocus(false);
     setCullingActive(false);
     setRenderTargetImplementation( osg::Camera::FRAME_BUFFER_OBJECT );
@@ -308,7 +402,8 @@ void PUICamera::init(osg::Group* parent, osgViewer::View* view)
 // geode+drawable to call puDisplay, as a child of this FBO-camera
     osg::Geode* geode = new osg::Geode;
     geode->setName("PUIDrawableGeode");
-    geode->addDrawable(new PUIDrawable);
+    // 传入 this：绘制期需要查询 UI 逻辑尺寸（glScissor）与 frame-gating 状态
+    geode->addDrawable(new PUIDrawable(this));
     addChild(geode);
 
 // geometry (full-screen quad) to draw the output
@@ -322,16 +417,23 @@ void PUICamera::init(osg::Group* parent, osgViewer::View* view)
 // state used for drawing the quad (not for rendering PUI, that's done in the
 // drawbale above)
     osg::StateSet* stateSet = _fullScreenQuad->getOrCreateStateSet();
-    stateSet->setRenderBinDetails(1001, "RenderBin");
+    // 渲染 bin 从 1001 提到 1002：QML 的 QQuickDrawable 也使用 bin 1001，
+    // 且其节点在 renderer.cxx 中晚于 PUI 加入 GUI 相机，同 bin 内会盖住 PUI。
+    // 1002 保证 PUI 绝对置顶（Canvas 桌面仍是 bin 1000，在 PUI 之下）。
+    stateSet->setRenderBinDetails(1002, "RenderBin");
     stateSet->setTextureMode(0, GL_TEXTURE_2D, osg::StateAttribute::ON);
     stateSet->setTextureAttribute(0, _fboTexture);
-    
+
     // use GL_ONE becuase we pre-multiplied by alpha when building the FBO texture
     stateSet->setAttribute(new osg::BlendFunc(osg::BlendFunc::ONE, osg::BlendFunc::ONE_MINUS_SRC_ALPHA));
     stateSet->setMode(GL_BLEND, osg::StateAttribute::ON);
     stateSet->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
     stateSet->setMode(GL_FOG, osg::StateAttribute::OFF);
     stateSet->setMode(GL_DEPTH_TEST, osg::StateAttribute::OFF);
+    // 显式声明深度状态：始终通过深度测试（ALWAYS）但不写深度（writeMask=false），
+    // 与 splash.cxx 的写法一致。本 camera pass 没有深度附件且 GL_DEPTH_TEST 已关闭，
+    // 这里再声明一次可防止 quad 合成污染 GUI pass 内后续节点的深度状态。
+    stateSet->setAttribute(new osg::Depth(osg::Depth::ALWAYS, 0, 1, false));
 
     bool use_vertex_attribute_aliasing = false;
     auto guiCamera = getGUICamera(CameraGroup::getDefault());
@@ -418,6 +520,14 @@ void PUICamera::resizeUi(int width, int height)
 
     osg::Camera::resize(scaledWidth, scaledHeight);
     resizeAttachments(scaledWidth, scaledHeight);
+
+    // 记录 UI 逻辑尺寸：与 puGetWindowSize 回调同源（窗口宽高除以 static_pixelRatio），
+    // 供 PUIDrawable 在绘制期设置 glScissor 使用。FBO 附件刚被重建（内容为空），
+    // 因此必须强制下一帧重绘——否则 frame-gating 开启时会跳过 puDisplay()，
+    // 屏幕上会短暂显示空 UI。
+    _uiWidth = scaledWidth;
+    _uiHeight = scaledHeight;
+    puPostRefresh();
 
     const float puiZ = 1.0;
     // resize the full-screen quad

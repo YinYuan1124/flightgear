@@ -26,6 +26,10 @@
 
 #include <simgear/props/props.hxx>
 #include <simgear/misc/sg_dir.hxx>
+// 二次开发新增：loadFont() 的失败路径需要输出 SG_WARN 日志。
+#include <simgear/debug/logstream.hxx>
+// 二次开发新增：扩展名大小写无关比较需要 std::tolower。
+#include <cctype>
 
 #include <Main/globals.hxx>
 
@@ -161,6 +165,61 @@ FGFontCache::getTexFont(const std::string& name, float size, float slant)
 {
     init();
     return getfnt(name, size, slant)->texfont;
+}
+
+// 显式加载一个字体文件（二次开发新增，供 ui_theme.xml 的主题字体使用）。
+// 与 initializeFonts() 的"非递归扫描顶层目录"不同，这里接受相对字体目录的
+// 子路径（如 "cn/simhei.ttf"），因此主题可以把中文字体放在 Fonts/cn/ 下。
+fntFont *
+FGFontCache::loadFont(const std::string& relName)
+{
+    init();
+
+    // 同名（相对路径）已加载过：直接复用。同一个字体文件在进程内只保留一个
+    // fntFont 实例，这样 setLineSpacing/setOutline 等主题参数对全部使用方生效。
+    auto existing = _texFonts.find(relName);
+    if (existing != _texFonts.end())
+        return existing->second;
+
+    if (relName.empty()) {
+        SG_LOG(SG_GUI, SG_WARN, "FGFontCache::loadFont: empty font name");
+        return nullptr;
+    }
+
+    SGPath path(_path);
+    path.append(relName);
+    if (!path.exists()) {
+        SG_LOG(SG_GUI, SG_WARN, "FGFontCache::loadFont: font not found: "
+               << path.utf8Str());
+        return nullptr;
+    }
+
+    // 按扩展名选择后端：.txf 是 PLIB 纹理字体，.ttf/.otf 走 FreeType（可显示 CJK）。
+    // 扩展名匹配忽略大小写：Windows 下字体文件常见 .TTF 大写形式，
+    // 大小写敏感的字符串比较会把它误判为不支持。
+    std::string ext = path.extension();
+    for (char& c : ext)
+        c = (char)std::tolower((unsigned char)c);
+    fntFont* font = nullptr;
+    if (ext == "txf") {
+        font = new fntTexFont;
+    } else if (ext == "ttf" || ext == "otf") {
+        font = new fntUnicodeFont;
+    } else {
+        SG_LOG(SG_GUI, SG_WARN, "FGFontCache::loadFont: unsupported font format '"
+               << ext << "' for " << relName);
+        return nullptr;
+    }
+
+    if (!font->load(path)) {
+        // load() 内部已输出具体错误，这里补一条带文件名的告警后释放对象。
+        SG_LOG(SG_GUI, SG_WARN, "FGFontCache::loadFont: failed to load " << relName);
+        delete font;
+        return nullptr;
+    }
+
+    _texFonts[relName] = font;
+    return font;
 }
 
 puFont *

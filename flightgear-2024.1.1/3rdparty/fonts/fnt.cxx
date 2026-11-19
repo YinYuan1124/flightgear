@@ -1,4 +1,4 @@
-/*
+﻿/*
      PLIB - A Suite of Portable Game Libraries
      Copyright (C) 1998,2002  Steve Baker
  
@@ -28,6 +28,16 @@
 
 fntFont:: fntFont () {}
 fntFont::~fntFont () {}
+
+// 虚函数 wrapString 的默认实现（二次开发新增）：原样返回输入字符串，不做换行。
+// 这样 .txf / 位图等旧后端无需改动即可保持原有行为；需要自动换行的后端
+// （fntUnicodeFont）自行覆写此函数。
+std::string fntFont::wrapString ( const char * s, float pointsize, float maxWidth )
+{
+  (void) pointsize ;
+  (void) maxWidth ;
+  return ( s != NULL ) ? std::string ( s ) : std::string () ;
+}
 
 int fntTexFont::load ( const SGPath& path, GLenum mag, GLenum min )
 {
@@ -165,7 +175,11 @@ void fntTexFont::getBBox ( const char *s,
     if ( *s == '\n' )
     {
       h_pos = 0.0f ;
-      v_pos -= 1.333f ;
+      // 【二次开发修复】原实现这里用魔数 1.333，而 puts() 的换行步进是 pointsize，
+      // 二者不一致会造成多行文本"测量高度"与"实际绘制"错位（HUD::textAlign 依赖
+      // getBBox 定位）。现在统一为 × line_spacing：默认 1.0 与 puts 完全一致，
+      // 需要更大行距时由主题通过 setLineSpacing 统一设置。
+      v_pos -= line_spacing ;
       s++ ;
       continue ;
     }
@@ -229,7 +243,8 @@ void fntTexFont::puts ( sgVec3 curpos, float pointsize, float italic, const char
     if (*s == '\n')
     {
       curpos[0]  = origx ;
-      curpos[1] -= pointsize ;
+      // 行距 = 字号 × 行距系数（二次开发新增，默认 1.0 即原行为）。
+      curpos[1] -= pointsize * line_spacing ;
     }
     else
       low_putch ( curpos, pointsize, italic, *s ) ;

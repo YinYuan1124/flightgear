@@ -5,6 +5,8 @@
 #include "config.h"
 #endif
 
+#include <algorithm>
+
 #include <simgear/debug/BufferedLogCallback.hxx>
 #include <simgear/props/props_io.hxx>
 #include <simgear/scene/tsync/terrasync.hxx>
@@ -23,11 +25,76 @@
 #include "FGPUIDialog.hxx"
 #include "MapWidget.hxx"
 #include "WaypointList.hxx"
+#include "fgui_style_widgets.hxx" // 主题化控件子类（工厂替换目标）
+#include "fgui_theme.hxx"         // setColor 的对比度开关 / 颜色回退
 #include "layout.hxx"
 #include "new_gui.hxx"
 #include "property_list.hxx"
 
 using std::string;
+
+// ---------------------------------------------------------------------------
+// 当前打开的 PUI 对话框注册表。
+//
+// hover 轮询（fguiHoverUpdate）与运行时主题重刷（fguiTheme::reapplyDialogs）
+// 需要枚举所有对话框。FGPUIDialog 的生命周期完全由 NewGUI 管理：构造函数
+// 末尾插入、析构函数开头移除，因此遍历期间不会遇到已析构对象。
+// 使用函数内静态对象，保证在静态析构阶段前已构造完成。
+// ---------------------------------------------------------------------------
+namespace
+{
+std::set<FGPUIDialog*>& openDialogSet()
+{
+    static std::set<FGPUIDialog*> dialogs;
+    return dialogs;
+}
+
+} // anonymous namespace
+
+const std::set<FGPUIDialog*>& FGPUIDialog::openDialogs()
+{
+    return openDialogSet();
+}
+
+// 中文化辅助：trim 保留 + 精确查表翻译（详细语义见 FGPUIDialog.hxx 声明）。
+// 对话框置顶顺序号的单调计数器（跨对话框共享；定义见 FGPUIDialog.hxx）。
+unsigned FGPUIDialog::s_zCounter = 0;
+
+// 计算 text 控件的有效左右内边距（与 LayoutWidget::padding() 的规则一致：
+// 自己的 <padding> 优先，其次父容器的 <default-padding>，缺省 4；
+// text 不是 group/frame/dialog，不存在 0 边距特例）。
+static int fguiTextPadding(SGPropertyNode* props)
+{
+    if (props->hasValue("padding"))
+        return props->getIntValue("padding");
+    SGPropertyNode* parent = props->getParent();
+    if (parent && parent->hasValue("default-padding"))
+        return parent->getIntValue("default-padding");
+    return 4;
+}
+
+std::string fgTranslateDialogString(const std::string& raw)
+{
+    if (raw.empty())
+        return raw;
+
+    // 纯空白串是布局占位（例如 rendering.xml 里的单空格 label），不能翻译。
+    const size_t first = raw.find_first_not_of(" \t\r\n");
+    if (first == std::string::npos)
+        return raw;
+
+    const size_t last = raw.find_last_not_of(" \t\r\n");
+    const std::string trimmed = raw.substr(first, last - first + 1);
+
+    // 翻译表的 source 键已 strip，因此查询前必须先 trim；命中后把译文放回
+    // 原来的首尾空白之间，保留 XML 里刻意留出的布局间距。
+    const std::string translated =
+        globals->get_locale()->translateDialogString(trimmed);
+    if (translated.empty())
+        return raw;
+
+    return raw.substr(0, first) + translated + raw.substr(last + 1);
+}
 
 enum format_type { f_INVALID,
                    f_INT,
@@ -228,11 +295,16 @@ struct GUIInfo {
     int key;
     string label, legend, text, format;
     format_type fmt_type;
+    // setColor() 最近一次使用的颜色掩码：运行时主题切换重刷时按同样的
+    // 掩码重放（不同控件接收 <color> 的槽位不同，例如 input 是
+    // FOREGROUND|LABEL、hrule/vrule 是 BACKGROUND|FOREGROUND|HIGHLIGHT）。
+    int colorMask;
 };
 
 GUIInfo::GUIInfo(FGPUIDialog* d) : dialog(d),
                                    key(-1),
-                                   fmt_type(f_INVALID)
+                                   fmt_type(f_INVALID),
+                                   colorMask(0)
 {
 }
 
@@ -326,6 +398,11 @@ puObject* fgPopup::getActiveInputField(puObject* object)
 int fgPopup::checkHit(int button, int updown, int x, int y)
 {
     int result = 0;
+    // 鼠标按下时把所属对话框标记为最新置顶：PUI 会把被点击的对话框移到
+    // 绘制栈顶（puMoveToLast），hover 轮询用该序号在多对话框重叠时选择
+    // 真正最上层的那一个（修复审查发现的问题：不能按注册表遍历顺序取）。
+    if (updown == PU_DOWN && parentDialog)
+        parentDialog->bumpZOrder();
     // still need to ensure that the hit is within this window. The code used to check _dragging
     // as well, however that had the unfortunate side effect of allowing clicks to pass through to
     // the underlying window. RJH-07-08-18.
@@ -530,6 +607,17 @@ void fgPopup::applySize(puObject* object)
     int h = n->getIntValue("height", 4);
     object->setPosition(x, y);
     object->setSize(w, h);
+
+    // 主题化文本：拖动缩放对话框后同步刷新自动换行宽度（__bw 由 layout 写入）。
+    if (object->getType() & PUCLASS_TEXT) {
+        FGThemeText* themedText = dynamic_cast<FGThemeText*>(object);
+        if (themedText) {
+            themedText->setWrapWidth(n->getIntValue("__bw",
+                                                    n->getIntValue("width", 0)));
+            // 内边距按真实 padding 计算，与首次创建（makeObject）的规则一致。
+            themedText->setWrapInset(2 * fguiTextPadding(n));
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -680,6 +768,8 @@ FGPUIDialog::FGPUIDialog(SGPropertyNode* props) : FGDialog(props),
                                                   _props(props),
                                                   _needsRelayout(false)
 {
+    // 每个新对话框按创建顺序分配 z 序号；之后鼠标按下会再次刷新（置顶）。
+    _zOrder = ++s_zCounter;
     _module = string("__dlg:") + props->getStringValue("name", "[unnamed]");
     _name = props->getStringValue("name", "[unnamed]");
     SGPropertyNode* nasal = props->getNode("nasal");
@@ -693,10 +783,16 @@ FGPUIDialog::FGPUIDialog(SGPropertyNode* props) : FGDialog(props),
         }
     }
     display(props);
+
+    // 构造完成（控件树已建立）后登记到全局注册表，供 hover 轮询与主题重刷遍历。
+    openDialogSet().insert(this);
 }
 
 FGPUIDialog::~FGPUIDialog()
 {
+    // 先注销，保证后续 hover 轮询/主题重刷不会再拿到正在析构的对话框。
+    openDialogSet().erase(this);
+
     int x, y;
     _object->getAbsolutePosition(&x, &y);
     _props->setIntValue("lastx", x);
@@ -931,19 +1027,23 @@ FGPUIDialog::makeObject(SGPropertyNode* props, int parentWidth, int parentHeight
         return obj;
 
     } else if (type == "group") {
-        puGroup* obj = new puGroup(x, y);
+        // 主题化分组：FGThemeGroup 只增加 childCount()/childAt() 访问器，
+        // 绘制与 PUI 容器语义完全继承，XML 行为不变。
+        puGroup* obj = new FGThemeGroup(x, y);
         setupGroup(obj, props, width, height, false);
         setColor(obj, props);
         return obj;
 
     } else if (type == "frame") {
-        puGroup* obj = new puGroup(x, y);
+        puGroup* obj = new FGThemeGroup(x, y);
         setupGroup(obj, props, width, height, true);
         setColor(obj, props);
         return obj;
 
     } else if (type == "hrule" || type == "vrule") {
-        puFrame* obj = new puFrame(x, y, x + width, y + height);
+        // 分隔线也走圆角面板子类：draw() 内按"极细"分支只填色，
+        // 保留 XML <color> 通过 BACKGROUND 槽生效的原有语义。
+        puFrame* obj = new FGThemeFrame(x, y, x + width, y + height);
         obj->setBorderThickness(0);
         setupObject(obj, props);
         setColor(obj, props, BACKGROUND | FOREGROUND | HIGHLIGHT);
@@ -978,13 +1078,13 @@ FGPUIDialog::makeObject(SGPropertyNode* props, int parentWidth, int parentHeight
         return obj;
 
     } else if (type == "input") {
-        puInput* obj = new puInput(x, y, x + width, y + height);
+        puInput* obj = new FGThemeInput(x, y, x + width, y + height);
         setupObject(obj, props);
         setColor(obj, props, FOREGROUND | LABEL);
         return obj;
 
     } else if (type == "text") {
-        puText* obj = new puText(x, y);
+        FGThemeText* obj = new FGThemeText(x, y);
         setupObject(obj, props);
 
         // Layed-out objects need their size set, and non-layout ones
@@ -993,19 +1093,28 @@ FGPUIDialog::makeObject(SGPropertyNode* props, int parentWidth, int parentHeight
             obj->setSize(width, height);
         else
             obj->setLabelPlace(PUPLACE_LABEL_DEFAULT);
+
+        // 自动换行宽度：布局（layout.cxx）为 text 分配的盒宽写在 __bw，
+        // 因为 PUI 要求 text 的 abox 宽度为 0（标签画在盒子右侧），
+        // 不能直接用 abox 宽度换行；没有布局的遗留对话框退回 <width>。
+        obj->setWrapWidth(props->getIntValue("__bw",
+                                             props->getIntValue("width", 0)));
+        // 换行宽度的内边距按真实 padding 计算（默认 8 = 2×4），避免
+        // default-padding=1 的标题栏被硬编码 8px 内边距误断成两行。
+        obj->setWrapInset(2 * fguiTextPadding(props));
         setColor(obj, props, LABEL);
         return obj;
 
     } else if (type == "checkbox") {
         puButton* obj;
-        obj = new puButton(x, y, x + width, y + height, PUBUTTON_XCHECK);
+        obj = new FGThemeButton(x, y, x + width, y + height, PUBUTTON_XCHECK);
         setupObject(obj, props);
         setColor(obj, props, FOREGROUND | LABEL);
         return obj;
 
     } else if (type == "radio") {
         puButton* obj;
-        obj = new puButton(x, y, x + width, y + height, PUBUTTON_CIRCLE);
+        obj = new FGThemeButton(x, y, x + width, y + height, PUBUTTON_CIRCLE);
         setupObject(obj, props);
         setColor(obj, props, FOREGROUND | LABEL);
         return obj;
@@ -1014,9 +1123,9 @@ FGPUIDialog::makeObject(SGPropertyNode* props, int parentWidth, int parentHeight
         puButton* obj;
         string legend = props->getStringValue("legend", "[none]");
         if (props->getBoolValue("one-shot", true))
-            obj = new puOneShot(x, y, legend.c_str());
+            obj = new FGThemeOneShot(x, y, legend.c_str());
         else
-            obj = new puButton(x, y, legend.c_str());
+            obj = new FGThemeButton(x, y, legend.c_str());
         if (presetSize)
             obj->setSize(width, height);
         setupObject(obj, props);
@@ -1043,7 +1152,7 @@ FGPUIDialog::makeObject(SGPropertyNode* props, int parentWidth, int parentHeight
 
     } else if (type == "slider") {
         bool vertical = props->getBoolValue("vertical", false);
-        puSlider* obj = new puSlider(x, y, (vertical ? height : width), vertical);
+        puSlider* obj = new FGThemeSlider(x, y, (vertical ? height : width), vertical);
         obj->setMinValue(props->getFloatValue("min", 0.0));
         obj->setMaxValue(props->getFloatValue("max", 1.0));
         obj->setStepSize(props->getFloatValue("step"));
@@ -1131,22 +1240,17 @@ void FGPUIDialog::setupObject(puObject* object, SGPropertyNode* props)
     object->setLabelPlace(PUPLACE_CENTERED_RIGHT);
     object->makeReturnDefault(props->getBoolValue("default"));
     info->node = props;
-    // 中文化：<legend>/<label> 先按英文原文查翻译表
-    // （FGLocale::translateDialogString，表来自 Translations/zh_CN/dialog.xml），
-    // 命中则用中文译文替换，未命中保持原文显示。
+    // 中文化：<legend>/<label> 经统一的 fgTranslateDialogString() 翻译
+    // （trim 保留 + FGLocale::translateDialogString，表来自
+    // Translations/zh_CN/dialog.xml），命中则显示中文，未命中保持原文。
+    // 布局测宽（layout.cxx）调用同一函数，保证测量串与显示串一致。
     if (props->hasValue("legend")) {
-        info->legend = props->getStringValue("legend");
-        const std::string translated = globals->get_locale()->translateDialogString(info->legend);
-        if (!translated.empty())
-            info->legend = translated;
+        info->legend = fgTranslateDialogString(props->getStringValue("legend"));
         object->setLegend(info->legend.c_str());
     }
 
     if (props->hasValue("label")) {
-        info->label = props->getStringValue("label");
-        const std::string translated = globals->get_locale()->translateDialogString(info->label);
-        if (!translated.empty())
-            info->label = translated;
+        info->label = fgTranslateDialogString(props->getStringValue("label"));
         object->setLabel(info->label.c_str());
     }
 
@@ -1252,7 +1356,9 @@ void FGPUIDialog::setupGroup(puGroup* group, SGPropertyNode* props,
     setupObject(group, props);
 
     if (makeFrame) {
-        puFrame* f = new puFrame(0, 0, width, height);
+        // 对话框/分组背景框改为主题化圆角面板；它没有 GUIInfo（不参与
+        // 属性绑定与布局），reapplyTheme 会用本组的属性重放颜色。
+        puFrame* f = new FGThemeFrame(0, 0, width, height);
         setColor(f, props);
     }
 
@@ -1265,6 +1371,16 @@ void FGPUIDialog::setupGroup(puGroup* group, SGPropertyNode* props,
 
 void FGPUIDialog::setColor(puObject* object, SGPropertyNode* props, int which)
 {
+    // 记录本次颜色掩码：运行时主题切换时 reapplyTheme() 按同样的 which
+    // 重放，才能保证 <color> 覆盖到与原创建完全一致的 PUCOL_* 槽位。
+    // 只有 setupObject() 创建的 GUIInfo 才能安全转换；复合 plib 控件的内部
+    // 子对象可能持有别的 user_data，先在 _info 列表中确认归属。
+    void* userData = object->getUserData();
+    if (userData && std::find(_info.begin(), _info.end(), userData) != _info.end()) {
+        GUIInfo* objectInfo = static_cast<GUIInfo*>(userData);
+        objectInfo->colorMask = which;
+    }
+
     string type = props->getNameString();
     if (type.empty())
         type = "dialog";
@@ -1320,7 +1436,11 @@ void FGPUIDialog::setColor(puObject* object, SGPropertyNode* props, int which)
     // （FOREGROUND 与 BACKGROUND 中较暗者）的感知亮度为基准，若
     // LABEL/LEGEND 文字亮度与面板过于接近（视为对比不足），自动改成
     // 深底浅字 / 浅底深字，保证任何主题样式下文字都清晰可读。
-    {
+    //
+    // 主题化后此行为由 ui_theme.xml 的 <auto-contrast> 控制：
+    // 主题启用且开关为 1 时才执行；主题未启用或开关为 0 时整体跳过，
+    // 避免覆盖主题刻意设计的中灰文字（夜视/中性色主题）。
+    if (fguiTheme::enabled() && fguiTheme::metrics().autoContrast) {
         float fgr, fgg, fgb, bgr, bgg, bgb;
         object->getColour(PUCOL_FOREGROUND, &fgr, &fgg, &fgb);
         object->getColour(PUCOL_BACKGROUND, &bgr, &bgg, &bgb);
@@ -1532,6 +1652,63 @@ void FGPUIDialog::applySize(puObject* object)
     int h = n->getIntValue("height", 4);
     object->setPosition(x, y);
     object->setSize(w, h);
+
+    // 主题化文本：PUI 会把 text 的 width 置 0，换行所需宽度来自布局写入的
+    // __bw（重排后刷新）；没有布局的遗留对话框退回 XML <width>。
+    if (type & PUCLASS_TEXT) {
+        FGThemeText* themedText = dynamic_cast<FGThemeText*>(object);
+        if (themedText) {
+            themedText->setWrapWidth(n->getIntValue("__bw",
+                                                    n->getIntValue("width", 0)));
+            // 内边距按真实 padding 计算，与首次创建（makeObject）的规则一致。
+            themedText->setWrapInset(2 * fguiTextPadding(n));
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// 运行时主题切换后的颜色重刷
+// ---------------------------------------------------------------------------
+void FGPUIDialog::reapplyTheme()
+{
+    if (!_object)
+        return;
+    reapplyTheme(_object, nullptr);
+}
+
+void FGPUIDialog::reapplyTheme(puObject* object, SGPropertyNode* inheritedProps)
+{
+    // 与 applySize() 相同的复合控件判定：plib 复合控件的内部子对象持有
+    // 自己的 user_data，不能下钻重设颜色。
+    const int validUserData = PUCLASS_VALUE | PUCLASS_OBJECT | PUCLASS_GROUP | PUCLASS_INTERFACE | PUCLASS_FRAME | PUCLASS_TEXT | PUCLASS_BUTTON | PUCLASS_ONESHOT | PUCLASS_INPUT | PUCLASS_ARROW | PUCLASS_DIAL | PUCLASS_POPUP;
+
+    const int type = object->getType();
+
+    // 只有 setupObject() 建立的 GUIInfo 才能解释：先在 _info 列表中确认。
+    void* userData = object->getUserData();
+    GUIInfo* info = nullptr;
+    if (userData && std::find(_info.begin(), _info.end(), userData) != _info.end())
+        info = static_cast<GUIInfo*>(userData);
+
+    // SGPropertyNode_ptr 提供到裸指针的隐式转换（无 get() 成员）。
+    SGPropertyNode* props = inheritedProps;
+    if (info && info->node)
+        props = info->node;
+
+    // 按缓存属性与颜色掩码重放 setColor()。背景框（无 GUIInfo）继承
+    // 所属分组的属性，等价于 setupGroup() 创建时的 setColor(f, props)。
+    if (props)
+        setColor(object, props, info ? info->colorMask : 0);
+
+    // 下钻规则：顶层对话框（puPopup/puDialogBox 带 PUCLASS_POPUP，模态框
+    // 另带 PUCLASS_DIALOGBOX）必须递归，否则主题切换后对话框内容不刷新；
+    // 其余分组沿用 applySize 的"普通分组"判定，跳过复合控件的内部子对象。
+    const bool isDialogRoot = (type & (PUCLASS_POPUP | PUCLASS_INTERFACE)) != 0;
+    if (isDialogRoot || ((type & PUCLASS_GROUP) && !(type & ~validUserData))) {
+        puObject* child = ((puGroup*)object)->getFirstChild();
+        for (; child != nullptr; child = child->getNextObject())
+            reapplyTheme(child, props);
+    }
 }
 
 void FGPUIDialog::close()

@@ -1,4 +1,4 @@
-include(FlightGearComponent)
+﻿include(FlightGearComponent)
 
 set(SOURCES
  
@@ -9,6 +9,10 @@ set(SOURCES
   layout.cxx
   menubar.cxx
   new_gui.cxx
+  # PUI/Canvas 统一主题：ui_theme*.xml 的加载、配色/排版应用与日夜切换（新增）
+  fgui_theme.cxx
+  # 主题化 PUI 控件（圆角/四态/hover/滚动条），由控件层实现 draw() 覆写（新增）
+  fgui_style_widgets.cxx
   FGFontCache.cxx
   FGColor.cxx
     FileDialog.cxx
@@ -23,6 +27,9 @@ set(HEADERS
   layout.hxx
   menubar.hxx
   new_gui.hxx
+  # 主题管理器与主题化控件子类的公开声明（新增）
+  fgui_theme.hxx
+  fgui_style_widgets.hxx
   FGFontCache.hxx
   FGColor.hxx
     FileDialog.hxx

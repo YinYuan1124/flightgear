@@ -1,4 +1,4 @@
-// Integrate Canvas into FlightGear
+﻿// Integrate Canvas into FlightGear
 //
 // Copyright (C) 2012  Thomas Geymayer <tomgey@gmail.com>
 //
@@ -21,6 +21,8 @@
 
 #include <simgear/canvas/CanvasSystemAdapter.hxx>
 
+#include <map>      // 字体对象缓存使用 std::map
+
 namespace canvas
 {
   class FGCanvasSystemAdapter:
@@ -33,6 +35,15 @@ namespace canvas
       osg::ref_ptr<osg::Image> getImage(const std::string& path) const override;
       SGSubsystem* getSubsystem(const std::string& name) const override;
       simgear::HTTP::Client* getHTTPClient() const override;
+
+    private:
+      // 字体对象缓存：键是解析后的字体文件名（相对于 FG_ROOT/Fonts，例如 "cn/simhei.ttf"），
+      // 值是已加载的 osgText::Font。Canvas 每次应用 font 样式都会走到 getFont，
+      // 缓存可避免重复 readFontFile 导致的字形图集重复生成与额外显存占用。
+      // 该适配器是 Canvas 的进程级全局静态单例（Canvas::_system_adapter），
+      // 其生命周期与进程一致，因此缓存无需额外清理；访问均发生在主线程。
+      // 声明为 mutable 是因为 getFont 是 const 成员函数，但仍需在内部填充缓存。
+      mutable std::map<std::string, simgear::canvas::FontPtr> _font_cache;
   };
 }
 

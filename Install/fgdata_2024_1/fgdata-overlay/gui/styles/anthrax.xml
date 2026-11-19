@@ -12,11 +12,13 @@
     <fonts>
         <!-- 中文化字号说明：fonts/gui 的 size 是 FreeType 字体的 pointsize（即
              ascender 高度的像素数）。原 HELVETICA_12 位图字体固定 12px，改为
-             simhei.ttf 后若不写 size 则走 FGFontCache 缺省 15，中文实心字高只有
+             cn/simhei.ttf 后若不写 size 则走 FGFontCache 缺省 15，中文实心字高只有
              约 11.5px，偏小；这里加大到 20（CJK 实心字高约 15px），并同步放大
-             baseline-height 以保证列表行高足够（20 + PUSTR_BGAP 5 = 25）。 -->
+             baseline-height 以保证列表行高足够（20 + PUSTR_BGAP 5 = 25）。
+             字体文件已从 Fonts/simhei.ttf 移入 Fonts/cn/ 子目录统一打包，
+             所有字体名均为相对 $FG_ROOT/Fonts 的路径，故写作 cn/simhei.ttf。 -->
         <gui>
-            <name type="string">simhei.ttf</name>
+            <name type="string">cn/simhei.ttf</name>
             <size type="float">20</size>
             <baseline-height type="float">25</baseline-height>
         </gui>
@@ -28,7 +30,7 @@
         </splash>
 
         <gui-large>
-            <name>simhei.ttf</name>
+            <name>cn/simhei.ttf</name>
             <size type="float">22</size>
         </gui-large>
 
@@ -37,7 +39,7 @@
         </fixed>
 
         <gui-small>
-            <name>simhei.ttf</name>
+            <name>cn/simhei.ttf</name>
             <size type="float">18</size>
         </gui-small>
 
@@ -55,7 +57,7 @@
         </model-view>
 
         <nasal-editor>
-            <name type="string">simhei.ttf</name>
+            <name type="string">cn/simhei.ttf</name>
             <size>14</size>
         </nasal-editor>
 

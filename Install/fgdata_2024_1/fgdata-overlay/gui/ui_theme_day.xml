@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+  PUI/Canvas 统一主题配置 —— 日间模式（ui-theme-day）。
+
+  由 FGUIThemeManager::load() 在启动时读取：文件路径为
+  $FG_ROOT/gui/ui_theme_day.xml；若同目录存在可选的 gui/ui_theme.xml，
+  会先读入它作为公共默认值，再用本文件覆盖同名键。
+  模式开关：/sim/gui/theme-mode = auto（默认）/day/night；auto 模式按
+  /sim/time/sun-angle-rad（> 0 视为白天，> 1.57 判定夜晚）自动切换。
+
+  颜色格式：每个颜色键的文本内容为 "R G B A" 四个 0..1 的浮点分量，
+  这里写的是直通 alpha（straight alpha）；加载时若 metrics/premultiplied=1，
+  C++ 侧会统一换算成预乘值再交给 PUI 绘制。
+  键名是本设计的对外契约（设计文档 §2），不得随意改名。
+-->
+<PropertyList>
+  <theme>
+    <!-- 主题标识：仅用于日志与调试，不参与配色计算 -->
+    <name>ui-theme-day</name>
+
+    <colors>
+      <!-- 面板/对话框背景：rgba(32,36,40,0.88) —— 半透明深灰，保留后方场景的轻微透出 -->
+      <panel-bg>0.125 0.141 0.157 0.88</panel-bg>
+
+      <!-- 边框主色 #557799；鼠标悬停时提亮到 #77aadd，形成 hover 反馈 -->
+      <border>0.333 0.467 0.600 1.0</border>
+      <border-hover>0.467 0.667 0.867 1.0</border-hover>
+
+      <!--
+        按钮四态（日间模式）：
+          常态   #444c54
+          hover  #586470（提亮）
+          按下   #30363b（压暗）
+          禁用   低饱和灰，整体降低对比度但不至于看不清
+      -->
+      <button-bg>0.267 0.298 0.329 1.0</button-bg>
+      <button-bg-hover>0.345 0.392 0.439 1.0</button-bg-hover>
+      <button-bg-down>0.188 0.212 0.231 1.0</button-bg-down>
+      <button-bg-disabled>0.30 0.32 0.34 1.0</button-bg-disabled>
+
+      <!-- 文字：常态纯白 #ffffff；禁用态 #999999（0.6 灰） -->
+      <text>1.0 1.0 1.0 1.0</text>
+      <text-disabled>0.6 0.6 0.6 1.0</text-disabled>
+
+      <!-- 文字描边色（方案1，深色描边提升浅色背景上的可读性）与文字底条色（方案2） -->
+      <stroke-color>0.0 0.0 0.0 0.85</stroke-color>
+      <backdrop-bg>0.05 0.06 0.07 0.55</backdrop-bg>
+
+      <!-- 滚动条：滑块常态/悬停 + 半透明弱化轨道 -->
+      <scroll-thumb>0.345 0.392 0.439 1.0</scroll-thumb>
+      <scroll-thumb-hover>0.467 0.667 0.867 1.0</scroll-thumb-hover>
+      <scroll-track>0.20 0.22 0.24 0.5</scroll-track>
+
+      <!-- 输入框背景：比面板更深、接近不透明，突出可编辑区域 -->
+      <input-bg>0.16 0.18 0.20 0.95</input-bg>
+    </colors>
+
+    <metrics>
+      <!-- 圆角半径（px），建议 4~6 -->
+      <corner-radius>5</corner-radius>
+      <!-- 文字描边宽度（px），0 = 关闭描边，建议 0.8~1.0 -->
+      <stroke-width>1.0</stroke-width>
+      <!-- 行距系数：换行步进 = pointsize × 该值；1.0 表示沿用旧行为 -->
+      <line-spacing>1.3</line-spacing>
+      <!-- 文字底条开关（方案2）：1=启用，0=关闭 -->
+      <text-backdrop>0</text-backdrop>
+      <!-- 自动换行开关：1=按控件宽度断行 -->
+      <text-wrap>1</text-wrap>
+      <!-- FGPUIDialog::setColor 自动对比度 hack 开关：0=跳过，允许主题精确控制文字色 -->
+      <auto-contrast>0</auto-contrast>
+      <!-- 预乘 Alpha 合成开关：1=预乘（配合 PUICamera 的 GL_ONE 混合），0=退回直通 alpha -->
+      <premultiplied>1</premultiplied>
+      <!-- 字符串级显示列表缓存开关：1=缓存整串绘制结果，降低每帧 GL 调用 -->
+      <string-cache>1</string-cache>
+      <!-- puNeedRefresh 整层跳帧门控：默认 0（关闭），避免遗漏未知刷新路径 -->
+      <frame-gating>0</frame-gating>
+      <!-- 菜单项快捷键提示的空格填充数（原硬编码 11，中文化后收窄） -->
+      <menubar-key-padding>4</menubar-key-padding>
+      <!-- 独立滑条/滚动条宽度（px，原 20，改细以减少遮挡） -->
+      <scrollbar-width>12</scrollbar-width>
+    </metrics>
+
+    <font>
+      <!-- 相对 $FG_ROOT/Fonts 的字体路径：中文黑体放在 cn/ 子目录 -->
+      <name>cn/simhei.ttf</name>
+      <!-- 菜单栏/对话框默认字号（pointsize） -->
+      <size>20</size>
+    </font>
+  </theme>
+</PropertyList>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+  PUI/Canvas 统一主题配置 —— 夜间模式（ui-theme-night）。
+
+  夜视思路：
+    夜间飞行时人眼需要保留暗适应，界面整体应比日间更暗、对比更柔和，
+    因此本主题在保持与日间完全相同的键名/结构前提下做三件事：
+      1. 面板更深且更不透明（rgba(14,16,18,0.92)），减少亮色渗入挡风视野；
+      2. 文字整体降亮到 #c8c8c8，避免纯白在黑暗环境中形成眩光；
+      3. 按钮/滚动条/输入框统一压暗约 30%，只保留必要的层次区分。
+    本文件同样是 "通道 alpha 的 RGBA"，加载时按 metrics/premultiplied 预乘。
+
+  键名与 ui_theme_day.xml 完全一致（设计文档 §2 契约），两者可无缝切换；
+  模式由 /sim/gui/theme-mode 决定，auto 模式按 /sim/time/sun-angle-rad 判定。
+-->
+<PropertyList>
+  <theme>
+    <!-- 主题标识：仅用于日志与调试 -->
+    <name>ui-theme-night</name>
+
+    <colors>
+      <!-- 面板/对话框背景：rgba(14,16,18,0.92) —— 比日间更深、更不透明 -->
+      <panel-bg>0.055 0.063 0.071 0.92</panel-bg>
+
+      <!-- 边框 #3a4a5a（压暗后的冷灰蓝）；hover 用 #556a80，亮度差比日间更克制 -->
+      <border>0.227 0.290 0.353 1.0</border>
+      <border-hover>0.333 0.416 0.502 1.0</border-hover>
+
+      <!--
+        按钮四态：整体取日间色值的 70%（压暗 30%）
+          常态   0.187 0.209 0.230
+          hover  0.242 0.274 0.307
+          按下   0.132 0.148 0.162
+          禁用   0.210 0.224 0.238
+      -->
+      <button-bg>0.187 0.209 0.230 1.0</button-bg>
+      <button-bg-hover>0.242 0.274 0.307 1.0</button-bg-hover>
+      <button-bg-down>0.132 0.148 0.162 1.0</button-bg-down>
+      <button-bg-disabled>0.210 0.224 0.238 1.0</button-bg-disabled>
+
+      <!-- 文字降亮：#c8c8c8（0.784）常态，#7a7a7a（约 0.478）禁用 -->
+      <text>0.784 0.784 0.784 1.0</text>
+      <text-disabled>0.478 0.478 0.478 1.0</text-disabled>
+
+      <!-- 描边色保持纯黑，夜间环境下仍能勾勒出字形边缘 -->
+      <stroke-color>0.0 0.0 0.0 0.85</stroke-color>
+      <!-- 文字底条：更暗、略提高不透明度，保证夜间文字与面板的分离度 -->
+      <backdrop-bg>0.02 0.025 0.03 0.6</backdrop-bg>
+
+      <!-- 滚动条：滑块与日间按钮同档压暗；轨道进一步弱化，避免夜间出现亮条 -->
+      <scroll-thumb>0.242 0.274 0.307 1.0</scroll-thumb>
+      <scroll-thumb-hover>0.327 0.467 0.607 1.0</scroll-thumb-hover>
+      <scroll-track>0.14 0.154 0.168 0.5</scroll-track>
+
+      <!-- 输入框背景：比面板略亮一点的近黑，保持可编辑区域可辨识 -->
+      <input-bg>0.10 0.11 0.12 0.95</input-bg>
+    </colors>
+
+    <metrics>
+      <!-- 以下排版/行为参数与日间主题保持一致，避免切换时布局跳动 -->
+      <corner-radius>5</corner-radius>
+      <stroke-width>1.0</stroke-width>
+      <line-spacing>1.3</line-spacing>
+      <text-backdrop>0</text-backdrop>
+      <text-wrap>1</text-wrap>
+      <auto-contrast>0</auto-contrast>
+      <premultiplied>1</premultiplied>
+      <string-cache>1</string-cache>
+      <frame-gating>0</frame-gating>
+      <menubar-key-padding>4</menubar-key-padding>
+      <scrollbar-width>12</scrollbar-width>
+    </metrics>
+
+    <font>
+      <!-- 与日间共用同一中文字体，仅靠颜色区分日夜 -->
+      <name>cn/simhei.ttf</name>
+      <size>20</size>
+    </font>
+  </theme>
+</PropertyList>

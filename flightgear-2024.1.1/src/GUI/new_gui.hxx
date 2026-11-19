@@ -1,4 +1,4 @@
-// new_gui.hxx - XML-configured GUI subsystem.
+﻿// new_gui.hxx - XML-configured GUI subsystem.
 
 #ifndef __NEW_GUI_HXX
 #define __NEW_GUI_HXX 1
@@ -156,6 +156,16 @@ public:
         _citt_t it = _colors.find(name.c_str());
         return (it != _colors.end()) ? it->second : NULL;
     }
+
+    /**
+     * 主题系统专用：向颜色表 _colors 写入（或覆盖）一个具名颜色。
+     *
+     * ui_theme*.xml 的颜色在 NewGUI::setStyle() 末尾经 fguiTheme::init() 合并到
+     * 颜色表，键名沿用 XML 键名（如 panel-bg、button-bg）以及 FGPUIDialog::setColor
+     * 使用的 <type>-<slot> 别名（如 button-background、label、legend）。
+     * 已存在的同名 FGColor 会被删除并替换，避免泄漏。
+     */
+    void setThemeColor (const std::string &name, const FGColor &color);
 
     virtual puFont *getDefaultFont() { return _font; }
 

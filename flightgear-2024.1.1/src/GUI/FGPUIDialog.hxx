@@ -1,4 +1,4 @@
-// FGPUIDialog.hxx - XML-configured dialog box.
+﻿// FGPUIDialog.hxx - XML-configured dialog box.
 /*
  * SPDX-FileCopyrightText: 2012 (C) James Turner <james@flightgear.org>
  * SPDX-License-Identifier: GPL-2.0-or-later
@@ -19,7 +19,17 @@
 #include <simgear/props/condition.hxx>
 #include <simgear/props/props.hxx>
 
+#include <set>
+#include <string>
 #include <vector>
+
+// 中文化辅助：把对话框 XML 中的 <label>/<legend> 原文翻译成当前语言的译文。
+//
+// 行为：纯空白字符串原样返回（布局占位，不能 trim）；其余字符串去掉首尾
+// 空白后精确查 FGLocale::translateDialogString，命中时把译文放回原来的
+// 首尾空白之间（保留布局间距），未命中返回原文。布局测宽（layout.cxx）
+// 与控件创建（setupObject）共用此函数，保证"测量用的串"就是"显示用的串"。
+std::string fgTranslateDialogString(const std::string& raw);
 
 
 // ugly temporary workaround for plib's lack of user defined class ids  FIXME
@@ -125,6 +135,42 @@ public:
 
     void runCallback(const std::string& name, SGPropertyNode_ptr args) override;
 
+    /**
+     * 返回对话框的顶层 PUI 对象（puPopup/puDialogBox）。
+     *
+     * hover 轮询需要从对话框外部遍历控件树做命中测试，因此开放此只读访问器；
+     * 返回的指针由本对话框持有，调用方不得删除，也不得在对话框析构后使用。
+     */
+    puObject* getObject() const { return _object; }
+
+    /**
+     * 运行时主题切换后重新给本对话框的控件上色。
+     *
+     * 遍历 _object 树，对每个带 GUIInfo 的对象按缓存的属性节点与颜色掩码
+     * 重跑 setColor()；没有 user_data 的对象（如对话框背景框）使用最近
+     * 祖先节点的属性重放，与首次创建时的调用保持一致。
+     */
+    void reapplyTheme();
+
+    /**
+     * 当前打开（尚未析构）的全部 PUI 对话框。
+     *
+     * 注册表在 FGPUIDialog 构造末尾插入、析构开头移除，生命周期完全由
+     * NewGUI 管理；hover 轮询与 fguiTheme::reapplyDialogs() 遍历此集合，
+     * 因此不会出现悬垂指针。
+     */
+    static const std::set<FGPUIDialog*>& openDialogs();
+
+    /**
+     * z 序：对话框的置顶顺序号（创建或鼠标按下时刷新）。
+     *
+     * hover 轮询在多对话框重叠时按此值取最上层命中：PUI 内部把被点击的
+     * 对话框移到绘制栈顶，这里用单调计数器近似同一顺序，避免注册表
+     * （std::set 按指针地址排序）的遍历顺序与绘制顺序无关的问题。
+     */
+    unsigned zOrder() const { return _zOrder; }
+    void bumpZOrder() { _zOrder = ++s_zCounter; }
+
 
 private:
     enum {
@@ -163,8 +209,22 @@ private:
      */
     void applySize(puObject* object);
 
+    /**
+     * reapplyTheme() 的递归实现。
+     *
+     * inheritedProps 是最近祖先节点的属性（用于没有 GUIInfo 的背景框），
+     * 顶层调用传 nullptr。
+     */
+    void reapplyTheme(puObject* object, SGPropertyNode* inheritedProps);
+
     // The top-level PUI object.
     puObject* _object;
+
+    // 对话框置顶顺序号（hover 多对话框重叠时按它取最上层命中；
+    // 创建/鼠标按下时经 bumpZOrder() 刷新）。
+    unsigned _zOrder = 0;
+    // z 序单调计数器（跨对话框共享；定义在 FGPUIDialog.cxx）。
+    static unsigned s_zCounter;
 
     // The GUI subsystem.
     NewGUI* _gui;

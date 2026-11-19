@@ -1,9 +1,19 @@
-
+﻿
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
 
 #include "layout.hxx"
+
+#include <algorithm>
+
+// 中文化辅助在 FGPUIDialog.cxx 中实现（声明见 FGPUIDialog.hxx）。
+// 这里只做前向声明，避免把 plib/puAux 的头文件带进纯布局代码。
+std::string fgTranslateDialogString(const std::string& raw);
+
+// 主题排版参数（textWrap/lineSpacing）；该头文件只依赖 osg/Vec4 与
+// simgear props，不会引入 plib 依赖。
+#include "fgui_theme.hxx"
 
 
 // This file contains the actual layout engine.  It has no dependence
@@ -46,8 +56,10 @@ void LayoutWidget::calcPrefSize(int* w, int* h)
     if (!getBool("enabled", true) || isType("nasal"))
         return;
 
-    int legw = stringLength(getStr("legend").c_str());
-    int labw = stringLength(getStr("label").c_str());
+    // 中文适配：测宽必须使用译文而不是 XML 英文原文，否则中文变宽后
+    // 布局分配的首选尺寸偏小（译文更宽时会溢出）。纯空白串不翻译。
+    int legw = stringLength(fgTranslateDialogString(getStr("legend")).c_str());
+    int labw = stringLength(fgTranslateDialogString(getStr("label")).c_str());
 
     if(isType("dialog") || isType("group") || isType("frame")) {
         if(!hasField("layout")) {
@@ -62,7 +74,37 @@ void LayoutWidget::calcPrefSize(int* w, int* h)
         }
     } else if (isType("text")) {
         *w = labw;
-        *h = 3*UNIT; // FIXME: multi line height?
+        // FIXME: multi line height?
+        // 中文适配：按自动换行后的行数估算高度，替代固定的 3*UNIT。
+        // 可用宽度取控件自身的 <width>，其次取父容器已分配的宽度
+        // （vbox/hbox 在 layout() 中先写父宽度、再算子控件首选尺寸）。
+        // 行高 = 字号 × lineSpacing；保留最小 3*UNIT 防止单行变矮。
+        int textHeight = 3 * UNIT;
+        if (fguiTheme::enabled() && fguiTheme::metrics().textWrap) {
+            const float lineSpacing = fguiTheme::metrics().lineSpacing;
+            // 本文件刻意不包含 plib/pu.h（纯布局代码），puFont 在此只是前向
+            // 声明，不能调用 getPointSize()。UNIT 由 setDefaultFont 按
+            // pointsize/3 取整而来，故用 3*UNIT 反推字号（误差 <1px，
+            // 仅用于高度估算，不影响最终布局精度）。
+            const int lineHeight = int(3.0f * UNIT * lineSpacing + 0.5f);
+
+            int availWidth = 0;
+            // 注意：layout() 会为 text 写入 width=0（标签画在盒子右侧），
+            // 所以不能把 width<=0 当作"有显式宽度"，必须回退到父容器宽度，
+            // 否则重排（resize）后换行行数会被错误地重置为 1 行。
+            if (hasField("width") && getNum("width") > 0) {
+                availWidth = getNum("width");
+            } else if (hasParent() && parent().hasField("width")) {
+                availWidth = parent().getNum("width") - 2 * padding();
+            }
+
+            int lines = 1;
+            if (availWidth > 0 && labw > availWidth)
+                lines = (labw + availWidth - 1) / availWidth; // 向上取整
+
+            textHeight = std::max(textHeight, lines * lineHeight);
+        }
+        *h = textHeight;
     } else if (isType("button")) {
         *w = legw + 6*UNIT + (labw ? labw + UNIT : 0);
         *h = 6*UNIT;

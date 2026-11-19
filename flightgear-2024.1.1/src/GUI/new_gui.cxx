@@ -51,6 +51,10 @@
 #include "FGFontCache.hxx"
 #include "FGColor.hxx"
 
+// PUI/Canvas 统一主题管理器（ui_theme*.xml）：setStyle 末尾加载，update 中做
+// auto 日夜切换检测；同时声明 fguiHoverUpdate() 供每帧轮询鼠标 hover 使用。
+#include "fgui_theme.hxx"
+
 #include "Highlight.hxx"
 
 // ignore the word Navaid here, it's a DataCache
@@ -67,6 +71,9 @@ extern void puCleanUpJunk(void);
 
 
 NewGUI::NewGUI()
+    // 显式初始化为空指针：主题/字体逻辑需要据此判断 NewGUI::setupFont 是否已经
+    // 执行（未执行时不能把未初始化的指针当作有效字体使用）。
+    : _font(nullptr)
 {
 }
 
@@ -253,7 +260,15 @@ void NewGUI::postinit()
 void
 NewGUI::update (double delta_time_sec)
 {
-    SG_UNUSED(delta_time_sec);
+    // 主题管理：auto 模式下检测日夜并在切换时重载主题；内部有 0.5 秒节流，
+    // 可以安全地每帧调用。
+    fguiTheme::update(delta_time_sec);
+
+    // hover 状态轮询：读取鼠标在窗口内的像素坐标（PUI 坐标系 y 轴向下），
+    // 由控件层遍历当前打开的对话框做命中测试并切换 highlight()/lowlight()。
+    fguiHoverUpdate(fgGetInt("/devices/status/mice/mouse/x", 0),
+                    fgGetInt("/devices/status/mice/mouse/y", 0));
+
     auto iter = _active_dialogs.begin();
     for(/**/; iter != _active_dialogs.end(); iter++)
         iter->second->update();
@@ -590,6 +605,11 @@ NewGUI::setStyle (void)
     //if (selected_style && n)
     //    n->alias(selected_style);
 
+    // 主题字体必须先于 setupFont 装入 FGFontCache：anthrax.xml 的字体名是
+    // 带子目录的相对路径（如 cn/simhei.ttf），若等本函数末尾的
+    // fguiTheme::init() 才加载，setupFont 查不到该字体时会静默回退到
+    // 内置位图字体，中文界面将完全不可读。
+    fguiTheme::preloadFont();
     setupFont(n->getNode("fonts/gui", true));
     n = n->getNode("colors", true);
 
@@ -602,6 +622,10 @@ NewGUI::setStyle (void)
 #if defined(HAVE_PUI)
     puSetDefaultColourScheme(c->red(), c->green(), c->blue(), c->alpha());
 #endif
+
+    // 样式色作为基础配色，主题色（ui_theme*.xml）在其上覆盖。
+    // 主题文件不存在时 fguiTheme::init() 不修改任何颜色，全部路径保持现状。
+    fguiTheme::init();
 }
 
 
@@ -613,6 +637,21 @@ NewGUI::setupFont (SGPropertyNode *node)
     puSetDefaultFonts(*_font, *_font);
 #endif
     return;
+}
+
+
+void
+NewGUI::setThemeColor (const std::string &name, const FGColor &color)
+{
+    // 颜色表按值管理 FGColor*，覆盖前先释放旧对象，避免 setStyle 之外的
+    // 运行时主题切换反复泄漏。
+    ColourDict::iterator it = _colors.find(name);
+    if (it != _colors.end()) {
+        delete it->second;
+    }
+
+    // 用分量显式构造，避免依赖 FGColor 的隐式拷贝语义。
+    _colors[name] = new FGColor(color.red(), color.green(), color.blue(), color.alpha());
 }
 
 

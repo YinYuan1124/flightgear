@@ -26,6 +26,7 @@
 #define _FNT_H_  1
 
 #include <stdio.h>
+#include <string>   // 新增 wrapString 接口需要 std::string（PUI 主题自动换行）
 
 #include <plib/sg.h>
 #include <osg/GL>
@@ -64,6 +65,34 @@ public:
   virtual float getGap       () const    = 0 ;
 
   virtual int hasGlyph ( char c ) const = 0 ;
+
+  /*
+   * 【ABI 铁律】以下六个主题相关虚函数是 FlightGear 二次开发新增的，
+   * 必须且只能追加在 hasGlyph 之后，绝对不能插入/重排上面任何既有虚函数：
+   * 预编译的 plib_pui.lib（puFont 在库内调用 getBBox/putch/puts/begin/end 等）
+   * 是按旧虚表槽位编译的，重排会导致调用错位直接崩溃。
+   *
+   * 这些函数一律提供非纯虚默认实现（空体/返回默认值），保证：
+   *   1) 旧后端（以及 plib 库内可能存在的其它派生类）无需改动即可继续工作；
+   *   2) 默认配置下的行为与加入这些接口之前完全一致。
+   */
+
+  // 行距系数：换行时垂直步进 = pointsize × 该值；1.0 = 现状（行高等于字号）。
+  virtual void  setLineSpacing ( float v ) { }                       // 行距系数；1.0=现状
+  virtual float getLineSpacing () const { return 1.0f ; }
+
+  // 文字描边：widthPx 为像素宽度，<=0 表示关闭；颜色为直通 alpha 的 RGBA。
+  virtual void  setOutline ( float widthPx, float r, float g, float b, float a ) { }  // 0=关
+
+  // 字符串级显示列表缓存开关（同一字符串重复绘制时复用已编译的 GL 显示列表）。
+  virtual void  setStringCache ( bool on ) { }
+
+  // 字形图集边长（像素，2 的幂）；首次光栅化前调用才生效。
+  virtual void  setAtlasSize ( int px ) { }
+
+  // 按最大宽度对字符串做自动换行，返回插入 '\n' 后的新字符串。
+  // 默认实现原样返回（不做任何换行），由具体后端按需覆写。
+  virtual std::string wrapString ( const char * s, float pointsize, float maxWidth ) ;
 } ;
 
 
@@ -76,6 +105,10 @@ private:
 
   float width     ; /* The width of a character in fixed-width mode */
   float gap       ; /* Set the gap between characters */
+
+  // 行距系数（二次开发新增）：换行垂直步进 = pointsize × line_spacing。
+  // 用类内初始化保证两个构造函数都自动获得默认值 1.0（即原有的行高行为）。
+  float line_spacing = 1.0f ;
 
   int   exists  [ FNTMAX_CHAR ] ; /* TRUE if character exists in tex-map */
 
@@ -213,6 +246,10 @@ public:
 
   int hasGlyph ( char c ) const { return exists[ (GLubyte) c ] ; }
 
+  // 行距配置（二次开发新增）；非法值（<=0）回退为 1.0，避免把整行文字压到重叠。
+  void  setLineSpacing ( float v ) override { line_spacing = ( v > 0.0f ) ? v : 1.0f ; }
+  float getLineSpacing () const override { return line_spacing ; }
+
   void getBBox ( const char *s, float pointsize, float italic,
                  float *left, float *right,
                  float *bot , float *top  ) ;
@@ -254,6 +291,10 @@ class fntBitmapFont : public fntFont
     int fix;
     float wid, gap;
 
+    // 行距系数（二次开发新增）：位图后端的换行步进单位是字体像素高度 height，
+    // 因此行距 = height × line_spacing（与 pointsize 无关）。默认 1.0 = 原行为。
+    float line_spacing = 1.0f;
+
  public:
 
     // data is a null-terminated list of glyph images:
@@ -287,6 +328,10 @@ class fntBitmapFont : public fntFont
     virtual float getGap       () const     { return gap; }
     
     virtual int hasGlyph ( char c ) const ;
+
+    // 行距配置（二次开发新增）；非法值（<=0）回退为 1.0。
+    void  setLineSpacing ( float v ) override { line_spacing = ( v > 0.0f ) ? v : 1.0f ; }
+    float getLineSpacing () const override { return line_spacing ; }
 };
 
 
@@ -336,6 +381,19 @@ public:
   float getGap       () const override { return gap ; }
 
   int hasGlyph ( char c ) const override { return 1 ; }
+
+  // ---- 主题排版扩展（二次开发新增，实现在 fntUnicode.cxx）----
+  // 行距：换行垂直步进 = pointsize × lineSpacing；默认 1.0（行高等于字号）。
+  void  setLineSpacing ( float v ) override ;
+  float getLineSpacing () const override ;
+  // 文字描边（像素宽度 + RGBA 颜色）；widthPx <= 0 关闭。
+  void  setOutline ( float widthPx, float r, float g, float b, float a ) override ;
+  // 字符串级显示列表缓存开关；关闭时退回逐字形绘制。
+  void  setStringCache ( bool on ) override ;
+  // 字形图集边长（2 的幂）；在首次光栅化之前调用才生效。
+  void  setAtlasSize ( int px ) override ;
+  // 按最大宽度自动换行（断点优先空格、CJK 可任意断、保留原有 '\n'）。
+  std::string wrapString ( const char * s, float pointsize, float maxWidth ) override ;
 
 private:
   struct Impl ;

@@ -1,4 +1,4 @@
-#ifdef HAVE_CONFIG_H
+﻿#ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
 
@@ -16,6 +16,7 @@
 #include "new_gui.hxx"
 #include "FGPUIMenuBar.hxx"
 #include "FlightGear_pu.h"
+#include "fgui_theme.hxx"
 
 using std::map;
 using std::string;
@@ -197,10 +198,19 @@ FGPUIMenuBar::make_menu (SGPropertyNode * node)
         FGLocale::utf8toLatin1(label);
 
         // append the keyboard hint to the menu entry
+        // 快捷键提示前用空格填充，代替 PUI 没有的"最小宽度/右对齐"能力。
+        // 空格数由 ui_theme.xml 的 <menubar-key-padding> 控制（原实现写死
+        // 11 个空格，中文字幅变大后提示列会挤压）；主题未启用时使用默认值 4。
+        int keyPadding = 4;
+        if (fguiTheme::enabled()) {
+            const float v = fguiTheme::metrics().menubarKeyPadding;
+            keyPadding = (v > 0.0f) ? int(v + 0.5f) : 0;
+        }
         string key = item_nodes[i]->getStringValue("key", "");
         if (!key.empty())
         {
-            label.append("           <");
+            label.append(std::string(keyPadding, ' '));
+            label.append("<");
             label.append(key);
             label.append(">");
         }

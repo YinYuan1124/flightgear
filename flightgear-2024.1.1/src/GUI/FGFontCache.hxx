@@ -91,6 +91,17 @@ public:
 
     fntFont *getTexFont(const std::string& name, float size=15.0, float slant=0.0);
 
+    /**
+     * 按相对字体目录（$FG_ROOT/Fonts 或 FG_FONTS）的路径显式加载一个字体，
+     * 返回底层 fntFont 对象（.txf -> fntTexFont，.ttf/.otf -> fntUnicodeFont）。
+     *
+     * 二次开发新增：ui_theme.xml 的主题字体允许位于 Fonts/cn 之类的子目录，
+     * 而 initializeFonts() 只扫描顶层目录，因此主题初始化时用它显式加载。
+     * 同名（相对路径）重复调用直接返回已有实例，不会重复加载；
+     * 加载失败返回 nullptr 并输出 SG_WARN。
+     */
+    fntFont *loadFont(const std::string& relName);
+
     SGPath getfntpath(const std::string& name);
     /**
      * Preload all the fonts in the FlightGear font directory. It is

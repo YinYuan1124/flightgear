@@ -1,4 +1,4 @@
-/*
+﻿/*
      PLIB - A Suite of Portable Game Libraries
      Copyright (C) 1998,2002  Steve Baker
 
@@ -90,7 +90,9 @@ void fntBitmapFont::puts ( sgVec3 curpos, float pointsize, float italic, const c
     for (int i = 0; s[i] != '\0'; i++) {
 	if (s[i] == '\n') {
 	    curpos[0] = x0;
-	    curpos[1] -= height;
+	    // 位图后端的行步进单位是字体像素高度 height；行距 = height × line_spacing
+	    // （二次开发新增，默认 1.0 保持原有行为）。
+	    curpos[1] -= height * line_spacing;
             glRasterPos2i(0,0); // beware - coordinate may be negative
             glBitmap(0, 0, 0, 0, curpos[0], curpos[1], NULL);
 	} else {
@@ -122,7 +124,9 @@ void fntBitmapFont::getBBox ( const char *s, float pointsize, float italic,
 	for (int i = 0; s[i] != '\0'; i++) {
 	    if (s[i] == '\n') {
 		if (x > x1) x1 = x;
-		y -= height;
+		// 与 puts() 保持同一口径：行步进 = height × line_spacing
+		// （二次开发新增，默认 1.0 保持原有行为）。
+		y -= height * line_spacing;
 		x = 0;
 	    } else {
 		int j = (GLubyte) s[i] - first;

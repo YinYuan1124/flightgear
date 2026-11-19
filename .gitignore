@@ -23,8 +23,7 @@ cmake-build-*/
 cmake-build-*_/
 out/
 dist/
-install/
-Install/
+Install/*
 installdir/
 
 
@@ -125,3 +124,13 @@ temp*
 
 # ---------- 其他 ----------
 jsbsim-1.3.3/UnrealEngine
+
+# ============================================================
+# 例外：Install/fgdata_2024_1/fgdata-overlay 覆盖包保持纳入版本控制
+# （2026-11-19 起随 FG_ROOT 一起发布；Install 其余内容仍全部忽略）
+# 注意：上面用的是 Install/*（忽略子项而非目录本身），git 才能下钻到
+# 例外目录；fgdata_2024_1 的其他子项继续被 * 忽略。
+# ============================================================
+!Install/fgdata_2024_1/
+Install/fgdata_2024_1/*
+!Install/fgdata_2024_1/fgdata-overlay/
