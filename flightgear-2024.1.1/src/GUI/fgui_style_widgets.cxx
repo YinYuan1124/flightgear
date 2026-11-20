@@ -293,6 +293,10 @@ void fguiDrawRoundRect(float x1, float y1, float x2, float y2, float r)
                        cy[corner] + r * std::sin(ang));
         }
     }
+    // 闭合三角扇：补回左下角圆弧的起点（即 corner==0、i==0 那个顶点）。
+    // 不补这一笔时，扇形缺少「扇心 → 左边框上端 → 左边框下端」这块三角形，
+    // 表现为对话框左侧缺一大块斜三角、直接透出 3D 场景（2026-11-20 实测）。
+    glVertex2f(x1, y1 + r);
     glEnd();
 }
 

@@ -568,6 +568,27 @@ struct fntUnicodeFont::Impl
     // 切换到该字号：FreeType 的光栅化尺寸是 face 级状态，每次按需设置。
     FT_Set_Pixel_Sizes ( face, 0, (FT_UInt) rasterPx ) ;
 
+    // 【位图 1:1 落地】顶点空间约定 1.0 = ascender，绘制时再乘回 pointsize，
+    // 因此屏幕上的 ascender 恒等于 pointsize 像素。但 FreeType 在像素字号 N 下
+    // 的 ascender 通常只有 0.7~0.8N（simhei 约 0.78N），于是位图会被拉伸
+    // pointsize/ascender ≈ 1.28 倍后再做双线性采样：笔画峰值覆盖率只剩约
+    // 0.75（2026-11-20 实测界面文字峰值 204/255，整体发灰发糊）。
+    // 这里反推像素字号，让 ascender 恰好等于 rasterPx，位图就能 1:1 落到
+    // 屏幕上；归一化口径不变，所以视觉字号与排版宽度都不受影响。
+    if ( face->size->metrics.ascender > 0 )
+    {
+      const float ascAt = face->size->metrics.ascender / 64.0f ;
+      if ( ascAt > 0.0f && std::fabs ( ascAt - (float) rasterPx ) > 0.5f )
+      {
+        // ascender 与像素字号成正比，故目标字号 = N * N / ascender(N)
+        int targetPx = (int) std::lround ( (float) rasterPx * rasterPx / ascAt ) ;
+        if ( targetPx < 6 )   targetPx = 6 ;
+        if ( targetPx > 200 ) targetPx = 200 ;
+        if ( targetPx != rasterPx )
+          FT_Set_Pixel_Sizes ( face, 0, (FT_UInt) targetPx ) ;
+      }
+    }
+
     // 该字号下的归一化系数（ascender，像素）。顶点空间里 1.0 代表 ascender，
     // 绘制时再乘回 pointsize，因此不同字号渲染出的视觉高度保持一致。
     float scale = face->size->metrics.ascender / 64.0f ;
