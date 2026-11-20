@@ -38,14 +38,12 @@ namespace
 
   // 字形光栅化时的 em 尺寸（像素）。固定用 48px 光栅化、渲染时再缩小，
   // 以获得足够的超采样精度（GUI 实际显示字号约 6~21px）。
+  // 建立 FT_Size 时使用的缺省像素字号。字形本身按显示字号光栅化
+  // （见 Impl::rasterPxFor），该值只在 open() 里用于初始化字体尺寸对象。
   const float RASTER_SIZE = 48.0f;
 
-  // 在 0 级之外额外构建并逐字形上传的 mip 层数。
-  // 只做 2 级（4 倍缩小）是因为图集里字形之间只有 2px 间隔，更深的 mip 层
-  // 会因间隔被平均掉而导致相邻字形互相串色。由于只定义了 0..2 级，必须
-  // 同时把 GL_TEXTURE_MAX_LEVEL 设为 2（见 createTexture()），否则纹理 mipmap 不
-  // 完整，采样时会被当作禁用，文字会渲染成实心色块。
-  const int MIP_LEVELS = 2 ;
+  // 图集不生成 mip（单层 0 级），因此不再需要 MIP_LEVELS 常量。
+
 
   // Windows 的 GL/gl.h 只声明到 OpenGL 1.1，没有下面这两个 OpenGL 1.2 的
   // 枚举，这里按规范补上常量值（注意 MAX_LOD 是 0x813B，0x813A 是 MIN_LOD，
@@ -61,12 +59,36 @@ namespace
   uint32_t utf8Decode ( const char **ps )
   {
     const unsigned char *s = reinterpret_cast<const unsigned char *>( *ps ) ;
-    uint32_t cp ;
 
-    if ( s[0] < 0x80 ) { cp = s[0] ; *ps += 1 ; return cp ; }
-    else if ( ( s[0] & 0xE0 ) == 0xC0 ) { cp = ( ( s[0] & 0x1F ) << 6 ) | ( s[1] & 0x3F ) ; *ps += 2 ; return cp ; }
-    else if ( ( s[0] & 0xF0 ) == 0xE0 ) { cp = ( ( s[0] & 0x0F ) << 12 ) | ( ( s[1] & 0x3F ) << 6 ) | ( s[2] & 0x3F ) ; *ps += 3 ; return cp ; }
-    else if ( ( s[0] & 0xF8 ) == 0xF0 ) { cp = ( ( s[0] & 0x07 ) << 18 ) | ( ( s[1] & 0x3F ) << 12 ) | ( ( s[2] & 0x3F ) << 6 ) | ( s[3] & 0x3F ) ; *ps += 4 ; return cp ; }
+    if ( s[0] < 0x80 ) { *ps += 1 ; return s[0] ; }
+    // 多字节分支必须先校验后续字节：既是非 NUL（串在此结束）又符合 UTF-8
+    // 续字节形式（10xxxxxx），否则按非法字节处理返回 0。原实现不做校验，
+    // 截断的多字节序列会读出缓冲区外的垃圾字节并光栅化出错误字形。
+    // 注意 || 的短路特性保证串提前结束时不会越界读取 s[2]/s[3]。
+    else if ( ( s[0] & 0xE0 ) == 0xC0 )
+    {
+      if ( s[1] == 0 || ( s[1] & 0xC0 ) != 0x80 ) { *ps += 1 ; return 0 ; }
+      *ps += 2 ;
+      return ( ( s[0] & 0x1F ) << 6 ) | ( s[1] & 0x3F ) ;
+    }
+    else if ( ( s[0] & 0xF0 ) == 0xE0 )
+    {
+      if ( s[1] == 0 || s[2] == 0 ||
+           ( s[1] & 0xC0 ) != 0x80 || ( s[2] & 0xC0 ) != 0x80 )
+      { *ps += 1 ; return 0 ; }
+      *ps += 3 ;
+      return ( ( s[0] & 0x0F ) << 12 ) | ( ( s[1] & 0x3F ) << 6 ) | ( s[2] & 0x3F ) ;
+    }
+    else if ( ( s[0] & 0xF8 ) == 0xF0 )
+    {
+      if ( s[1] == 0 || s[2] == 0 || s[3] == 0 ||
+           ( s[1] & 0xC0 ) != 0x80 || ( s[2] & 0xC0 ) != 0x80 ||
+           ( s[3] & 0xC0 ) != 0x80 )
+      { *ps += 1 ; return 0 ; }
+      *ps += 4 ;
+      return ( ( s[0] & 0x07 ) << 18 ) | ( ( s[1] & 0x3F ) << 12 ) |
+             ( ( s[2] & 0x3F ) << 6 ) | ( s[3] & 0x3F ) ;
+    }
     else { *ps += 1 ; return 0 ; }
   }
 
@@ -153,6 +175,8 @@ struct fntUnicodeFont::Impl
     float v_left, v_bot, v_right, v_top ;
     // 水平步进宽度（同上，按 ascender 归一化）。
     float advance ;
+    // 该字形光栅化时使用的像素字号。图集扩容重建时需要按同一字号重新光栅化。
+    int rasterPx ;
   } ;
 
   FT_Library library = nullptr ;   // FreeType 库句柄
@@ -160,15 +184,31 @@ struct fntUnicodeFont::Impl
   GLuint texture = 0 ;             // 字形图集纹理对象（惰性创建，0 = 尚未创建）
   int pen_x = 0, pen_y = 0, row_h = 0 ;  // 图集打包游标：当前 x/y 位置与当前行高
 
-  // 归一化系数：顶点空间中 1.0 代表字体的 ascender（基线到最高字形顶部的
-  // 距离，单位像素）。之所以按 ascender 而不是按 em 高度归一化，是为了与
-  // fntTexFont 保持一致 —— fntTexFont 把每个度量都除以 max_height
-  // （即 ascender），这样同一个 pointsize 在两种字体后端下渲染出的视觉
-  // 高度完全相同（em 高度约比大写字母高度大 30%，若按 em 归一化字会偏小）。
-  float scale = 1.0f ;
+  // 【按显示字号光栅化】把 pointsize 换算成整数像素字号。
+  //
+  // 早期实现固定用 48px 光栅化、绘制时缩小到 GUI 字号（12~22px），再靠 mipmap
+  // 缓解缩小带来的细节损失。实测 48px → 18px 时，即使采样到 24px 的 mip 层，
+  // 汉字细笔画的峰值覆盖率仍只有约 0.65（屏幕上的文字整体发灰、边缘发糊，
+  // 而同一界面的纯色填充完全正常）。因此改为"按调用方给的字号原尺寸光栅化"：
+  // FreeType 在原生字号下的抗锯齿质量最好，字形与像素网格对齐，笔画锐利。
+  // 不同字号的字形并存于同一张图集，用 (字号, 码点) 作为缓存键。
+  static int rasterPxFor ( float pointsize )
+  {
+    int px = (int) std::lround ( pointsize ) ;
+    if ( px < 6 )  px = 6 ;
+    if ( px > 96 ) px = 96 ;
+    return px ;
+  }
 
-  // 已光栅化字形的缓存：码点 -> 字形度量。
-  std::unordered_map<uint32_t, Glyph> glyphs ;
+  static uint64_t glyphKey ( uint32_t cp, int rasterPx )
+  {
+    return ( (uint64_t) (uint32_t) rasterPx << 32 ) | (uint64_t) cp ;
+  }
+
+  // 已光栅化字形的缓存：(字号, 码点) -> 字形度量。
+  // 归一化仍按该字号下的 ascender 进行（与 fntTexFont 的口径一致：顶点空间
+  // 中 1.0 代表 ascender），因此同一 pointsize 下两种字体的视觉高度相同。
+  std::unordered_map<uint64_t, Glyph> glyphs ;
 
   // ---- 二次开发新增的主题排版参数 ----
   float lineSpacing = 1.0f ;       // 行距系数：换行垂直步进 = pointsize × 该值
@@ -226,22 +266,17 @@ struct fntUnicodeFont::Impl
     // 采样时不会把未初始化的垃圾数据混进字形边缘；每个字形在 getGlyph()
     // 里负责填充自己在每一层中的小区域。
     {
+      // 只分配 0 级（无 mipmap）：字形按显示字号原尺寸光栅化，绘制时基本
+      // 1:1 采样，不需要（也不应当）用 mip 层平均，否则笔画会发灰。
       std::vector<unsigned char> zeros ( (size_t) atlasSize * atlasSize * 2, 0 ) ;
-      for ( int level = 0 ; level <= MIP_LEVELS ; ++level )
-        glTexImage2D ( GL_TEXTURE_2D, level, GL_LUMINANCE_ALPHA,
-                       atlasSize >> level, atlasSize >> level, 0,
-                       GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, zeros.data() ) ;
+      glTexImage2D ( GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA,
+                     atlasSize, atlasSize, 0,
+                     GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, zeros.data() ) ;
     }
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR ) ;
-    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR ) ;
-    // 【关键】只定义了 0..MIP_LEVELS 这几层 mip（见 getGlyph），必须把
-    // GL_TEXTURE_MAX_LEVEL 显式设为 MIP_LEVELS：该参数的默认值是 1000，
-    // OpenGL 会要求 1024x1024 纹理具备一直到 1x1 的完整 mip 金字塔才算
-    // "mipmap 完整"。链不完整时纹理会被当作禁用、采样只输出顶点颜色，
-    // 文字就渲染成了实心色块（本项目实际踩过这个坑）。
-    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, MIP_LEVELS ) ;
-    // 再把采样 LOD 上限也钳到 MIP_LEVELS，双保险（MAX_LEVEL 本已限制采样）。
-    glTexParameterf ( GL_TEXTURE_2D, GL_TEXTURE_MAX_LOD, (float) MIP_LEVELS ) ;
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR ) ;
+    // 没有 mip 链时把 MAX_LEVEL 设为 0，避免驱动认为纹理不完整。
+    glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0 ) ;
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP ) ;
     glTexParameteri ( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP ) ;
     glTexEnvi ( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE ) ;
@@ -266,11 +301,13 @@ struct fntUnicodeFont::Impl
     if ( newSize > MAX_ATLAS_SIZE )
       newSize = MAX_ATLAS_SIZE ;
 
-    // 先把已缓存的码点收集起来（下面会清空 glyphs）。
-    std::vector<uint32_t> cps ;
-    cps.reserve ( glyphs.size() ) ;
+    // 先把已缓存的 (字号, 码点) 收集起来（下面会清空 glyphs）。
+    // 注意每个字形要记住自己的光栅化字号，重建时必须按同一字号重新光栅化，
+    // 否则归一化比例会变、文字大小错误。
+    std::vector<std::pair<uint32_t,int>> cached ;
+    cached.reserve ( glyphs.size() ) ;
     for ( const auto& kv : glyphs )
-      cps.push_back ( kv.first ) ;
+      cached.emplace_back ( (uint32_t) ( kv.first & 0xffffffffu ), kv.second.rasterPx ) ;
 
     glyphs.clear () ;
     pen_x = pen_y = row_h = 0 ;
@@ -281,8 +318,8 @@ struct fntUnicodeFont::Impl
     ++glyphGeneration ;
 
     // 按新尺寸重新光栅化旧字形；此时禁止再次递归扩容（否则可能无限递归）。
-    for ( uint32_t cp : cps )
-      getGlyph ( cp, false ) ;
+    for ( const auto& item : cached )
+      getGlyph ( item.first, item.second, false ) ;
 
     return true ;
   }
@@ -344,15 +381,16 @@ struct fntUnicodeFont::Impl
   // 预先把字符串里所有码点光栅化进图集。必须在 glNewList 之外调用：
   // 首次光栅化可能触发图集扩容（glTexParameteri 等调用若发生在显示列表
   // 编译期间会被"录进"列表而不会立即生效，导致新纹理参数错误）。
-  void preloadGlyphs ( const char *s )
+  void preloadGlyphs ( const char *s, float pointsize )
   {
+    const int rasterPx = rasterPxFor ( pointsize ) ;
     const char *p = s ;
     while ( *p != '\0' )
     {
       if ( *p == '\n' ) { p++ ; continue ; }
       uint32_t cp = utf8Decode ( &p ) ;
       if ( cp == 0 ) continue ;
-      getGlyph ( cp ) ;
+      getGlyph ( cp, rasterPx ) ;
     }
   }
 
@@ -364,6 +402,8 @@ struct fntUnicodeFont::Impl
   {
     const SGfloat origx = curpos[0] ;
     const char *p = s ;
+    // 按显示字号取字形（原尺寸光栅化，见 rasterPxFor）。
+    const int rasterPx = rasterPxFor ( pointsize ) ;
 
     while ( *p != '\0' )
     {
@@ -381,7 +421,7 @@ struct fntUnicodeFont::Impl
       uint32_t cp = utf8Decode ( &p ) ;
       if ( cp == 0 ) continue ;
 
-      const Glyph *g = getGlyph ( cp ) ;
+      const Glyph *g = getGlyph ( cp, rasterPx ) ;
       if ( !g ) continue ;
 
       // 空白字形（如空格）：只前进光标。
@@ -454,7 +494,7 @@ struct fntUnicodeFont::Impl
     for ( int attempt = 0 ; attempt < 8 && ! stable ; ++attempt )
     {
       // 先把所有字形光栅化好（扩容/上传都在列表外完成），编译阶段只读缓存。
-      preloadGlyphs ( s ) ;
+      preloadGlyphs ( s, pointsize ) ;
 
       const unsigned genBefore = glyphGeneration ;
       list = glGenLists ( 1 ) ;
@@ -502,32 +542,51 @@ struct fntUnicodeFont::Impl
       glTranslatef ( curpos[0], curpos[1], curpos[2] ) ;
       glCallList ( list ) ;
     glPopMatrix () ;
+    // 编译分支同样推进调用方光标（修复审查发现的问题）：缓存命中分支与
+    // 直绘分支都会推进，唯独首次编译分支漏掉的话，fntRenderer 等连续
+    // puts 的调用方首帧与后续帧游标位置不一致，文字会重叠。
+    curpos[0] += endX ;
+    curpos[1] += endY ;
   }
 
   // 光栅化并缓存一个字形。allowExpand 仅在最外层调用时为 true；
   // expandAtlas() 内部重新光栅化旧字形时传 false，避免无限递归扩容。
-  const Glyph * getGlyph ( uint32_t cp, bool allowExpand = true )
+  // 取出（必要时光栅化）指定字号下的字形。
+  // rasterPx 由 rasterPxFor(pointsize) 得到；不同字号的字形并存于同一图集。
+  const Glyph * getGlyph ( uint32_t cp, int rasterPx, bool allowExpand = true )
   {
+    const uint64_t key = glyphKey ( cp, rasterPx ) ;
+
     // 命中缓存则直接返回。
-    auto it = glyphs.find ( cp ) ;
+    auto it = glyphs.find ( key ) ;
     if ( it != glyphs.end() )
       return &it->second ;
 
     // 惰性创建图集纹理（首次光栅化）。
     ensureTexture () ;
 
+    // 切换到该字号：FreeType 的光栅化尺寸是 face 级状态，每次按需设置。
+    FT_Set_Pixel_Sizes ( face, 0, (FT_UInt) rasterPx ) ;
+
+    // 该字号下的归一化系数（ascender，像素）。顶点空间里 1.0 代表 ascender，
+    // 绘制时再乘回 pointsize，因此不同字号渲染出的视觉高度保持一致。
+    float scale = face->size->metrics.ascender / 64.0f ;
+    if ( scale <= 0.0f )
+      scale = (float) rasterPx ;
+
     // 不支持的码点返回一个占位字形（零尺寸方块，仅占据步进宽度）。
     Glyph g ;
     g.t_left = g.t_bot = g.t_right = g.t_top = 0.0f ;
     g.v_left = g.v_bot = g.v_right = g.v_top = 0.0f ;
     g.advance = 0.5f ;
+    g.rasterPx = rasterPx ;
 
     // 用 FreeType 把该码点光栅化成 8 位灰度位图（FT_LOAD_RENDER）。
     if ( FT_Load_Char ( face, cp, FT_LOAD_RENDER ) != 0 )
     {
-      glyphs[cp] = g ;
+      glyphs[key] = g ;
       ++glyphGeneration ;
-      return &glyphs[cp] ;
+      return &glyphs[key] ;
     }
 
     FT_Bitmap& bmp = face->glyph->bitmap ;
@@ -538,9 +597,9 @@ struct fntUnicodeFont::Impl
     if ( w == 0 || h == 0 )
     {
       g.advance = face->glyph->advance.x / 64.0f / scale ;
-      glyphs[cp] = g ;
+      glyphs[key] = g ;
       ++glyphGeneration ;
-      return &glyphs[cp] ;
+      return &glyphs[key] ;
     }
 
     // 当前行放不下时换到下一行；行间也留 2px 间隔。
@@ -553,7 +612,7 @@ struct fntUnicodeFont::Impl
       {
         // 扩容会重建纹理并重光栅化旧字形，当前 FT_Bitmap 已失效，
         // 因此重新走一遍本函数（此时禁止再次扩容）。
-        return getGlyph ( cp, false ) ;
+        return getGlyph ( cp, rasterPx, false ) ;
       }
 
       if ( ! atlasFullWarned )
@@ -565,9 +624,9 @@ struct fntUnicodeFont::Impl
       }
 
       g.advance = face->glyph->advance.x / 64.0f / scale ;
-      glyphs[cp] = g ;
+      glyphs[key] = g ;
       ++glyphGeneration ;
-      return &glyphs[cp] ;
+      return &glyphs[key] ;
     }
 
     // FreeType 位图的每行可能带有填充字节（pitch 可能大于 w），
@@ -590,67 +649,8 @@ struct fntUnicodeFont::Impl
     glTexSubImage2D ( GL_TEXTURE_2D, 0, pen_x, pen_y, w, h,
                       GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, buf.data() ) ;
 
-    // 继续把该字形在 mip 1..MIP_LEVELS 层中的对应小区域也上传，每层都用
-    // 2x2 盒式过滤在 CPU 上预过滤。（GL 1.x 路径没有 glGenerateMipmap，
-    // 不能交给驱动生成。）
-    //
-    // 为什么必须做 mip：图集按 48px 光栅化、GUI 却以 ~15px 显示（约 3.2 倍
-    // 缩小）。没有 mip 时，GL_LINEAR 每次都只采 2x2 个 0 级纹素，汉字细横画
-    // （约 2~3 纹素宽）会被平均到 ~50% 覆盖率，笔画发灰发糊、忽明忽暗；
-    // 有了预过滤的 mip 层，采样的是笔画的平均覆盖率（~80%+），笔画明亮且
-    // 粗细均匀。
-    {
-      const unsigned char *src_data = buf.data() ;
-      int src_w = w, src_h = h ;
-      int src_x = pen_x, src_y = pen_y ;
-
-      for ( int level = 1 ; level <= MIP_LEVELS ; ++level )
-      {
-        const int dw = ( src_w + 1 ) / 2 ;
-        const int dh = ( src_h + 1 ) / 2 ;
-        if ( dw <= 0 || dh <= 0 )
-          break ;
-
-        // 第 L 层的纹素坐标 = 第 0 层坐标除以 2^L（即对上一层坐标整除 2）。
-        const int dx = src_x / 2 ;
-        const int dy = src_y / 2 ;
-
-        // 对该字形区域做 2x2 盒式过滤（边缘不足 2x2 时按实际纹素数平均）。
-        std::vector<unsigned char> down ( (size_t) dw * dh * 2 ) ;
-        for ( int yy = 0 ; yy < dh ; ++yy )
-        {
-          for ( int xx = 0 ; xx < dw ; ++xx )
-          {
-            int acc = 0, n = 0 ;
-            for ( int sy = 0 ; sy < 2 ; ++sy )
-            {
-              for ( int sx = 0 ; sx < 2 ; ++sx )
-              {
-                const int ix = xx * 2 + sx ;
-                const int iy = yy * 2 + sy ;
-                if ( ix < src_w && iy < src_h )
-                {
-                  acc += src_data[ ( iy * src_w + ix ) * 2 ] ;
-                  n++ ;
-                }
-              }
-            }
-            const unsigned char v = (unsigned char) ( acc / n ) ;
-            down[ ( yy * dw + xx ) * 2     ] = v ;
-            down[ ( yy * dw + xx ) * 2 + 1 ] = v ;
-          }
-        }
-
-        glTexSubImage2D ( GL_TEXTURE_2D, level, dx, dy, dw, dh,
-                          GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, down.data() ) ;
-
-        // 下一层的过滤基于本层结果继续。
-        src_data = down.data() ;
-        src_w = dw ; src_h = dh ;
-        src_x = dx ; src_y = dy ;
-      }
-    }
-
+    // 说明：图集不再生成 mip 层。字形按显示字号原尺寸光栅化，绘制时 1:1
+    // 采样；若再做 mip 平均，细笔画会被稀释成灰色（历史问题）。
     // 图集边长可能在扩容后变化，UV 归一化必须用当前尺寸。
     const float sx = 1.0f / atlasSize ;
     // bitmap_left / bitmap_top 是位图左上角相对基线的偏移（像素），
@@ -674,9 +674,9 @@ struct fntUnicodeFont::Impl
     pen_x += w + 2 ;
     if ( h > row_h ) row_h = h ;
 
-    glyphs[cp] = g ;
+    glyphs[key] = g ;
     ++glyphGeneration ;
-    return &glyphs[cp] ;
+    return &glyphs[key] ;
   }
 
   bool open ( const SGPath& path )
@@ -687,14 +687,10 @@ struct fntUnicodeFont::Impl
     if ( FT_New_Face ( library, path.utf8Str().c_str(), 0, &face ) != 0 )
       return false ;
 
-    // 把 em 尺寸设为 RASTER_SIZE 像素，之后按此尺寸光栅化所有字形。
+    // 二次开发：字形改为"按调用方给的字号原尺寸光栅化"（见 rasterPxFor），
+    // 因此这里只设置一个缺省尺寸以建立 FT_Size 对象；真正的字号在
+    // getGlyph() 里按每个字形各自设置。
     FT_Set_Pixel_Sizes ( face, 0, (FT_UInt) RASTER_SIZE ) ;
-
-    // ascender 以 26.6 定点数表示（1/64 像素），换算成像素。
-    // 若字体报告了非正的 ascender（正常情况下不会发生），回退到 em 尺寸。
-    scale = face->size->metrics.ascender / 64.0f ;
-    if ( scale <= 0.0f )
-      scale = RASTER_SIZE ;
 
     // 二次开发：图集纹理改为惰性分配，这里不再创建纹理。
     // 这样 setAtlasSize() 在"首次光栅化之前"调用都能生效，
@@ -811,6 +807,8 @@ void fntUnicodeFont::getBBox ( const char *s, float pointsize, float italic,
   if ( s )
   {
     const char *p = s ;
+    // 测宽与绘制必须使用同一字号的字形（原尺寸光栅化）。
+    const int rasterPx = Impl::rasterPxFor ( pointsize ) ;
     while ( *p != '\0' )
     {
       // 换行：水平归零、垂直下移一个行距（归一化单位 × lineSpacing，
@@ -819,7 +817,7 @@ void fntUnicodeFont::getBBox ( const char *s, float pointsize, float italic,
 
       uint32_t cp = utf8Decode ( &p ) ;
       if ( cp == 0 ) continue ;
-      const Impl::Glyph *g = impl->getGlyph ( cp ) ;
+      const Impl::Glyph *g = impl->getGlyph ( cp, rasterPx ) ;
       if ( !g ) continue ;
 
       if ( l > h + g->v_left ) l = h + g->v_left ;
@@ -844,7 +842,7 @@ void fntUnicodeFont::putch ( sgVec3 curpos, float pointsize, float italic, char 
     begin () ;
 
   uint32_t cp = (unsigned char) c ;
-  const Impl::Glyph *g = impl->getGlyph ( cp ) ;
+  const Impl::Glyph *g = impl->getGlyph ( cp, Impl::rasterPxFor ( pointsize ) ) ;
   // 空白字形（如空格）：只前进光标，不画四边形。
   if ( !g || ( g->v_right == g->v_left && g->v_top == g->v_bot ) )
   {
@@ -927,6 +925,7 @@ std::string fntUnicodeFont::wrapString ( const char *s, float pointsize, float m
     lineWidth = 0.0f ;
   } ;
 
+  const int rasterPx = Impl::rasterPxFor ( pointsize ) ;
   const char *p = s ;
   while ( *p != '\0' )
   {
@@ -949,7 +948,7 @@ std::string fntUnicodeFont::wrapString ( const char *s, float pointsize, float m
 
     // 取该字符的步进宽度（与绘制完全同口径：(advance + gap) × pointsize）。
     float w = pointsize * 0.5f ;
-    const Impl::Glyph *g = impl->getGlyph ( cp ) ;
+    const Impl::Glyph *g = impl->getGlyph ( cp, rasterPx ) ;
     if ( g ) w = ( g->advance + gap ) * pointsize ;
 
     // 行内已有内容且当前字符会超宽 → 需要断行。

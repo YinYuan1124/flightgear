@@ -179,7 +179,7 @@ void fntTexFont::getBBox ( const char *s,
       // 二者不一致会造成多行文本"测量高度"与"实际绘制"错位（HUD::textAlign 依赖
       // getBBox 定位）。现在统一为 × line_spacing：默认 1.0 与 puts 完全一致，
       // 需要更大行距时由主题通过 setLineSpacing 统一设置。
-      v_pos -= line_spacing ;
+      v_pos -= s_line_spacing ;
       s++ ;
       continue ;
     }
@@ -244,7 +244,7 @@ void fntTexFont::puts ( sgVec3 curpos, float pointsize, float italic, const char
     {
       curpos[0]  = origx ;
       // 行距 = 字号 × 行距系数（二次开发新增，默认 1.0 即原行为）。
-      curpos[1] -= pointsize * line_spacing ;
+      curpos[1] -= pointsize * s_line_spacing ;
     }
     else
       low_putch ( curpos, pointsize, italic, *s ) ;

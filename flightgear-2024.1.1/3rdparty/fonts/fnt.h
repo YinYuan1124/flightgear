@@ -106,9 +106,13 @@ private:
   float width     ; /* The width of a character in fixed-width mode */
   float gap       ; /* Set the gap between characters */
 
-  // 行距系数（二次开发新增）：换行垂直步进 = pointsize × line_spacing。
-  // 用类内初始化保证两个构造函数都自动获得默认值 1.0（即原有的行高行为）。
-  float line_spacing = 1.0f ;
+  // 【注意】行距系数不能用实例成员保存。
+  // 本类的实例可能在按 vcpkg 旧头文件（无该成员）布局编译的 TU 中定义
+  // （例如 src/GUI/fonts.cxx 的静态对象），而构造函数实现在本目录的
+  // fnt.cxx 中、按新布局编译——增加实例成员会让构造函数越过对象末尾写入，
+  // 覆盖相邻全局对象的 vtable 指针（曾经把 fntSans12B 的 vtable 改写为
+  // 1.0f 的位模式，导致 PUI 测量文字时崩溃）。因此改用静态成员：类大小不变。
+  static inline float s_line_spacing = 1.0f ;
 
   int   exists  [ FNTMAX_CHAR ] ; /* TRUE if character exists in tex-map */
 
@@ -247,8 +251,9 @@ public:
   int hasGlyph ( char c ) const { return exists[ (GLubyte) c ] ; }
 
   // 行距配置（二次开发新增）；非法值（<=0）回退为 1.0，避免把整行文字压到重叠。
-  void  setLineSpacing ( float v ) override { line_spacing = ( v > 0.0f ) ? v : 1.0f ; }
-  float getLineSpacing () const override { return line_spacing ; }
+  // 用静态成员保存（理由见上方 s_line_spacing 的注释）。
+  void  setLineSpacing ( float v ) override { s_line_spacing = ( v > 0.0f ) ? v : 1.0f ; }
+  float getLineSpacing () const override { return s_line_spacing ; }
 
   void getBBox ( const char *s, float pointsize, float italic,
                  float *left, float *right,
@@ -292,8 +297,10 @@ class fntBitmapFont : public fntFont
     float wid, gap;
 
     // 行距系数（二次开发新增）：位图后端的换行步进单位是字体像素高度 height，
-    // 因此行距 = height × line_spacing（与 pointsize 无关）。默认 1.0 = 原行为。
-    float line_spacing = 1.0f;
+    // 因此行距 = height × s_line_spacing（与 pointsize 无关）。默认 1.0 = 原行为。
+    // 【必须用静态成员】理由同 fntTexFont：本类的静态实例定义在
+    // src/GUI/fonts.cxx，若增加实例成员，构造函数会越界覆盖相邻对象。
+    static inline float s_line_spacing = 1.0f;
 
  public:
 
@@ -330,8 +337,8 @@ class fntBitmapFont : public fntFont
     virtual int hasGlyph ( char c ) const ;
 
     // 行距配置（二次开发新增）；非法值（<=0）回退为 1.0。
-    void  setLineSpacing ( float v ) override { line_spacing = ( v > 0.0f ) ? v : 1.0f ; }
-    float getLineSpacing () const override { return line_spacing ; }
+    void  setLineSpacing ( float v ) override { s_line_spacing = ( v > 0.0f ) ? v : 1.0f ; }
+    float getLineSpacing () const override { return s_line_spacing ; }
 };
 
 

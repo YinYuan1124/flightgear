@@ -141,6 +141,18 @@ void fguiDrawCircleOutline(float cx, float cy, float r)
     glEnd();
 }
 
+// 把字节位置收敛到 UTF-8 字符边界（修复审查发现的问题）：plib 的
+// cursor_position/select_start/end 都按字节移动，CJK 字符占 3 字节，
+// 光标可能落在码点中间；直接 substr 截断的 UTF-8 序列会让测宽与绘制
+// 错乱（续字节以 0x80-0xBF 开头，据此回退到序列起点）。
+static int fguiUtf8ClampPos(const std::string& s, int pos)
+{
+    pos = std::min<int>(std::max(pos, 0), int(s.size()));
+    while (pos > 0 && ((unsigned char)s[pos] & 0xC0) == 0x80)
+        --pos;
+    return pos;
+}
+
 // 判断对象是否值得作为 hover 目标：只有可自绘 hover 状态的 FGTheme* 控件。
 // FGThemeGroup 只是容器（由子控件各自响应），不在此列。
 bool fguiIsHoverTarget(puObject* object)
@@ -200,7 +212,11 @@ puObject* fguiFindHit(puObject* object, int x, int y)
     }
 
     // 子控件优先（"最深命中"）；没有子控件命中时才考虑自身。
-    if (!best && fguiIsHoverTarget(object) && object->isHit(lx, ly))
+    // 注意（修复审查发现的问题）：isHit 与 plib 的 puGroup::checkHit 约定
+    // 一致——用"父坐标系"的坐标与 abox.min 比较（父容器递归子控件前才
+    // 减 abox.min）。因此自身命中用传入的 x/y，只有递归子控件时才用
+    // 已减去本对象 abox 原点的 lx/ly。
+    if (!best && fguiIsHoverTarget(object) && object->isHit(x, y))
         best = object;
 
     return best;
@@ -552,8 +568,7 @@ void FGThemeInput::draw(int dx, int dy)
     // 水平滚动（修复审查发现的问题）：文本超出输入框时把绘制起点左移，
     // 使 I 光标始终保持在框内可见（plib 原 draw 也有同样的显示偏移逻辑）。
     // 偏移对选区/文字/光标三者统一生效，保证它们仍然对齐。
-    const int cursor = std::min<int>(std::max(cursor_position, 0),
-                                     int(text.size()));
+    const int cursor = fguiUtf8ClampPos(text, cursor_position);
     const float availTextW = std::max(0.0f, (x2 - x1) - 2.0f * PUSTR_LGAP - 4.0f);
     const float cursorFromStart =
         font.getFloatStringWidth(text.substr(0, cursor).c_str());
@@ -565,8 +580,9 @@ void FGThemeInput::draw(int dx, int dy)
     // 选区（select_start_position <= select_end_position 时高亮）。
     if (select_start_position >= 0 &&
         select_end_position > select_start_position) {
-        const int start = std::min<int>(select_start_position, int(text.size()));
-        const int end = std::min<int>(select_end_position, int(text.size()));
+        // 选区端点同样收敛到 UTF-8 字符边界（理由见 fguiUtf8ClampPos）。
+        const int start = fguiUtf8ClampPos(text, select_start_position);
+        const int end = fguiUtf8ClampPos(text, select_end_position);
         if (start < end) {
             const float sx1 = textXEff + font.getFloatStringWidth(
                                               text.substr(0, start).c_str());

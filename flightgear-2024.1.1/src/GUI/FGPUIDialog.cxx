@@ -398,11 +398,6 @@ puObject* fgPopup::getActiveInputField(puObject* object)
 int fgPopup::checkHit(int button, int updown, int x, int y)
 {
     int result = 0;
-    // 鼠标按下时把所属对话框标记为最新置顶：PUI 会把被点击的对话框移到
-    // 绘制栈顶（puMoveToLast），hover 轮询用该序号在多对话框重叠时选择
-    // 真正最上层的那一个（修复审查发现的问题：不能按注册表遍历顺序取）。
-    if (updown == PU_DOWN && parentDialog)
-        parentDialog->bumpZOrder();
     // still need to ensure that the hit is within this window. The code used to check _dragging
     // as well, however that had the unfortunate side effect of allowing clicks to pass through to
     // the underlying window. RJH-07-08-18.
@@ -411,6 +406,12 @@ int fgPopup::checkHit(int button, int updown, int x, int y)
         // set current dialog name on mouse down.
         if (updown == PU_DOWN && result && parentDialog && propCurrentDialog) {
             propCurrentDialog->setStringValue(parentDialog->getName());
+            // 仅在真正命中本对话框时置顶（修复审查发现的问题）：plib 会把
+            // PU_DOWN 依次发给接口栈里的每个 popup，直到某个返回真才停，
+            // 空白处的点击会让所有对话框都收到事件；若无条件 bump，最后
+            // 一个被 bump 的底层对话框 z 序反而最高，hover 会高亮被遮挡的
+            // 控件。puPopup::checkHit 返回非零即表示指针在本对话框内。
+            parentDialog->bumpZOrder();
         }
     }
     if (!_draggable)

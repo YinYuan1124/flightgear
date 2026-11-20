@@ -59,7 +59,7 @@
     <metrics>
       <!-- 以下排版/行为参数与日间主题保持一致，避免切换时布局跳动 -->
       <corner-radius>5</corner-radius>
-      <stroke-width>1.0</stroke-width>
+      <stroke-width>0</stroke-width>
       <line-spacing>1.3</line-spacing>
       <text-backdrop>0</text-backdrop>
       <text-wrap>1</text-wrap>

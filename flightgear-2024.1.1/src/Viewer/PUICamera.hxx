@@ -69,7 +69,6 @@ private:
 
     // frame-gating 用的相机 initial draw callback：在每帧清屏前按 puNeedRefresh()
     // 动态设置 clearMask（需要刷新=清颜色，跳过帧=不清），需用 ref_ptr 保活。
-    osg::ref_ptr<osg::NodeCallback> _drawCallback;   // frame-gating 的 cull 回调（见 cxx 注释）
 
     int _uiWidth = 0;  // UI 逻辑宽度（scaled），0 表示尚未 resize
     int _uiHeight = 0; // UI 逻辑高度（scaled），0 表示尚未 resize

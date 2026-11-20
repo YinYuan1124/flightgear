@@ -108,7 +108,7 @@ namespace fguiTheme
 
 ### 3.2 fnt 层（`3rdparty/fonts/fnt.h` + 各后端）
 
-**ABI 铁律**：新虚函数一律追加在 `hasGlyph`（fnt.h:66）之后、给出**非纯虚默认实现**；不得重排既有虚函数（与预编译 plib_pui.lib 的 vtable 槽位兼容）。所有被改文件若加中文注释必须补 UTF-8 BOM（fnt.cxx / fntBitmap.cxx / fntTXF.cxx / fntLocal.h 目前无 BOM；fnt.h 与 fntUnicode.cxx 已有）。
+**ABI 铁律**：新虚函数一律追加在 `hasGlyph`（fnt.h:66）之后、给出**非纯虚默认实现**；不得重排既有虚函数（与预编译 plib_pui.lib 的 vtable 槽位兼容）。**不得给 `fntTexFont` / `fntBitmapFont` 增加实例数据成员**——这两个类的实例可能在按 vcpkg 旧头文件布局编译的 TU（如 `src/GUI/fonts.cxx` 的三个全局字体对象）中定义，而构造函数实现按 in-tree 头文件编译；增加成员会让构造函数越界写入并覆盖相邻全局对象的 vtable 指针（2026-11-19 实际事故：`fntSans12B` 的 vtable 被写成 1.0f 的位模式，PUI 测量文字时崩溃）。需要新状态时用静态成员或在 .cxx 内部定义的结构体（如 `fntUnicodeFont::Impl`）。所有被改文件若加中文注释必须补 UTF-8 BOM（fnt.cxx / fntBitmap.cxx / fntTXF.cxx / fntLocal.h 目前无 BOM；fnt.h 与 fntUnicode.cxx 已有）。
 
 ```cpp
 // fnt.h 追加（hasGlyph 之后）：
@@ -121,6 +121,7 @@ virtual std::string wrapString ( const char * s, float pointsize, float maxWidth
 ```
 
 - **fntUnicode.cxx**（主实现）：
+  - **按显示字号光栅化**（2026-11-19 修订）：字形缓存键为 (字号, 码点)，每次光栅化前 `FT_Set_Pixel_Sizes(face, 0, lround(pointsize))`，归一化仍按该字号的 ascender。原先固定 48px 光栅化 + mip 缩小，实测 48→18px 时笔画峰值覆盖率只有约 0.65，界面文字整体发灰（实测像素峰值 167/255；改为原尺寸后 236/255）。图集不再生成 mip（单层 0 级，`MAX_LEVEL=0`）。
   - `puts`/`getBBox` 换行步进 × `lineSpacing`（现 fntUnicode.cxx:412 / :338，硬编码 pointsize / 1.0）。
   - 描边：`puts`/`putch` 中先以 `glGetFloatv(GL_CURRENT_COLOR)` 保存颜色，按 ±widthPx/pointsize 的归一化偏移（4 方向）以描边色画字形四边形，再以原色画主字形，结束恢复颜色。图集、mip 不动。
   - `wrapString`：逐码点累加 advance 断行；断点优先空格、CJK 任意断；`\n` 保留；结果插 `\n`。
@@ -168,7 +169,7 @@ void fguiHoverUpdate(int x, int y);  // 声明；实现见 hover 段
 - :85 后补 `glDepthMask(GL_FALSE)`（绘制期禁深度写入）。
 - :94 前补 `glEnable(GL_SCISSOR_TEST)` + `glScissor(0, 0, 窗口宽, 窗口高)`（用 puGetWindowSize 语义的 scaled 尺寸；pixelRatio 恒 1.0）。
 - 合成 quad :325 RenderBin 1001 → 1002（压过 QML，PUI 绝对置顶）；quad StateSet 补 `osg::Depth(ALWAYS, 0, 1, false)`。
-- `frame-gating=1` 时：`puNeedRefresh()`（pu.h:323）为假则跳过 `puDisplay()` 且跳过 clearMask（camera 设置动态调整），resize/主题切换强制 `puPostRefresh()`；默认 0（不启用，避免未知刷新路径遗漏）。
+- ~~`frame-gating=1` 时：`puNeedRefresh()`（pu.h:323）为假则跳过 `puDisplay()` 且跳过 clearMask（camera 设置动态调整），resize/主题切换强制 `puPostRefresh()`；默认 0。~~ **该特性已于 2026-11-19 移除**：OSG 3.6.5 的 RenderStage 在 cull 回调之前就缓存了 clearMask，任何回调时机都晚一帧生效，会产生整层闪烁；且跨线程读 `puRefresh` 存在数据竞争。每帧照常清屏 + 重绘，文字性能由字符串显示列表缓存保证。`<frame-gating>` 键保留但不再被读取。
 - 不改投影矩阵、不加 `glUseProgram`/`glBindVertexArray`（Windows GL 1.1 链接限制，OSG 状态由其自身管理）。
 
 ### 3.6 Canvas（FGCanvasSystemAdapter.cxx/hxx）
@@ -210,5 +211,5 @@ void fguiHoverUpdate(int x, int y);  // 声明；实现见 hover 段
 - plib 内部创建的复合控件（puaList 滑块、puPopupMenu 菜单项）外观仅颜色可配，宽度/圆角需 slider 数据与字号配合。
 - `~puObject` 非虚 → 子类禁止持堆资源。
 - 运行时主题切换对 puaLargeInput 等复合控件仅重刷颜色。
-- `frame-gating` 默认关闭（PUI 刷新路径无法全量审计）。
+- `frame-gating` 已整体移除（OSG 3.6.5 RenderStage 的 clearMask 缓存时序使任何回调方案都晚一帧，见 §3.5）。
 - 夜视模式为深色主题，不做绿色单色滤镜（后续可按 /sim/rendering/ 滤镜扩展）。

@@ -81,15 +81,13 @@ public:
 
     void drawImplementation(osg::RenderInfo& renderInfo) const override
     {
-        // frame-gating（默认关闭）：主题启用且 frame-gating=1 时，只有 PUI 自己
-        // 报告需要刷新（puNeedRefresh() 为真）才重绘整层。puNeedRefresh() 为假说明
-        // 自上次 puDisplay() 以来没有任何控件状态变化，此时直接返回，不做任何
-        // GL 状态改动、也不清 FBO，上一帧的纹理内容原样保留。
-        // 对应的清屏行为由 PUICamera 的 initial draw callback 同步调整（见 init）。
-        // 门控关闭时该分支恒不进入，行为与改造前完全一致。
-        if (fguiTheme::enabled() && fguiTheme::metrics().frameGating && !puNeedRefresh()) {
-            return;
-        }
+        // 说明：设计文档曾规划 frame-gating（puNeedRefresh() 为假时跳过
+        // puDisplay 并保住上一帧 FBO 内容），复核发现 OSG 3.6.5 的
+        // RenderStage 在 cull 回调之前就缓存了 clearMask（CullVisitor::apply
+        // 先 setClearMask 再跑 cull callback），任何回调时机都会晚一帧生效，
+        // 产生整层闪烁/消失。该特性已整体移除（2026-11-19）：每帧照常
+        // 清屏 + 重绘 PUI，文字性能由 fntUnicode 的字符串显示列表缓存保证。
+        // ui_theme*.xml 里的 <frame-gating> 键保留但不再被读取。
 
         osg::State* state = renderInfo.getState();
         state->setActiveTextureUnit(0);
@@ -153,43 +151,6 @@ private:
     // 所属 PUICamera（裸指针，理由见构造函数注释）
     PUICamera* _camera = nullptr;
 };
-
-namespace
-{
-// PUICamera 的 cull 回调：frame-gating 开启时动态决定本帧是否清 FBO 颜色缓冲：
-//   - 需要刷新（puNeedRefresh() 为真）/ 门控关闭 → 清成透明（与既有行为一致）；
-//   - 跳过帧（门控开启且无需刷新）→ clearMask 置 0，保住上一帧的纹理内容。
-// 若跳过帧仍清缓冲，FBO 会变成全透明，UI 会整层消失。
-//
-// 用 cull 回调而不是 initial draw callback（修复审查发现的问题）：
-// RenderStage 在剔除阶段之后才建帧并缓存 clearMask，若在 draw 回调里
-// 修改会晚一帧生效——跳过帧的那一帧 UI 仍被清空，产生整层闪烁。
-// CullVisitor 的 handle_cull_callbacks_and_traverse 先跑本回调、再让
-// Camera::accept 创建 RenderStage，因此 cull 阶段修改本帧即生效。
-class PUICullUpdateCallback : public osg::NodeCallback
-{
-public:
-    explicit PUICullUpdateCallback(PUICamera* camera) :
-        _camera(camera)
-    {
-    }
-
-    void operator()(osg::Node* node, osg::NodeVisitor* nv) override
-    {
-        const bool gating = fguiTheme::enabled() && fguiTheme::metrics().frameGating;
-        if (gating && !puNeedRefresh()) {
-            _camera->setClearMask(0);
-        } else {
-            _camera->setClearMask(GL_COLOR_BUFFER_BIT);
-        }
-        traverse(node, nv);
-    }
-
-private:
-    // 所属 PUICamera（裸指针：本回调由该相机通过 ref_ptr 持有，生命周期更短）
-    PUICamera* _camera = nullptr;
-};
-} // 匿名命名空间
 
 class PUIEventHandler : public osgGA::GUIEventHandler
 {
@@ -384,12 +345,6 @@ void PUICamera::init(osg::Group* parent, osgViewer::View* view)
     setViewMatrix(osg::Matrix::identity());
     setClearMask( GL_COLOR_BUFFER_BIT );
     setClearColor( osg::Vec4( 0.0, 0.0, 0.0, 0.0 ) );
-    // 注册 cull 回调：frame-gating 开启且本帧无需刷新时把 clearMask 置 0，
-    // 避免跳过 puDisplay() 的帧仍被清成透明而丢失上一帧 UI 内容。
-    // 门控关闭时回调恒把 clearMask 恢复成 GL_COLOR_BUFFER_BIT，与上方初始值一致，
-    // 因此关闭门控时的行为与改造前完全相同。回调需由本对象持有（ref_ptr）以保活。
-    _drawCallback = new PUICullUpdateCallback(this);
-    setCullCallback(_drawCallback);
     setAllowEventFocus(false);
     setCullingActive(false);
     setRenderTargetImplementation( osg::Camera::FRAME_BUFFER_OBJECT );

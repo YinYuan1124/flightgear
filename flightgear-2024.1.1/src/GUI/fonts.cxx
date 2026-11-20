@@ -1,9 +1,19 @@
-#ifdef HAVE_CONFIG_H
+﻿#ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "FlightGear_pu.h"
+// 【必须保持此顺序】先包含 in-tree 的 fnt.h（3rdparty/fonts），再包含
+// FlightGear_pu.h（它会把 vcpkg 的 plib/fnt.h 一并带进来）。两者共用同一个
+// include guard `_FNT_H_`，谁先被包含谁生效：
+//   - 本文件定义了三个静态 fntBitmapFont 全局对象（fntHelvetica14/12、
+//     fntSans12B），它们的内存布局由第一个生效的头文件决定；而构造函数实现
+//     在 3rdparty/fonts/fntBitmap.cxx 中，按 in-tree 类布局编译（含
+//     line_spacing 成员）。若先包含 plib 旧头文件，对象会按旧布局分配，
+//     构造函数多写的 line_spacing 会越过对象末尾，覆盖下一个全局对象
+//     （曾把 fntSans12B 的 vtable 指针改写成 0x7FF63F800000 = 1.0f 位模式，
+//     导致 PUI 测量文字时 puFont::getFloatStringWidth 调用虚拟函数崩溃）。
 #include "fnt.h"
+#include "FlightGear_pu.h"
 
 
 /**
