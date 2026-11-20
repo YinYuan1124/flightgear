@@ -3,7 +3,7 @@
 <PropertyList include="f16-base.xml">
 
  <sim>
-  <description>Lockheed Martin F-16E Block 60</description>
+  <description>洛克希德·马丁 F-16E 第 60 批次</description>
   <long-description>
    The Lockheed Martin F-16E Fighting Falcon (or Desert Falcon) is a single-engine supersonic multirole fighter aircraft developed by Lockheed Martin for the UAE. Powered by F110-GE-132. Designed as an air superiority day fighter, it evolved into a successful all-weather multirole aircraft.
    The Fighting Falcon has key features including a frameless bubble canopy for better visibility, side-mounted control stick to ease control while maneuvering, a seat reclined 30 degrees to reduce the effect of g-forces on the pilot, and the first use of a relaxed static stability/fly-by-wire flight control system which helps to make it a nimble aircraft.
@@ -171,7 +171,7 @@
   <menubar>
    <default>
     <menu n="101">
-     <label>F-16E Block 60</label>
+     <label>F-16E 第 60 批次</label>
         <item n="8">
           <label>--- Block options ---</label>
           <enabled>false</enabled>

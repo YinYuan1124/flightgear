@@ -9,8 +9,8 @@ var checkinfo = func() {
     # now check
     if (ourversion != newversion) {
         # new version!
-        screen.log.write("New F-22A Raptor updates available on github!",0,1,0);
-        screen.log.write("Details on update: "~newdetail~"",0,1,0);
+        screen.log.write("GitHub 上有新版 F-22A 猛禽更新！",0,1,0);
+        screen.log.write("更新说明："~newdetail~"",0,1,0);
         screen.log.write("https://github.com/racerretrocoder/Flightgear-F-22A-Raptor",0,1,0);
     } else {
         print("raptor is up to date!");

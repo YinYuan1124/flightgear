@@ -420,15 +420,15 @@ var environment =  func (){
     if (rand() > 0.95) {
       if (tempInside < 10) {
         if (tempInside < 5) {
-          screen.log.write("You are freezing, the cabin is very cold", 1.0, 0.0, 0.0);
+          screen.log.write("你冻坏了，座舱里非常冷", 1.0, 0.0, 0.0);
         } else {
-          screen.log.write("You feel cold, the cockpit is cold", 1.0, 0.5, 0.0);
+          screen.log.write("你感到冷，座舱偏冷", 1.0, 0.5, 0.0);
         }
       } elsif (tempInside > 23) {
         if (tempInside > 26) {
-          screen.log.write("You are sweating, the cabin is way too hot", 1.0, 0.0, 0.0);
+          screen.log.write("你在流汗，座舱里太热了", 1.0, 0.0, 0.0);
         } else {
-          screen.log.write("You feel its too warm in the cabin", 1.0, 0.5, 0.0);
+          screen.log.write("你觉得座舱里有点热", 1.0, 0.5, 0.0);
         }
       }
     }

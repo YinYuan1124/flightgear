@@ -141,7 +141,7 @@ var readslot = func(datacart,pointer) {
     # Chaff Flare Programs
     var readcmdsdata = func(datacart,pointer) {
     print("Found CMDS!");
-    screen.log.write("Found CMDS's Programs on the DTC");
+    screen.log.write("在 DTC 中找到 CMDS 程序");
     # ok we know that the datacart[pointer] == "CMDS:" lets see whats below
     # Expect "PRGM1" or "PRGM2", etc
     var entries = size(datacart) - pointer;
@@ -370,7 +370,7 @@ var readslot = func(datacart,pointer) {
         # error detection
         call(func{data=io.readfile(dtcpath.getValue());},nil,var erroronload = []);
         if (size(erroronload)) {
-            screen.log.write("Error loading DTC");
+            screen.log.write("加载 DTC 出错");
             screen.log.write(erroronload[0]);
         } elsif (data != nil) {
         print("DTC.nas: READ");

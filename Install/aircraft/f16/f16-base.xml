@@ -424,7 +424,7 @@
                 <menu n="101">
                     <enabled type="bool">true</enabled>
                     <item>
-                        <label>Configuration</label>
+                        <label>配置</label>
                         <name>f16config</name>
                         <binding>
                           <command>dialog-show</command>
@@ -432,18 +432,18 @@
                         </binding>
                       </item>
                     <item>
-                        <label>Select Livery</label>
+                        <label>选择涂装</label>
                         <binding>
                             <command>nasal</command>
                             <script>liveries.diag.toggle();</script>
                         </binding>
                     </item>
                     <item>
-                        <label>--- Main ---</label>
+                        <label>--- 主要功能 ---</label>
                         <enabled>false</enabled>
                     </item>
                     <item>
-                        <label>Mission Preplanning</label>
+                        <label>任务预规划</label>
                         <enabled type="bool">true</enabled>
                         <name>circles</name>
                         <binding>
@@ -452,7 +452,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>Training Scenario</label>
+                        <label>训练情景</label>
                         <enabled type="bool">true</enabled>
                         <name>scenario28</name>
                         <binding>
@@ -461,11 +461,11 @@
                         </binding>
                     </item>
                     <item>
-                        <label>--- Extra options ---</label>
+                        <label>--- 额外选项 ---</label>
                         <enabled>false</enabled>
                     </item>
                     <item>
-                        <label>Tacview Options</label>
+                        <label>Tacview 选项</label>
                         <enabled type="bool">true</enabled>
                         <name>tacview</name>
                         <binding>
@@ -474,7 +474,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>Combat event log</label>
+                        <label>战斗事件日志</label>
                         <binding>
                             <command>dialog-show</command>
                             <dialog-name>flightlog</dialog-name>
@@ -482,10 +482,10 @@
                     </item>
                 </menu>
                 <menu n="116">
-                    <label>Reset</label>
+                    <label>重置</label>
                     <enabled type="bool">true</enabled>
                     <item>
-                        <label>Reset to Airbase (military only)</label>
+                        <label>重置到基地（仅军用）</label>
                         <binding>
                             <command>dialog-show</command>
                             <dialog-name>airbases</dialog-name>

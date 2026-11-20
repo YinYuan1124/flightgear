@@ -2,7 +2,7 @@
 
 <PropertyList include="f-14-common.xml">
     <sim>
-        <description>Grumman F-14A</description>
+        <description>格鲁曼 F-14A</description>
         <variant-of>f-14b</variant-of>
 
         <aero>f-14a</aero>

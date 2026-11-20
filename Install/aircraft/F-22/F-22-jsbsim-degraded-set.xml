@@ -7,7 +7,7 @@
        	    <canvas-popup-enable type="bool">true</canvas-popup-enable>
        	</instrument-options>
                <!-- <nasal-gc-threaded type="bool">true</nasal-gc-threaded> Spreads the load of all the timers off one core-->
-		<description>F-22A Non-Stealthy (With degraded RAM)</description>
+		<description>F-22A 非隐身型（雷达吸波材料衰减）</description>
 		<expected-aircraft-dir-name>F-22</expected-aircraft-dir-name>
 <variant-id type="int">1</variant-id>
         <long-description>
@@ -259,11 +259,11 @@
 		<menubar>
 			<default>
 				<menu n="10">
-					<label>F-22A Raptor</label>
+					<label>F-22A 猛禽</label>
 					<enabled type="bool">true</enabled>
    			<item>
                 <name>autostart</name>
-                <label>Autostart | Autoshutdown</label>
+                <label>自动启动 | 自动停车</label>
                 <binding>
                     <command>nasal</command>
                     <script>emu.autostart()</script>
@@ -272,14 +272,14 @@
 
 
 					<item>
-					<label>Select Livery</label>
+					<label>选择涂装</label>
 					<binding>
 						<command>nasal</command>
 						 <script>aircraft.livery.dialog.toggle()</script>
 					</binding>
 				</item>
    					<item>
-                        <label>Ground Crew Operations</label>
+                        <label>地勤操作</label>
                         <enabled type="bool">true</enabled>
                         <name>gco</name>
                         <binding>
@@ -288,7 +288,7 @@
                         </binding>
                     </item>
    					<item>
-                        <label>Datalink hacker</label>
+                        <label>数据链破解</label>
                         <enabled type="bool">true</enabled>
                         <name>gco</name>
                         <binding>
@@ -297,7 +297,7 @@
                         </binding>
                     </item>
 	<item>
-			<label>Pylons loads</label>
+			<label>挂架挂载</label>
 			<binding>
 				<command>nasal</command>
 				 <script>CanvasPylonsDlg.showPylonsDlg()</script>
@@ -306,7 +306,7 @@
 
 
 <item>
-			<label>Toggle Damage</label>
+			<label>开关损伤</label>
 			<binding>
 				<command>nasal</command>
 				<script>
@@ -320,7 +320,7 @@
 		</item>
 
 <item>
-			<label>Repair damage (On Ground)</label>
+			<label>修复损伤（地面）</label>
 			<binding>
 				<command>nasal</command>
 				<script>
@@ -334,7 +334,7 @@
 		</item>
 
    <item>
-                        <label>Tacview Options [wip] (broken)</label>
+                        <label>Tacview 选项 [开发中]（不可用）</label>
                         <enabled type="bool">true</enabled>
                         <name>tacview</name>
                         <binding>
@@ -343,7 +343,7 @@
                         </binding>
                     </item>
 <item>
-        <label>Event Log</label>
+        <label>事件日志</label>
         <binding>
             <command>dialog-show</command>
             <dialog-name>flightlog</dialog-name>
@@ -351,14 +351,14 @@
 </item>
 
 <item>
-        <label>KY-58 Secure MP-Chat</label>
+        <label>KY-58 加密多人聊天</label>
         <binding>
             <command>dialog-show</command>
             <dialog-name>secure</dialog-name>
         </binding>
 			</item>
    					<item>
-                        <label>KY-58 Encryption Cipher Code</label>
+                        <label>KY-58 加密密码</label>
                         <enabled type="bool">true</enabled>
                         <name>gco</name>
                         <binding>
@@ -368,7 +368,7 @@
                     </item>
 
                     <item>
-                        <label>Mig-28.nas dialog</label>
+                        <label>Mig-28 对话框</label>
                         <enabled type="bool">true</enabled>
                         <name>scenario28</name>
                         <binding>
@@ -378,7 +378,7 @@
                     </item>
 
 			<item>
-			<label>Toggle Old Damage (For dogfighting old F-15 and F-14, P-51, etc)</label>
+			<label>开关旧版损伤（用于与旧 F-15、F-14、P-51 等缠斗）</label>
 			<binding>
 				<command>nasal</command>
 				<script>
@@ -391,7 +391,7 @@
 			</binding>
 		</item>
 			<item>
-			<label>Yell for a pushback</label>
+			<label>呼叫推出</label>
 			<binding>
 				<command>nasal</command>
 				<script>
@@ -409,7 +409,7 @@
 
 
 <item>
-			<label>jammer on</label>
+			<label>干扰机开</label>
 			<binding>
 				<command>nasal</command>
 				<script>
@@ -418,7 +418,7 @@ jammer.start();
 			</binding>
 		</item>
 <item>
-			<label>jammer off</label>
+			<label>干扰机关</label>
 			<binding>
 				<command>nasal</command>
 				<script>
@@ -427,7 +427,7 @@ jammer.stop();
 			</binding>
 		</item>
   <!--                  <item>
-                      <label>Jammer: Enable</label>
+                      <label>干扰机：开启</label>
                       <name>enemies</name>
 		    <binding>
 			<command>nasal</command>
@@ -437,7 +437,7 @@ jammer.stop();
 		    </binding>
                     </item>
                     <item>
-                      <label>Jammer: Disable</label>
+                      <label>干扰机：关闭</label>
                       <name>enemies</name>
 		    <binding>
 			<command>nasal</command>
@@ -447,7 +447,7 @@ jammer.stop();
 		    </binding>
                     </item>-->
 	<item>
-			<label>Toggle cockpit shaking</label>
+			<label>开关座舱抖动</label>
 			<binding>
 				<command>nasal</command>
 				 <script>if (getprop("f22/shaking") == 0){screen.log.write("Shaking enabled");setprop("f22/shaking",1);}else{screen.log.write("Shaking disabled");setprop("f22/shaking",0);}</script>
@@ -457,7 +457,7 @@ jammer.stop();
 
    			<item>
                 <name>mfd</name>
-                <label>Toggle new Canvas MFD's</label>
+                <label>开关新版 Canvas MFD</label>
                 <binding>
                     <command>nasal</command>
                     <script>if (getprop("f22/canvasmfds") == 0){setprop("f22/canvasmfds",1);screen.log.write("Canvas MFD's enabled");}else{setprop("f22/canvasmfds",0);screen.log.write("Canvas MFD's disabled");}</script>

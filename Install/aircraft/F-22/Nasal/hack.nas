@@ -11,7 +11,7 @@ var stop = func {
 var start = func {
     setprop("datalinkhacker/channel",0);
     setprop("datalinkhacker/solved",0);
-    screen.log.write("Hacking into target Datalink... Please wait...",0,1,0);
+    screen.log.write("正在破解目标数据链……请稍候……",0,1,0);
     setprop("instrumentation/datalink/channel",0);
     hacktimer.start();
 }
@@ -20,7 +20,7 @@ var hackloop = func {
     var solved = getprop("datalinkhacker/solved");
     var code = getprop("datalinkhacker/channel");
     if (code == 9999 and solved == 0) {
-        screen.log.write("Failed the hack the datalink of the selected target!",1,0,0);
+        screen.log.write("破解所选目标数据链失败！",1,0,0);
         setprop("datalinkhacker/channel",0);
         setprop("datalinkhacker/solved",-1);
         dlinkhack.stop();
@@ -32,7 +32,7 @@ var hackloop = func {
     if (data != nil) {
         if (data.on_link() != nil) {
             print("HACKED!");
-            screen.log.write("Successfully hacked into the datalink of the target!",0,1,0);
+            screen.log.write("已成功破解目标数据链！",0,1,0);
             print(code-1);
             screen.log.write(code-1,1,1,1);
             setprop("datalinkhacker/solved",1);

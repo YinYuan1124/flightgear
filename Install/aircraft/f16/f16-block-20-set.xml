@@ -3,7 +3,7 @@
 <PropertyList include="f16-base.xml">
 
  <sim>
-  <description>General Dynamics F-16AM Block 20</description>
+  <description>通用动力 F-16AM 第 20 批次</description>
   <long-description>
    The General Dynamics F-16AM Fighting Falcon is a single-engine supersonic multirole fighter aircraft originally developed by General Dynamics (now Lockheed Martin) for the United States Air Force (USAF). Powered by F100-PW-220. Designed as an air superiority day fighter, it evolved into a successful all-weather multirole aircraft.
    Mid-Life Upgrade program is an extensive improvement of older, primarily European, F-16A Block 10 and 15, giving them approx. equivalent capabilities of Block 50/52, although with a slightly less powerful engine.
@@ -176,7 +176,7 @@
   <menubar>
    <default>
     <menu n="101">
-     <label>F-16AM Block 20</label>
+     <label>F-16AM 第 20 批次</label>
           <item n="8">
             <label>--- Block options ---</label>
             <enabled>false</enabled>

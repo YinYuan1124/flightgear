@@ -14,7 +14,7 @@ var StartAuto = func {
 		setprop ("controls/engines/engine/fuel-pump", 1);
 		setprop ("controls/engines/engine[1]/fuel-pump", 1);
 		
-		gui.popupTip("Autostarting...");
+		gui.popupTip("自动启动…");
 		print("engines.autostart executed");
 		settimer(start1, 3);
 		settimer(start2, 16);
@@ -23,7 +23,7 @@ var StartAuto = func {
 var StopAuto = func {
 		var stop1 = func { setprop("/controls/engines/engine/cutoff", 1) };
 		var stop2 = func { setprop("/controls/engines/engine[1]/cutoff", 1) };
-		gui.popupTip("Autoshutdown...");
+		gui.popupTip("自动停车…");
 		print("engines.autostop executed");
 		settimer(stop1, 3);
 		settimer(stop2, 7);

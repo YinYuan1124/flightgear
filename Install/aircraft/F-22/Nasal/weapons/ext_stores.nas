@@ -770,7 +770,7 @@ var SelectNextPylon = func()
 							SelectedPylon.setValue(i);
 							print("Next selected = pylon",i);
                             if (getprop("f22/debug")) {
-                                screen.log.write("Next selected = pylon"~ SelectedPylon.getValue(i));
+                                screen.log.write("下一个选择 = 挂架"~ SelectedPylon.getValue(i));
                             }
 							break;
 					}

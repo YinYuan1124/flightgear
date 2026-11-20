@@ -188,10 +188,10 @@ var cycledeploymode = func() {
 var toggleautodeploy = func() {
   var autodeploy = getprop("controls/jammer/autodeploy");
   if (autodeploy == 0) {
-    screen.log.write("Jammer autodeploy enabled");
+    screen.log.write("干扰机自动投放已开启");
     setprop("controls/jammer/autodeploy",1);
   } else {
-    screen.log.write("Jammer autodeploy disabled");
+    screen.log.write("干扰机自动投放已关闭");
     setprop("controls/jammer/autodeploy",0);
   }
 }
@@ -257,7 +257,7 @@ var failureloop = func {
 
 var checkwarnings = func() {
   silentstop();
-  screen.log.write("Jammer deployed for 2 minuet burst. Jammer stopped. Autodeploy reactivated.");
+  screen.log.write("干扰机已连续工作 2 分钟，现已停止，自动投放已恢复。");
   autodeploytimer.start();
   delaytimer.stop();
 }
@@ -267,7 +267,7 @@ var deployjammer = func(mode) {
   silentstart();
   autodeploytimer.stop();
   delaytimer.start();
-  screen.log.write("Jammer automatically deployed");
+  screen.log.write("干扰机已自动投放");
 }
 
 # Autodeploy

@@ -17,7 +17,7 @@
 
 			<key n="14">
 				<name>Ctrl-n</name>
-				<desc>Toggles Radar PULSE SRCH / TWS AUTO Modes</desc>
+				<desc>切换雷达 PULSE SRCH / TWS AUTO 模式</desc>
 				<binding>
 					<command>nasal</command>
 					<script>awg_9.wcs_mode_toggle()</script>
@@ -26,7 +26,7 @@
 
 			<key n="69">
 				<name>E</name>
-				<desc>Decrease Radar Range</desc>
+				<desc>减小雷达量程</desc>
 				<binding>
 					<command>nasal</command>
 					<script>awg_9.range_control(-1);</script>
@@ -35,7 +35,7 @@
 
 			<key n="82">
 				<name>R</name>
-				<desc>Increase Radar Range</desc>
+				<desc>增大雷达量程</desc>
 				<binding>
 					<command>nasal</command>
 					<script>awg_9.range_control(1);</script>
@@ -44,7 +44,7 @@
 
 			<key n="104">
 				<name>h</name>
-				<desc>ECM cycle modes</desc>
+				<desc>循环切换电子对抗模式</desc>
 				<binding>
 					<command>nasal</command>
 					<script>BS_instruments.select_ecm_nav()</script>
@@ -53,7 +53,7 @@
 
 			<key n="113">
 				<name>q</name>
-				<desc>Toggle radar standby mode</desc>
+				<desc>切换雷达待机模式</desc>
 				<binding>
 					<command>nasal</command>
 					<script>awg_9.toggle_radar_standby();</script>
@@ -79,7 +79,7 @@
 	</instrumentation>
 
 	<sim>
-		<description>Grumman F-14B back-seater (multiplayer)</description>
+		<description>格鲁曼 F-14B 后座（多人）</description>
 		<variant-of>f-14b</variant-of>
 		<author>Anders Gidenstam, Alexis Bory, Enrique Laso, Richard Harrison</author>
 		<status>production</status>
@@ -269,30 +269,31 @@
 		<flight-model>null</flight-model>
 
 		<help>
+<!-- 中文注释：以下后座帮助文本已本地化为简体中文；按键名与代码标识保持原样。 -->
 			<key>
 				<name>E</name>
-				<desc>Decrease Radar Range</desc>
+				<desc>减小雷达量程</desc>
 			</key>
 			<key>
 				<name>R</name>
-				<desc>Increase Radar Range</desc>
+				<desc>增大雷达量程</desc>
 			</key>
 			<key>
 				<name>Ctrl-n</name>
-				<desc>Toggles Radar PULSE SRCH / TWS AUTO Mode</desc>
+				<desc>切换雷达 PULSE SRCH / TWS AUTO 模式</desc>
 			</key>
 
 			<key>
 				<name>Ctrl-v</name>
-				<desc>Back to RIO View.</desc>
+				<desc>返回 RIO 视角。</desc>
 			</key>
-			<title>Grumman F-14B Back Seat (bs) version:</title>
-			<line>NOTE: You will stay standing on the runway until you'll find a f-14b pilot flying in a max. 50NM range.</line>
-			<line>In the Menu 'Tomcat Controls' (Hit F10 if needed) choose 'Select MP-pilot', a small window appears with a list of available pilots.</line>
-			<line>You must choose a currently flying pilot in order to take place in the F-14 back seat. If no f-14b pilot, no back seat.</line>
-			<line>As you check the box for an existing pilot, the message "Welcome on board willappear on the screen. You'll will have to wait a bit before the aircraft loads</line>
-			<line>The back seater in a F-14 is called RIO for Radar Intercept Officer. The RIO is not a copilot and there is no flight controls in the rear cockpit.</line>
-			<line>However you will have a working radar, the basic flight instruments, and a compas. ECM is also working.</line>
+			<title>格鲁曼 F-14B 后座（bs）版：</title>
+			<line>注意：在找到 50 海里范围内飞行的 f-14b 飞行员之前，您会一直停在跑道上。</line>
+			<line>在“雄猫操控”菜单（如未显示请按 F10）中选择“选择多人飞行员”，会弹出一个列出可用飞行员的小窗口。</line>
+			<line>必须选择一名正在飞行的飞行员才能进入 F-14 后座；如果没有 f-14b 飞行员，就无法进入后座。</line>
+			<line>勾选某位在线飞行员的复选框后，屏幕会显示“欢迎登机”，需要稍等片刻飞机才会加载完成。</line>
+			<line>F-14 的后座乘员称为 RIO（雷达拦截官）。RIO 不是副驾驶，后座没有飞行操纵装置。</line>
+			<line>但您可以使用雷达、基本飞行仪表和罗盘，电子对抗设备也可用。</line>
 			<Line>Also note that this is a very experimental version, it works with every pilot F-14 but most features will need an up to date pilot aircraft. Only a very few instruments will work with an outdated pilot aircraft.</Line>
 			<line>__________________________________________________</line>
 			<!--<line>VHF: Located on the RIO's left console, 3 bands: 30-88 Mhz, 108-174 Mhz, 225-400 Mhz. Modes TR and TR-G set COMM1. Mode DF sets NAV1,</line>
@@ -307,9 +308,9 @@
 		<menubar>
 			<default>
 				<menu n="50">
-					<label>Tomcat Controls</label>
+					<label>雄猫操控</label>
 					<item>
-						<label>Select MP pilot</label>
+						<label>选择多人前座</label>
 						<binding>
 							<command>nasal</command>
 							<script>

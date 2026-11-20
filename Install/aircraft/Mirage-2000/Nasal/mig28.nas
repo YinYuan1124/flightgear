@@ -23,7 +23,7 @@ var TopGun = {
 	start: func (opponents = nil, blufor = nil) {
 		if (me.enabled) {
 			print("TopGun: Already started, try stop() before starting again.");
-			screen.log.write("Scenario is already started, try 'stop' before starting again.", 1.0, 1.0, 0.0);
+			screen.log.write("情景已开始，请先执行 stop 再重新开始。", 1.0, 1.0, 0.0);
 			return;
 		}
 		if (opponents == nil) {
@@ -1283,7 +1283,7 @@ var start = func (diff = 1) {
 	}
 	if (tg1.enabled) {
 		print("TopGun: Stop it before starting new.");
-		screen.log.write("Scenario is already started, try 'stop' before starting again.", 1.0, 1.0, 0.0);
+		screen.log.write("情景已开始，请先执行 stop 再重新开始。", 1.0, 1.0, 0.0);
 		return;
 	}
 	print("TopGun: Difficulty set to: "~diff);

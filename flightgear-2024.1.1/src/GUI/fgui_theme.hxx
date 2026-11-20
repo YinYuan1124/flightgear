@@ -116,6 +116,12 @@ namespace fguiTheme
   std::string fontName();
 
   /**
+   * 主题 GUI 基准字号（XML 的 <font><size>）；未配置时返回 0，
+   * 表示沿用当前样式表给出的字号。
+   */
+  float fontSize();
+
+  /**
    * 当前生效的模式：init 之后为解析后的 "day" 或 "night"。
    * （/sim/gui/theme-mode 为 auto 时，这里返回自动检测得到的实际值。）
    */

@@ -138,7 +138,7 @@ check_if_active : func {
 	  setprop("/controls/fbw-fcs/active", 0);
 	  if (me.disconnectannounce == 0) {
 	  
-	    screen.log.write("Fly By Wire Disconnected!", 1, 0, 0);
+	    screen.log.write("电传操纵已断开！", 1, 0, 0);
 	    me.disconnectannounce = 1;
 	  }
 	}

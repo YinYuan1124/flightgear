@@ -159,7 +159,7 @@ var Station = {
 					} elsif (me.weaponName == "AIM-120") {
 						mf = func (struct) {
 							if (struct.dist_m != -1 and struct.dist_m*M2NM < 10 and struct.guidance == "sample") {
-								screen.log.write("AIM-120: Pitbull", 1,1,0);
+								screen.log.write("AIM-120：主动雷达开机", 1,1,0);
 								return {"guidance":"radar","abort_midflight_function":1};
 							}
 							return {};
@@ -170,7 +170,7 @@ var Station = {
 								return {"guidance":"radar","abort_midflight_function":1};
 							}
 							if (struct.dist_m != -1 and struct.dist_m*M2NM < 12 and struct.guidance == "inertial" and struct.deviation_deg != nil and struct.deviation_deg < 70) {
-								screen.log.write("MICA-EM: Pitbull", 1,1,0);
+								screen.log.write("MICA-EM：主动雷达开机", 1,1,0);
 								return {"guidance":"radar","abort_midflight_function":1};
 							}
 							return {};

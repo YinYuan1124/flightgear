@@ -42,7 +42,7 @@ var decrypt = func(message) {
         cipher = cipher - 42;
     }
     if (cipher == 42) {
-        screen.log.write("KY58 Warning! This cipher code is not as secure! (It resolves to 42)",1,0,0);
+        screen.log.write("KY-58 警告！该密码不够安全！（解析结果为 42）",1,0,0);
     }
     var encryptedmessage = "";
     var total = size(message);
@@ -109,7 +109,7 @@ var encrypt = func(message) {
         cipher = cipher - 42;
     }
     if (cipher == 42) {
-        screen.log.write("KY-58 Warning! This cipher code is not as secure! (It resolves to 42)",1,0,0);
+        screen.log.write("KY-58 警告！该密码不够安全！（解析结果为 42）",1,0,0);
     }
     var encryptedmessage = "";
     var total = size(message);
@@ -192,7 +192,7 @@ var getpower = func {
     var main = getprop("controls/ky58/main");
     if (main == 1 or main == 2){return 1;}
     if (main == 0){return 0;}
-    screen.log.write("KY-58: Error. Couldnt Initilize");
+    screen.log.write("KY-58：错误，初始化失败");
     return 1; # if somthing failed just make it on
 }
 
@@ -227,7 +227,7 @@ var getcode = func {
         digitA = 1;
         digitB = 1; 
         if (getprop("controls/ky58/encrypted") == 0) {
-            screen.log.write("KY-58 Encryption Enabled. (On LD and RV only)");
+            screen.log.write("KY-58 加密已启用（仅 LD 与 RV 频道）");
         }
         setprop("controls/ky58/encrypted",1);
     }
@@ -235,7 +235,7 @@ var getcode = func {
         digitA = 0;
         digitB = 1; 
         if (getprop("controls/ky58/encrypted") == 0) {
-            screen.log.write("KY-58 Encryption Enabled. (On LD and RV only)");
+            screen.log.write("KY-58 加密已启用（仅 LD 与 RV 频道）");
         }
         setprop("controls/ky58/encrypted",1);
     }
@@ -306,9 +306,9 @@ var checkcode = func(ourcode) {
                 if (getprop("controls/ky58/encrypted") == 1) {
                     # Encryption is enabled. 
                     newmessage = decrypt(newmessage);
-                    screen.log.write("[Encrypted] KY-58: "~ callsign ~ ": " ~ newmessage ~ "");
+                    screen.log.write("[加密] KY-58："~ callsign ~ ": " ~ newmessage ~ "");
                 } else {
-                    screen.log.write("KY-58: "~ callsign ~ ": " ~ newmessage ~ "");
+                    screen.log.write("KY-58："~ callsign ~ ": " ~ newmessage ~ "");
                 }
                 chat.push("" ~ callsign ~ ": " ~ newmessage ~ "");
                 # Update old message 
@@ -341,7 +341,7 @@ updatetimer.start();
 
 var encryptiontest = func {
     print("KY58 Testing encryption...");
-    screen.log.write("KY-58: Testing encryption integrity...");
+    screen.log.write("KY-58：正在测试加密完整性……");
     setprop("controls/ky58/cipherkey",30);
     var message = "abcdefghijklmnopqrstuvwxyz1234567890";
     encryption = encrypt(message);
@@ -349,7 +349,7 @@ var encryptiontest = func {
     if (decryption == message) {
         print("secure.nas Encryption test succeded. Operational");
     } else {
-        screen.log.write("KY-58: Warning! Encryption not functioning as intended, Modes LD, RV Disabled",1,0,0);
+        screen.log.write("KY-58：警告！加密未按预期工作，LD、RV 频道已禁用",1,0,0);
     }
     setprop("controls/ky58/cipherkey",0);
 }

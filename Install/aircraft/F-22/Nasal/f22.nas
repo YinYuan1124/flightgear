@@ -25,9 +25,14 @@
 #                                                                 \|_________|                                                                             \|_________|                                                                   
 #       - uapilot, Thank you for this
 #
-setprop("f22/phat",1);
-screen.log.write("Celebrating 3 years of FlightGears F-22A Raptor. heres a party hat for your plane :D",0,1,0);
-screen.log.write("To hide it: click it");
+# 中文注释：F-22 插件原版在加载时会把 /f22/phat 置 1，从而在机身上显示一顶"派对帽"彩蛋
+# （模型对象名 phat，贴图 phattexture.jpg，形状是一个很大的彩色圆锥）。
+# 它从外观上很像飞机外面多出的锥体，容易被误认为模型或贴图错误，因此这里默认关闭；
+# 如需恢复彩蛋，把下面的 0 改回 1 即可。
+setprop("f22/phat",0);
+# 中文注释：彩蛋已默认隐藏，原来的两行庆祝提示不再弹出（保留原文备查）。
+# screen.log.write("庆祝 FlightGear F-22A 猛禽发布三周年，送你飞机一顶派对帽 :D",0,1,0);
+# screen.log.write("点击即可隐藏");
 # Some terminology
 # "thingy" refers to an object that sticks out from the reset in a unique way.
 # Thought you guys might want to know... like cmon, its used in FG wiki too...
@@ -182,16 +187,16 @@ var toggleradar = func {
   var rwow = getprop("gear/gear[2]/wow");
   if (cwow == 0 and lwow == 0 and rwow == 0) {
     if (getprop("su-27/instrumentation/N010-radar/emitting") == 0) {
-      screen.log.write("Radar ACTIVE",0,1,0);
+      screen.log.write("雷达工作",0,1,0);
       setprop("su-27/instrumentation/N010-radar/emitting",1);
       setprop("controls/radar/cursormode",1);
     } else {
-      screen.log.write("Radar STANDBY",0,1,0);
+      screen.log.write("雷达待机",0,1,0);
       setprop("su-27/instrumentation/N010-radar/emitting",0);
       setprop("controls/radar/cursormode",0);
     }
   } else {
-    screen.log.write("Cant enable the radar when on the ground",1,0,0);
+    screen.log.write("地面状态下无法开启雷达",1,0,0);
   }
 }
 
@@ -487,7 +492,7 @@ var gearloop = func() {
       if (speed > 290) {
         setprop("f22/gear-damaged",1);
         print("gear is getting damaged!!!");
-        screen.log.write("The gear is getting damaged! Slow down!",1,0,0);
+        screen.log.write("起落架正在受损！减速！",1,0,0);
         # RNG
         var chance = 0.9;
         var gear1 = rand() < (1-chance);
@@ -625,7 +630,7 @@ var waterstop = func {
 }
 
 var custommsg = func {
-  screen.log.write("Aircraft went swimmin' with the fishies!!",1,0,0);
+  screen.log.write("飞机掉水里了！！",1,0,0);
 }
 
 
@@ -743,32 +748,32 @@ var crashdetect = func {
         # A slow fall to the ground < 130kts, probably flying slightly straight
         if (getprop("/f22/dead") == 0){
             if (speed < 110) {
-              screen.log.write("You crashed! Light Damage",1,0,0);
+              screen.log.write("你坠机了！轻度损伤",1,0,0);
               setprop("/f22/dead",1);
               setprop("/f22/crash/type",1);
               setprop("/f22/crash/doneonce",1);
             }
             # Highspeed crash
             if (speed > 110 and speed < 160) {
-              screen.log.write("You crashed! Medium Damage",1,0,0);
+              screen.log.write("你坠机了！中度损伤",1,0,0);
               setprop("/f22/dead",2);
               setprop("/f22/crash/type",2);
               setprop("/f22/crash/doneonce",1);
             }
             if (speed > 160 and speed < 190) {
-              screen.log.write("You crashed! Heavy Damage",1,0,0);
+              screen.log.write("你坠机了！重度损伤",1,0,0);
               setprop("/f22/dead",3);
               setprop("/f22/crash/type",2);
               setprop("/f22/crash/doneonce",1);
             }
             if (speed > 190 and speed < 280) {
-              screen.log.write("You crashed! Extreme Damage",1,0,0);
+              screen.log.write("你坠机了！严重损伤",1,0,0);
               setprop("/f22/dead",4);
               setprop("/f22/crash/type",2);
               setprop("/f22/crash/doneonce",1);
             }   
             if (speed > 280) {
-              screen.log.write("You crashed!!! Maximum Damage",1,0,0);
+              screen.log.write("你坠机了！！！完全损毁",1,0,0);
               setprop("/f22/dead",5);
               setprop("/f22/crash/type",2);
               setprop("/f22/crash/doneonce",1);
@@ -1038,9 +1043,9 @@ var apuseq1 = func() {
   # APU Animation/sequence!
   # make sure the cover is not on
   if (getprop("f22/ground/apu-cover") == 1) {
-    screen.log.write("WARNING! Cant start APU with APU cover attached!",1,0,0);
+    screen.log.write("警告！APU 盖未取下，无法启动 APU！",1,0,0);
   } elsif (getprop("systems/electrical/serviceable") == 0) {
-    screen.log.write("APU Failure! No serviceable electrical power source to spool up APU!",1,0,0);
+    screen.log.write("APU 故障！没有可用电源启动 APU！",1,0,0);
   } else {
     setprop("controls/apu/start",1);
     setprop("controls/apu/flap",1);
@@ -1390,7 +1395,7 @@ var canopy_switch = func(v,a) {
 	}
 cnpy.toggle();
   } else {
-    screen.log.write("Can't open canopy in flight")
+    screen.log.write("飞行中无法打开座舱盖")
   }
 }
 
@@ -1434,7 +1439,7 @@ var rightaim120 = func() {
   setprop("/controls/armament/station[4]/release","false");
   setprop("sim/weight[17]/selected","Aim-120");
   setprop("/controls/armament/station[17]/release","false");
-  screen.log.write("Added 2 External Aim-120's");
+  screen.log.write("已加装 2 枚外挂 AIM-120");
 }
 
 var rightaim9x = func() {
@@ -1442,7 +1447,7 @@ var rightaim9x = func() {
   setprop("/controls/armament/station[4]/release","false");
   setprop("sim/weight[17]/selected","Aim-9x");
   setprop("/controls/armament/station[17]/release","false");
-  screen.log.write("Added 2 External Aim-9X's");
+  screen.log.write("已加装 2 枚外挂 AIM-9X");
 }
 
 var leftaim120 = func() {
@@ -1450,7 +1455,7 @@ var leftaim120 = func() {
   setprop("/controls/armament/station[2]/release","false");
   setprop("sim/weight[20]/selected","Aim-120");
   setprop("/controls/armament/station[20]/release","false");
-  screen.log.write("Added 2 External Aim-120's");
+  screen.log.write("已加装 2 枚外挂 AIM-120");
 }
 
 var leftaim9x = func() {
@@ -1458,7 +1463,7 @@ var leftaim9x = func() {
   setprop("/controls/armament/station[2]/release","false");
   setprop("sim/weight[20]/selected","Aim-9x");
   setprop("/controls/armament/station[20]/release","false");
-  screen.log.write("Added 2 External Aim-9X's");
+  screen.log.write("已加装 2 枚外挂 AIM-9X");
 }
 
 var removeright = func(ae=nil) {
@@ -1467,7 +1472,7 @@ var removeright = func(ae=nil) {
   setprop("sim/weight[17]/selected","None");
   setprop("/controls/armament/station[17]/release","false");
   if (ae == nil) {
-    screen.log.write("Removed right external weapons");
+    screen.log.write("已拆除右侧外挂武器");
   }
 }
 
@@ -1477,7 +1482,7 @@ var removeleft = func(ae) {
   setprop("sim/weight[20]/selected","None");
   setprop("/controls/armament/station[20]/release","false");
   if (ae == nil) {
-    screen.log.write("Removed left external weapons");
+    screen.log.write("已拆除左侧外挂武器");
   }
 }
 
@@ -1489,13 +1494,13 @@ var addrighttank = func() {
   var rightdrop = getprop("controls/armament/rdt");
   var farrightdrop = getprop("controls/armament/rrdt");
   if (rightdrop == 0 and farrightdrop == 0) {
-    screen.log.write("Right drop tank added. Click again to add second right tank");
+    screen.log.write("已加装右侧副油箱，再次点击可加装第二个");
     setprop("controls/armament/rdt",1);
   } elsif (rightdrop == 1 and farrightdrop == 0) {
-    screen.log.write("All right droptanks added");
+    screen.log.write("右侧副油箱已全部挂载");
     setprop("controls/armament/rrdt",1);
   } elsif (rightdrop ==1 and farrightdrop == 1) {
-    screen.log.write("Cant add anymore right drop tanks! To remove them: Click remove tank");
+    screen.log.write("右侧副油箱已满！如需拆除请点击“拆除副油箱”");
   }
 }
 
@@ -1503,13 +1508,13 @@ var addlefttank = func() {
   var rightdrop = getprop("controls/armament/ldt");
   var farrightdrop = getprop("controls/armament/lldt");
   if (rightdrop == 0 and farrightdrop == 0) {
-    screen.log.write("Left drop tank added. Click again to add second left tank");
+    screen.log.write("已加装左侧副油箱，再次点击可加装第二个");
     setprop("controls/armament/ldt",1);
   } elsif (rightdrop == 1 and farrightdrop == 0) {
-    screen.log.write("All left droptanks added");
+    screen.log.write("左侧副油箱已全部挂载");
     setprop("controls/armament/lldt",1);
   } elsif (rightdrop ==1 and farrightdrop == 1) {
-    screen.log.write("Cant add anymore left drop tanks! To remove them: Click remove tank");
+    screen.log.write("左侧副油箱已满！如需拆除请点击“拆除副油箱”");
   }
 }
 
@@ -1518,7 +1523,7 @@ var removerighttank = func() {
   setprop("consumables/fuel/tank[12]/level-lbs",0);
   setprop("controls/armament/rdt",0);
   setprop("controls/armament/rrdt",0);
-  screen.log.write("All right drop tanks removed");
+  screen.log.write("右侧副油箱已全部拆除");
 }
 
 var removelefttank = func() {
@@ -1526,7 +1531,7 @@ var removelefttank = func() {
   setprop("consumables/fuel/tank[11]/level-lbs",0);
   setprop("controls/armament/ldt",0);
   setprop("controls/armament/lldt",0);
-  screen.log.write("All left drop tanks removed");
+  screen.log.write("左侧副油箱已全部拆除");
 }
 
 var checkforext = func {
@@ -1555,7 +1560,7 @@ var checkforext = func {
 		setprop("consumables/fuel/tank[9]/selected", 0);
 		setprop("consumables/fuel/tank[10]/selected", 0);
     if (fuelright > 0 or fuelleft > 0) {
-      screen.log.write("There are no drop tanks attached for these inboard tanks. See Pylons loads to attach them");
+      screen.log.write("内侧未见副油箱，请在“挂架挂载”里加装");
     }
   } else {
     setprop("consumables/fuel/tank[9]/selected", 1);
@@ -1567,7 +1572,7 @@ var checkforext = func {
 		setprop("consumables/fuel/tank[11]/selected", 0);
 		setprop("consumables/fuel/tank[12]/selected", 0);
     if (fuelfarright > 0 or fuelfarleft > 0) {
-      screen.log.write("There are no drop tanks attached for these outboard tanks. See Pylons loads to attach them");
+      screen.log.write("外侧未见副油箱，请在“挂架挂载”里加装");
     }
   } else {
     setprop("consumables/fuel/tank[11]/selected", 1);
@@ -1578,7 +1583,7 @@ var checkforext = func {
 
 
 var jettdroptanks = func {
-  screen.log.write("JETT: Drop tanks");
+  screen.log.write("抛弃：副油箱");
   setprop("controls/armament/ldt",0);
   setprop("controls/armament/rdt",0);
   setprop("controls/armament/lldt",0);
@@ -1662,7 +1667,7 @@ var eject = func{
       return 1;
     }
     print("Eject Phase one starting");
-    screen.log.write("Canopy Jettisoned");
+    screen.log.write("座舱盖已抛掉");
     setprop("f22/ejected",1); # hide canopy
     setprop("f22/canopy-jett",1);
     setprop("f22/ejection/lat",getprop("position/latitude-deg"));
@@ -1685,7 +1690,7 @@ var eject2 = func{
   if (getprop("sim/current-view/view-number-raw") == 0) {
     view.setViewByIndex(105); # Go to Ejection view when only in cockpit
   }
-  screen.log.write("Press v (and shift-v) to change Missile Camera views, 1st Person, 3rd Person");
+  screen.log.write("按 v（及 shift-v）切换导弹视角：第一人称、第三人称");
    # viewMissile.view_firing_missile(es);
     #setprop("sim/view[0]/enabled",0); #disabled since it might get saved so user gets no pilotview in next aircraft he flies in.
 #    settimer(func {crash.eject();},3.5);  turn off the jet if its still alive
@@ -1736,14 +1741,14 @@ var toggledfm = func() {
     if (dfm == 0) {
       acmtimer.start();
       # activate dfm
-      screen.log.write("Dogfight mode enabled",0,1,0);
+      screen.log.write("格斗模式已开启",0,1,0);
       var weaponlist = SSWC.countlist(); # [aim9,aim120,aim260,gbu39,jdam]
       # first check aim-9's
       if (weaponlist[0] != 0) {
         # we have aim-9 switch to it
         setprop("/controls/armament/selected-weapon","Aim-9x");
         setprop("/controls/armament/selected-weapon-digit",1);
-        screen.log.write("Auto Selected: "~getprop("/controls/armament/selected-weapon")~"");
+        screen.log.write("自动选择："~getprop("/controls/armament/selected-weapon")~"");
         setprop("/controls/armament/weapon-selected", 0);   
         var weaponname = getprop("controls/armament/selected-weapon");
         setprop("/controls/armament/stick-selector",2);
@@ -1752,7 +1757,7 @@ var toggledfm = func() {
         # we have aim-9 switch to it
         setprop("/controls/armament/selected-weapon","Aim-120");
         setprop("/controls/armament/selected-weapon-digit",2);
-        screen.log.write("Auto Selected: "~getprop("/controls/armament/selected-weapon")~"");
+        screen.log.write("自动选择："~getprop("/controls/armament/selected-weapon")~"");
         setprop("/controls/armament/weapon-selected", 0);   
         var weaponname = getprop("controls/armament/selected-weapon");
         setprop("/controls/armament/stick-selector",2);
@@ -1795,7 +1800,7 @@ var toggledfm = func() {
     } else {
       acmtimer.stop();
       # now disable
-      screen.log.write("Dogfight mode disabled",0,1,0);
+      screen.log.write("格斗模式已关闭",0,1,0);
       # now revert settings
       setprop("f22/fcsmode",getprop(oldfcsmode)); # dogfight mode fcs
       setprop("instrumentation/radar/range",getprop(oldradarrange)); # set range
@@ -1834,7 +1839,7 @@ var lockuntill = func(callsign) {
       radar.next_Target_Index(1,0);
     } else {
       # there the same!
-      screen.log.write("Radar: Cursor Selected "~radar.tgts_list[radar.Target_Index].Callsign.getValue(),1,1,0);
+      screen.log.write("雷达：光标选择 "~radar.tgts_list[radar.Target_Index].Callsign.getValue(),1,1,0);
       setprop("instrumentation/radar/lock",1);
     }
   }
@@ -1907,7 +1912,7 @@ var cursorclick = func() {
     var callsignsize = utf8.size(lockablecallsigns);
     if (callsignsize > 7 and lockablecallsigns != "") {
       # Not a callsign
-      screen.log.write("Cant have more than 1 target under cursor!");
+      screen.log.write("光标下不能有多个目标！");
       screen.log.write(lockablecallsigns);
     } else {
       lockuntill(lockablecallsigns);
@@ -2053,7 +2058,7 @@ var tgtlock = func{
         setprop("instrumentation/radar/jamlock",1);
         if (getprop("controls/jammer/en") == 0) {
           jammer.start();
-          screen.log.write("Jamming fake missile alerts to locked target!",0,1,0);
+          screen.log.write("正向锁定目标发送虚假导弹告警！",0,1,0);
           setprop("controls/jammer/en",1);
         }
     } else {
@@ -2208,7 +2213,7 @@ setprop("misc/closestmp", 100000); # reset
        #screen.log.write(i);
 
         if (getprop("misc/closestmp") > range) {
-          #screen.log.write("Found new closer target!");
+          #screen.log.write("发现更近的新目标！");
            #screen.log.write(callsign);
           setprop("misc/closestmp", range);          
           setprop("misc/callsign",callsign);
@@ -2276,10 +2281,10 @@ var radarlook = func(cs=nil) {
         # i
         if (target1_x > -6 and target1_x < 6 and target1_z > -6 and target1_z < 6) {
           # Target is in the hud
-          #screen.log.write("Radar ACM: Can lock! Locking...");
+          #screen.log.write("雷达 ACM：可锁定！正在锁定……");
           #screen.log.write(callsign);
           #checkcloestmp("");
-          #screen.log.write("Radar: Currently Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);''
+          #screen.log.write("雷达：当前锁定 "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);''
          
           var radarcs = radar.tgts_list[radar.Target_Index].Callsign.getValue();
           acmcheck(radarcs,mpid,total);
@@ -2298,10 +2303,10 @@ var acmcheck = func(radarcs,mpid,total) {
   for(var i = 0; i < total; i += 1) {
     #screen.log.write("Iteration: "~i~".");
     if (radarcs != getprop("ai/models/multiplayer[" ~ mpid ~ "]/callsign")) {
-      #screen.log.write("Dosent match!");
+      #screen.log.write("不匹配！");
       radar.next_Target_Index(1);
     } else {
-      screen.log.write("Radar: ACM Locked "~radar.tgts_list[radar.Target_Index].Callsign.getValue());
+      screen.log.write("雷达：ACM 已锁定 "~radar.tgts_list[radar.Target_Index].Callsign.getValue());
       setprop("instrumentation/radar/lock", 1);
       break;
     }
@@ -2341,7 +2346,7 @@ var arrowpointer = func() {
     }
     if (target1_x > -6 and target1_x < 6 and target1_z > -6 and target1_z < 6) {
         # Target in the hud
-        #screen.log.write("In HUD");
+        #screen.log.write("在 HUD 内");
         setprop("/controls/radar/hud-pointer",0);
         setprop("/controls/radar/hud-rotate",0);
     } else {
@@ -2540,18 +2545,18 @@ var throtr = func() {
   # put code here
   if (getprop("f22/throttler") < 0){
     if (getprop("controls/apu/run") == 0 and getprop("fdm/jsbsim/fcs/engine-gen-spin-output") == 0){ # if apu off and second engine off. dont start
-      screen.log.write("The APU or 1 engine must be running in order to start.",1,0,0);
+      screen.log.write("必须先有 APU 或一台发动机运转才能启动。",1,0,0);
       return 0;
     }
     setprop("f22/throttler",0);
-    screen.log.write("Right Throttle set to Idle! Starting Right Engine...");    
+    screen.log.write("右油门已置慢车！正在启动右发动机……");    
     setprop("f22/started",1);
     throttlertimer.start();
     emu.manualstartr();
   emu.timer_apucheck2.start(); # APU Shutoff rebound
   }
   elsif (getprop("f22/throttler") != -0.1){
-    screen.log.write("Right Throttle Cut Off! Shutting down Right Engine...");
+    screen.log.write("右油门已切断！正在关停右发动机……");
     setprop("f22/started",0);
     throttlertimer.stop();
     setprop("f22/throttler",-0.1);
@@ -2565,18 +2570,18 @@ var throtl = func() {
   # put code here
   if (getprop("f22/throttlel") < 0){
     if (getprop("controls/apu/run") == 0 and getprop("fdm/jsbsim/fcs/engine-gen-spin-output") == 0){ # if apu off and second engine off. dont start
-      screen.log.write("The APU or 1 engine must be running in order to start.",1,0,0);
+      screen.log.write("必须先有 APU 或一台发动机运转才能启动。",1,0,0);
       return 0;
     }
     setprop("f22/throttlel",0);
-    screen.log.write("Left Throttle set to Idle! Starting Left Engine...");    
+    screen.log.write("左油门已置慢车！正在启动左发动机……");    
     setprop("f22/started",1);
     throttleltimer.start();
     emu.manualstartl();
   emu.timer_apucheck2.start(); # APU Shutoff rebound
   }
   elsif (getprop("f22/throttlel") != -0.1){
-    screen.log.write("Left Throttle Cut Off! Shutting down Left Engine...");
+    screen.log.write("左油门已切断！正在关停左发动机……");
     setprop("f22/started",0);
     throttleltimer.stop();
     setprop("f22/throttlel",-0.1);
@@ -2780,7 +2785,7 @@ var jettison = func(type) {
   if (type == "external") {
     if (getprop("controls/armament/rdt") == 1 or getprop("controls/armament/ldt") == 1 or getprop("controls/armament/rrdt") == 1 or getprop("controls/armament/lldt") == 1) {
       # Only jet tanks first
-      screen.log.write("Tanks Jettisoned. Press again to JETT Weapons",0,1,0);
+      screen.log.write("副油箱已抛弃，再按一次抛弃武器",0,1,0);
       setprop("controls/armament/rdt",0);
       setprop("controls/armament/rrdt",0);
       setprop("controls/armament/ldt",0);
@@ -2842,11 +2847,11 @@ var gwing = func() {
     thewing = rand() < (1-ae);
     if (thewing == 1) {
       # its the lef- uhh RIGHT WING!!!
-      screen.log.write("Right wing damaged due to G-Forces!",1,0,0);
+      screen.log.write("右翼因过载受损！",1,0,0);
       setprop("f22/damage/rwing",1);
     } else {
       # the the other wing
-      screen.log.write("Left wing damaged due to G-Forces!",1,0,0);
+      screen.log.write("左翼因过载受损！",1,0,0);
       setprop("f22/damage/lwing",1);
     }
   }
@@ -2856,16 +2861,16 @@ var dpause = func() { # damage pause
 	print("f22: dpause");
 	var cwow = getprop("gear/gear[0]/wow"); # Nose gear wowzers!
 	if (getprop("payload/armament/msg") == 1 and cwow == 0) {
-		screen.log.write("Damage is on! Please land your raptor and disable damage to pause in-flight",1,0,0);
+		screen.log.write("损伤已开启！请先降落并关闭损伤再暂停",1,0,0);
 	} else {
 # from f16, simple pause
 		setprop("/sim/freeze/master", !getprop("/sim/freeze/master"));
         setprop("/sim/freeze/clock", !getprop("/sim/freeze/clock"));
 		# Tooltip
 		if (getprop("/sim/freeze/master")) {
-            gui.popupTip("Simulation is paused.");
+            gui.popupTip("模拟已暂停。");
         } else {
-      		gui.popupTip("Simulation Resumed");
+      		gui.popupTip("模拟已继续");
         }
 	}
 }
@@ -2983,7 +2988,7 @@ shake_timer2.start();
 crash_timer.stop(); # stop crash xd
 crashreinit_timer.start();
 repair();
-screen.log.write("Ready");
+screen.log.write("就绪");
 timer_jitter.start();  
 timer_flarecheck.start();          # flare checker
 timer_eng.start();          # engines

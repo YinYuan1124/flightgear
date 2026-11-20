@@ -85,7 +85,7 @@ var engstopr = func {
 var apu = func() {
    #f22.apuseq1(); # start the apu
    # start the apu via the switch
-   screen.log.write("Starting APU");
+   screen.log.write("正在启动 APU");
    setprop("controls/electric/apustart",1);
    setprop("controls/electric/apustartpos",1);
    click();
@@ -95,7 +95,7 @@ var apu = func() {
 var autostart = func {
    var startstatus = getprop("/f22/started");
    if ( startstatus == 0 ) {
-      gui.popupTip("Autostarting...");
+      gui.popupTip("自动启动…");
 		#f22.cnpy.close();
 	      setprop("f22/started", 1);
          setprop("controls/lighting/consoleknob",0.5);
@@ -115,11 +115,11 @@ var autostart = func {
          setprop("/controls/electric/controls", 1);
          
          settimer(apu, 1);
-	  #gui.popupTip("Starting Engines");
+	  #gui.popupTip("正在启动发动机");
 
 	  }
    if ( startstatus == 1 ) {
-      gui.popupTip("Shutting Down...");
+      gui.popupTip("正在关停……");
       #f22.throttletimer.stop();
       #setprop("f22/throttle",-0.1);
 		f22.cnpy.open();
@@ -143,7 +143,7 @@ var apucheck = func {
          # APU running start engines
          f22.cnpy.close();     
          engstart();
-         screen.log.write("APU Running.");
+         screen.log.write("APU 运行中。");
          timer_apucheck.stop();
          timer_apucheck2.start();
       }

@@ -274,192 +274,193 @@
         </sound>
 
         <help>
-            <title>Grumman F-14</title>
+<!-- 中文注释：以下帮助文本已本地化为简体中文；按键名与代码标识保持原样。 -->
+            <title>格鲁曼 F-14</title>
             <key>
                 <name>Home</name>
-                <desc>Increase elevator trim</desc>
+                <desc>增加升降舵配平（抬头）</desc>
             </key>
             <key>
                 <name>End</name>
-                <desc>Decrease elevator trim</desc>
+                <desc>减小升降舵配平（低头）</desc>
             </key>
 
             <key>
                 <name>f</name>
-                <desc>Lower flaps</desc>
+                <desc>放下襟翼</desc>
             </key>
             <key>
                 <name>F</name>
-                <desc>Raise flaps</desc>
+                <desc>收起襟翼</desc>
             </key>
             <key>
                 <name>E</name>
-                <desc>Decrease Radar Range</desc>
+                <desc>减小雷达量程</desc>
             </key>
             <key>
                 <name>y Shift-y</name>
-                <desc>Next / Previous target</desc>
+                <desc>选择下一个 / 上一个目标</desc>
             </key>
             <key>
                 <name>o</name>
-                <desc>toggle arrester hook</desc>
+                <desc>收放着舰钩</desc>
             </key>
             <key>
                 <name>R</name>
-                <desc>Increase Radar Range</desc>
+                <desc>增大雷达量程</desc>
             </key>
             <key>
                 <name>Ctrl-y</name>
-                <desc>Toggle ground spoilers armed</desc>
+                <desc>预位/解除地面扰流板</desc>
             </key>
             <key>
                 <name>c</name>
-                <desc>Toggle canopy and access ladder</desc>
+                <desc>打开/关闭座舱盖与登机梯</desc>
             </key>
             <key>
                 <name>u</name>
-                <desc>Toggle refuelling probe</desc>
+                <desc>收放空中受油探管</desc>
             </key>
             <key>
                 <name>Ctrl-o</name>
-                <desc>Toggle Wing Oversweep (on ground only)</desc>
+                <desc>开关机翼超掠（仅限地面）</desc>
             </key>
             <line>__________________________________________________</line>
             <key>
                 <name>Ctrl-S</name>
-                <desc>Toggle APC (Landing Automatic Power control)</desc>
+                <desc>开关 APC（着陆自动动力控制）</desc>
             </key>
             <!--<key>
 				<name>Ctrl-d</name>
-				<desc>Toggle DLC (Landing Direct Lift Control)</desc>
+				<desc>开关 DLC（着陆直接升力控制）</desc>
 			</key>
 			<key>
 				<name>d</name>
-				<desc>DLC increase</desc>
+				<desc>DLC 增大</desc>
 			</key>
 			<key>
 				<name>D</name>
-				<desc>DLC decrease</desc>
+				<desc>DLC 减小</desc>
 			</key>-->
             <key>
                 <name>Ctrl-t</name>
-                <desc>Toggle AFCS (Attitude Mode)</desc>
+                <desc>开关 AFCS（姿态保持模式）</desc>
             </key>
             <key>
                 <name>Ctrl-a</name>
-                <desc>Enable AFCS Altitude Mode</desc>
+                <desc>启用 AFCS 高度保持模式</desc>
             </key>
             <key>
                 <name>*</name>
-                <desc>Engage AFCS Altitude Mode</desc>
+                <desc>接通 AFCS 高度保持模式</desc>
             </key>
             <key>
                 <name>Ctrl-h</name>
-                <desc>Enable AFCS Heading Mode</desc>
+                <desc>启用 AFCS 航向保持模式</desc>
             </key>
             <key>
                 <name>h</name>
-                <desc>Cycle through HSD modes: radar - compas - ECM (RWR)</desc>
+                <desc>循环切换 HSD 模式：雷达 - 罗盘 - 电子对抗（RWR）</desc>
             </key>
             <key>
                 <name>q</name>
-                <desc>Toggle Radar Standby Mode</desc>
+                <desc>切换雷达待机模式</desc>
             </key>
             <key>
                 <name>m</name>
-                <desc>Cycle Stick Weapon Mode Selector</desc>
+                <desc>循环切换操纵杆武器选择</desc>
             </key>
             <key>
                 <name>Shift-m</name>
-                <desc>Cycle pylons selection</desc>
+                <desc>循环选择挂架</desc>
             </key>
             <key>
                 <name>Ctrl-w</name>
-                <desc>Cycle through MasterArm modes</desc>
+                <desc>循环切换武器总保险（Master Arm）模式</desc>
             </key>
             <key>
                 <name>Ctrl-n</name>
-                <desc>Toggle Radar PULSE SRCH / TWS AUTO Mode</desc>
+                <desc>切换雷达 PULSE SRCH / TWS AUTO 模式</desc>
             </key>
             <key>
                 <name>e</name>
-                <desc>Trigger M61A1 Vulcan or AIM-9s</desc>
+                <desc>发射 M61A1 机炮或 AIM-9 导弹</desc>
             </key>
             <key>
                 <name>Ctrl-v</name>
-                <desc>Back to Pilot's View or toggle Pilot's and RIO View.</desc>
+                <desc>返回飞行员视角，或在飞行员/RIO 视角间切换。</desc>
             </key>
             <key>
                 <name>&gt;</name>
-                <desc>Wing Sweep aft.</desc>
+                <desc>机翼后掠。</desc>
             </key>
             <key>
                 <name>&lt;</name>
-                <desc>Wing Sweep forward.</desc>
+                <desc>机翼前掠。</desc>
             </key>
             <key>
                 <name>=</name>
-                <desc>Wing Sweep auto mode.</desc>
+                <desc>机翼自动后掠模式。</desc>
             </key>
             <key>
                 <name>Ctrl-v</name>
-                <desc>Back to Pilot's View or toggle Pilot's and RIO View.</desc>
+                <desc>返回飞行员视角，或在飞行员/RIO 视角间切换。</desc>
             </key>
             <key>
                 <name>Q</name>
-                <desc>Reset view</desc>
+                <desc>重置视角</desc>
             </key>
             <key>
                 <name>Ctrl-q</name>
-                <desc>Release chaff/flare</desc>
+                <desc>释放箔条/红外干扰弹</desc>
             </key>
             <key>
                 <name>S</name>
-                <desc>Toggle smoke</desc>
+                <desc>开关拉烟</desc>
             </key>
-            <line>The menu Fuel and Sores is located in Menu > Tomcat Controls dropdown. (Hit F10 if needed)</line>
+            <line>燃油与挂载菜单位于“菜单 → 雄猫操控”下拉菜单中（如未显示请按 F10）。</line>
             <line>__________________________________________________</line>
-            <line>Engine start: Ensure sufficient fuel and both engines cut off (glare panel), select R Crank from engine control panel (Next to throttles). At 20% RPM push in cut off for R engine.</line>
-            <line>              Repeat procedure for L engine, you can use quickstart from the menu once you have fuel loaded.</line>
-            <line>Take off: MILthrust, rotate at 130-160Kts depending on configuration. Do not exceed 10 degrees of pitch</line>
+            <line>发动机启动：确认燃油充足且两台发动机均处于停车位（遮光板），在发动机控制面板（油门杆旁）选择 R Crank。转速达到 20% 时，将右发停车开关推入。</line>
+            <line>              左发重复相同步骤；加好燃油后，也可直接使用菜单中的“快速启动”。</line>
+            <line>起飞：使用军用推力，根据构型在 130-160 节抬前轮。俯仰角不要超过 10 度。</line>
             <line>__________________________________________________</line>
-            <line>Autopilot:</line>
-            <line>SAS: Pitch, Roll, Yaw damping controlled by AFCS STAB AUG switches underneath engine controls</line>
-            <line>     Yaw damper must be on over Mach 0.8; Roll damper usually off when maneouvering. All dampers only active at AOA less than +/- 15 deg</line>
-            <line>Main AFCS mode is Attitude Hold Mode (Ctrl-t). Other Modes need this main mode activated before being selected. Switching off Attitude Mode disables all other modes. </line>
-            <line>When in Attitude Mode, the autopilot disengages whenever a certain pressure is put on the stick and it reengages when the stick is back in the center position. Attitude Hold Mode will hold pitch</line>
-            <line>attitudes up to +/- 30&#x2103; and bank angles up to +/- 60&#x2103;;</line>
+            <line>自动驾驶：</line>
+            <line>SAS：俯仰、滚转、偏航阻尼由发动机操纵装置下方的 AFCS STAB AUG 电门控制。</line>
+            <line>     马赫数超过 0.8 时必须接通偏航阻尼器；机动时滚转阻尼器通常关闭。所有阻尼器仅在迎角小于 ±15 度时生效。</line>
+            <line>AFCS 主模式是姿态保持模式（Ctrl-t）。其他模式必须先激活主模式后才能选择。关闭姿态保持模式会同时禁用所有其他模式。</line>
+            <line>处于姿态保持模式时，一旦对驾驶杆施加一定力量，自动驾驶就会断开；驾驶杆回中后自动重新接通。姿态保持模式会保持俯仰</line>
+            <line>姿态角在 ±30&#x2103; 以内、坡度在 ±60&#x2103; 以内；</line>
             <line></line>
-            <line>Altitude Mode (keyboard CTRL-A):</line>
-            <line>     Once in Attitude Mode the AP REF indicator (left of the VDI) illuminates engage at desired altitude keybaord  *. The autopilot will then maintain your altitude.</line>
+            <line>高度保持模式（快捷键 CTRL-A）：</line>
+            <line>     进入姿态保持模式后，AP REF 指示灯（VDI 左侧）会亮起；在所需高度按 * 键接通，自动驾驶将保持该高度。</line>
             <line></line>
-            <line>Heading Mode:</line>
-            <line>     Once in Attitude Mode, you can select Heading Mode by hitting Ctrl-h. After manoeuvering the aircraft to the desired reference heading,</line>
-            <line>     release the control stick at a bank angle of less than +/- 5°. The autopilot will then hold the aircraft on the desired Heading.</line>
+            <line>航向保持模式：</line>
+            <line>     进入姿态保持模式后，按 Ctrl-h 可选择航向保持模式。将飞机机动到所需的基准航向后，</line>
+            <line>     在坡度小于 ±5° 时松开驾驶杆，自动驾驶便会保持飞机在所需航向上。</line>
             <line></line>
-            <line>     Autopilot need SAS channels to be engaged (which is the default). SAS Pitch and Roll channels may be disengaged by actuating switches</line>
-            <line>     located on the AFCS panel. With frame rates lower than 17fps you might experience jitter and autopilot may go haywire. In order avoid most</line>
-            <line>     catastrophic cases, parts of pitch SAS will be automatically and temporarely disengaged under 15fps, the same for Autopilot under 10fps.</line>
+            <line>     自动驾驶需要接通的 SAS 通道（默认为接通状态）。SAS 俯仰和滚转通道可通过 AFCS 面板上的电门断开。</line>
+            <line>     当帧率低于 17fps 时，可能会出现抖动，自动驾驶也可能失控。为避免大多数</line>
+            <line>     灾难性情况，帧率低于 15fps 时俯仰 SAS 的部分功能会自动暂时断开，低于 10fps 时自动驾驶也会暂时断开。</line>
             <line>__________________________________________________</line>
-            <line>Automatic Power Control (APC) (keyboard "ctrl-s" toggle):</line>
-            <line>     APC regulates engine thrust to maintain thean optimum approach angle of attack for landing. </line>
-            <line>     To engage APC, gear must be down, in air, throttles between 98% and 68% rpm (as shown on the panel gauges)</line>
-            <line>     Abnormal disengagement will cause the AUTO THROT caution light on the left side of the HUD to illuminate for 10 seconds.</line>
+            <line>自动动力控制（APC）（快捷键 "ctrl-s" 开关）：</line>
+            <line>     APC 会自动调节发动机推力，以保持着陆进近时的最佳迎角。</line>
+            <line>     接通 APC 的条件：起落架放下、飞机在空中、油门在 98% 与 68% 转速之间（以面板仪表显示为准）。</line>
+            <line>     APC 非正常断开时，HUD 左侧的 AUTO THROT 警告灯会亮起 10 秒。</line>
             <line>__________________________________________________</line>
-            <line>Wing sweep</line>
-            <line>     Wing sweep can be control automatically or manually with the CADC. When using manual control the auto control be</line>
-            <line>     reactivated when CADC values require more sweep than is demanded by the pilot. Keys: "&gt;" "&lt;" manual sweep; '=' for</line>
-            <line>     auto mode. The mode can be selected by clicking on the indicator on the gauge and position by using the mouse wheel over</line>
-            <line>     the indicator. The wing sweep control on the throttle quadrant is also active, use middle button to unlock the oversweep guard.</line>
+            <line>机翼后掠</line>
+            <line>     机翼后掠可由 CADC 自动控制或手动控制。使用手动控制时，自动控制会在</line>
+            <line>     CADC 所需后掠角大于飞行员要求时重新激活。按键：&gt;、&lt; 手动后掠；= 为</line>
+            <line>     自动模式。也可点击仪表上的指示器选择模式，并在此指示器上滚动鼠标滚轮调整位置。</line>
+            <line>     油门台座上的机翼后掠控制同样有效；用鼠标中键可解锁超掠保护盖。</line>
             <line>__________________________________________________</line>
-            <line>VHF: Located on the RIO's left console, 3 bands: 30-88 Mhz, 108-174 Mhz, 225-400 Mhz. Modes TR and TR-G set COMM1. Mode DF sets NAV1,</line>
-            <line>that is Direction Finder displayed with the single needle in both BDHIs. You have Comm *or* DF. Storing frequencies (up to 20 channels) a- PRESET</line>
-            <line>select the desired chan, b- READ tune the desired frequency, c- LOAD stores the frequency in the previously selected chan.</line>
-            <line>UHF: Located on the pilot's left console, 225-400 Mhz. ADF is not enabled on this radio.</line>
+            <line>VHF：位于 RIO 左控制台，3 个频段：30-88 MHz、108-174 MHz、225-400 MHz。TR 和 TR-G 模式设置 COMM1；DF 模式设置 NAV1，</line>
+            <line>即测向机，在两个 BDHI 上以单针显示。COMM 与 DF 只能二选一。存储频率（最多 20 个通道）：a- PRESET</line>
+            <line>选择所需通道，b- READ 调谐到所需频率，c- LOAD 将频率存入先前选定的通道。</line>
+            <line>UHF：位于飞行员左控制台，225-400 MHz。此电台未启用 ADF。</line>
             <line>__________________________________________________</line>
-            <line>Displays: HUD: Take Off and Landing mode, Air to Air mode, Cruise mode selectable from the Pilot's Display Panel, down to the right, </line>
-            <line>buttons in column.</line>
-            <line>HUD, VDI (Vertical Display Indicator) and HSD (Horisontal Situation Display) turned ON/OFF from the same panel, lowest switches row.</line>
+            <line>显示器：HUD 有起飞/着陆模式、空对空模式、巡航模式，可在飞行员显示面板（右下方）选择，</line>
+            <line>按钮纵向排列。</line>
+            <line>HUD、VDI（垂直显示器）和 HSD（水平态势显示器）的开关都在同一面板最下一排电门上。</line>
             <line>__________________________________________________</line>
 
         </help>
@@ -1048,37 +1049,37 @@
         <menubar>
             <default>
                 <menu n="50">
-                    <label>Tomcat Controls</label>
+                    <label>雄猫操控</label>
                     <item n="0">
-                        <label>Repair Airframe</label>
+                        <label>修复机体</label>
                         <binding>
                             <command>nasal</command>
                             <script>f14.fixAirframe();armament.ct("rp");</script>
                         </binding>
                     </item>
                     <item n="1">
-                        <label>Fuel and Stores</label>
+                        <label>燃油与挂载</label>
                         <binding>
                             <command>nasal</command>
                             <script>f14.ext_loads_dlg.open()</script>
                         </binding>
                     </item>
                     <item n="2">
-                        <label>Select Livery</label>
+                        <label>选择涂装</label>
                         <binding>
                             <command>nasal</command>
                             <script>aircraft.livery.dialog.toggle()</script>
                         </binding>
                     </item>
                     <!--<item n="3">
-                        <label>Toggle Heat Blur</label>
+                        <label>开关热气流模糊</label>
                         <binding>
                             <command>property-toggle</command>
                             <property>sim/model/f-14b/fx/heat-blur-on</property>
                         </binding>
                     </item>-->
                     <item n="4">
-                        <label>Select MP back seater</label>
+                        <label>选择多人后座</label>
                         <binding>
                             <command>nasal</command>
                             <script>
@@ -1087,35 +1088,35 @@
                         </binding>
                     </item>
                     <!--<item n="5">
-                        <label>Auto Pilot steering dead zone</label>
+                        <label>自动驾驶转向死区</label>
                         <binding>
                             <command>nasal</command>
                             <script>f14.AP_steering_deadZ_dlg.open()</script>
                         </binding>
                     </item>-->
                     <item n="6">
-                        <label>Quickstart</label>
+                        <label>快速启动</label>
                         <binding>
                             <command>nasal</command>
                             <script>f14.quickstart()</script>
                         </binding>
                     </item>
                     <item n="7">
-                        <label>Ground Services</label>
+                        <label>地面服务</label>
                         <binding>
                             <command>nasal</command>
                             <script>f14.dlg_ground_services.open()</script>
                         </binding>
                     </item>
                     <item n="8">
-                        <label>Malfunctions and Damage</label>
+                        <label>故障与损伤</label>
                         <binding>
                             <command>nasal</command>
                             <script>f14.dlg_malfunctions.open()</script>
                         </binding>
                     </item>
                     <item n="9">
-                        <label>Cold and Dark</label>
+                        <label>冷舱状态</label>
                         <binding>
                             <command>nasal</command>
                             <script>f14.cold_and_dark()</script>
@@ -1574,7 +1575,7 @@
 
             <key n="1">
                 <name>CTRL-a</name>
-                <desc>Toggle autopilot altitude mode.</desc>
+                <desc>切换自动驾驶高度保持模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14_afcs.afcs_altitude_engage_toggle();</script>
@@ -1583,7 +1584,7 @@
 
             <key n="8">
                 <name>CTRL-h</name>
-                <desc>Toggle autopilot heading mode.</desc>
+                <desc>切换自动驾驶航向保持模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14_afcs.afcs_heading_switch(0);</script>
@@ -1592,7 +1593,7 @@
 
             <key n="14">
                 <name>Ctrl-n</name>
-                <desc>Toggle Radar PULSE SRCH / TWS AUTO Modes</desc>
+                <desc>切换雷达 PULSE SRCH / TWS AUTO 模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>awg_9.wcs_mode_toggle()</script>
@@ -1601,7 +1602,7 @@
 
             <key n="15">
                 <name>Ctrl-o</name>
-                <desc>toggle oversweep</desc>
+                <desc>开关机翼超掠</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.toggleOversweep();</script>
@@ -1610,7 +1611,7 @@
 
             <key n="17">
                 <name>ctrl-q</name>
-                <desc>Trigger flare/chaff release</desc>
+                <desc>释放红外干扰弹/箔条</desc>
                 <binding>
                     <command>property-toggle</command>
                     <property>/ai/submodels/submodel[4]/flare-release-cmd</property>
@@ -1620,7 +1621,7 @@
 
 		   <key n="19">
                 <name>CTRL-S</name>
-                <desc>toggle APC</desc>
+                <desc>开关 APC</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.toggleAPC();</script>
@@ -1629,7 +1630,7 @@
 
             <key n="20">
                 <name>Ctrl-t</name>
-                <desc>Toggle autopilot attitude mode</desc>
+                <desc>切换自动驾驶姿态保持模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14_afcs.afcs_engage_toggle()</script>
@@ -1638,7 +1639,7 @@
 
             <key n="22">
                 <name>Ctrl-v</name>
-                <desc>Select pilot's view (view 0) or toggle between pilot's and RIO's view</desc>
+                <desc>选择飞行员视角（视角 0），或在飞行员/RIO 视角间切换</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.toggle_cockpit_views();</script>
@@ -1647,7 +1648,7 @@
 
             <key n="23">
                 <name>Ctrl-w</name>
-                <desc>Cycle through MasterArm modes</desc>
+                <desc>循环切换武器总保险（Master Arm）模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.master_arm_cycle();</script>
@@ -1656,7 +1657,7 @@
 
             <key n="25">
                 <name>Ctrl-y</name>
-                <desc>Toggle ground spoilers armed</desc>
+                <desc>预位/解除地面扰流板</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.toggleGroundSpoilers();</script>
@@ -1665,7 +1666,7 @@
 
             <key n="42">
                 <name>*</name>
-                <desc>Nose wheel steering or Autopilot selected mode</desc>
+                <desc>前轮转向或接通自动驾驶所选模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -1678,7 +1679,7 @@
 
             <key n="60">
                 <name>&lt;</name>
-                <desc>Decrease Sweep</desc>
+                <desc>机翼后掠减小</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.move_wing_sweep(-1)</script>
@@ -1686,7 +1687,7 @@
             </key>
             <key n="61">
                 <name>=</name>
-                <desc>Wing Sweep Automatic</desc>
+                <desc>机翼自动后掠</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.set_sweep(0)</script>
@@ -1694,7 +1695,7 @@
             </key>
             <key n="62">
                 <name>&gt;</name>
-                <desc>Increase Sweep</desc>
+                <desc>机翼后掠增大</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.move_wing_sweep(1)</script>
@@ -1704,7 +1705,7 @@
             <!-- map keys for catapult launch -->
             <key n="67">
                 <name>C</name>
-                <desc>Catapult Launch Command.</desc>
+                <desc>弹射起飞指令。</desc>
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -1723,7 +1724,7 @@
 <!--
             <key n="68">
                 <name>D</name>
-                <desc>DLC decrease</desc>
+                <desc>DLC 减小</desc>
                 <binding>
                     <command>property-adjust</command>
                     <property>/controls/flight/DLC</property>
@@ -1735,7 +1736,7 @@
 
             <key n="69">
                 <name>E</name>
-                <desc>Decrease Radar Range</desc>
+                <desc>减小雷达量程</desc>
                 <binding>
                     <command>nasal</command>
                     <script>awg_9.range_control(-1);</script>
@@ -1744,7 +1745,7 @@
 
             <key n="70">
                 <name>F</name>
-                <desc>Raise flaps</desc>
+                <desc>收起襟翼</desc>
                 <binding>
                     <command>nasal</command>
                     <script>controls.flapsDown(-1);</script>
@@ -1753,7 +1754,7 @@
 
             <key n="74">
                <name>K</name>
-               <desc>Decrease speedbrak</desc>
+               <desc>减小减速板</desc>
                <binding>
                   <command>nasal</command>
                   <script>controls.stepSpoilers(-1)</script>
@@ -1763,7 +1764,7 @@
             <!-- map keys for launch-bar -->
             <key n="76">
                 <name>L</name>
-                <desc>Launch-bar engage.</desc>
+                <desc>接通弹射杆。</desc>
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -1796,7 +1797,7 @@
 
             <key n="77">
                 <name>M</name>
-                <desc>Toggle AIM-9 selection</desc>
+                <desc>切换 AIM-9 选择</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.station_selector_cycle()</script>
@@ -1805,7 +1806,7 @@
 
             <key n="81">
                 <name>Q</name>
-                <desc>Reset view</desc>
+                <desc>重置视角</desc>
                 <binding>
                     <command>nasal</command>
                     <script>
@@ -1819,7 +1820,7 @@
             
             <key n="82">
                 <name>R</name>
-                <desc>Increase Radar Range</desc>
+                <desc>增大雷达量程</desc>
                 <binding>
                     <command>nasal</command>
                     <script>awg_9.range_control(1);</script>
@@ -1828,7 +1829,7 @@
 
             <key n="83">
                 <name>S</name>
-                <desc>smoke</desc>
+                <desc>拉烟</desc>
                 <binding>
                     <command>property-toggle</command>
                     <property>sim/model/f-14b/fx/smoke</property>
@@ -1837,7 +1838,7 @@
 
             <key n="99">
                 <name>c</name>
-                <desc>Open canopy and access ladder</desc>
+                <desc>打开座舱盖与登机梯</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.canopyswitch(2);</script>
@@ -1847,7 +1848,7 @@
 <!--
             <key n="100">
                 <name>d</name>
-                <desc>DLC increase</desc>
+                <desc>DLC 增大</desc>
                 <binding>
                     <command>property-adjust</command>
                     <property>controls/flight/DLC</property>
@@ -1859,7 +1860,7 @@
 
             <key n="101">
                 <name>e</name>
-                <desc>Trigger M61A1 Vulcan or AIM-9s</desc>
+                <desc>发射 M61A1 机炮或 AIM-9 导弹</desc>
                 <binding>
                     <command>property-assign</command>
                     <property>controls/armament/trigger</property>
@@ -1876,7 +1877,7 @@
 
             <key n="102">
                 <name>f</name>
-                <desc>Lower flaps</desc>
+                <desc>放下襟翼</desc>
                 <binding>
                     <command>nasal</command>
                     <script>controls.flapsDown(1);</script>
@@ -1885,7 +1886,7 @@
 
             <key n="104">
                 <name>h</name>
-                <desc>HSD cycle modes</desc>
+                <desc>循环切换 HSD 模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14_instruments.select_key_ecm_nav();</script>
@@ -1894,7 +1895,7 @@
 
             <key n="109">
                 <name>m</name>
-                <desc>Cycle Stick Weapon Mode Selector</desc>
+                <desc>循环切换操纵杆武器选择</desc>
                 <binding>
                     <command>property-adjust</command>
                     <property>sim/model/f-14b/controls/armament/stick-selector</property>
@@ -1908,7 +1909,7 @@
 
             <key n="111">
                 <name>o</name>
-                <desc>Toggle arrester hook</desc>
+                <desc>收放着舰钩</desc>
                 <binding>
                     <command>property-toggle</command>
                     <property>fdm/jsbsim/systems/hook/tailhook-cmd-norm</property>
@@ -1916,7 +1917,7 @@
             </key>
             <key n="113">
                 <name>q</name>
-                <desc>Toggle radar standby mode</desc>
+                <desc>切换雷达待机模式</desc>
                 <binding>
                     <command>nasal</command>
                     <script>awg_9.toggle_radar_standby();</script>
@@ -1925,7 +1926,7 @@
 
             <key n="83">
                 <name>S</name>
-                <desc>smoke</desc>
+                <desc>拉烟</desc>
                 <!--<binding>
                     <command>property-toggle</command>
                     <property>sim/model/f-14b/fx/smoke</property>
@@ -1941,7 +1942,7 @@
 
             <key n="117">
                 <name>u</name>
-                <desc>Cycle through the 3 refuelling probe switch positions</desc>
+                <desc>循环切换受油探管开关的 3 个位置</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.refuel_probe_switch_cycle();</script>
@@ -1950,7 +1951,7 @@
 
             <key n="121">
                 <name>y</name>
-                <desc>Next target select</desc>
+                <desc>选择下一个目标</desc>
                 <binding>
                     <command>property-assign</command>
                     <property>sim/model/f-14b/instrumentation/radar-awg-9/select-target</property>
@@ -1960,7 +1961,7 @@
 
             <key n="89">
                 <name>Y</name>
-                <desc>Previous target select</desc>
+                <desc>选择上一个目标</desc>
                 <binding>
                     <command>property-assign</command>
                     <property>sim/model/f-14b/instrumentation/radar-awg-9/select-target</property>
@@ -1969,7 +1970,7 @@
             </key>
             <key n="124">
                 <name>|</name>
-                <desc>Trim to elevator position</desc>
+                <desc>配平到当前升降舵位置</desc>
                 <binding>
                     <command>nasal</command>
                     <script>controls.setElevatorTrimToPosition()</script>
@@ -1978,7 +1979,7 @@
 
             <key n="362">
                 <name>Home</name>
-                <desc>Increase elevator trim</desc>
+                <desc>增加升降舵配平（抬头）</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.trimUp();</script>
@@ -1987,7 +1988,7 @@
 
             <key n="363">
                 <name>End</name>
-                <desc>Decrease elevator trim</desc>
+                <desc>减小升降舵配平（低头）</desc>
                 <binding>
                     <command>nasal</command>
                     <script>f14.trimDown();</script>
@@ -1996,7 +1997,7 @@
 
             <key n="21">
               <name>Ctrl-U</name>
-              <desc>[Cheat] Add 1000ft of emergency altitude</desc>
+              <desc>[作弊] 增加 1000 英尺应急高度</desc>
               <binding>
                <command>property-adjust</command>
                <property>/position/altitude-ft</property>
@@ -2015,7 +2016,7 @@
 
              <key n="97">
               <name>a</name>
-              <desc>Increase speed-up</desc>
+              <desc>提高时间加速倍率</desc>
                 <binding>
                     <command>nasal</command>
                     <script>controls.speedup(1);</script>
@@ -2028,7 +2029,7 @@
 
              <key n="65">
               <name>A</name>
-              <desc>Decrease speed-up</desc>
+              <desc>降低时间加速倍率</desc>
               <binding>
                 <command>nasal</command>
                 <script>controls.speedup(-1);</script>

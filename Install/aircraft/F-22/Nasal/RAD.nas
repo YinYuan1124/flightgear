@@ -439,7 +439,7 @@ var changefcs = func{
       setprop("f22/fcsmode",fcsmode+1);
       
     }
-    #screen.log.write("Switched FCS Mode",0,1,0);
+    #screen.log.write("已切换飞控模式",0,1,0);
 }
 
 # Cool datalink stuff
@@ -557,7 +557,7 @@ var dlink_loop = func {
           setprop("controls/radar/datarec/lon", lon);
           setprop("controls/radar/datarec/alt", alt);
           print("Datalink is being sent over to us from " ~ reccall);
-          screen.log.write("Datalink Coordnites were sent over from " ~ reccall ~ "!",1,1,0);
+          screen.log.write("数据链坐标已发送，来自 " ~ reccall ~ "!",1,1,0);
           stpt.createnew(lat,lon,alt);
           setprop("instrumentation/datalink/lastcallsign", reccall);
           setprop("instrumentation/datalink/data",1);          

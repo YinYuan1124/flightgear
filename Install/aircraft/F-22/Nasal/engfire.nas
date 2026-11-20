@@ -42,7 +42,7 @@ var extingright = func() {
             # Successful extinguish
             print("Successful extinguish for engine ",enginenum);
             setprop("sim/failure-manager/engines/engine[" ~ enginenum ~ "]/serviceable",1);
-            screen.log.write("Successfully extinguished the engine",0,1,0);
+            screen.log.write("发动机已成功灭火",0,1,0);
             setprop("f22/engine[" ~ enginenum ~ "]/extingfluid",extingfluid - 1);
         } else {
             print("didnt extinguish engine ",enginenum);
@@ -50,7 +50,7 @@ var extingright = func() {
         }
     } else {
         print("No exting fluid, Cant exting engine ",enginenum);
-        screen.log.write("No fluid remaining for that engine! Cant extinguish.",1,0,0);
+        screen.log.write("该发动机已无灭火剂！无法灭火。",1,0,0);
     }
 }
 
@@ -64,7 +64,7 @@ var extingleft = func() {
             # Successful extinguish
             print("Successful extinguish for engine ",enginenum);
             setprop("sim/failure-manager/engines/engine[" ~ enginenum ~ "]/serviceable",1);
-            screen.log.write("Successfully extinguished the engine",0,1,0);
+            screen.log.write("发动机已成功灭火",0,1,0);
             setprop("f22/engine[" ~ enginenum ~ "]/extingfluid",extingfluid - 1);
         } else {
             print("didnt extinguish engine ",enginenum);

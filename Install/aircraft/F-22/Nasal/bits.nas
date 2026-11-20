@@ -13,7 +13,7 @@ var bit = func() {
     if (flcs == 0) {
         setprop("controls/flight/bit",1);
         if (bitprog != 0) {
-            screen.log.write("FLCS BIT stopped. Results written to DTC",0,1,0);
+            screen.log.write("FLCS 自检停止，结果已写入 DTC",0,1,0);
             setprop("controls/flight/bitprogress",0);
         }
         
@@ -23,7 +23,7 @@ var bit = func() {
         setprop("controls/flight/bitprogress",getprop("controls/flight/bitprogress") + 0.5);
         if (bitprog == 1) {
             print("FLCS: BIT starting...");
-            screen.log.write("FLCS BIT Started.",1,1,1);
+            screen.log.write("FLCS 自检开始。",1,1,1);
         }     
         if (bitprog == 2) {
             print("FLCS: Checking FADEC...");
@@ -104,7 +104,7 @@ var bit = func() {
             setprop("controls/flight/rudder",0);
             setprop("controls/flight/speedbrake",0);
             setprop("controls/flight/bit",0);
-            screen.log.write("FLCS BIT Complete. No errors",0,1,0);
+            screen.log.write("FLCS 自检完成，无错误",0,1,0);
         }
     }
 }

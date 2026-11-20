@@ -2,7 +2,7 @@ print("Loading!");
 var showPylonsDlg = func{
 	if(getprop("/payload/armament/msg")){
 		if(getprop("/gear/gear/compression-ft")<0.01){
-			screen.log.write("Damage is ON, Land the Raptor to change the loadout!",1,0,0);
+			screen.log.write("损伤已开启，降落猛禽后才能更改挂载！",1,0,0);
 			return;
 		}
 	}

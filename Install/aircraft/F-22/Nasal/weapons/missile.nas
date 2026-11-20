@@ -384,7 +384,7 @@ var MISSILE = {
             me.gpslat = getprop("controls/radar/gpslock/lat");
             me.gpslon = getprop("controls/radar/gpslock/lon");
             me.gpsalt = getprop("controls/radar/gpslock/alt");
-            screen.log.write("Weapon released useing GPS!");
+            screen.log.write("武器已按 GPS 制导投放！");
         }
         me.status = 2;
         #me.animation_flags_props();
@@ -1298,7 +1298,7 @@ broddamage: func (cs,dist,msl) {
                             #sendCrater: func (lat,lon,alt,size,hdg,static) 
                             me.sendCrater(me.coord.lat(), me.coord.lon(), me.coord.alt(), 1, 0, static, typeID, me.Tgt.get_Callsign()); # Hit everything EXCEPT the target we just hit dead on
                             if (getprop("f22/debug")) {
-                                screen.log.write("Bomb exploded!",0,1,0);
+                                screen.log.write("炸弹爆炸！",0,1,0);
                             }
 				        }
                     }
@@ -1391,7 +1391,7 @@ broddamage: func (cs,dist,msl) {
         # Notching
         if (me.notched < 0.2 and me.gpstarget == 0 and me.fox == "Fox 3" and me.losttrack == 0) {
             # bandit trying to notch us
-            #screen.log.write("The missile was delocked with a notch");
+            #screen.log.write("导弹因缺口机动失去锁定");
             me.losttrack = 1;
         }
         if (me.losttrack == 1 and me.notched > 0.2) {
@@ -1411,9 +1411,9 @@ broddamage: func (cs,dist,msl) {
             if (me.hdg + mslfov > thebearing and me.hdg - mslfov < thebearing) {
                 # Opps! looks like this buddy made a silly mistake xd
                 me.losttrack = 0;
-               #screen.log.write("Missile locked back on!");
-               #screen.log.write("Missile locked back on!");
-               #screen.log.write("Missile locked back on!");
+               #screen.log.write("导弹重新锁定！");
+               #screen.log.write("导弹重新锁定！");
+               #screen.log.write("导弹重新锁定！");
             }
         }
         if(me.Tgt == nil) {
@@ -1739,7 +1739,7 @@ broddamage: func (cs,dist,msl) {
                             e_gain = 1;
                             h_gain = 1;
                         } else {
-                            #screen.log.write("Gains lowered");
+                            #screen.log.write("增益已降低");
                             e_gain = 0.01;
                             h_gain = 0.01;
                         }
@@ -1942,12 +1942,12 @@ broddamage: func (cs,dist,msl) {
                             msg.RemoteCallsign = me.Tgt.get_Callsign();
                             notifications.hitBridgedTransmitter.NotifyAll(msg); 
                             if (getprop("f22/debug")) {
-                                screen.log.write("Target hit!",0,1,0);
+                                screen.log.write("命中目标！",0,1,0);
                             }
                             damage.damageLog.push(sprintf("You hit "~me.Tgt.get_Callsign()~" with "~me.NameOfMissile~" at %.1f meters", me.direct_dist_m));
                        
                         } else {
-                            screen.log.write("Missile exploded on flare",1,0,0);
+                            screen.log.write("导弹被干扰弹引偏爆炸",1,0,0);
                             settimer(func(){ me.del(); }, 1);
                         }
                          var missilename = "invalid weapon";
@@ -2037,7 +2037,7 @@ broddamage: func (cs,dist,msl) {
     search: func(c){
         var tgt = c;
         if (me.gpstarget == 1) {
-            #screen.log.write("GPS active");
+            #screen.log.write("GPS 已生效");
             var target = radar.GetTarget();
         } else {
             var target = radar.GetTarget();

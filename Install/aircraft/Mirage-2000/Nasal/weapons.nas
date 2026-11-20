@@ -70,8 +70,8 @@ var reload_cannon_and_flares = func() {
 	}
 	setprop("/ai/submodels/submodel[7]/count",120);
 	setprop("/ai/submodels/submodel[8]/count",120);
-	screen.log.write("Guns have been reloaded: "~bullets_text);
-	screen.log.write("Flares have been reloaded: 120");
+	screen.log.write("机炮已重新装填："~bullets_text);
+	screen.log.write("干扰弹已重新装填：120");
 }
 
 

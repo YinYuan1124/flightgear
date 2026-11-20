@@ -20,17 +20,17 @@ var mainloop = func() {
     }
     #print("MAINLOOP");
     if (getprop("velocities/airspeed-kt") > vne) {
-        screen.log.write("Airspeed Exceeds Vne! ("~vne~")",1,0,0);
+        screen.log.write("空速超过极限速度 Vne！（"~vne~")",1,0,0);
         return 0;
     }
     # check wheel speed
     if (getprop("velocities/airspeed-kt") > wheelmaxspeed and getprop("gear/gear/wow") == 1) {
-        screen.log.write("Maximum wheel ground speed exceeded! ("~wheelmaxspeed~")",1,0,0);
+        screen.log.write("超过地面滑行最大速度！（"~wheelmaxspeed~")",1,0,0);
         return 0;
     } 
     # check gear speed
     if (getprop("velocities/airspeed-kt") > geardownmaxspeed and getprop("controls/gear/gear-down") == 1) {
-        screen.log.write("Airspeed Exceeds maximum gear deployment speed! (press g to raise the landing gear)",1,0,0);
+        screen.log.write("空速超过起落架放下最大速度！（按 g 收起落架）",1,0,0);
         return 0;
     }
 }

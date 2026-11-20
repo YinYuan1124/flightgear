@@ -1853,11 +1853,11 @@ var main_init_listener = setlistener("sim/signals/fdm-initialized", func {
         removelistener(main_init_listener);
         print();
         print("********************************************************************");
-        print("      Initializing "~getprop("sim/description")~" systems.           ");
-        print("                Version "~getprop("sim/aircraft-version")~" on FlightGear "~getprop("sim/version/flightgear"));
+        print("      正在初始化 "~getprop("sim/description")~" 系统。           ");
+        print("                版本 "~getprop("sim/aircraft-version")~"，运行于 FlightGear "~getprop("sim/version/flightgear"));
         print("********************************************************************");
         print();
-        screen.log.write("Welcome to the "~getprop("sim/description")~", version "~getprop("sim/aircraft-version"), 1.0, 0.2, 0.2);
+        screen.log.write("欢迎使用"~getprop("sim/description")~"，版本 "~getprop("sim/aircraft-version"), 1.0, 0.2, 0.2);
 
         if (!(left(getprop("sim/version/flightgear"),6) == "2020.3")) {
             props.globals.getNode("/sim/version/compositor-support", 1).setBoolValue(1);

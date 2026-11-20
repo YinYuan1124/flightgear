@@ -34,7 +34,7 @@ elsif (pg == 8){
 } elsif (pg == 1){
     print(pg);   
 } elsif (pg == 3){
-    screen.log.write("Switched Bombs back to radar slave mode");
+    screen.log.write("炸弹已切回雷达随动模式");
     setprop("controls/radar/weaponcoords", 0);
     print(pg);   
 } elsif (pg == 4){
@@ -73,7 +73,7 @@ elsif (pg == 2) {
     print(pg);   
 } elsif (pg == 3){
     print(pg);
-    screen.log.write("Set Coords to the Current Weapon(s)!");   
+    screen.log.write("已将坐标设定到当前武器！");   
     var slottype = getprop("controls/radar/currentslot");
     var lat = getprop("controls/radar/slot[" ~ slottype ~ "]/lat");
     var lon = getprop("controls/radar/slot[" ~ slottype ~ "]/lon"); 
@@ -462,7 +462,7 @@ elsif (pg == 2) {
     print("Attempting to save coords to a slot");
     if (getprop("instrumentation/frontcontrols/digit1") == 0) {
         print("Not ready!");
-        screen.log.write("Enter a number on the keypad to select a slot to save coord data too then press this button to write to that slot");
+        screen.log.write("用小键盘输入槽位号，再按此按钮把坐标写入该槽位");
         return;
     }
     print("read it");
@@ -473,7 +473,7 @@ elsif (pg == 2) {
     setprop("controls/radar/slot[" ~ slottype ~ "]/lat", lat); 
     setprop("controls/radar/slot[" ~ slottype ~ "]/lon", lon); 
     setprop("controls/radar/slot[" ~ slottype ~ "]/alt", alt); 
-    screen.log.write("Successfully saved data to slot "~ slottype);
+    screen.log.write("已保存数据到槽位 "~ slottype);
     stpt.createnew(lat,lon,alt);
 setprop("controls/radar/currentslot", getprop("instrumentation/frontcontrols/digit1"));
 var slottype = getprop("controls/radar/currentslot");
@@ -484,7 +484,7 @@ var slottype = getprop("controls/radar/currentslot");
     setprop("controls/radar/slots/lat", lat); 
     setprop("controls/radar/slots/lon", lon); 
     setprop("controls/radar/slots/alt", alt); 
-    screen.log.write("Switched to slot "~ slottype);
+    screen.log.write("已切换到槽位 "~ slottype);
     fc.clearnum();
 
 } elsif (pg == 4){
@@ -558,7 +558,7 @@ elsif (pg == 2) {
     print("pressed");
     if (getprop("instrumentation/frontcontrols/digit1") == 0) {
         print("Not ready!");
-        screen.log.write("Enter a number on the keypad for your slot then press this button to read it and set it to the weapon");
+        screen.log.write("用小键盘输入槽位号，再按此按钮读取并应用到武器");
         return;
     }
     print("read it");
@@ -571,7 +571,7 @@ var slottype = getprop("controls/radar/currentslot");
     setprop("controls/radar/slots/lat", lat); 
     setprop("controls/radar/slots/lon", lon); 
     setprop("controls/radar/slots/alt", alt); 
-    screen.log.write("Successfully read data from slot "~ slottype);
+    screen.log.write("已从槽位读取数据："~ slottype);
     fc.clearnum();
 } elsif (pg == 4){
     print(pg);   
@@ -595,7 +595,7 @@ if (pg == 2) {
     print(pg);   
     if (getprop("instrumentation/frontcontrols/digit1") == 0) {
         print("Not ready!");
-        screen.log.write("Enter the ammount on the keypad then press this button to set bingo fuel");
+        screen.log.write("用小键盘输入数量，再按此按钮设定 Bingo 油量");
         return;
     }
     fc.setbingo();

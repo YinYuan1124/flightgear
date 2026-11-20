@@ -19,7 +19,7 @@ SU-27 simulation config.
       <aero>J-11A</aero>
       <fuel-fraction>0.5</fuel-fraction>
 
-      <description>Shenyang J-11A (JSBsim FDM)</description>
+      <description>沈飞 J-11A（JSBSim 飞行动力学模型）</description>
       <long-description>
       The Shenyang J-11 (Chinese: 歼-11), with NATO reporting name Flanker-L, is a twin-engine jet fighter, whose airframe is based on the Soviet-designed Sukhoi Su-27 air superiority fighter. It is currently manufactured by the Shenyang Aircraft Corporation. The aircraft is operated by the People's Liberation Army Air Force (PLAAF) and People's Liberation Army Naval Air Force (PLANAF) of China (PRC).
       </long-description>

@@ -130,7 +130,7 @@ var check_messages = func() {
         counter = 0;
     }
     if (counter == max_listen_time) {
-        screen.log.write("No contact from GCI.", 1.0, 0.2, 0.2);
+        screen.log.write("GCI 无联系。", 1.0, 0.2, 0.2);
         picture_prop.setValue(0);
         bogeydope_prop.setValue(0);
         cutoff_prop.setValue(0);

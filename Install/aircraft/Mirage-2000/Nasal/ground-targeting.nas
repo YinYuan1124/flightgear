@@ -39,11 +39,11 @@ var toggleTargetDesignationMode = func {
 var createSnipedTarget = func() {
 	var is_new = TRUE;
 	if (mySnipedTarget == nil){
-		screen.log.write("Creating sniped target can take time and temp. switch view ...");
+		screen.log.write("创建狙击目标需要一些时间，期间会临时切换视角 ……");
 		mySnipedTarget = SnipedTarget.new();
 		mySnipedTarget.init();
 	} else {
-		screen.log.write("Updating sniped target can take time and temp. switch view ...");
+		screen.log.write("更新狙击目标需要一些时间，期间会临时切换视角 ……");
 		mySnipedTarget.update();
 		is_new = FALSE;
 	}
@@ -59,7 +59,7 @@ var createSnipedTarget = func() {
 	if (is_new == TRUE) {
 		setprop("ai/models/model-added", mySnipedTarget.ai.getPath());
 	}
-	screen.log.write("... done");
+	screen.log.write("… 完成");
 }
 
 var focusFLIROnSnipedTarget = func() {
@@ -72,7 +72,7 @@ var designateSnipedTarget = func() {
 	if (mySnipedTarget != nil) {
 		var selectedWeapon = pylons.fcs.getSelectedWeapon();
 		if (selectedWeapon == nil) {
-			screen.log.write("Master arm must be on and a suitable weapon must be selected.");
+			screen.log.write("必须接通武器总开关并选择合适的武器。");
 			return;
 		}
 		if (selectedWeapon.target_pnt == TRUE and (selectedWeapon.guidance == AIM_GUIDANCE_LASER or selectedWeapon.guidance == AIM_GUIDANCE_GPS)) {
@@ -80,7 +80,7 @@ var designateSnipedTarget = func() {
 			if (selectedWeapon.guidance == AIM_GUIDANCE_LASER) {
 				guidance = 1;
 				if (getprop("controls/armament/laser-arm-dmd") == 0) {
-					screen.log.write("Laser must be on to designate a laser guided weapon.");
+					screen.log.write("使用激光制导武器时必须打开激光。");
 					return;
 				}
 			}
@@ -88,12 +88,12 @@ var designateSnipedTarget = func() {
 			armament.contactPoint = spot;
 			armament.DEBUG_STATS = 1;
 			armament.DEBUG_SEARCH=1;
-			screen.log.write("Sniped target is now the designated target.");
+			screen.log.write("狙击目标已设为指定目标。");
 		} else {
-			screen.log.write("A laser or GPS guided ground targeting weapon must be selected - no sniped target designated.");
+			screen.log.write("必须选择激光或 GPS 制导对地武器 —— 未指定狙击目标。");
 		}
 	} else {
-		screen.log.write("A sniped target must exist");
+		screen.log.write("必须先存在狙击目标");
 	}
 }
 
@@ -303,11 +303,11 @@ var sniping = func(){
 	if (coord != nil) {
 		setprop("/sim/dialog/groundTargeting/primary-longitude-deg", coord.lon());
 		setprop("/sim/dialog/groundTargeting/primary-latitude-deg", coord.lat());
-		screen.log.write("Sniped");
+		screen.log.write("已狙击");
 		gui.dialog_update("ground-targeting");
 		success = TRUE;
 	} else {
-		screen.log.write("Nothing was there to be sniped");
+		screen.log.write("该处没有可狙击的目标");
 	}
 	return success;
 }
@@ -339,7 +339,7 @@ var deleteSnipedTarget = func() {
 		mySnipedTarget.del();
 		armament.contactPoint = nil;
 		mySnipedTarget = nil;
-		screen.log.write("Sniped target deleted");
+		screen.log.write("已删除狙击目标");
 	}
 }
 

@@ -3,7 +3,7 @@
 <PropertyList include="f16-base.xml">
 
  <sim>
-  <description>General Dynamics F-16A Block 10</description>
+  <description>通用动力 F-16A 第 10 批次</description>
   <long-description>
    The General Dynamics F-16A Fighting Falcon is a single-engine supersonic multirole fighter aircraft by General Dynamics, exported to many countries. Powered by F100-PW-200. Designed as an air superiority day fighter, it evolved into a successful all-weather multirole aircraft.
    The Fighting Falcon has key features including a frameless bubble canopy for better visibility, side-mounted control stick to ease control while maneuvering, a seat reclined 30 degrees to reduce the effect of g-forces on the pilot, and the first use of a relaxed static stability/fly-by-wire flight control system which helps to make it a nimble aircraft.
@@ -176,7 +176,7 @@
   <menubar>
    <default>
     <menu n="101">
-     <label>F-16A Block 10</label>
+     <label>F-16A 第 10 批次</label>
      <item n="8">
           <label>--- Block options ---</label>
           <enabled>false</enabled>

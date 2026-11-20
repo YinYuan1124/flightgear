@@ -54,7 +54,7 @@ var attemptmultilock = func(csind) {
           f22.fire(0,0); # Open the bay doors of the currently selected weapon
           var pylon = getprop("/controls/armament/missile/current-pylon");
           m2000_load.dropLoad(pylon);
-          screen.log.write("Multishot Weapon Fired!");
+          screen.log.write("连发武器已发射！");
           print("Should fire Missile");
           setprop("/controls/armament/missile-trigger", 1);
           return 1; # Success
@@ -96,12 +96,12 @@ var multishot = func() {
         }
         
     } else {
-        screen.log.write("The currently selected weapon cant be used with Multishot")
+        screen.log.write("当前所选武器不能用于连发")
     }
 }
 
 var multishotreset = func() {
-    screen.log.write("Multishot Reset and disabled");
+    screen.log.write("连发已重置并关闭");
     setprop("controls/armament/multishot/callsign1","");
     setprop("controls/armament/multishot/callsign2","");
     setprop("controls/armament/multishot/callsign3","");
@@ -119,7 +119,7 @@ var multishotprev = func() {
     if (numcallsign != 1) {
         setprop("controls/armament/multishot/numcallsign",numcallsign - 1);
     } else {
-        screen.log.write("At first target!");
+        screen.log.write("已在第一个目标！");
     }
 }
 var multishotnext = func() {
@@ -127,7 +127,7 @@ var multishotnext = func() {
     if (numcallsign != 8) {
         setprop("controls/armament/multishot/numcallsign",numcallsign + 1);
     } else {
-        screen.log.write("At last target!");
+        screen.log.write("已在最后一个目标！");
     }
 }
 
@@ -138,11 +138,11 @@ var multishottoggle = func() {
     var numcallsign = getprop("controls/armament/multishotstate");
     if (numcallsign == 0) {
         setprop("controls/armament/multishotstate",1);
-        screen.log.write("Multishot Enabled");
+        screen.log.write("连发已开启");
         setprop("controls/armament/multishot/message","Multishot Enabled");
     } else {
         setprop("controls/armament/multishotstate",0);
-        screen.log.write("Multishot Disabled");
+        screen.log.write("连发已关闭");
         setprop("controls/armament/multishot/message","Multishot Disabled");
     }
 }
@@ -199,7 +199,7 @@ fire_MG = func() {
             #settimer(autostopFiring, 0.47); # Fast burst
             reset.start();
             } else {
-                screen.log.write("Master arm is not armed or the gun is out of ammo");
+                screen.log.write("武器总开关未接通，或机炮弹药耗尽");
             }
         }
         if(getprop("/controls/armament/stick-selector") == 2)
@@ -216,13 +216,13 @@ fire_MG = func() {
                     if(1==1) # missile delay. only shoot missiles every 0.5 seconds
                     {
                         dt = time;
-                        screen.log.write("Trigger!");
+                        screen.log.write("扳机！");
                         f22.fire(0,0); # Open the bay doors of the currently selected weapon
                         f22.firemsluntill(); # Auto fire the missile
                     }
                 }
             } else {
-                screen.log.write("Master arm is not armed");
+                screen.log.write("武器总开关未接通");
             }
         }
     }
@@ -244,13 +244,13 @@ fire_MG_pic = func() {  # b would be in the ()
             if(1==1) # Adjust this 0 for limit on how many missiles you can shoot at once speed limit  time - dt > 0
                 {
                     dt = time;
-                    screen.log.write("Pickle!");
+                    screen.log.write("投弹！");
                     f22.fire(0,0); # Open the bay doors of the currently selected weapon
                     f22.firemsluntill(); # Auto fire the missile
                 }
             }
         } else {
-            screen.log.write("Master arm is not armed");
+            screen.log.write("武器总开关未接通");
         }
     }
 
@@ -300,7 +300,7 @@ reload = func() {
     setprop("/ai/submodels/submodel[7]/count", 480);
     setprop("/f22/flare",200);
     setprop("/f22/chaff",200);
-    screen.log.write("Reloaded guns and countermessures! Repaired damage aswell.");
+    screen.log.write("已重新装填机炮与干扰弹，并修复了损伤。");
 }
 
 
@@ -467,7 +467,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "none"){
             setprop("/controls/armament/selected-weapon","Aim-120");
             setprop("/controls/armament/selected-weapon-digit",2);
-            screen.log.write("Joystick: A/A Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对空："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                 var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -477,7 +477,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "GBU-39"){
             setprop("/controls/armament/selected-weapon","Aim-120");
             setprop("/controls/armament/selected-weapon-digit",2);
-            screen.log.write("Joystick: A/A Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对空："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -487,7 +487,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "JDAM"){
             setprop("/controls/armament/selected-weapon","Aim-120");
             setprop("/controls/armament/selected-weapon-digit",2);
-            screen.log.write("Joystick: A/A Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对空："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -496,7 +496,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "Aim-9x"){
             setprop("/controls/armament/selected-weapon","Aim-120");
             setprop("/controls/armament/selected-weapon-digit",2);
-            screen.log.write("Joystick: A/A Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对空："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -505,7 +505,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "Aim-120"){
             setprop("/controls/armament/selected-weapon","Aim-260");
             setprop("/controls/armament/selected-weapon-digit",4);
-            screen.log.write("Joystick: A/A Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对空："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);  
@@ -514,7 +514,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "Aim-260"){
             setprop("/controls/armament/selected-weapon","Aim-9x");
             setprop("/controls/armament/selected-weapon-digit",1);
-            screen.log.write("Joystick: A/A Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对空："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -530,7 +530,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "none" or getprop("/controls/armament/selected-weapon") == "Aim-120" or getprop("/controls/armament/selected-weapon") == "Aim-260" or getprop("/controls/armament/selected-weapon") == "Aim-9x"){
             setprop("/controls/armament/selected-weapon","GBU-39");
             setprop("/controls/armament/selected-weapon-digit",3);
-            screen.log.write("Joystick: A/G Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对地："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -539,7 +539,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "GBU-39"){
             setprop("/controls/armament/selected-weapon","JDAM");
             setprop("/controls/armament/selected-weapon-digit",4);
-            screen.log.write("Joystick: A/G Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对地："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -548,7 +548,7 @@ var switch_weapon = func(){
         if (getprop("/controls/armament/selected-weapon") == "JDAM"){
             setprop("/controls/armament/selected-weapon","GBU-39");
             setprop("/controls/armament/selected-weapon-digit",1);
-            screen.log.write("Joystick: A/G Selected: "~getprop("/controls/armament/selected-weapon")~"");
+            screen.log.write("摇杆：已选空对地："~getprop("/controls/armament/selected-weapon")~"");
             setprop("/controls/armament/weapon-selected", 0);   
                             var weaponname = getprop("controls/armament/selected-weapon");
                  missile.Loading_missile(weaponname);
@@ -573,7 +573,7 @@ flareresettimer = maketimer(2,flrset);
 var missile_reject = func(){
     print("Reject pressed");
     if (getprop("/controls/armament/missile-reject") == 1) {
-        #screen.log.write("Reject!");
+        #screen.log.write("放弃！");
         CMS.updatecms();
         CMS.trigger();
         setprop("/controls/armament/missile-reject",0);
@@ -587,8 +587,8 @@ setlistener("/controls/armament/missile-reject",missile_reject);
 
 
 var stickreporter = func(){
-    if(getprop("/controls/armament/stick-selector") == 1)screen.log.write("Selected M61A2 Vulcon.",1,0.4,0.4);
-    else{screen.log.write("Selected missiles.",1,0.4,0.4);}
+    if(getprop("/controls/armament/stick-selector") == 1)screen.log.write("已选择 M61A2 火神机炮。",1,0.4,0.4);
+    else{screen.log.write("已选择导弹。",1,0.4,0.4);}
 }
 setlistener("/controls/armament/stick-selector",stickreporter);
 

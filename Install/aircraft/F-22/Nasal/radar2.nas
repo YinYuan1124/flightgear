@@ -103,13 +103,13 @@ var filtercheck = func(heading, contactheading) {
 #     screen.log.write(contactheading);
 #     var thenotch = filtercheck(heading, contactheading);
 #     if (thenotch < threshold and thenotch > -1 * threshold) {
-#         screen.log.write("Notch is capable!");
+#         screen.log.write("可以实施缺口机动！");
 #         # take our chances
 #         ae = rand();
 #         if (ae > chance) {
 #             # Delocked
-#             screen.log.write("The radar has been notched!");
-#             screen.log.write("Delocked");
+#             screen.log.write("雷达被缺口机动摆脱！");
+#             screen.log.write("已解除锁定");
 #             return 1;
 #         }
 #         return 0;
@@ -199,7 +199,7 @@ var Radar = {
         # option
         m.showAI = 1;
         # return our new object
-        #screen.log.write("Radar created.");
+        #screen.log.write("雷达已创建。");
         return m;
     },
 
@@ -230,7 +230,7 @@ var Radar = {
                 #screen.log.write("loop");
                 me.update();
             }else{
-                #screen.log.write("radar isn't running!");
+                #screen.log.write("雷达未运行！");
             }
             me.janitor();
             settimer(loop_Update, UPDATE_PERIOD);
@@ -278,7 +278,7 @@ var Radar = {
             {
                 # creation of the tempo object Target
                 var u = Target.new(c);
-                #screen.log.write("New target detected.",255,255,0);
+                #screen.log.write("发现新目标。",255,255,0);
                 
            #     print("Testing "~ u.get_Callsign()~"Type: " ~ type);
                 
@@ -1427,7 +1427,7 @@ radar_mode_toggle = func(){
 elsif(getprop("instrumentation/radar/mode/main") == 2)
     {
         # SLR
-        screen.log.write("Side looking radars on");
+        screen.log.write("侧视雷达开启");
         f22.acmtimer.stop();
         setprop("instrumentation/radar/az-field", 280);
         setprop("instrumentation/radar/mode/main", 3);
@@ -1443,7 +1443,7 @@ elsif(getprop("instrumentation/radar/mode/main") == 2)
 elsif(getprop("instrumentation/radar/mode/main") == 3)
     {
         f22.acmtimer.stop();
-        screen.log.write("Side looking radars off");
+        screen.log.write("侧视雷达关闭");
         setprop("instrumentation/radar/az-field", 120);
         setprop("instrumentation/radar/mode/main", 5);
         setprop("instrumentation/radar2/sweep-display-width", 0.0846);        
@@ -1452,7 +1452,7 @@ elsif(getprop("instrumentation/radar/mode/main") == 3)
     }
 elsif(getprop("instrumentation/radar/mode/main") == 5)
     {
-        screen.log.write("Jamming Mode Enabled");
+        screen.log.write("干扰模式已开启");
         setprop("instrumentation/radar/az-field", 60);
         setprop("instrumentation/radar/mode/main", 4);
         setprop("instrumentation/radar2/sweep-display-width", 0.0446);        
@@ -1467,7 +1467,7 @@ elsif(getprop("instrumentation/radar/mode/main") == 5)
 
 elsif(getprop("instrumentation/radar/mode/main") == 4)
     {
-        screen.log.write("Jamming Mode Disabled");
+        screen.log.write("干扰模式已关闭");
         setprop("instrumentation/radar/az-field", 120);
         setprop("instrumentation/radar/mode/main", 0);
         setprop("instrumentation/radar2/sweep-display-width", 0.0446);        
@@ -1482,7 +1482,7 @@ elsif(getprop("instrumentation/radar/mode/main") == 4)
 
 next_Target_Index = func(cantprint=0,canlock=1){
     if (getprop("su-27/instrumentation/N010-radar/emitting") == 0) {
-        screen.log.write("The radar is currently in standby. Press Shift-R to turn it on",1,0,0);
+        screen.log.write("雷达处于待机状态，按 Shift-R 开启",1,0,0);
         return 0;
     }
     Target_Index += 1;
@@ -1493,7 +1493,7 @@ next_Target_Index = func(cantprint=0,canlock=1){
     }
     if(GetTarget()!=nil){
         if (cantprint == 0){
-        screen.log.write("Radar: Locked "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
+        screen.log.write("雷达：已锁定 "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
         }
         if (canlock == 1){
         setprop("instrumentation/radar/lock", 1);
@@ -1504,7 +1504,7 @@ next_Target_Index = func(cantprint=0,canlock=1){
 
 previous_Target_Index = func(canprint=0){
     if (getprop("su-27/instrumentation/N010-radar/emitting") == 0) {
-        screen.log.write("The radar is currently in standby. Press Shift-R to turn it on",1,0,0);
+        screen.log.write("雷达处于待机状态，按 Shift-R 开启",1,0,0);
         return 0;
     }
     Target_Index -= 1;
@@ -1513,7 +1513,7 @@ previous_Target_Index = func(canprint=0){
     {
         Target_Index = size(tgts_list) - 1;
                 if (canprint == 0){
-        screen.log.write("Radar: Switched back to "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
+        screen.log.write("雷达：已切回 "~tgts_list[Target_Index].Callsign.getValue(),1,1,0);
                 }
     }
 }

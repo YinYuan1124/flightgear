@@ -3,7 +3,7 @@
 <PropertyList include="f-14-common.xml">
 
     <sim>
-        <description>Grumman F-14B</description>
+        <description>格鲁曼 F-14B</description>
         <long-description>
             Primarily an interceptor with variable geometry wings and fitted with the more powerful and reliable F110 engines .
             It is a difficult aircraft to pilot at the edges of the envelope, but with excellent piloting skills comes great rewards in the air.

@@ -44,12 +44,12 @@
         </gui-small>
 
         <mp-list>
-            <name>FIXED_8x13</name>
+            <name type="string">cn/simhei.ttf</name>
         </mp-list>
 
         <replay>
-            <name>SANS_12B</name>
-            <size type="float">14</size>
+            <name type="string">cn/simhei.ttf</name>
+            <size type="float">16</size>
         </replay>
 
         <model-view>
@@ -62,12 +62,15 @@
         </nasal-editor>
 
         <message-display>
-            <name type="string">SANS_12B</name>
+            <!-- 中文化：屏幕消息/提示也要能显示中文，位图字体只有 Latin-1 字形 -->
+            <name type="string">cn/simhei.ttf</name>
+            <size type="float">16</size>
         </message-display>
 
         <screen>
-            <name type="string">HELVETICA_14</name>
-            <size type="float">13</size>
+            <!-- 中文化：屏幕消息/提示也要能显示中文，位图字体只有 Latin-1 字形 -->
+            <name type="string">cn/simhei.ttf</name>
+            <size type="float">16</size>
         </screen>
 
         <stopwatch>

@@ -646,10 +646,14 @@ NewGUI::setupFont (SGPropertyNode *node)
     if (fguiTheme::enabled()) {
         const std::string themeFontName = fguiTheme::fontName();
         if (!themeFontName.empty()) {
+            // 字号优先取主题配置（<font><size>），避免切换 GUI 样式后
+            // 跟着样式表变成 tortola 的 12px、整个界面缩小错位。
+            float size = fguiTheme::fontSize();
+            if (size <= 0.0f)
+                size = node->getFloatValue("size", 15.0f);
             FGFontCache::instance()->loadFont(themeFontName);
             puFont* themeFont =
-                FGFontCache::instance()->get(themeFontName,
-                                             node->getFloatValue("size", 15.0f),
+                FGFontCache::instance()->get(themeFontName, size,
                                              node->getFloatValue("slant", 0.0f));
             if (themeFont)
                 _font = themeFont;

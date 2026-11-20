@@ -82,7 +82,7 @@ var SAUNavigHold = func {
 	}	
 
 #	}else{
-#	gui.popupTip("Autostarting...");
+#	gui.popupTip("自动启动…");
 #	return;}
 }
 

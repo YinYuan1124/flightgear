@@ -14,6 +14,10 @@
 ```
 fgdata-overlay/
 ├── README.md                          # 本说明
+├── Aircraft/
+│   └── Generic/
+│       └── DualControl/
+│           └── dual-control-tools.nas # 双座机飞行员/副驾驶选择窗口中文标题（覆盖副本）
 ├── Fonts/
 │   └── cn/
 │       ├── simhei.ttf                 # 中文字体（Noto Sans SC Regular，17.7MB）
@@ -50,6 +54,7 @@ fgdata-overlay/
 
 | overlay 源文件 | 运行时位置（上层 FG_ROOT） |
 |---|---|
+| `Aircraft/Generic/DualControl/dual-control-tools.nas` | `Aircraft/Generic/DualControl/dual-control-tools.nas` |
 | `Fonts/cn/simhei.ttf` | `Fonts/cn/simhei.ttf` |
 | `Fonts/cn/.dirindex` | `Fonts/cn/.dirindex` |
 | `gui/ui_theme_day.xml` / `ui_theme_night.xml` | `gui/ui_theme_*.xml` |

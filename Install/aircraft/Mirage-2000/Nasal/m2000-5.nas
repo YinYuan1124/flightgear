@@ -492,7 +492,7 @@ var FLIGHT_MODE_ATTACK = "ATT";
 
 var setFlightMode = func (mode) {
 	setprop("/instrumentation/flightmode/selected", mode);
-	screen.log.write("Flight mode is now: "~mode);
+	screen.log.write("当前飞行模式："~mode);
 	viewReset();
 }
 
@@ -570,7 +570,7 @@ var masterarm = func {
 	} else {
 		setFlightMode(FLIGHT_MODE_NAVIGATION);
 	}
-	screen.log.write("Master-arm "~(getprop("controls/armament/master-arm-switch")==0?"OFF":(getprop("controls/armament/master-arm-switch")==1?"ON":"SIM")), 0.5, 0.5, 1);
+	screen.log.write("武器总开关 "~(getprop("controls/armament/master-arm-switch")==0?"OFF":(getprop("controls/armament/master-arm-switch")==1?"ON":"SIM")), 0.5, 0.5, 1);
 }
 
 var toggleDropModeCCxP = func {

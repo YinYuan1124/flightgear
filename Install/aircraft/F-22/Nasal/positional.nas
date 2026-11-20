@@ -35,7 +35,7 @@ var createnew = func(lat,lon,alt) {
         setprop("f22/stpt/point[0]/alt",alt);
         stptid = 0;
     }
-    screen.log.write("Created a new Steerpoint (STPT) With an ID of " ~ stptid ~ "",0,1,0);
+    screen.log.write("已创建新航路点（STPT），编号 " ~ stptid ~ "",0,1,0);
     var total = getprop("f22/stpt/total");
     setprop("f22/stpt/total",total + 1);
 }

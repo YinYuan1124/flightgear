@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+<!-- 中文注释：本对话框界面文本已本地化为简体中文。 -->
+    <name>fgversion</name>
+	<layout>vbox</layout>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>本 F-14 需要 FlightGear 2016.1 或更高版本才能正常工作</label>
+		</text>
+	</group>
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>飞机仍可飞行，但部分设备（航电、武器）可能无法正常工作</label>
+		</text>
+	</group>
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>您可以忽略此警告并自行承担风险继续，但请勿报告相关故障。</label>
+		</text>
+	</group>
+	
+
+	<group>
+		<layout>hbox</layout>
+		<button>
+			<pref-width>300</pref-width>
+			<halign>center</halign>
+			<legend>下载 FlightGear</legend>
+			<binding>
+				<command>open-browser</command>
+				<path>https://sourceforge.net/projects/flightgear</path>
+			</binding>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>exit</dialog-name>
+			</binding>
+		</button>
+		<button>
+			<pref-width>300</pref-width>
+			<halign>center</halign>
+			<legend>忽略</legend>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+</PropertyList>

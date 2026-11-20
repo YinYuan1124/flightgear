@@ -45,7 +45,7 @@
         </lighting>
     </controls>
     <sim>
-        <description>F-15D Backseat (multiplayer)</description>
+        <description>F-15D 后座（多人）</description>
         <long-description>
             The F-15D the two seat version of the F-15. This model allows you to ride in the backseat of an F-15D over multiplay.
         </long-description>
@@ -259,9 +259,9 @@
         <menubar>
             <default>
                 <menu n="50">
-                    <label>F-15 Controls</label>
+                    <label>F-15 操控</label>
                     <item>
-                        <label>Select F-15D pilot</label>
+                        <label>选择 F-15D 前座</label>
                         <binding>
                             <command>nasal</command>
                             <script>
@@ -270,7 +270,7 @@
                         </binding>
                     </item>
                     <item>
-                        <label>Select F-15C pilot</label>
+                        <label>选择 F-15C 前座</label>
                         <binding>
                             <command>nasal</command>
                             <script>

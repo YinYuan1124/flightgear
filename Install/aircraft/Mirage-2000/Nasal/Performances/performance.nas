@@ -347,7 +347,7 @@ TakeoffDistance.update = func() {
 TakeoffDistance.start = func() {
   if (me.isRunning == 0) {
     me.startPosition = me.position.get();
-    screen.log.write("start measuring takeoff distance");
+    screen.log.write("开始测量起飞距离");
     me.isRunning = 1;
     me.update();
   }
@@ -392,10 +392,10 @@ LandingDistance.update = func() {
   var pos = me.position.get();
   if (pos.alt > 400 and me.isAvailable == 0) {
     me.isAvailable = 1;
-    screen.log.write("Landing Distance Monitor is available");
+    screen.log.write("着陆距离监视器可用");
   }
   if ((input.wow0.getValue() == 1 or input.wow1.getValue() == 1 or input.wow2.getValue() == 1) and me.isAvailable == 1) {
-    screen.log.write("Measuring landing distance..");
+    screen.log.write("正在测量着陆距离…");
     me.activate();
     return;
   }
@@ -404,7 +404,7 @@ LandingDistance.update = func() {
 LandingDistance.autoland = func() {
   var speed = input.speedG.getValue();
   if (speed < 0.1) {
-    screen.log.write("Landed.");
+    screen.log.write("已着陆。");
     #setprop("/controls/gear/brake-left", 0.0);
     #setprop("/controls/gear/brake-right", 0.0);
     me.isRunning = 0;
@@ -623,8 +623,8 @@ var initialize = func() {
   #keyHandler.add(13, KeyHandler.CTRL + KeyHandler.SHIFT, func { PerformanceMonitor.instance().start(); });
   # Ctrl-Shift-C to reinit Performance Monitor
   #keyHandler.add(3, KeyHandler.CTRL + KeyHandler.SHIFT, func { PerformanceMonitor.instance().reinit(); });
-  #screen.log.write("Performance Monitor is available.");
-  #screen.log.write("Press Ctrl-Shift-M to activate.");
+  #screen.log.write("性能监视器可用。");
+  #screen.log.write("按 Ctrl-Shift-M 启用。");
 }
 
 setlistener("/sim/signals/fdm-initialized", func { settimer(initialize, 1); }, 0, 0);

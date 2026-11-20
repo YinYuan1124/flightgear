@@ -239,7 +239,7 @@ var check = func() {
 }
 
 var trigger = func() {
-    screen.log.write("Chaff Flare");
+    screen.log.write("投放干扰弹");
     updatecms();
     f22.flare();
     finish(); # reset sequnses

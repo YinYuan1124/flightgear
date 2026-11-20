@@ -55,6 +55,7 @@ ThemeColors _rawColors;             // 未预乘的原始颜色（镜像节点�
 ThemeColors _colors;                // 实际绘制颜色（premultiplied 时已预乘）
 ThemeMetrics _metrics;              // 当前排版/行为参数
 std::string _fontName;              // 主题字体相对 Fonts 目录的路径，如 cn/simhei.ttf
+float _fontSize = 0.0f;             // 主题 <font><size>；0 = 未配置，沿用样式表字号
 SGPropertyNode_ptr _themeTree;      // 已合并的 <theme> 节点副本（镜像复制源）
 SGPropertyNode_ptr _mirror;         // /sim/gui/theme 镜像节点
 bool _needsFontRetry = false;       // 字体尚未就绪时置位，由 update() 重试
@@ -328,8 +329,12 @@ bool loadTheme(const std::string& modeName)
   }
 
   // --- 解析字体 -----------------------------------------------------------
-  // <font><name> 相对 FG_ROOT/Fonts，例如 cn/simhei.ttf。
+  // <font><name> 相对 FG_ROOT/Fonts，例如 cn/simhei.ttf；
+  // <font><size> 为 GUI 基准字号，0 表示未配置（沿用样式表给出的字号）。
+  // 切换 GUI 样式时也要按主题字号重新解析，否则从 anthrax(20) 切到
+  // tortola(12) 后中文会跟着缩小、排版全部错位。
   _fontName = theme->getStringValue("font/name", "");
+  _fontSize = theme->getFloatValue("font/size", 0.0f);
 
   return true;
 }
@@ -590,6 +595,11 @@ bool enabled()
 std::string fontName()
 {
   return _fontName;
+}
+
+float fontSize()
+{
+  return _fontSize;
 }
 
 std::string mode()

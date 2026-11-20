@@ -3,7 +3,7 @@
 <PropertyList>
 
 	<sim>
-		<description>Mirage 2000 backseat (Not Maintained)</description>
+		<description>幻影 2000 后座（已停止维护）</description>
 		<author>Helijah (3D), 5H1N0B1 (Weapons, Systems), Richard Harrison (FDM), Leto, Josh Davidson (FCS/FBW/Autopilot), hardball, Domokos Juttner (Rudolf), F-Sig, J Maverick 16, legoboyvdlp, onox, ravenclaw_007, Niall "Salmon" Roe, Rick Gruber-Riemer</author>
 		<!--
 			Elijah (first 3D model / first FDM yasim)
@@ -59,9 +59,9 @@
 		<menubar>
 			<default>
 				<menu n="50">
-					<label>Mirage 2000</label>
+					<label>幻影 2000</label>
 					<item>
-						<label>Select MP pilot</label>
+						<label>选择多人前座</label>
 						<binding>
 							<command>nasal</command>
 							<script>

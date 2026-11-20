@@ -271,7 +271,7 @@ var FireControl = {
 				printfDebug("FC: Selected next weapon type: %s, but none is loaded.", me.selectedType);
 			}
 		}
-		screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+		screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 	},
 
 	cycleLoadedWeapon: func {
@@ -299,7 +299,7 @@ var FireControl = {
 			me.wp = me.nextWeapon(me.selType);
 			if (me.wp != nil) {
 				printfDebug("FC: Selected next weapon type: %s on pylon %d position %d",me.selectedType,me.selected[0],me.selected[1]);
-				screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+				screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 				return;
 			}
 			me.selTypeIndex += 1;
@@ -307,7 +307,7 @@ var FireControl = {
 		me.selected = nil;
 		me.selectedAdd = nil;
 		me.selectedType = nil;
-		screen.log.write("Selected nothing", 0.5, 0.5, 1);
+		screen.log.write("未选择任何目标", 0.5, 0.5, 1);
 		if (me.changeListener != nil) me.changeListener();
 	},
 
@@ -352,7 +352,7 @@ var FireControl = {
 						if (me.selType != nil) {
 							#me.updateCurrent();
 							me.selectedType = me.selType.type;
-							screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+							screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 							return;
 						}
 					}
@@ -380,7 +380,7 @@ var FireControl = {
 						if (me.selType != nil) {
 							#me.updateCurrent();
 							me.selectedType = me.selType.type;
-							screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+							screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 							return;
 						}
 					}
@@ -397,13 +397,13 @@ var FireControl = {
 						if (me.selType != nil and ((me.selType.parents[0] == armament.AIM and (me.selType.target_gnd == 1 or me.selType.target_sea==1)) or me.typeTest == defaultRocket)) {
 							#me.updateCurrent();
 							me.selectedType = me.selType.type;
-							screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+							screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 							return;
 						} else {
 							me.selectedType = nil;
 							me.selectedAdd = nil;
 							me.selected = nil;
-							screen.log.write("Selected nothing", 0.5, 0.5, 1);
+							screen.log.write("未选择任何目标", 0.5, 0.5, 1);
 						}
 						return;
 					}
@@ -416,7 +416,7 @@ var FireControl = {
 							if (me.selType != nil) {
 								me.selectedType = me.selType.type;
 								#me.updateCurrent();
-								screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+								screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 								return;
 							}
 						}
@@ -457,7 +457,7 @@ var FireControl = {
 						if (me.selType != nil) {
 							me.selectedType = me.selType.type;
 							#me.updateCurrent();
-							screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+							screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 							return;
 						}
 					}
@@ -484,7 +484,7 @@ var FireControl = {
 						if (me.selType != nil) {
 							me.selectedType = me.selType.type;
 							#me.updateCurrent();
-							screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+							screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 							return;
 						}
 					}
@@ -501,13 +501,13 @@ var FireControl = {
 						if (me.selType != nil and me.selType.parents[0] == armament.AIM and me.selType.target_air==1) {
 							#me.updateCurrent();
 							me.selectedType = me.selType.type;
-							screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+							screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 							return;
 						} else {
 							me.selectedType = nil;
 							me.selected = nil;
 							me.selectedAdd = nil;
-							screen.log.write("Selected nothing", 0.5, 0.5, 1);
+							screen.log.write("未选择任何目标", 0.5, 0.5, 1);
 						}
 						return;
 					}
@@ -519,7 +519,7 @@ var FireControl = {
 							if (me.selType != nil) {
 								me.selectedType = me.selType.type;
 								#me.updateCurrent();
-								screen.log.write("Selected "~me.selectedType, 0.5, 0.5, 1);
+								screen.log.write("已选择 "~me.selectedType, 0.5, 0.5, 1);
 								return;
 							}
 						}
@@ -541,7 +541,7 @@ var FireControl = {
 	updateAll: func {
 		# called from the stations when they change.
 		if (me.selectedType != nil) {
-			screen.log.write("Fire-control: deselecting "~me.selectedType, 1, 0.5, 0.5);
+			screen.log.write("火控：取消选择 "~me.selectedType, 1, 0.5, 0.5);
 		}
 		me.noWeapon();
 	},
@@ -914,7 +914,7 @@ var FireControl = {
 					me.isRippling = 0;
 					# gravity assisted munition finished dropping.
 					setprop("payload/armament/gravity-dropping", 0);
-					screen.log.write("Finished ripple", 0.5, 0.5, 1);
+					screen.log.write("连投完成", 0.5, 0.5, 1);
 					return;
 				}
 			}
@@ -924,7 +924,7 @@ var FireControl = {
 			# after 7.5 seconds if its not finished rippling, cancel it. Might happen if the aircraft is still.
 			me.isRippling = 0;
 			setprop("payload/armament/gravity-dropping", 0);
-			screen.log.write("Cancelled ripple", 0.5, 0.5, 1);
+			screen.log.write("已取消连投", 0.5, 0.5, 1);
 			return;
 		}
 		settimer(func me.rippleTest(), delayTimer);

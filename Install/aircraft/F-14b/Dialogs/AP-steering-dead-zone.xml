@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+<!-- 中文注释：本对话框界面文本已本地化为简体中文。 -->
+	<name>AP-steering-dead-zone</name>
+	<layout>vbox</layout>
+	<default-padding>0</default-padding>
+	<modal>false</modal>
+	<width>450</width>
+	<valign>top</valign>
+
+	<group>
+		<layout>vbox</layout>
+		<default-padding>1</default-padding>
+		<valign>top</valign>
+		<empty>
+			<pref-height>4</pref-height>
+		</empty>
+		<text><label>转向阈值设置</label></text>
+		<empty>
+			<pref-height>3</pref-height>
+		</empty>
+		<hrule/>
+		<empty>
+			<pref-height>4</pref-height>
+		</empty>
+	</group>
+
+	<group>
+		<layout>vbox</layout>
+		<default-padding>1</default-padding>
+		<valign>top</valign>
+
+		<group>
+			<layout>hbox</layout>
+			<text>
+				<halign>left</halign>
+				<label>  </label>
+			</text>
+		</group>
+
+		<group>
+			<layout>hbox</layout>
+			<group>
+				<layout>vbox</layout>
+				<halign>left</halign>
+				<text><halign>left</halign><label>- 影响姿态保持模式（Ctrl-t）的行为。</label></text>
+				<text><halign>left</halign><label>- 调整（归一化的）驾驶杆偏转角度，</label></text>
+				<text><halign>left</halign><label>  达到该角度即断开自动驾驶姿态保持模式。</label></text>
+				<text><halign>left</halign><label>- 老旧、松旷的摇杆请设置较大的值。</label></text>
+				<text><halign>left</halign><label>  精度较高的摇杆可尝试减小该值，</label></text>
+				<text><halign>left</halign><label>  约为 0.01。警告：值为 0 会导致自动驾驶无法接通。</label></text>
+				<text><halign>left</halign><label>- 允许范围：最小值 0，最大值 0.1</label></text>
+			</group>
+		</group>
+
+	</group>
+
+	<empty>
+		<pref-height>6</pref-height>
+	</empty>
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<default-padding>1</default-padding>
+		<empty>
+			<pref-height>3</pref-height>
+		</empty>
+		<group>
+			<layout>hbox</layout>
+			<text>
+				<halign>left</halign>
+				<label>     </label>
+			</text>
+		</group>
+		<group>
+			<layout>hbox</layout>
+			<group>
+				<layout>vbox</layout>
+				<halign>left</halign>
+				<width>150</width>
+				<text>
+					<halign>left</halign>
+					<label>轴</label>
+				</text>
+				<text>
+					<halign>left</halign>
+					<label>俯仰</label>
+				</text>
+				<text>
+					<halign>left</halign>
+					<label>滚转</label>
+				</text>
+			</group>
+			<group> <!-- Sliders -->
+				<layout>vbox</layout>
+				<default-padding>1</default-padding>
+				<text>
+					<label>&lt;-&gt;</label>
+				</text>
+				<slider>
+					<name>Pitch</name>
+					<property>/sim/model/f-14b/controls/AFCS/dead-zone-pitch</property>
+					<live>1</live>
+					<min>0</min>
+					<max>0.1</max>
+					<binding>
+						<command>dialog-apply</command>
+						<object-name>Pitch</object-name>
+					</binding>
+				</slider>
+				<slider>
+					<name>Roll</name>
+					<property>/sim/model/f-14b/controls/AFCS/dead-zone-roll</property>
+					<live>1</live>
+					<min>0</min>
+					<max>0.1</max>
+					<binding>
+						<command>dialog-apply</command>
+						<object-name>Roll</object-name>
+					</binding>
+				</slider>
+			</group>
+			<group>
+				<layout>vbox</layout>
+				<text>
+					<halign>right</halign>
+					<label>数值</label>
+				</text>
+				<text>
+					<halign>right</halign>
+					<label>xxxxxxxx</label>
+					<live>true</live>
+					<format>%.3f</format>
+					<property>/sim/model/f-14b/controls/AFCS/dead-zone-pitch</property>
+				</text>
+				<text>
+					<halign>right</halign>
+					<label>xxxxxxxx</label>
+					<live>true</live>
+					<format>%.3f</format>
+					<property>/sim/model/f-14b/controls/AFCS/dead-zone-roll</property>
+				</text>
+			</group>
+		</group>
+		<group>
+			<layout>hbox</layout>
+			<text>
+				<halign>right</halign>
+				<label>     </label>
+			</text>
+		</group>
+	</group>
+
+
+	<empty>
+		<pref-height>6</pref-height>
+	</empty>
+	<hrule/>
+	<empty>
+		<pref-height>10</pref-height>
+	</empty>
+
+	<group>
+		<layout>hbox</layout>
+		<default-padding>1</default-padding>
+			<group>
+				<layout>vbox</layout>
+				<text>
+					<halign>right</halign>
+					<label>                     </label>
+				</text>
+			</group>
+			<group>
+				<layout>vbox</layout>
+				<button>
+					<legend>应用</legend>
+					<default>true</default>
+					<key>Enter</key>
+					<binding>
+						<command>nasal</command>
+						<script>f14.update_steering_deadZ()</script>
+					</binding>
+				</button>
+			</group>
+			<group>
+				<layout>vbox</layout>
+				<button>
+					<legend>关闭</legend>
+					<default>true</default>
+					<key>Esc</key>
+					<binding>
+						<command>dialog-close</command>
+					</binding>
+				</button>
+			</group>
+		</group>
+
+		<empty>
+			<pref-height>4</pref-height>
+		</empty>
+
+</PropertyList>

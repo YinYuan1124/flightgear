@@ -3,7 +3,7 @@
 <PropertyList include="f16-base.xml">
 
  <sim>
-  <description>General Dynamics F-16CM Block 42</description>
+  <description>通用动力 F-16CM 第 42 批次</description>
   <long-description>
    The General Dynamics F-16CM Fighting Falcon (or Night Falcon) is a single-engine supersonic multirole fighter aircraft originally developed by General Dynamics (now Lockheed Martin) for the United States Air Force (USAF). Powered by F100-PW-229 (ANG upgrade).
    Block 40/42 introduced features like digital flight controls, LANTIRN pods, GPS, larger HUD, upgraded APG-68 radar and ATF to enhance night and all-weather capabilities. With the Common Configuration Implementation Program (CCIP) all USAF Blocks 40/42/50/52 F-16s were modernized to a Block 50/52-based avionics software and hardware standard. This includes new MMC, colored MFDs, HMCS, advanced IFF, Sniper ATP and AIM-9X. Modified F-16CGs have been designated as CM.
@@ -177,7 +177,7 @@
   <menubar>
    <default>
     <menu n="101">
-     <label>F-16CM Block 42</label>
+     <label>F-16CM 第 42 批次</label>
        <item n="8">
           <label>--- Block options ---</label>
           <enabled>false</enabled>
