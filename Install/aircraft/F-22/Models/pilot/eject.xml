@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>ejectpilot.ac</path>
+  
+
+	
+	
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>PilotHelmet002</object-name>
+
+  </animation>
+   
+   <effect>
+      <inherits-from>Effects/model-transparent</inherits-from>
+      <object-name>PilotHelmet002</object-name>
+   </effect>
+	
+  <animation>
+    <name>head</name>
+    <object-name>PilotHelmet.002</object-name>
+	<object-name>tete</object-name>
+    <object-name>Cylinder.003</object-name>
+    <object-name>PilotHelmet</object-name>
+<object-name>PilotHelmet005</object-name>
+<object-name>MicWire</object-name>
+<object-name>MicWireYellow</object-name>
+<object-name>Plane.001</object-name>
+<object-name>PilotHelmet.006</object-name>
+   <object-name>PilotHelmet002</object-name>
+    <object-name>PilotHelmet.003</object-name>
+	 <object-name>PilotHelmet.004</object-name>
+	 <object-name>PilotHelmet.005</object-name>
+	 
+  </animation>
+
+<animation>
+<type>select</type>
+<object-name>head</object-name>      
+<condition>
+<not>
+<equals>
+<property>sim/current-view/view-number-raw</property>
+<value>105</value>
+</equals>
+</not>
+</condition>
+</animation>
+
+</PropertyList>
+

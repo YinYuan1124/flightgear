@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>F35Pilot-2.ac</path>
+  
+
+	
+	
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>PilotHelmet002</object-name>
+
+  </animation>
+   
+   <effect>
+      <inherits-from>Effects/model-transparent</inherits-from>
+      <object-name>PilotHelmet002</object-name>
+   </effect>
+	
+  <animation>
+    <name>head</name>
+    <object-name>PilotHelmet.002</object-name>
+	<object-name>tete</object-name>
+    <object-name>Cylinder.003</object-name>
+    <object-name>PilotHelmet</object-name>
+<object-name>PilotHelmet005</object-name>
+<object-name>MicWire</object-name>
+<object-name>MicWireYellow</object-name>
+<object-name>Plane.001</object-name>
+<object-name>PilotHelmet.006</object-name>
+   <object-name>PilotHelmet002</object-name>
+    <object-name>PilotHelmet.003</object-name>
+	 <object-name>PilotHelmet.004</object-name>
+	 <object-name>PilotHelmet.005</object-name>
+	 
+  </animation>
+
+
+  <animation>
+    <type>rotate</type>
+    <object-name>head</object-name>
+    
+    <property>sim/multiplay/generic/float[16]</property>
+    <factor> 0.3 </factor> 
+    <center>
+      <x-m> 0.0 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.159 </z-m>
+    </center>
+    <axis>
+      <x> 0.000 </x>
+      <y> 1.000 </y>
+      <z> 0.000 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>head</object-name>
+  
+    <property>sim/multiplay/generic/float[39]</property>
+    <factor>1</factor>
+    <center>
+      <x-m> 0.0 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.159 </z-m>
+    </center>
+    <axis>
+      <x> 0.000 </x>
+      <y> 0.000 </y>
+      <z> 1.000 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+     <object-name>head</object-name>
+   
+    <property>controls/flight/aileron</property>
+    <factor> -00.0</factor>
+    <center>
+      <x-m> 0.074 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.159 </z-m>
+    </center>
+    <axis>
+      <x> 1.000 </x>
+      <y> 0.000 </y>
+      <z> 0.000 </z>
+    </axis>
+  </animation> 
+
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>Pilot</object-name>
+    <property>orientation/side-slip-deg</property>
+    <factor>0.1</factor>
+    <min-deg>-50</min-deg>
+    <max-deg>50</max-deg>
+    <center>
+      <x-m> 0.150 </x-m>
+      <y-m> 0.005 </y-m>
+      <z-m> 0.380 </z-m>
+    </center>
+    <axis>
+      <x> 0.000 </x>
+      <y> 0.000 </y>
+      <z> 1.000 </z>
+    </axis>
+  </animation>
+
+
+</PropertyList>
+

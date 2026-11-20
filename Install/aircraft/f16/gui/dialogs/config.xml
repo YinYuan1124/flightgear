@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  
+  <name>f16config</name>
+  <modal type="bool">false</modal>
+  <layout>vbox</layout>
+  
+  <group>
+    <layout>hbox</layout>
+    
+    <text>
+      <label>配置</label>
+      <format>%s Configuration</format>
+      <property>sim/description</property>
+    </text>
+    
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    
+    <button>
+      <halign>right</halign>
+      <pref-width>20</pref-width>
+      <pref-height>20</pref-height>
+      <legend>X</legend>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <hrule/>
+
+  <group>
+    <layout>hbox</layout>
+
+    <group>
+      <layout>vbox</layout>
+
+    <group>
+      <layout>vbox</layout>
+        <button>
+          <legend>Auto start</legend>
+          <binding>
+            <command>nasal</command>
+            <script>start.autostart();</script>
+          </binding>
+        </button>
+
+      <button>
+        <legend>Checklists</legend>
+        <binding>
+          <command>dialog-show</command>
+          <dialog-name>checklist</dialog-name>
+          <offset>1</offset>
+        </binding>
+      </button>
+
+      <button>
+        <legend>Cold and Dark</legend>
+        <binding>
+          <command>nasal</command>
+          <script>start.coldndark();</script>
+        </binding>
+      </button>
+
+      <hrule/>
+
+      <button>
+        <legend>Repair damage</legend>
+        <binding>
+          <command>nasal</command>
+          <script>start.repair();</script>
+        </binding>
+      </button>
+
+       <button>
+        <legend>Repack chute</legend>
+        <binding>
+          <command>nasal</command>
+          <script>
+          if (!getprop("fdm/jsbsim/gear/unit[0]/WOW")) {
+            screen.log.write("This is only possible on ground.");
+            return;
+          }
+          if (getprop("f16/chute/done")) {
+            setprop("f16/chute/repack", 1);
+            setprop("f16/chute/done", 0);
+            setprop("f16/chute/enable", 0);
+            setprop("f16/chute/force", 2);
+            setprop("f16/chute/fold", 0);
+            screen.log.write("Drag chute repacked.");
+            setprop("f16/chute/repack", 0);
+            f16.chuteLoop.stop();
+          }
+          </script>
+        </binding>
+      </button>
+
+      <button>
+        <legend>Stow tailhook</legend>
+        <binding>
+          <command>nasal</command>
+          <script>
+          if (!getprop("fdm/jsbsim/gear/unit[0]/WOW")) {
+            screen.log.write("This is only possible on ground.");
+            return;
+          }
+          if (!getprop("f16/cockpit/tailhook-handle")) {
+            setprop("fdm/jsbsim/systems/hook/tailhook-cmd-norm-b", 0);
+            setprop("fdm/jsbsim/systems/hook/tailhook-cmd-norm", 0);
+            screen.log.write("Tailhook stowed.");
+          } else {
+            screen.log.write("Can't stow. The tailhook switch is engaged.");
+          }
+          </script>
+        </binding>
+      </button>
+
+      <button>
+      <row>1</row>
+      <col>1</col>
+      <legend>Call pushback</legend>
+        <binding>
+           <command>dialog-show</command>
+           <dialog-name>pushback</dialog-name>
+           <offset>1</offset>
+        </binding>
+      </button>
+  </group>
+</group>
+
+  <vrule/>
+
+  <group>
+    <layout>vbox</layout>
+    <checkbox>
+      <label>武器多人伤害</label>
+      <halign>left</halign>
+      <property>payload/armament/msg</property>
+      <live>true</live>
+      <binding>
+          <command>nasal</command>
+          <script>
+            if(getprop("fdm/jsbsim/gear/unit[0]/WOW")) {
+              setprop("payload/armament/msg", !getprop("payload/armament/msg"));
+            }
+            #screen.log.write("Weapons MP damage " ~ (getprop("/payload/armament/msg") ? "ON" : "OFF")  , 0.5, 0.5, 1);</script>
+      </binding>
+    </checkbox>
+  <text><halign>left</halign><label>启用以允许武器在多人游戏中对其他玩家造成伤害。</label></text>
+  <text><halign>left</halign><label>只能在机轮着地时切换。</label></text>
+  <text><halign>left</halign><label>警告：您将能够对兼容飞机（使用 Emesary 伤害系统）造成</label></text>
+  <text><halign>left</halign><label>并承受来自兼容飞机的伤害。</label></text>
+  <text><halign>left</halign><label>着陆或坠毁后，您可以查看您的</label></text>
+  <text><halign>left</halign><label>从“战斗事件日志”菜单查看武器战报。</label></text>
+  <text><halign>left</halign><label>屏幕上将不再显示命中/脱靶消息。</label></text>
+  <text><halign>left</halign><label>未经双方同意，请勿对玩家使用。</label></text>
+  <text><halign>left</halign><label>切勿在多人游戏玩家碰撞启用时使用此功能。</label></text>
+  <text><halign>left</halign><label>- 黑视/红视将始终开启。</label></text>
+  <text><halign>left</halign><label>- 模拟速率将保持正常。</label></text>
+  <text><halign>left</halign><label>- 应急高度增加将被禁用。</label></text>
+  <text><halign>left</halign><label>- 载荷窗口在空中不可用。</label></text>
+  <text><halign>left</halign><label>- 地图交通和飞行员列表将被禁用。</label></text>
+  </group>
+  </group>
+
+  <hrule/>
+
+  <group>
+    <layout>vbox</layout>
+    <checkbox>
+      <label>穿着更新、性能更好的 1997 抗荷服（默认表示 1979）</label>
+      <halign>left</halign>
+      <property>sim/rendering/redout/new</property>
+      <live>true</live>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/rendering/redout/new</property>
+        </binding>
+    </checkbox>
+
+  <hrule/>
+  
+	  <button>
+		<legend>Recharge JFS accumulators</legend>
+		<binding>
+		  <command>nasal</command>
+		  <script>
+			if (!getprop("fdm/jsbsim/gear/unit[0]/WOW")) {
+			  screen.log.write("This is only possible on ground.");
+			  return;
+			}
+			eng.accu_1_psi = eng.accu_psi_max;
+			eng.accu_2_psi = eng.accu_psi_max;
+			screen.log.write("10 minutes later: Both JFS accumulators pressurized.");
+		  </script>
+		</binding>
+	  </button>
+
+  <empty><stretch>1</stretch></empty>
+
+    <checkbox>
+      <label>连接 Dash 60 地面电源车</label>
+      <halign>left</halign>
+      <property>fdm/jsbsim/elec/sources/external-pwr</property>
+      <live>true</live>
+        <binding>
+          <command>property-toggle</command>
+          <property>fdm/jsbsim/elec/sources/external-pwr</property>
+        </binding>
+    </checkbox>
+
+  <hrule/>
+
+  <group>
+    <layout>hbox</layout>
+  
+    <text><halign>left</halign><label>座舱内发动机音量：</label></text>
+    
+    <slider>
+       <halign>left</halign>
+       <property>f16/sound/helmet-damping</property>
+       <min>0</min>
+       <max>1</max>
+       <step>0.025</step>
+       <live>true</live>
+       <vertical>false</vertical>
+       <pref-height>40</pref-height>
+       <pref-width>200</pref-width>
+       <binding>
+          <command>dialog-apply</command>
+       </binding>
+    </slider>
+
+  </group>
+                
+    <hrule/>
+
+    <checkbox>
+        <label>启用旁观模式</label>
+        <halign>left</halign>
+        <enable><not><property>/payload/armament/msg</property></not></enable>
+        <property>/payload/armament/spectator</property>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+    </checkbox>
+    <text>
+      <halign>left</halign><label>即使武器伤害关闭，也显示多人飞机留下的导弹尾迹、弹坑等。</label>
+    </text>
+
+    <hrule/>
+  
+    <checkbox>
+      <label>启用武器跟随视角</label>
+      <halign>left</halign>
+      <property>/controls/armament/automissileview</property>
+      <live>true</live>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/armament/automissileview</property>
+        </binding>
+    </checkbox>
+  <text><halign>left</halign><label>投放弹药时自动切换。</label></text>
+
+  <hrule/>
+
+    <button>
+      <legend>Reset HUD Max G value</legend>
+      <binding>
+          <command>property-assign</command>
+          <property>f16/avionics/n-reset</property>
+          <value>1</value>
+      </binding>
+    </button>
+
+  <empty><stretch>1</stretch></empty>
+  
+    <checkbox>
+      <label>启用备用的、兼容 Intel 集显的平视显示器</label>
+      <halign>left</halign>
+      <property>f16/avionics/hud-basic</property>
+      <live>true</live>
+        <binding>
+          <command>property-toggle</command>
+          <property>f16/avionics/hud-basic</property>
+        </binding>
+    </checkbox>
+  <text><halign>left</halign><label>此选项将自动保存。</label></text>
+
+  <hrule/>
+
+  <text><label>风化效果（实验性）</label></text>
+
+  <group>
+    <layout>hbox</layout>
+
+    <checkbox>
+      <label>脏污：</label>
+      <halign>left</halign>
+      <property>f16/effects/dirt</property>
+      <live>true</live>
+        <binding>
+          <command>property-toggle</command>
+          <property>f16/effects/dirt</property>
+        </binding>
+    </checkbox>
+  
+  <slider>
+     <halign>left</halign>
+     <property>f16/effects/dirt-fac</property>
+     <min>0</min>
+     <max>0.40</max>
+     <step>0.05</step>
+     <live>true</live>
+     <vertical>false</vertical>
+     <pref-height>40</pref-height>
+     <pref-width>150</pref-width>
+     <binding>
+        <command>dialog-apply</command>
+     </binding>
+  </slider>
+
+  <checkbox>
+      <label>锈蚀：</label>
+      <halign>left</halign>
+      <property>f16/effects/rust</property>
+      <live>true</live>
+        <binding>
+          <command>property-toggle</command>
+          <property>f16/effects/rust</property>
+        </binding>
+  </checkbox>
+  
+  <slider>
+     <halign>left</halign>
+     <property>f16/effects/rust-mag</property>
+     <min>0.1</min>
+     <max>1</max>
+     <step>0.05</step>
+     <live>true</live>
+     <vertical>false</vertical>
+     <pref-height>40</pref-height>
+     <pref-width>150</pref-width>
+     <binding>
+        <command>dialog-apply</command>
+     </binding>
+  </slider>
+ </group>
+                
+ </group>
+
+</PropertyList>

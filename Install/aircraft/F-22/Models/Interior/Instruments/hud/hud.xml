@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+  
+
+<model>
+    <path>hud.ac</path>
+	<offsets>
+      <x-m> -1.62 </x-m>
+      <y-m>-0.01 </y-m>
+      <z-m>-1.16 </z-m>
+    </offsets>
+  </model>
+  
+
+<animation>
+  <type>noshadow</type>
+  <object-name>glasstint</object-name>
+  <object-name>hudglass</object-name>
+  <object-name>lock</object-name>
+  <object-name>tint</object-name>
+</animation>	
+
+
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <!-- Replace 'HUD.l.canvas' with the object the canvas is placed on -->
+  <object-name>hudglass</object-name>
+  <object-name>tint</object-name>
+</effect>
+ <effect>
+  <inherits-from>Effects/glass</inherits-from>
+  <!-- Replace 'HUD.l.canvas' with the object the canvas is placed on -->
+  <object-name>tint</object-name>
+</effect>
+
+
+
+
+  <animation>
+  <type>material</type>
+  <object-name>hudglass</object-name>
+  <transparency>
+    <alpha-prop>f22/brightness</alpha-prop>
+    <factor>1</factor>
+    <offset>0</offset>
+   </transparency>
+<emission>
+   <red>1</red>
+   <green>1</green>
+   <blue>1</blue>
+   <factor-prop>f22/brightness</factor-prop>
+  </emission>
+ </animation>
+  
+
+
+
+<animation>
+	<type>rotate</type>
+	<object-name>lock</object-name>
+	<property>fdm/jsbsim/fcs/hudarrowpre</property>
+	<factor>90</factor>
+	<axis>
+	<object-name>lock-axis</object-name>
+	</axis>
+
+</animation> 
+
+ <animation>
+  <object-name>lock</object-name>
+  <type>select</type>
+  <condition>
+  <and>
+<equals>
+				<property>/controls/radar/hud-pointer</property>
+				<value>1</value>
+			</equals>
+      
+      <equals>
+				<property>/instrumentation/radar/lock</property>
+				<value>1</value>
+			</equals>
+      </and>
+
+  </condition>
+ </animation>
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>tint</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>nasal</command>
+      <script>setprop("f22/show-tint",0);</script>
+    </binding>
+    </action>
+</animation>
+
+ <animation>
+  <object-name>tint</object-name>
+  <type>select</type>
+  <condition>
+  <property>/f22/show-tint</property>
+
+
+  </condition>
+ </animation>
+
+</PropertyList>

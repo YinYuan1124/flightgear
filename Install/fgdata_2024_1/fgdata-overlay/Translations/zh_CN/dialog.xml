@@ -5,9 +5,8 @@
     <source>AI Carrier Controls</source>
     <target>AI 航母控制</target>
   </entry>
-  <entry>
+   <entry>
     <source>X</source>
-    <target>关闭</target>
   </entry>
   <entry>
     <source>Turn to launch course</source>
@@ -4868,5 +4867,429 @@
   <entry>
     <source>turbulence</source>
     <target>湍流</target>
+  </entry>
+  <entry>
+    <source>Default load</source>
+    <target>默认挂载</target>
+  </entry>
+  <entry>
+    <source>Refuel all tanks</source>
+    <target>全部油箱加满</target>
+  </entry>
+  <entry>
+    <source>Rearm 20mm cannon</source>
+    <target>20mm 机炮补弹</target>
+  </entry>
+  <entry>
+    <source>Smokewinders</source>
+    <target>发烟吊舱</target>
+  </entry>
+  <entry>
+    <source>Clean load</source>
+    <target>空挂载（无外挂）</target>
+  </entry>
+  <entry>
+    <source>A/A Training</source>
+    <target>空对空训练</target>
+  </entry>
+  <entry>
+    <source>A/A Training (2 bags)</source>
+    <target>空对空训练（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/A Training (CFT)</source>
+    <target>空对空训练（保形油箱）</target>
+  </entry>
+  <entry>
+    <source>A/A Aggressor (1 bag)</source>
+    <target>空对空空战演习（1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/A Aggressor (2 bags)</source>
+    <target>空对空空战演习（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/A Aggressor (Mode 1)</source>
+    <target>空对空空战演习（模式 1）</target>
+  </entry>
+  <entry>
+    <source>A/A Aggressor (Mode 2)</source>
+    <target>空对空空战演习（模式 2）</target>
+  </entry>
+  <entry>
+    <source>QRA (2 bags)</source>
+    <target>快速反应警戒（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Combat Air Patrol</source>
+    <target>战斗空中巡逻</target>
+  </entry>
+  <entry>
+    <source>Combat Air Patrol (1 bag)</source>
+    <target>战斗空中巡逻（1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Combat Air Patrol (2 bags)</source>
+    <target>战斗空中巡逻（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Combat Air Patrol (CFT)</source>
+    <target>战斗空中巡逻（保形油箱）</target>
+  </entry>
+  <entry>
+    <source>Air Superiority</source>
+    <target>制空</target>
+  </entry>
+  <entry>
+    <source>Air Superiority (1 bag)</source>
+    <target>制空（1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Air Superiority (2 bags)</source>
+    <target>制空（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Air Superiority (CFT)</source>
+    <target>制空（保形油箱）</target>
+  </entry>
+  <entry>
+    <source>Air Superiority (IR)</source>
+    <target>制空（红外制导）</target>
+  </entry>
+  <entry>
+    <source>Air Superiority (IR, 2 bags)</source>
+    <target>制空（红外制导，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Defensive Counter Air</source>
+    <target>防御性反空作战</target>
+  </entry>
+  <entry>
+    <source>Defensive Counter Air (CFT)</source>
+    <target>防御性反空作战（保形油箱）</target>
+  </entry>
+  <entry>
+    <source>Air Defense</source>
+    <target>防空</target>
+  </entry>
+  <entry>
+    <source>Air Defense (2 bags)</source>
+    <target>防空（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Air Policing (2 bags)</source>
+    <target>空中警戒（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Ferry Loadout (2 bags XL)</source>
+    <target>转场挂载（2 具加大副油箱）</target>
+  </entry>
+  <entry>
+    <source>Ferry Loadout (3 bags)</source>
+    <target>转场挂载（3 副油箱）</target>
+  </entry>
+  <entry>
+    <source>IRST Test and Evaluation (2 bags)</source>
+    <target>IRST 试验评估（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Tactical Test and Evaluation (2 bags)</source>
+    <target>战术试验评估（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Training (1 bag)</source>
+    <target>空对地训练（1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Training (2 bags)</source>
+    <target>空对地训练（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Light</source>
+    <target>空对地无制导（轻型）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Light (1 bag)</source>
+    <target>空对地无制导（轻型，1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Light (2 bags)</source>
+    <target>空对地无制导（轻型，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Heavy</source>
+    <target>空对地无制导（重型）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Heavy (1 bag)</source>
+    <target>空对地无制导（重型，1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Heavy (2 bags)</source>
+    <target>空对地无制导（重型，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Retarded</source>
+    <target>空对地无制导（减速型）</target>
+  </entry>
+  <entry>
+    <source>A/G Unguided Retarded (2 bags)</source>
+    <target>空对地无制导（减速型，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Cluster CEM (2 bags)</source>
+    <target>空对地集束炸弹 CEM（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Cluster SFW (WCMD, 1 bag)</source>
+    <target>空对地集束炸弹 SFW（WCMD，1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Cluster SFW (WCMD, 2 bags)</source>
+    <target>空对地集束炸弹 SFW（WCMD，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G LGB Light (PW-II, 2 bags)</source>
+    <target>空对地激光制导炸弹（轻型，PW-II，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G LGB Heavy (PW-III, 1 bag)</source>
+    <target>空对地激光制导炸弹（重型，PW-III，1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G LGB Heavy (PW-III, 2 bags)</source>
+    <target>空对地激光制导炸弹（重型，PW-III，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G GPS (JDAM, 1 bag)</source>
+    <target>空对地 GPS 制导（JDAM，1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G GPS (JDAM, 2 bags)</source>
+    <target>空对地 GPS 制导（JDAM，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G GPS (L-JDAM, 2 bags)</source>
+    <target>空对地 GPS 制导（L-JDAM，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G LGB + GPS (Light, 2 bags)</source>
+    <target>空对地激光+GPS 制导（轻型，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G LGB + GPS (Heavy, 2 bags)</source>
+    <target>空对地激光+GPS 制导（重型，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Strategic Strike (2 bags)</source>
+    <target>空对地战略打击（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G SEAD (2 bags)</source>
+    <target>空对地防空压制 SEAD（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G SEAD "Wild Weasel" (2 bags)</source>
+    <target>空对地防空压制“野鼬鼠”（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G SEAD Profile 2 (2 bags)</source>
+    <target>空对地防空压制方案 2（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G SEAD Dual (2 bags)</source>
+    <target>空对地双联防空压制（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G SEAD/DEAD (2 bags)</source>
+    <target>空对地防空压制/摧毁（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G DEAD (2 bags)</source>
+    <target>空对地摧毁防空 DEAD（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G DEAD LGB (2 bags)</source>
+    <target>空对地摧毁防空（激光制导，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G DEAD SFW (2 bags)</source>
+    <target>空对地摧毁防空（SFW，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G CAS (Light, 1 bag)</source>
+    <target>空对地近距支援（轻型，1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G CAS (Light, 2 bags)</source>
+    <target>空对地近距支援（轻型，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G CAS (Heavy, 2 bags)</source>
+    <target>空对地近距支援（重型，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G CAS (Mix, 2 bags)</source>
+    <target>空对地近距支援（混合，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G CAS (Dual, 2 bags)</source>
+    <target>空对地近距支援（双联，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G M151 rockets (1 bag)</source>
+    <target>空对地 M151 火箭弹（1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G M151 rockets (2 bags)</source>
+    <target>空对地 M151 火箭弹（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Anti-Ship</source>
+    <target>空对地反舰</target>
+  </entry>
+  <entry>
+    <source>A/G Anti-Ship (1 bag)</source>
+    <target>空对地反舰（1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Anti-Ship (2 bags)</source>
+    <target>空对地反舰（2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Anti-Ship (Penguin)</source>
+    <target>空对地反舰（企鹅导弹）</target>
+  </entry>
+  <entry>
+    <source>A/G Anti-Ship (Penguin, 2 bags)</source>
+    <target>空对地反舰（企鹅导弹，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Stand-off (JASSM, 2 bags)</source>
+    <target>空对地防区外打击（JASSM，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Stand-off (JSOW, 1 bag)</source>
+    <target>空对地防区外打击（JSOW，1 副油箱）</target>
+  </entry>
+  <entry>
+    <source>A/G Stand-off (JSOW, 2 bags)</source>
+    <target>空对地防区外打击（JSOW，2 副油箱）</target>
+  </entry>
+  <entry>
+    <source>Auto start</source>
+    <target>自动启动</target>
+  </entry>
+  <entry>
+    <source>Checklists</source>
+    <target>检查单</target>
+  </entry>
+  <entry>
+    <source>Cold and Dark</source>
+    <target>冷舱状态</target>
+  </entry>
+  <entry>
+    <source>Repair damage</source>
+    <target>修复损伤</target>
+  </entry>
+  <entry>
+    <source>Repack chute</source>
+    <target>折叠减速伞</target>
+  </entry>
+  <entry>
+    <source>Stow tailhook</source>
+    <target>收起尾钩</target>
+  </entry>
+  <entry>
+    <source>Call pushback</source>
+    <target>呼叫推出</target>
+  </entry>
+  <entry>
+    <source>Recharge JFS accumulators</source>
+    <target>JFS 蓄能器充压</target>
+  </entry>
+  <entry>
+    <source>Reset HUD Max G value</source>
+    <target>重置 HUD 最大过载</target>
+  </entry>
+  <entry>
+    <source>Select an Airbase</source>
+    <target>选择基地</target>
+  </entry>
+  <entry>
+    <source>Go To Airbase</source>
+    <target>前往基地</target>
+  </entry>
+  <entry>
+    <source>Load DTC</source>
+    <target>加载 DTC</target>
+  </entry>
+  <entry>
+    <source>Save DTC</source>
+    <target>保存 DTC</target>
+  </entry>
+  <entry>
+    <source>Copy STPT over</source>
+    <target>复制航路点到</target>
+  </entry>
+  <entry>
+    <source>STPT #</source>
+    <target>航路点 #</target>
+  </entry>
+  <entry>
+    <source>Load Lines 1</source>
+    <target>加载第 1 行</target>
+  </entry>
+  <entry>
+    <source>Load Lines 2</source>
+    <target>加载第 2 行</target>
+  </entry>
+  <entry>
+    <source>Load Lines 3</source>
+    <target>加载第 3 行</target>
+  </entry>
+  <entry>
+    <source>Load Lines 4</source>
+    <target>加载第 4 行</target>
+  </entry>
+  <entry>
+    <source>Load Left MDC</source>
+    <target>加载左侧 MDC</target>
+  </entry>
+  <entry>
+    <source>Load Right MDC</source>
+    <target>加载右侧 MDC</target>
+  </entry>
+  <entry>
+    <source>I understand</source>
+    <target>我已知晓</target>
+  </entry>
+  <entry>
+    <source>Apply to current weapon</source>
+    <target>应用到当前武器</target>
+  </entry>
+  <entry>
+    <source>Clear from weapon</source>
+    <target>从武器清除</target>
+  </entry>
+  <entry>
+    <source>Sniping mode</source>
+    <target>精确瞄准模式</target>
+  </entry>
+  <entry>
+    <source>Acquisition</source>
+    <target>搜索</target>
+  </entry>
+  <entry>
+    <source>Focus on target</source>
+    <target>锁定目标</target>
+  </entry>
+  <entry>
+    <source>Follow closest GND AI/MP</source>
+    <target>跟踪最近的地面目标（AI/多人）</target>
+  </entry>
+  <entry>
+    <source>Switch to WS 2.0</source>
+    <target>切换到 WS 2.0</target>
   </entry>
 </PropertyList>

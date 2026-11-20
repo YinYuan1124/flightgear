@@ -1,0 +1,73 @@
+<!--
+777-200 Standby Altimeter 
+-->
+
+<PropertyList>
+ <path>stby-ai.ac</path>
+
+ <animation>
+   <type>texmultiple</type>
+   <object-name>StbyAIface</object-name>
+   <transform>
+     <property>orientation/pitch-deg</property>
+     <subtype>textranslate</subtype>
+     <factor>0.00305</factor>
+     <axis>
+       <x>0</x>
+       <y>1</y>
+       <z>0</z>
+     </axis>
+   </transform>
+   <transform>
+     <property>orientation/roll-deg</property>
+     <subtype>texrotate</subtype>
+     <center>
+       <x>0.25</x>
+       <y>0.50</y>
+     </center>
+     <axis>
+       <x>0</x>
+       <y>0</y>
+       <z>-1</z>
+     </axis>
+   </transform>
+ </animation>
+
+<animation>
+		<type>select</type>
+		<object-name>StbyAIface</object-name>
+		<object-name>Plane.028</object-name>
+		<condition>
+			<equals>
+				<property>/controls/small-screens/rightscreen/mode</property>
+				<value>1</value>
+			</equals>
+		</condition>
+</animation>	
+
+<animation>
+		<type>select</type>
+		<object-name>hsi</object-name>
+		<object-name>pointer</object-name>
+    <object-name>hsibg</object-name>
+		<condition>
+			<equals>
+				<property>/controls/small-screens/rightscreen/mode</property>
+				<value>2</value>
+			</equals>
+		</condition>
+</animation>	
+
+
+
+	<animation>
+		<type>rotate</type>
+		<object-name>hsi</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+
+		<axis>   
+		<object-name>spinaxis</object-name> <!--This works SOOO GOOD!!-->
+		</axis>
+	</animation>
+
+</PropertyList>

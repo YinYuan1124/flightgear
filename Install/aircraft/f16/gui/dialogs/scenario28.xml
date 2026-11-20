@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<name>scenario28</name>
+	<layout>vbox</layout>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>模拟空战训练情景</label>
+			<!--<format>%s Control Panel</format>
+			<property>sim/description</property>-->
+		</text>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+
+	<group>
+	    <layout>hbox</layout>
+	    <button>
+	    	<legend>0</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.start(0);
+				</script>
+	      	</binding>
+	    </button>
+	    <button>
+	    	<legend>1</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.start(1);
+				</script>
+	      	</binding>
+	    </button>
+	    <button>
+	    	<legend>2</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.start(2);
+				</script>
+	      	</binding>
+	    </button>
+	    <button>
+	    	<legend>3</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.start(3);
+				</script>
+	      	</binding>
+	    </button>
+	    <button>
+	    	<legend>4</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.start(4);
+				</script>
+	      	</binding>
+	    </button>
+	    <button>
+	    	<legend>5</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.start(5);
+				</script>
+	      	</binding>
+	    </button>
+	    <button>
+	    	<legend>6</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.start(6);
+				</script>
+	      	</binding>
+	    </button>
+	    <button>
+	    	<legend>Stop</legend>
+		    <binding>
+				<command>nasal</command>
+				<script>
+					mig28.stop();
+				</script>
+	      	</binding>
+	      	<color>
+      		    <red>1</red>
+      		    <green>0.35</green>
+      		    <blue>0.35</blue>
+      	    </color>
+	    </button>
+
+	</group>
+
+	<hrule/>
+	<text><halign>left</halign><label>等级说明：</label></text>
+	<text><halign>left</halign><label>0（ACM）- 一架敌机，一架僚机（新手）</label></text>
+	<text><halign>left</halign><label>1（BFM）- 一架敌机（新手）</label></text>
+	<text><halign>left</halign><label>2（BFM）- 一架敌机（有经验）</label></text>
+	<text><halign>left</halign><label>3（BFM）- 一架敌机（老兵）</label></text>
+	<text><halign>left</halign><label>4（ACM）- 两架敌机（新手）</label></text>
+	<text><halign>left</halign><label>5（ACM）- 两架敌机（老兵）</label></text>
+	<text><halign>left</halign><label>6（ACM）- 三架敌机，一架僚机（老兵）</label></text>
+	<empty><stretch>1</stretch></empty>
+	<text><halign>left</halign><label>自动对手将驾驶 Block 52。</label></text>
+	<hrule/>
+
+	<text><halign>left</halign><label>注意：情景运行中时，请先点击停止再启动另一个。</label></text>
+	<text><halign>left</halign><label>要命中目标，用 HUD 准星符号对准敌机瞄准一秒钟。</label></text>
+	<text><halign>left</halign><label>老兵会关闭应答机，因此不会一直出现在 RWR 上。</label></text>
+
+	<empty><stretch>1</stretch></empty>
+
+</PropertyList>

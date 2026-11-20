@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<PropertyList>
+<fx>
+<!-- External Sounds --> 
+<!-- Afterburner -->
+     <engine>
+        <name>left afterburner</name>
+        <path>/Aircraft/F-22/Sounds/AB.wav</path>
+        <condition>
+             <not>
+          <property>/sim/current-view/internal</property>
+     </not>
+<greater-than>  
+ <property>sim/multiplay/generic/float[34]</property>
+   <value>90</value>
+  </greater-than>
+  
+<less-than>
+    <property>sim/multiplay/generic/float[30]</property>
+    <value>1</value>
+</less-than>
+<less-than>
+    <property>orientation/pitch-deg</property>
+    <value>30</value>
+</less-than>
+<greater-than>
+    <property>orientation/pitch-deg</property>
+    <value>-30</value>
+</greater-than>
+        </condition>
+        <mode>looped</mode>
+        <volume>
+            <property>sim/multiplay/generic/float[31]</property>
+            <offset>1</offset>
+            <factor>0</factor>
+            <min>0.0</min>
+            <max>0.5</max>
+        </volume>
+           <pitch>
+    	<property>sim/multiplay/generic/float[31]</property>
+	<factor>0.005</factor>
+	<min>0.0</min>
+	<max>0.0</max>
+   </pitch>
+        <position>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+        </position>
+        <reference-dist>600.0</reference-dist>
+        <max-dist>6000.0</max-dist>
+    </engine>
+
+     <engine>
+        <name>left afterburner2</name>
+        <path>/Aircraft/F-22/Sounds/AB.wav</path>
+        <mode>looped</mode>
+        <condition>
+<greater-than>  
+ <property>sim/multiplay/generic/float[34]</property>
+   <value>90</value>
+  </greater-than>
+  
+<less-than>
+         <property>sim/multiplay/generic/float[30]</property>
+           <value>1</value>
+</less-than>
+<less-than>
+    <property>orientation/pitch-deg</property>
+    <value>30</value>
+</less-than>
+<greater-than>
+    <property>orientation/pitch-deg</property>
+    <value>-30</value>
+</greater-than>
+        </condition>
+        <volume>
+            <property>sim/multiplay/generic/float[31]</property>
+            <offset>1</offset>
+            <factor>0</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+
+        </volume>
+        <position>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+        </position>
+           <pitch>
+    	<property>sim/multiplay/generic/float[31]</property>
+	<factor>0.005</factor>
+	<min>0.0</min>
+	<max>0.0</max>
+   </pitch>
+        <reference-dist>600.0</reference-dist>
+        <max-dist>6000.0</max-dist>
+    </engine>
+
+
+ 
+  <engine>
+   <name>Intake Fans</name>
+   <mode>looped</mode>
+   <path>Aircraft/F-22/Sounds/Samples/engine-intake.wav</path>
+   <condition>
+
+<less-than>
+         <property>sim/multiplay/generic/float[30]</property>
+           <value>1</value>
+</less-than>
+     <not>
+          <property>/sim/current-view/internal</property>
+     </not>
+   </condition>
+   <position>
+    	<x>0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+   </position>
+
+   <volume>
+    	<property>sim/multiplay/generic/float[31]</property>
+    	<factor>1</factor>
+	<min>0.0</min>
+	<max>1</max>
+   </volume>
+   <pitch>
+    	<property>sim/multiplay/generic/float[31]</property>
+	<factor>0.005</factor>
+	<min>0.0</min>
+	<max>1.0</max>
+   </pitch>
+  </engine>
+          <reference-dist>600.0</reference-dist>
+        <max-dist>6000.0</max-dist>
+
+<engine>
+      <name>engine01aaaaaa</name>
+      <path>Aircraft/F-22/Sounds/mil.wav</path>
+      <mode>looped</mode>
+      <condition>
+		<not>
+        	<property>/sim/current-view/internal</property>
+     	</not>
+      </condition>
+   
+   <volume>
+    <property>sim/multiplay/generic/float[31]</property>
+    <factor>1</factor>
+   </volume>
+    <pitch>
+        <property>sim/multiplay/generic/float[31]</property>
+	<factor>0.005</factor>
+	<min>-1</min>
+	<max>0</max>
+   </pitch>
+        <reference-dist>600.0</reference-dist>
+        <max-dist>6000.0</max-dist>
+    </engine>
+    
+    <guns>
+      <name>gunshoot6</name>
+      <mode>looped</mode>
+      <path>Aircraft/F-22/Sounds/gunext.wav</path>
+      <condition> 
+        <not>
+        	    <equals>
+		    <property>sim/multiplay/generic/bool[7]</property>
+		    <value>0</value>
+		</equals>
+    </not>
+      </condition>
+      <volume> 
+        <factor>1.2</factor>
+        <max>1.0</max>
+      </volume>
+      <reference-dist>600</reference-dist>
+      <max-dist>6000</max-dist>
+    </guns>
+
+
+    <guns>
+      <name>gunshoot5</name>
+      <mode>looped</mode>
+      <path>Aircraft/F-22/Sounds/gunext.wav</path>
+      <condition> 
+      <and>
+        <not>
+        	    <equals>
+		    <property>sim/multiplay/generic/bool[7]</property>
+		    <value>0</value>
+		</equals>
+    </not>
+	    <equals>
+		    <property>/sim/current-view/internal</property>
+		    <value>false</value>
+		</equals>
+      </and>
+      </condition>
+      <volume> 
+        <factor>1.2</factor>
+        <max>1.0</max>
+      </volume>
+      <reference-dist>600</reference-dist>
+      <max-dist>6000</max-dist>
+    </guns>
+
+    <guns>
+      <name>gunshoot4</name>
+      <mode>looped</mode>
+      <path>Aircraft/F-22/Sounds/gunext.wav</path>
+      <condition> 
+      <and>
+        <not>
+        	    <equals>
+		    <property>sim/multiplay/generic/bool[7]</property>
+		    <value>0</value>
+		</equals>
+    </not>
+	    <equals>
+		    <property>/sim/current-view/internal</property>
+		    <value>false</value>
+		</equals>
+      </and>
+      </condition>
+      <volume> 
+        <factor>1.2</factor>
+        <max>1.0</max>
+      </volume>
+      <reference-dist>600</reference-dist>
+      <max-dist>6000</max-dist>
+    </guns>
+
+    <guns>
+      <name>gunshoot3</name>
+      <mode>looped</mode>
+      <path>Aircraft/F-22/Sounds/gunext.wav</path>
+      <condition> 
+      <and>
+        <not>
+        	    <equals>
+		    <property>sim/multiplay/generic/bool[7]</property>
+		    <value>0</value>
+		</equals>
+    </not>
+	    <equals>
+		    <property>/sim/current-view/internal</property>
+		    <value>false</value>
+		</equals>
+      </and>
+      </condition>
+      <volume> 
+        <factor>1.2</factor>
+        <max>1.0</max>
+      </volume>
+      <reference-dist>600</reference-dist>
+      <max-dist>6000</max-dist>
+    </guns>
+
+
+
+</fx>
+</PropertyList>

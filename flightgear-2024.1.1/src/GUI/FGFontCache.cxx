@@ -30,6 +30,8 @@
 #include <simgear/debug/logstream.hxx>
 // 二次开发新增：扩展名大小写无关比较需要 std::tolower。
 #include <cctype>
+// 二次开发新增：字体回退告警去重需要 std::set。
+#include <set>
 
 #include <Main/globals.hxx>
 
@@ -137,16 +139,39 @@ FGFontCache::getfnt(const std::string& fontName, float size, float slant)
         }
     }
 
+    // 二次开发修改：找不到请求的字体时，回退结果**不写入 _cache**。
+    //
+    // 原实现把"未找到 → 回退到内置位图字体"的条目也缓存起来。内置位图字体只有
+    // 256 个单字节 Latin-1 字形，而界面文字是 UTF-8 中文：一旦某次查询发生在
+    // 字体文件尚未装入 _texFonts 之前（例如 GUI 重置后 setupFont 先于
+    // fguiTheme::preloadFont 生效），之后即使字体已经就绪，同一
+    // (名字, 字号, 斜体) 的查询仍会命中这条负缓存，结果是整个界面（菜单栏、
+    // 对话框）的中文被按 Latin-1 逐字节渲染成 "æ–‡ä»¶" 这类乱码
+    //（2026-11-20 实际事故：点击重置后菜单栏变成乱码）。
+    if (!pufont && !texfont) {
+        // 每个字体名只告警一次，避免对话框创建时刷屏
+        static std::set<std::string> warned;
+        if (warned.insert(fontName).second) {
+            SG_LOG(SG_GUI, SG_WARN,
+                   "FGFontCache: 字体 '" << fontName
+                   << "' 未找到，回退到内置位图字体（中文将显示为乱码）");
+        }
+        static FontCacheEntry* fallback = nullptr;
+        if (!fallback) {
+            fallback = new FontCacheEntry;
+            fallback->pufont = guiFonts.begin()->font;
+        }
+        return fallback;   // 不缓存，下次查询会重新尝试解析
+    }
+
     auto f = new FontCacheEntry;
     if (pufont) {
         f->pufont = pufont;
-    } else if (texfont) {
+    } else {
         f->texfont = texfont;
         f->ownsPUFont = true; // ensure it gets cleaned up
         f->pufont = new puFont;
         f->pufont->initialize(f->texfont, size, slant);
-    } else {
-        f->pufont = guiFonts.begin()->font;
     }
 
     // insert into the cache

@@ -1,0 +1,7391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+
+<!-- 
+October 30th 2024: Revamped the whole cockpit
+thank you pigensworth for the use of his 3d model!!!
+https://github.com/pigensworth/F-22-New-Cockpit/
+
+
+
+Now thats said:
+
+__/\\\\\\\\\\\\\\\__________________/\\\\\\\\\________/\\\\\\\\\_________/\\\\\\\\\_________________/\\\\\\\\\____________________________________________________________________________        
+ _\/\\\///////////_________________/\\\///////\\\____/\\\///////\\\_____/\\\\\\\\\\\\\_____________/\\\///////\\\__________________________________________________________________________       
+  _\/\\\___________________________\///______\//\\\__\///______\//\\\___/\\\/////////\\\___________\/\\\_____\/\\\____________________/\\\\\\\\\______/\\\__________________________________      
+   _\/\\\\\\\\\\\______/\\\\\\\\\\\___________/\\\/_____________/\\\/___\/\\\_______\/\\\___________\/\\\\\\\\\\\/_____/\\\\\\\\\_____/\\\/////\\\__/\\\\\\\\\\\_____/\\\\\_____/\\/\\\\\\\__     
+    _\/\\\///////______\///////////_________/\\\//____________/\\\//_____\/\\\\\\\\\\\\\\\___________\/\\\//////\\\____\////////\\\___\/\\\\\\\\\\__\////\\\////____/\\\///\\\__\/\\\/////\\\_    
+     _\/\\\_______________________________/\\\//____________/\\\//________\/\\\/////////\\\___________\/\\\____\//\\\_____/\\\\\\\\\\__\/\\\//////______\/\\\_______/\\\__\//\\\_\/\\\___\///__   
+      _\/\\\_____________________________/\\\/_____________/\\\/___________\/\\\_______\/\\\___________\/\\\_____\//\\\___/\\\/////\\\__\/\\\____________\/\\\_/\\__\//\\\__/\\\__\/\\\_________  
+       _\/\\\____________________________/\\\\\\\\\\\\\\\__/\\\\\\\\\\\\\\\_\/\\\_______\/\\\___________\/\\\______\//\\\_\//\\\\\\\\/\\_\/\\\____________\//\\\\\____\///\\\\\/___\/\\\_________ 
+        _\///____________________________\///////////////__\///////////////__\///________\///____________\///________\///___\////////\//__\///______________\/////_______\/////_____\///__________
+__/\\\\\\\\\\\___________________________________________________________________________________________________/\\\_______/\\\__/\\\\____________/\\\\__/\\\_____________                       
+ _\/////\\\///___________________________________________________________________________________________________\///\\\___/\\\/__\/\\\\\\________/\\\\\\_\/\\\_____________                      
+  _____\/\\\_______________________/\\\____________________________________/\\\_____________________________________\///\\\\\\/____\/\\\//\\\____/\\\//\\\_\/\\\_____________                     
+   _____\/\\\______/\\/\\\\\\____/\\\\\\\\\\\_____/\\\\\\\\___/\\/\\\\\\\__\///______/\\\\\_____/\\/\\\\\\\____________\//\\\\______\/\\\\///\\\/\\\/_\/\\\_\/\\\_____________                    
+    _____\/\\\_____\/\\\////\\\__\////\\\////____/\\\/////\\\_\/\\\/////\\\__/\\\___/\\\///\\\__\/\\\/////\\\____________\/\\\\______\/\\\__\///\\\/___\/\\\_\/\\\_____________                   
+     _____\/\\\_____\/\\\__\//\\\____\/\\\_______/\\\\\\\\\\\__\/\\\___\///__\/\\\__/\\\__\//\\\_\/\\\___\///_____________/\\\\\\_____\/\\\____\///_____\/\\\_\/\\\_____________                  
+      _____\/\\\_____\/\\\___\/\\\____\/\\\_/\\__\//\\///////___\/\\\_________\/\\\_\//\\\__/\\\__\/\\\__________________/\\\////\\\___\/\\\_____________\/\\\_\/\\\_____________                 
+       __/\\\\\\\\\\\_\/\\\___\/\\\____\//\\\\\____\//\\\\\\\\\\_\/\\\_________\/\\\__\///\\\\\/___\/\\\__________/\\\__/\\\/___\///\\\_\/\\\_____________\/\\\_\/\\\\\\\\\\\\\\\_                
+        _\///////////__\///____\///______\/////______\//////////__\///__________\///_____\/////_____\///__________\///__\///_______\///__\///______________\///__\///////////////__               
+
+
+    ______    ___ __                      
+   / ____/___/ (_) /_____  __________   _ 
+  / __/ / __  / / __/ __ \/ ___/ ___/  (_)
+ / /___/ /_/ / / /_/ /_/ / /  (__  )  _   
+/_____/\__,_/_/\__/\____/_/  /____/  (_)  
+                                          
+/\
+
+    ____  __                     _         ___              __   _____ _ __                     _____             _ __
+   / __ \/ /_  ____  ___  ____  (_)  __   /   |  ____  ____/ /  / ___/(_) /   _____  _____     / ___/____  ____ _(_) /
+  / /_/ / __ \/ __ \/ _ \/ __ \/ / |/_/  / /| | / __ \/ __  /   \__ \/ / / | / / _ \/ ___/_____\__ \/ __ \/ __ `/ / / 
+ / ____/ / / / /_/ /  __/ / / / />  <   / ___ |/ / / / /_/ /   ___/ / / /| |/ /  __/ /  /_____/__/ / / / / /_/ / / /  
+/_/   /_/ /_/\____/\___/_/ /_/_/_/|_|  /_/  |_/_/ /_/\__,_/   /____/_/_/ |___/\___/_/        /____/_/ /_/\__,_/_/_/   
+                                                                                                                      
+
+
+TODO: make the cockpit black like the real thing  DONE! -Fully Revamped
+                                                                                      
+ -->
+
+
+
+
+
+
+
+<model>
+    <path>protocp.ac</path>
+	<offsets>
+      <x-m> 0 </x-m>
+      <y-m>0 </y-m>
+      <z-m>0 </z-m>
+    </offsets>
+  </model>
+  
+	<animation>
+		<type>translate</type>
+		<object-name>CPT-L-pedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>0.07</factor>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CPT-R-pedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>0.07</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+
+
+<!--Prototype gunsight.-->
+
+<model>
+	<path>Aircraft/F-22/Models/Interior/Instruments/gs/K14-pipper.xml</path>
+	<offsets>
+      <x-m> -5.623 </x-m>
+      <y-m>0.00 </y-m>
+      <z-m>0.305 </z-m>
+	</offsets>
+</model>
+
+
+
+<!--INSTRUMENT LIGHTS-->
+
+
+<animation>
+    <type>material</type>
+   <object-name>ky58</object-name>
+   <object-name>clash doesnt like this box lol</object-name>
+   <object-name>a</object-name>
+    <object-name>dtc</object-name>
+    <object-name>rect</object-name>
+    <object-name>rect99</object-name>
+      <object-name>bt</object-name>
+         <object-name>RFCR</object-name>
+            <object-name>CFCR</object-name>
+               <object-name>LFCR</object-name>  <!--Switch labels     Controlled with the consoles knob-->
+                  <object-name>RSMS</object-name>
+                     <object-name>CSMS</object-name>
+                        <object-name>LSMS</object-name>
+                           <object-name>RWEP</object-name>
+                              <object-name>CWEP</object-name>
+                                 <object-name>LWEP</object-name>
+                                    <object-name>RFLT</object-name>
+                                       <object-name>CFLT</object-name>
+                                          <object-name>LFLT</object-name>
+                                          <object-name>LC1</object-name>
+                                          <object-name>LC2</object-name>
+                                          <object-name>LC3</object-name>
+                                          <object-name>LC4</object-name>
+                                          <object-name>LC5</object-name>
+                                          <object-name>RC1</object-name>
+                                          <object-name>RC2</object-name>
+                                          <object-name>RC3</object-name>
+                                          <object-name>RC4</object-name>
+                                          <object-name>RC5</object-name>
+
+
+
+
+
+                                    <object-name>RRWR</object-name>
+                                       <object-name>CRWR</object-name>
+                                          <object-name>LRWR</object-name>
+                              <object-name>labBAT</object-name>
+                              <object-name>labJFSR</object-name>
+
+                              <!--numpad-->
+<object-name>i1</object-name>
+<object-name>i2</object-name>
+<object-name>i3</object-name>
+<object-name>i4</object-name>
+<object-name>i5</object-name>
+<object-name>i6</object-name>
+<object-name>i7</object-name>
+<object-name>i8</object-name>
+<object-name>i9</object-name>
+<object-name>i0</object-name>
+<object-name>iclr</object-name>
+<object-name>iundo</object-name>
+<object-name>tsend1</object-name>
+<object-name>tsend2</object-name>
+<object-name>tsend3</object-name>
+<object-name>tsend4</object-name>
+<object-name>tsend5</object-name>
+
+<object-name>ALTCANCLE</object-name>
+<object-name>IASCANCLE</object-name>
+<object-name>HDGCANCLE</object-name>
+
+    <emission>
+      <factor-prop>controls/lighting/instruments-norm</factor-prop>
+      <red>   0 </red>
+      <green> 0.8 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation> 
+fdm/jsbsim/fcs/engine-gen-spin-output
+
+
+<animation>
+    <type>material</type>
+   <object-name>leftenginefire</object-name>
+    <emission>
+      <factor-prop>fdm/jsbsim/fcs/engine-fire-left</factor-prop>
+      <red>   1 </red>
+      <green> 0 </green>
+      <blue>  0 </blue>
+    </emission>
+  </animation> 
+<animation>
+    <type>material</type>
+   <object-name>rightenginefire</object-name>
+    <emission>
+      <factor-prop>fdm/jsbsim/fcs/engine-fire-right</factor-prop>
+      <red>   1 </red>
+      <green> 0 </green>
+      <blue>  0 </blue>
+    </emission>
+  </animation> 
+<!--
+<animation>
+    <type>material</type>
+
+   <object-name>num1</object-name>
+      <object-name>num2</object-name>
+         <object-name>num3</object-name>
+            <object-name>num4</object-name>
+               <object-name>num5</object-name> 
+                  <object-name>num6</object-name>
+                     <object-name>num7</object-name>
+                        <object-name>num8</object-name>
+                           <object-name>num9</object-name>
+                              <object-name>num0</object-name>
+                                 <object-name>numB</object-name>
+                                    <object-name>numA</object-name>
+
+                                          <object-name>navlights</object-name>
+                                          <object-name>beaconlights</object-name>
+                                          <object-name>jfsStartR</object-name>
+                                          <object-name>jfsStartL</object-name>
+                                          <object-name>cutoffL</object-name>
+                                          <object-name>cutoffR</object-name>
+                                          <object-name>FBWOVERRIDE</object-name>
+                                          <object-name>AAR</object-name>
+
+                                          <object-name>HUDKNOB</object-name>
+                                          <object-name>HUDKNOB2</object-name>
+                                          <object-name>consoleknob</object-name>
+                                          <object-name>panelknob</object-name>
+
+
+ 
+    <emission>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>   0.5 </red>
+      <green> 0.1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation> 
+
+
+-->
+
+<!--
+  <model>
+     <name>frontdatadisplays</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/comms.xml</path>
+			<offsets>
+				<x-m>-1.0</x-m>
+					<y-m>1</y-m>
+				<z-m>-0.85</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>-->
+
+
+<!--aux comm-->
+ <model>
+     <name>auxcomm</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/auxcomm/auxcomm.xml</path>
+			<offsets>
+				<x-m>-0.965</x-m>
+					<y-m>-0.03</y-m>
+				<z-m>-0.77</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+<animation>
+
+ <object-name>rgearbri</object-name>
+ <object-name>lgearbri</object-name>
+ <object-name>ngearbri</object-name>
+  <type>select</type>
+  <condition>
+<greater-than>
+				<property>controls/electric/battswitch</property> 
+				<value>1</value>
+			</greater-than>
+  </condition>
+ </animation>
+
+<animation>
+ <object-name>auxcomm</object-name>
+  <type>select</type>
+  <condition>
+<greater-than>
+				<property>f22/auxcomm/on</property> 
+				<value>0.5</value>
+			</greater-than>
+  </condition>
+ </animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>auxzero</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>nasal</command>
+      <script>screen.log.write("AUX COMM (COMM 3) Zeroed out");setprop("f22/auxcomm/digit1",0);setprop("f22/auxcomm/digit2",0);</script>
+    </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>rfe</tooltip-id>
+                <label>Zeroize AUX COMM (COMM 3)</label>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>jett</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>nasal</command>
+      <script>screen.log.write("JETT: Ext Stores");f22.jettison("external");</script>
+    </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>rfe</tooltip-id>
+                <label>Zeroize AUX COMM (COMM 3)</label>
+            </binding>
+        </hovered>
+</animation>
+ 
+	 <model>
+  <path>Aircraft/F-22/Models/Interior/Instruments/hud/hud.xml</path>
+	<offsets>
+      <x-m> -4.223 </x-m>
+      <y-m>0.01 </y-m>
+      <z-m>1.185 </z-m>
+	  <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+	<!-- Small screens -->
+	
+	<!-- left -->
+
+	<!--left is actually right...-->
+	<model>
+     <name>leftsmall</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/small-screens/left.xml</path>
+			<offsets>
+				<x-m>-0.965</x-m>
+					<y-m>-0.03</y-m>
+				<z-m>-0.77</z-m>
+			<pitch-deg>-0</pitch-deg>
+		</offsets>
+	</model>
+
+<!--left-->
+	<model>
+     <name>rightsmall</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/small-screens/right.xml</path>
+			<offsets>
+				<x-m>-0.965</x-m>
+					<y-m>-0.03</y-m>
+				<z-m>-0.77</z-m>
+			<pitch-deg>-0</pitch-deg>
+		</offsets>
+	</model>
+
+
+	<!-- right 
+	<model>
+     <name>rightsmall</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/small-screens/radar.xml</path>
+			<offsets>
+				<x-m>-1.0</x-m>
+					<y-m>0</y-m>
+				<z-m>-0.95</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>-->
+	<!-- main MFD's -->
+	
+	<model>
+     <name>rightmfdae</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/MFD/right-enav-mfd.xml</path>
+			<offsets>
+				<x-m>-5.751</x-m>
+					<y-m>0.208</y-m>
+				<z-m>-0.11</z-m>
+			<pitch-deg>-10</pitch-deg>
+		</offsets>
+	</model>
+	
+	<model>
+     <name>centermfdae</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/MFD/centre-mfd.xml</path>
+			<offsets>
+				<x-m>-5.751</x-m>
+					<y-m>-0.008</y-m>
+				<z-m>-0.11</z-m>
+			<pitch-deg>-10</pitch-deg>
+		</offsets>
+	</model>	
+	<model>
+     <name>leftmfdae</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/MFD/left-enav-mfd.xml</path>
+			<offsets>
+				<x-m>-5.751</x-m>
+					<y-m>-0.219</y-m>
+				<z-m>-0.11</z-m>
+			<pitch-deg>-10</pitch-deg>
+		</offsets>
+	</model>	
+	<model>
+     <name>lowermfd</name>
+		<path>Aircraft/F-22/Models/Interior/Instruments/MFD/lower-mfd.xml</path>
+			<offsets>
+				<x-m>-5.59</x-m>  <!--  -  -->
+					<y-m>-0.008</y-m>
+				<z-m>-0.33</z-m> <!--  +  -->
+			<pitch-deg>-45</pitch-deg>
+		</offsets>
+	</model>
+
+<animation>
+ <object-name>leftmfdae</object-name>
+  <object-name>rightmfdae</object-name>
+   <object-name>centermfdae</object-name>
+    <object-name>lowermfd</object-name>
+
+
+  <type>select</type>
+  <condition>
+
+<greater-than>
+				<property>fdm/jsbsim/fcs/elec-2</property> 
+				<value>0.8</value>
+			</greater-than>
+  </condition>
+ </animation>
+
+<animation>
+ <object-name>ngearbri</object-name>
+  <type>select</type>
+  <condition>
+      <equals>
+				<property>gear/gear/position-norm</property> 
+				<value>1</value>
+			</equals>
+  </condition>
+ </animation>
+<animation>
+ <object-name>ngeardim</object-name>
+  <type>select</type>
+  <condition>
+      <equals>
+				<property>gear/gear/position-norm</property> 
+				<value>0</value>
+			</equals>
+  </condition>
+ </animation>
+
+
+<animation>
+ <object-name>lgearbri</object-name>
+  <type>select</type>
+  <condition>
+      <equals>
+				<property>gear/gear[1]/position-norm</property> 
+				<value>1</value>
+			</equals>
+  </condition>
+ </animation>
+<animation>
+ <object-name>lgeardim</object-name>
+  <type>select</type>
+  <condition>
+      <equals>
+				<property>gear/gear[1]/position-norm</property> 
+				<value>0</value>
+			</equals>
+  </condition>
+ </animation>
+
+
+<animation>
+ <object-name>rgearbri</object-name>
+  <type>select</type>
+  <condition>
+      <equals>
+				<property>gear/gear[2]/position-norm</property> 
+				<value>1</value>
+			</equals>
+  </condition>
+ </animation>
+<animation>
+ <object-name>rgeardim</object-name>
+  <type>select</type>
+  <condition>
+      <equals>
+				<property>gear/gear[2]/position-norm</property> 
+				<value>0</value>
+			</equals>
+  </condition>
+ </animation>
+
+
+
+
+
+ <animation>
+     <object-name>rightsmall</object-name>
+     <object-name>leftsmall</object-name>
+
+ <!--      <object-name>frontdatadisplays</object-name>   TODO! Make the AP Button text be there own file so they dont disapear when power not applied-->
+  <type>select</type>
+  <condition>
+
+<greater-than>
+				<property>fdm/jsbsim/fcs/elec-1</property> <!--front controls switch-->
+				<value>0.8</value>
+			</greater-than>
+  </condition>
+ </animation>
+
+
+
+	 <animation>
+     <object-name>ejection_seat</object-name>
+     <object-name>Top Fluff</object-name>
+     <object-name>seat cushion</object-name>
+     <object-name>seatobj</object-name>
+  <type>select</type>
+  <condition>
+<or>
+<equals>
+				<property>sim/multiplay/generic/int[15]</property> 
+				<value>0</value>
+			</equals>
+<equals>
+				<property>sim/multiplay/generic/int[15]</property> 
+				<value>1</value>
+			</equals>
+</or>
+  </condition>
+ </animation>
+
+
+<!--AUX COMM-->
+                <command>property-adjust</command>
+                <property>/autopilot/settings/target-altitude-ft</property>
+                <factor>100</factor>
+                <min>0</min>
+                <max>40000</max>                
+                <wrap>false</wrap>
+
+
+<animation>
+        <name>auxfreq1</name>
+        <type>knob</type>
+        <object-name>freq1</object-name>
+        <property>f22/auxcomm/digit1</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+
+        <axis>
+            <object-name>freq1-axis</object-name>
+        </axis>
+
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/f22/auxcomm/digit1</property>
+                <factor>1</factor>
+                <min>0</min>
+                <max>1000</max>                
+                <wrap>false</wrap>
+            </binding>
+     <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+                    <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>rfe</tooltip-id>
+                <label>Hold SHIFT to seek fast</label>
+            </binding>
+        </hovered>
+    </animation>
+
+
+<animation>
+        <name>auxfreq2</name>
+        <type>knob</type>
+        <object-name>freq2</object-name>
+        <property>f22/auxcomm/digit2</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <object-name>freq2-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/f22/auxcomm/digit2</property>
+                <factor>1</factor>
+                <min>0</min>
+                <max>1000</max>                
+                <wrap>false</wrap>
+            </binding>
+     <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+                        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>rfe</tooltip-id>
+                <label>Hold SHIFT to seek fast</label>
+            </binding>
+        </hovered>
+    </animation>
+
+
+
+
+<!--
+
+                                                                                                                                                                                                              
+ 
+__/\\\________/\\\__/\\\________/\\\__/\\\\\\\\\\\\_____________________/\\\\\\\\\________________________________________________________________________/\\\\\\_________________        
+ _\/\\\_______\/\\\_\/\\\_______\/\\\_\/\\\////////\\\________________/\\\////////________________________________________________________________________\////\\\_________________       
+  _\/\\\_______\/\\\_\/\\\_______\/\\\_\/\\\______\//\\\_____________/\\\/___________________________________________/\\\_____________________________________\/\\\_________________      
+   _\/\\\\\\\\\\\\\\\_\/\\\_______\/\\\_\/\\\_______\/\\\____________/\\\_________________/\\\\\_____/\\/\\\\\\____/\\\\\\\\\\\__/\\/\\\\\\\______/\\\\\_______\/\\\_____/\\\\\\\\\\_     
+    _\/\\\/////////\\\_\/\\\_______\/\\\_\/\\\_______\/\\\___________\/\\\_______________/\\\///\\\__\/\\\////\\\__\////\\\////__\/\\\/////\\\___/\\\///\\\_____\/\\\____\/\\\//////__    
+     _\/\\\_______\/\\\_\/\\\_______\/\\\_\/\\\_______\/\\\___________\//\\\_____________/\\\__\//\\\_\/\\\__\//\\\____\/\\\______\/\\\___\///___/\\\__\//\\\____\/\\\____\/\\\\\\\\\\_   
+      _\/\\\_______\/\\\_\//\\\______/\\\__\/\\\_______/\\\_____________\///\\\__________\//\\\__/\\\__\/\\\___\/\\\____\/\\\_/\\__\/\\\_________\//\\\__/\\\_____\/\\\____\////////\\\_  
+       _\/\\\_______\/\\\__\///\\\\\\\\\/___\/\\\\\\\\\\\\/________________\////\\\\\\\\\__\///\\\\\/___\/\\\___\/\\\____\//\\\\\___\/\\\__________\///\\\\\/____/\\\\\\\\\__/\\\\\\\\\\_ 
+        _\///________\///_____\/////////_____\////////////_____________________\/////////_____\/////_____\///____\///______\/////____\///_____________\/////_____\/////////__\//////////__
+                                                                                                                                                                   
+
+-->
+
+
+
+
+
+<animation>
+        <name>Hud Sym</name>
+        <type>knob</type>
+        <object-name>HUDBRT</object-name>
+        <property>sim/hud/color/alpha</property>
+        <property>sim/hud/color/brightness</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+        <property>f22/brightness</property>
+                <value>0</value>
+                <value>0.1</value>
+                <value>0.2</value>
+                <value>0.3</value>
+                <value>0.4</value>
+                <value>0.5</value>
+                <value>0.6</value>
+                <value>0.7</value>
+                <value>0.8</value>
+                <value>0.9</value>
+                <value>1.0</value>
+                <wrap>false</wrap>
+            </binding>
+     <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+
+
+<!--DTC-->
+<animation>
+        <type>knob</type>
+    <object-name>dtc</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>airsource-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+  <command>nasal</command>
+  <script>    var exportdir = getprop("/sim/fg-home")~"/Export";changedtc = gui.FileSelector.new(callback: DTC.loadcart,title: "Select a Data Cartridge (.raptordtc)",button: "Load DTC",dir: exportdir,dotfiles: 1,pattern: ["*.raptordtc"]);changedtc.open();
+</script>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>dtc</tooltip-id>
+                <label>Swap Data Cartridge</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>airsource</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>airsource-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/switches/airsource</property>
+                <value>0</value>
+                <value>1</value>
+                <value>2</value> 
+                <value>3</value>
+                <value>4</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airsource</tooltip-id>
+                <label>Air Source Knob</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+	<type>rotate</type>
+	<object-name>airsource</object-name>
+	<property>controls/switches/airsource</property>
+	<factor>60</factor>
+	<axis>
+	<object-name>airsource-axis</object-name>
+	</axis>
+
+</animation> 
+
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>ky58mode</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>airsource-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/ky58/mode</property>
+                <value>0</value>
+                <value>1</value>
+                <value>2</value> 
+                <value>3</value>           
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ky58mode</tooltip-id>
+                <label>KY-58 Mode</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+	<type>rotate</type>
+	<object-name>ky58mode</object-name>
+	<property>controls/ky58/mode</property>
+	<factor>40</factor>
+	<axis>
+	<object-name>ky58mode-axis</object-name>
+	</axis>
+
+</animation> 
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>ky58type</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>airsource-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/ky58/type</property>
+                <value>0</value>
+                <value>1</value>
+                <value>2</value> 
+                <value>3</value>           
+                <value>4</value>
+                <value>5</value>
+                <value>6</value> 
+                <value>7</value>    
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ky58type</tooltip-id>
+                <label>KY-58 Type</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+	<type>rotate</type>
+	<object-name>ky58type</object-name>
+	<property>controls/ky58/type</property>
+	<factor>38</factor>
+	<axis>
+	<object-name>ky58type-axis</object-name>
+	</axis>
+
+</animation> 
+
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>ky58main</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>airsource-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/ky58/main</property>
+                <value>0</value>
+                <value>1</value>
+                <value>2</value> 
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ky58main</tooltip-id>
+                <label>KY-58 Main (Power)</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+	<type>rotate</type>
+	<object-name>ky58main</object-name>
+	<property>controls/ky58/main</property>
+	<factor>38</factor>
+	<axis>
+	<object-name>ky58main-axis</object-name>
+	</axis>
+
+</animation> 
+
+
+
+
+
+<!--
+
+<animation>
+        <name>Air Source Knob</name>
+        <type>knob</type>
+        <object-name>airsource</object-name>
+        <property></property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+        <property>sim/hud/color/brightness</property>
+                <value>0</value>
+                <value>0.3</value>
+                <value>0.6</value>
+                <value>1</value>
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+-->
+
+
+<!--Oxygen-->
+
+
+<animation>
+        <type>knob</type>
+    <object-name>mix</object-name>
+        <property>f22/obogs/mixture</property>
+        <factor>60</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+
+        <axis>
+            <object-name>mix-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/f22/obogs/mixture</property>
+                <value>0</value>
+                <value>1</value>      
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ky58mode</tooltip-id>
+                <label>Mixture Setting</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>oxy2</object-name>
+        <property>f22/obogs/flow</property>
+        <factor>60</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+
+        <axis>
+            <object-name>oxy2-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/f22/obogs/flow</property>
+                <value>0</value>
+                <value>1</value>      
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ky58mode</tooltip-id>
+                <label>Flow Setting</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+        <type>knob</type>
+    <object-name>oxy</object-name>
+        <property>f22/obogs/main</property>
+        <factor>60</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+
+        <axis>
+            <object-name>oxy-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/f22/obogs/main</property>
+                <value>0</value>
+                <value>1</value>      
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ky58mode</tooltip-id>
+                <label>Onboard Oxygen Generator System (OBOGS) Main Power</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+<!--
+
+                                                                                                                                                                  
+
+_____/\\\\\\\\\___________________________________________________________________/\\\\\\________________________________        
+ ___/\\\\\\\\\\\\\________________________________________________________________\////\\\________________________________       
+  __/\\\/////////\\\___________________/\\\______________________/\\\\\\\\\___/\\\____\/\\\______________________/\\\______      
+   _\/\\\_______\/\\\__/\\\____/\\\__/\\\\\\\\\\\_____/\\\\\_____/\\\/////\\\_\///_____\/\\\________/\\\\\_____/\\\\\\\\\\\_     
+    _\/\\\\\\\\\\\\\\\_\/\\\___\/\\\_\////\\\////____/\\\///\\\__\/\\\\\\\\\\___/\\\____\/\\\______/\\\///\\\__\////\\\////__    
+     _\/\\\/////////\\\_\/\\\___\/\\\____\/\\\_______/\\\__\//\\\_\/\\\//////___\/\\\____\/\\\_____/\\\__\//\\\____\/\\\______   
+      _\/\\\_______\/\\\_\/\\\___\/\\\____\/\\\_/\\__\//\\\__/\\\__\/\\\_________\/\\\____\/\\\____\//\\\__/\\\_____\/\\\_/\\__  
+       _\/\\\_______\/\\\_\//\\\\\\\\\_____\//\\\\\____\///\\\\\/___\/\\\_________\/\\\__/\\\\\\\\\__\///\\\\\/______\//\\\\\___ 
+        _\///________\///___\/////////_______\/////_______\/////_____\///__________\///__\/////////_____\/////_________\/////____
+                                                               
+
+-->
+
+
+<animation>
+        <name>asi chooser</name>
+        <type>knob</type>
+        <object-name>ASIKNOB</object-name>
+        <property>sim/hud/color/alpha</property>
+        <property>sim/hud/color/brightness</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+        <property>autopilot/settings/target-speed-kt</property>
+                <value>100</value>
+                <value>125</value>
+                <value>150</value>
+                <value>175</value>
+                <value>200</value>
+                <value>225</value>
+                <value>250</value>
+                <value>275</value>
+                <value>300</value>
+                <value>325</value>
+                <value>350</value>
+                <value>375</value>
+                <value>400</value>
+                <value>425</value>
+                <value>450</value>
+                <value>475</value>
+                <value>500</value>
+                <value>525</value>
+                <value>550</value>
+                <value>575</value>
+                <value>600</value>
+                <value>625</value>
+                <value>650</value>
+                <value>675</value>
+                <value>700</value>
+                <value>725</value>
+                <value>750</value>
+                <value>775</value>
+                <value>800</value>
+                <value>825</value>
+                <value>850</value>
+                <value>875</value>
+                <value>900</value>
+                <value>925</value>
+                <value>950</value>
+                <value>975</value>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+
+<animation>
+        <name>vsi chooser</name>
+        <type>knob</type>
+        <object-name>VSIKNOB</object-name>
+        <property>sim/hud/color/alpha</property>
+        <property>sim/hud/color/brightness</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m><y-m>0.027</y-m><z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+        <property>autopilot/settings/vertical-speed-fpm</property>
+                <value>-30000</value>
+                <value>-20000</value>
+                <value>-15000</value>
+                <value>-12000</value>
+                <value>-8000</value>
+                <value>-7000</value>
+                <value>-6000</value>
+                <value>-5000</value>
+                <value>-4000</value>
+                <value>-3500</value>
+                <value>-3000</value>
+                <value>-2500</value>
+                <value>-2000</value>
+                <value>-1900</value>
+                <value>-1500</value>
+                <value>-1300</value>
+                <value>-1000</value>
+                <value>-900</value>
+                <value>-500</value>
+                <value>-300</value>
+                <value>-250</value>
+                <value>-200</value>
+                <value>-175</value>
+                <value>-150</value>
+                <value>-125</value>
+                <value>-100</value>
+                <value>0</value>
+                <value>100</value>
+                <value>125</value>
+                <value>150</value>
+                <value>175</value>
+                <value>200</value>
+                <value>250</value>
+                <value>300</value>
+                <value>500</value>
+                <value>900</value>
+                <value>1000</value>
+                <value>1300</value>
+                <value>1500</value>
+                <value>1900</value>
+                <value>2000</value>
+                <value>2500</value>
+                <value>3000</value>
+                <value>3500</value>
+                <value>4000</value>
+                <value>5000</value>
+                <value>6000</value>
+                <value>7000</value>
+                <value>8000</value>
+                <value>12000</value>
+                <value>15000</value>
+                <value>20000</value>
+                <value>30000</value>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+
+<!--engine fire-->
+<animation>
+  <type>pick</type>
+   <object-name>rightenginefire</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>nasal</command>
+      <script>engfire.righteng.start();</script>
+    </binding>
+        		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/ref</property>
+			   <value>1</value>
+		   </binding>
+    <mod-up>
+    <binding>
+      <command>nasal</command>
+      <script>engfire.righteng.stop();</script>
+    </binding>
+        		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/ref</property>
+			   <value>0</value>
+		   </binding>
+	</mod-up>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>rfe</tooltip-id>
+                <label>Right Engine Fire Extinguisher</label>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>leftenginefire</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>nasal</command>
+      <script>engfire.lefteng.start();</script>
+    </binding>
+    		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/lef</property>
+			   <value>1</value>
+		   </binding>
+    <mod-up>
+    <binding>
+      <command>nasal</command>
+      <script>engfire.lefteng.stop();</script>
+    </binding>
+    		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/lef</property>
+			   <value>0</value>
+		   </binding>
+	</mod-up>
+    </action>
+                <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>lfe</tooltip-id>
+                <label>Left Engine Fire Extinguisher</label>
+            </binding>
+        </hovered>
+</animation>
+
+
+
+
+	<animation>
+		<type>translate</type>
+		<object-name>leftengineflight</object-name>
+		<property>/controls/buttons-pressed/lef</property>
+		<factor>-0.0015</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>rightengineflight</object-name>
+		<property>/controls/buttons-pressed/ref</property>
+		<factor>-0.0015</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+
+
+<animation>
+  <type>pick</type>
+
+        <object-name>smallscreen2bt1</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>smallscreens.changemoderight();</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/ssrbt1</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/ssrbt1</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+</action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>smallscreen2bt1</object-name>
+		<property>/controls/buttons-pressed/ssrbt1</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+
+
+
+<animation>
+  <type>pick</type>
+
+        <object-name>smallscreenbt1</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>leftscr.ackwarn();</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/sslbt1</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/sslbt1</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+</action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>smallscreenbt1</object-name>
+		<property>/controls/buttons-pressed/sslbt1</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+<animation>
+  <type>pick</type>
+
+        <object-name>smallscreenbt2</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>leftscr.clear();</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/sslbt2</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/sslbt2</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+</action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>smallscreenbt2</object-name>
+		<property>/controls/buttons-pressed/sslbt2</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+
+        <object-name>lthrot</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>f22.throtl();</script>
+</binding>
+</action>
+ </animation>
+<animation>
+  <type>pick</type>
+
+        <object-name>rthrot</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>f22.throtr();</script>
+</binding>
+</action>
+ </animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>HDGHOLD</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>setprop("/autopilot/locks/heading", "wing-leveler");</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/HDGHOLD</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/HDGHOLD</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>HDGHOLD</object-name>
+		<property>/controls/buttons-pressed/HDGHOLD</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>HDGCANCLE</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>setprop("/autopilot/locks/heading", "");</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/HDGCANCLE</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/HDGCANCLE</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>HDGCANCLE</object-name>
+		<property>/controls/buttons-pressed/HDGCANCLE</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>IASCANCLE</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>setprop("/autopilot/locks/speed", "");</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/IASCANCLE</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/IASCANCLE</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>IASCANCLE</object-name>
+		<property>/controls/buttons-pressed/IASCANCLE</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>ALTCANCLE</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>setprop("/autopilot/locks/altitude", "");</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/ALTCANCLE</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/ALTCANCLE</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>ALTCANCLE</object-name>
+		<property>/controls/buttons-pressed/ALTCANCLE</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+
+ <animation>
+  <type>pick</type>
+   <object-name>ALTHOLD</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>setprop("/autopilot/locks/altitude", "vertical-speed-hold");</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/ALTHOLD</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>/controls/buttons-pressed/ALTHOLD</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>ALTHOLD</object-name>
+		<property>/controls/buttons-pressed/ALTHOLD</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>IASHOLD</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>setprop("/autopilot/locks/speed", "speed-with-throttle");</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/IASHOLD</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/IASHOLD</property>
+		   <value>0</value>
+	   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>IASHOLD</object-name>
+		<property>/controls/buttons-pressed/IASHOLD</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+
+
+
+ <animation>
+  <type>pick</type>
+   <object-name>fcsbt</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>fc.changefcs();</script>
+</binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/fcsbt</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/fcsbt</property>
+		   <value>0</value>
+	   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>fcsbt</object-name>
+		<property>/controls/buttons-pressed/fcsbt</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+
+
+<!--
+
+                                                                                                                                                                
+                                                                                                                                                                
+
+_____/\\\\\\\\\\\________________________________________________________/\\\_____________________________________        
+ ___/\\\/////////\\\_____________________________________________________\/\\\_____________________________________       
+  __\//\\\______\///_____________________/\\\_____/\\\____________________\/\\\_____________________________________      
+   ___\////\\\__________/\\____/\\___/\\_\///___/\\\\\\\\\\\_____/\\\\\\\\_\/\\\_____________/\\\\\\\\___/\\\\\\\\\\_     
+    ______\////\\\______\/\\\__/\\\\_/\\\__/\\\_\////\\\////____/\\\//////__\/\\\\\\\\\\____/\\\/////\\\_\/\\\//////__    
+     _________\////\\\___\//\\\/\\\\\/\\\__\/\\\____\/\\\_______/\\\_________\/\\\/////\\\__/\\\\\\\\\\\__\/\\\\\\\\\\_   
+      __/\\\______\//\\\___\//\\\\\/\\\\\___\/\\\____\/\\\_/\\__\//\\\________\/\\\___\/\\\_\//\\///////___\////////\\\_  
+       _\///\\\\\\\\\\\/_____\//\\\\//\\\____\/\\\____\//\\\\\____\///\\\\\\\\_\/\\\___\/\\\__\//\\\\\\\\\\__/\\\\\\\\\\_ 
+        ___\///////////________\///__\///_____\///______\/////_______\////////__\///____\///____\//////////__\//////////__
+(switches)
+
+-->
+
+
+
+<!--APU start-->
+<animation>
+        <type>knob</type>
+    <object-name>apustart</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/electric/apustart</property>
+                <value>-1</value>
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/electric/apustartpos</property>
+                <value>-1</value>
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>apustart</tooltip-id>
+                <label>APU Switch</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+	<type>rotate</type>
+	<object-name>apustart</object-name>
+	<property>controls/electric/apustartpos</property>
+	<factor>20</factor>
+  <offset-deg>20</offset-deg>
+	<axis>
+	<object-name>apustart-axis</object-name>
+	</axis>
+
+</animation> 
+
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>BATSWITCH</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/electric/battswitch</property>
+                <value>0</value>
+                <value>2</value>             
+                <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/electric/battswitch-pos</property>
+                <value>-1</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>batt</tooltip-id>
+                <label>Battery Switch</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+<animation>
+	<type>rotate</type>
+	<object-name>BATSWITCH</object-name>
+	<property>controls/electric/battswitch-pos</property>
+	<factor>-20</factor>
+	<axis>
+		<y>1</y>
+	</axis>
+	<center>
+		<x-m> -5.44981 </x-m>
+		<y-m> 0.351006 </y-m>
+		<z-m> -0.257924 </z-m>
+	</center>
+</animation> 
+
+
+<!--
+ <animation>
+  <type>pick</type>
+   <object-name>elecswitch1</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+<command>property-toggle</command>
+                <property>/controls/electric/controls</property>
+    </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+   </action>
+ </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>elecswitch1</object-name>
+		<property>controls/electric/controls</property>
+		<offset-deg>0</offset-deg>
+		<factor>-40</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-5.231</x-m>
+			<y-m> 0.34633</y-m>
+			<z-m>-0.3569</z-m>
+		</center>
+	</animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>elecswitch2</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+<command>property-toggle</command>
+                <property>/controls/electric/MFD</property>
+    </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+   </action>
+ </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>elecswitch2</object-name>
+		<property>controls/electric/MFD</property>
+		<offset-deg>0</offset-deg>
+		<factor>-40</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-5.2063</x-m>
+			<y-m> 0.3465</y-m>
+			<z-m>-0.35401</z-m>
+		</center>
+	</animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>elecswitch3</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+<command>property-toggle</command>
+                <property>/controls/electric/computer</property>
+    </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+   </action>
+ </animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>elecswitch3</object-name>
+		<property>controls/electric/computer</property>
+		<offset-deg>0</offset-deg>
+		<factor>-40</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-5.1808</x-m>
+			<y-m> 0.34717</y-m>
+			<z-m>-0.35105</z-m>
+		</center>
+	</animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>elecswitch4</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+<command>property-toggle</command>
+                <property>/controls/electric/SMS</property>
+    </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+   </action>
+ </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>elecswitch4</object-name>
+		<property>controls/electric/SMS</property>
+		<offset-deg>0</offset-deg>
+		<factor>-40</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-5.1523</x-m>
+			<y-m> 0.34726</y-m>
+			<z-m>-0.34771</z-m>
+		</center>
+	</animation>
+
+  <animation>
+  <type>pick</type>
+   <object-name>elecswitch5</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+<command>property-toggle</command>
+                <property>/controls/electric/CMS</property>
+    </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+   </action>
+ </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>elecswitch5</object-name>
+		<property>controls/electric/CMS</property>
+		<offset-deg>0</offset-deg>
+		<factor>-40</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-5.231</x-m>
+			<y-m> 0.31665</y-m>
+			<z-m>-0.3569</z-m>
+		</center>
+	</animation>
+
+  <animation>
+  <type>pick</type>
+   <object-name>elecswitch6</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+<command>property-toggle</command>
+                <property>/controls/electric/AESA</property> 
+    </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+   </action>
+ </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>elecswitch6</object-name>
+		<property>controls/electric/AESA</property>
+		<offset-deg>0</offset-deg>
+		<factor>-40</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-5.2063</x-m>
+			<y-m> 0.31645</y-m>
+			<z-m>-0.35402</z-m>
+		</center>
+	</animation>-->
+
+<!--TODO: Animation for the Elec panel
+
+ Battery switch done! Perfection :D
+EPU switch (not needed)
+TODO: Make a saftey cover ()
+Pushing the switch turns it on
+
+
+New: Refuel in air switch. 
+
+-->
+
+
+<animation>
+        <type>knob</type>
+    <object-name>hooksw</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/hooksw</property>
+                <value>0</value>
+                <value>1</value>             
+                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airtoair</tooltip-id>
+                <label>Arresting hook (This is not for Carriers IRL)</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>hooksw</object-name>
+		<property>controls/hooksw</property>
+		<factor>-50</factor>
+        <axis>
+<object-name>hooksw-axis</object-name>
+        </axis>
+	</animation>
+
+
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>pbrake</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/gear/brake-parking</property>
+                <value>0</value>
+                <value>1</value>             
+                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airtoair</tooltip-id>
+                <label>Parking Brake</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>pbrake</object-name>
+		<property>controls/gear/brake-parking</property>
+		<factor>-50</factor>
+        <axis>
+<object-name>pbrake-axis</object-name>
+        </axis>
+	</animation>
+
+
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>ldglt</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/lighting/ldg</property>
+                <value>1</value> 
+                <value>0</value>
+                <value>-1</value>             
+                
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airtoair</tooltip-id>
+                <label>Landing Gear Lights</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>ldglt</object-name>
+		<property>controls/lighting/ldg</property>
+		<factor>40</factor>
+        <axis>
+<object-name>ldglt-axis</object-name>
+        </axis>
+	</animation>
+
+
+
+
+<!--
+<animation>
+        <type>knob</type>
+    <object-name>flcsflap</object-name>
+        <value>0.0</value>
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flcs/flap</property>
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airtoair</tooltip-id>
+                <label>Auto Flaps Extend / Normal</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+-->
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>aar</object-name>
+		<property>controls/refuel/Switch</property>
+		<factor>40</factor>
+        <axis>
+<object-name>aar-axis</object-name>
+        </axis>
+	</animation>
+
+
+
+<animation>
+        <name>aar knob</name>
+        <type>knob</type>
+        <object-name>aarlit</object-name>
+        <property>controls/lighting/aar</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m>
+			<y-m>0.027</y-m>
+			<z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>controls/lighting/aar</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>aarlit</object-name>
+        <property>controls/lighting/aar</property>
+        <offset-deg>30</offset-deg>
+        <factor>270</factor>
+        <axis>
+        <object-name>aarlight-axis</object-name>
+        </axis>
+    </animation>
+
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>aar</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/refuel/Switch</property>
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airtoair</tooltip-id>
+                <label>Air to Air Refueling</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>aar</object-name>
+		<property>controls/refuel/Switch</property>
+		<factor>40</factor>
+        <axis>
+<object-name>aar-axis</object-name>
+        </axis>
+	</animation>
+
+
+<animation>
+        <type>knob</type>
+    <object-name>tanks</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/refuel/tanks</property>
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>airtoair</tooltip-id>
+                <label>AAR Tank Selector</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>tanks</object-name>
+		<property>controls/refuel/tanks</property>
+		<factor>40</factor>
+        <axis>
+<object-name>tanks-axis</object-name>
+        </axis>
+	</animation>
+
+<!--
+ <animation>
+  <type>pick</type>
+   <object-name>AAR</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+               <command>property-cycle</command>
+               <property>su-27/instrumentation/HUD/brightness</property>
+               <value>0</value>
+               <value>1</value>
+               <wrap>true</wrap>
+    </binding>
+          <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+       </action>
+ </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>AAR</object-name>
+        <property>su-27/instrumentation/HUD/brightness</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>-5.31242</x-m>
+            <y-m> -0.34872</y-m>
+            <z-m>-0.355119</z-m>
+        </center>
+    </animation>
+<animation>
+        <type>translate</type>
+        <object-name>AAR</object-name>
+        <property>su-27/instrumentation/HUD/brightness</property>
+        <factor>-0.0047</factor>
+        <axis>
+            <x>2.2</x>
+            <y>-0.1</y>
+            <z>0.38</z>
+        </axis>
+    </animation>
+-->
+
+
+<animation>
+        <type>knob</type>
+    <object-name>MSTARM</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/armament/master-arm</property>
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>mstarm</tooltip-id>
+                <label>Master Arm</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+    <binding>
+        <command>nasal</command>
+        <script>if(getprop("controls/armament/master-arm") == 1){screen.log.write("Master Arm Enabled. Weapons ACTIVE");}</script>
+    </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+    <binding>
+        <command>nasal</command>
+        <script>if(getprop("controls/armament/master-arm") == 0){screen.log.write("Master Arm Disabled. Weapons Safe");}</script>
+    </binding>
+        </decrease> 
+    </animation>
+
+
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>MSTARM</object-name>
+        <property>controls/armament/master-arm</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+        <object-name>MSTARM-axis</object-name>
+        </axis>
+</animation>
+
+
+
+<!-- ENGSTART -->
+
+
+<animation>
+        <type>knob</type>
+    <object-name>jfsStartL</object-name>
+        <value>0.0</value> 
+
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/f22/gen1</property>
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>startr</tooltip-id>
+                <label>Engine 1 Generator (Left)</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>jfsStartR</object-name>
+        <property>/f22/gen2</property>
+        <offset-deg>0</offset-deg>
+        <factor>40</factor>
+        <axis>
+<object-name>gen-axis</object-name>
+        </axis>
+    </animation>
+
+<animation>
+        <type>knob</type>
+    <object-name>jfsStartR</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/f22/gen2</property> <!--inverted silly me xd-->
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>startl</tooltip-id>
+                <label>Engine 2 Generator (Right)</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>jfsStartL</object-name>
+        <property>/f22/gen1</property>
+        <offset-deg>0</offset-deg>
+        <factor>40</factor>
+        <axis>
+<object-name>gen-axis</object-name>
+        </axis>
+    </animation>
+
+
+<animation>
+        <type>knob</type>
+    <object-name>cutoffR</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/engines/engine[0]/cutoff</property> <!--inverted silly me xd-->
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>cutoff1</tooltip-id>
+                <label>Engine 1 Fuel Cutoff (Left)</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+ 
+<animation>
+        <type>rotate</type>
+        <object-name>cutoffR</object-name>
+        <property>controls/engines/engine[0]/cutoff</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m> -5.45101 </x-m>
+            <y-m> -0.306569 </y-m>
+            <z-m> -0.243634 </z-m>
+        </center>
+    </animation>
+
+<animation>
+        <type>knob</type>
+    <object-name>cutoffL</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/engines/engine[1]/cutoff</property> <!--inverted silly me xd-->
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>cutoff1</tooltip-id>
+                <label>Engine 2 Fuel Cutoff (Right)</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>cutoffL</object-name>
+        <property>controls/engines/engine[1]/cutoff</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m> -5.45114 </x-m>
+            <y-m> -0.29151 </y-m>
+            <z-m> -0.248351 </z-m>
+        </center>
+    </animation>
+
+
+
+<!--Manual switches-->
+
+
+<animation>
+        <type>knob</type>
+    <object-name>lbd</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/bdl</property> <!--inverted silly me xd-->
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>cutoff1</tooltip-id>
+                <label>Left Bay Manual / Auto</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>lbd</object-name>
+        <property>controls/bdl</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+        <object-name>lbd-axis</object-name>
+        </axis>
+
+    </animation>
+
+<animation>
+        <type>knob</type>
+    <object-name>rbd</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/bdr</property> <!--inverted silly me xd-->
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>cutoff1</tooltip-id>
+                <label>Right bay Manual / Auto</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>rbd</object-name>
+        <property>controls/bdr</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+        <object-name>lbd-axis</object-name>
+        </axis>
+
+    </animation>
+
+
+<!--Lighting panel. Switchs stay off Straight up. Push them PORT (Left when facing the hud) to turn on--> <!--Is this still the right direction?-->
+
+
+<animation>
+        <name>Consoles knob</name>
+        <type>knob</type>
+        <object-name>consoleknob</object-name>
+        <property>controls/lighting/consoleknob</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m>
+			<y-m>0.027</y-m>
+			<z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>controls/lighting/consoleknob</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>consoleknob</object-name>
+        <property>controls/lighting/consoleknob</property>
+        <offset-deg>30</offset-deg>
+        <factor>270</factor>
+        <axis>
+        <object-name>consoleknob-axis</object-name>
+        </axis>
+
+    </animation>
+
+
+<animation>
+        <name>Flood knob</name>
+        <type>knob</type>
+        <object-name>flood</object-name>
+        <property>controls/lighting/flood-norm</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m>
+			<y-m>0.027</y-m>
+			<z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>controls/lighting/flood-norm</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>flood</object-name>
+        <property>controls/lighting/flood-norm</property>
+        <offset-deg>30</offset-deg>
+        <factor>270</factor>
+        <axis>
+        <object-name>flood-axis</object-name>
+        </axis>
+    </animation>
+
+<animation>
+        <name>instpnl knob</name>
+        <type>knob</type>
+        <object-name>instpnl</object-name>
+        <property>controls/lighting/instpnl</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m>
+			<y-m>0.027</y-m>
+			<z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>controls/lighting/instpnl</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>instpnl</object-name>
+        <property>controls/lighting/instpnl</property>
+        <offset-deg>30</offset-deg>
+        <factor>270</factor>
+        <axis>
+        <object-name>instpnl-axis</object-name>
+        </axis>
+    </animation>
+
+
+<animation>
+        <name>mfd knob</name>
+        <type>knob</type>
+        <object-name>mfdlt</object-name>
+        <property>controls/lighting/mfd</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m>
+			<y-m>0.027</y-m>
+			<z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>controls/lighting/mfd</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>mfdlt</object-name>
+        <property>controls/lighting/mfd</property>
+        <offset-deg>30</offset-deg>
+        <factor>270</factor>
+        <axis>
+        <object-name>mfdlt-axis</object-name>
+        </axis>
+    </animation>
+
+
+
+
+
+<!--exterior panel-->
+
+<animation>
+        <name>form knob</name>
+        <type>knob</type>
+        <object-name>form</object-name>
+        <property>controls/lighting/formation-norm</property>
+        <factor>1</factor>
+        <center>
+            <x-m>0.0</x-m>
+			<y-m>0.027</y-m>
+			<z-m>0.0238</z-m>
+        </center>
+        <axis>
+            <x>0</x><y>0</y><z>0</z>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>controls/lighting/formation-norm</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>form</object-name>
+        <property>controls/lighting/formation-norm</property>
+        <offset-deg>30</offset-deg>
+        <factor>270</factor>
+        <axis>
+        <object-name>form-axis</object-name>
+        </axis>
+    </animation>
+
+
+<animation>
+        <name>Floo2d knob</name>
+        <type>knob</type>
+        <object-name>knb2</object-name>
+        <property>controls/lighting/extknob</property>
+        <factor>1</factor>
+                <axis>
+            <object-name>extltmain-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/lighting/extknob</property>
+                <value>0</value>
+                <value>1</value>
+                <value>2.6</value> 
+                <value>4</value>
+                <value>5</value>             
+                <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/lighting/extlight</property>
+                <value>0</value>
+                <value>1</value>
+                <value>2</value> 
+                <value>3</value>
+                <value>4</value>             
+                <wrap>false</wrap>
+            </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </action>
+    </animation>
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>knb2</object-name>
+        <object-name>rect99</object-name>
+        <property>controls/lighting/extknob</property>
+        <offset-deg>30</offset-deg>
+        <factor>60</factor>
+        <axis>
+        <object-name>extltmain-axis</object-name>
+        </axis>
+    </animation>
+
+
+
+
+
+
+<animation>
+        <name>auxcomm vol</name>
+        <type>knob</type>
+        <object-name>auxvol</object-name>
+        <property>instrumentation/comm[2]/volume</property>
+        <factor>310</factor>
+        <axis>
+          <object-name>auxvolaxis</object-name>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>instrumentation/comm[2]/volume</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+                        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>comm3vol</tooltip-id>
+         <label>AUX COMM (COMM 3) Volume</label>
+         </binding>
+        </hovered>
+    </animation>
+
+
+
+
+<animation>
+        <name>auxcomm vol</name>
+        <type>knob</type>
+        <object-name>rwrvol</object-name>
+        <property>controls/vol/rwr</property>
+        <factor>310</factor>
+        <axis>
+          <object-name>rwrvol-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>controls/vol/rwr</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+                        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>rwrvol</tooltip-id>
+         <label>Radar Warning Reciver Volume</label>
+         </binding>
+        </hovered>
+    </animation>
+
+
+
+<!-- Comms -->
+
+<animation>
+        <name>comm1 vol</name>
+        <type>knob</type>
+        <object-name>comm1vol</object-name>
+        <property>instrumentation/comm[0]/volume</property>
+        <factor>310</factor>
+        <axis>
+        <object-name>comm1vol-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>instrumentation/comm[0]/volume</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+                        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>comm1vol</tooltip-id>
+         <label>COMM 1 Volume</label>
+         </binding>
+        </hovered>
+    </animation>
+
+<animation>
+        <name>Comm2vol</name>
+        <type>knob</type>
+        <object-name>comm2vol</object-name>
+        <property>instrumentation/comm[1]/volume</property>
+        <factor>310</factor>
+
+        <axis>
+        <object-name>comm2vol-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                 <command>property-adjust</command>
+                <property>instrumentation/comm[1]/volume</property>
+                <factor>0.1</factor>
+                <min>0</min>
+                <max>1</max>                
+                <wrap>false</wrap>
+            </binding>
+                 <binding>
+     <command>property-cycle</command>
+                <property>/sim/model/wheel</property>
+                 <value>1</value>
+                  <value>0</value>
+     </binding>
+        </action>
+                <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>comm2vol</tooltip-id>
+         <label>COMM 2 Volume</label>
+         </binding>
+        </hovered>
+    </animation>
+
+
+<!--Landing Lights
+
+-->
+
+
+<!--
+      <animation>
+        <type>knob</type>
+        <object-name>LDGLIGHT</object-name>
+        <value>0.0</value>
+        <axis>
+        <object-name>airsource-axis</object-name>
+        </axis>
+        <action>
+          <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/landing-lights</property>
+          </binding>
+        </action>
+        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>LDGLIGHT</tooltip-id>
+         <label>Landing Lights (Very Bright)</label>
+         </binding>
+        </hovered>
+      <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>-->
+
+
+
+
+<!--Tail Flood Switch (The panel LT swtch)
+
+<animation>
+  <type>pick</type>
+   <object-name>PNLLT</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+               <command>property-toggle</command>
+               <property>controls/lighting/logo-lights</property>
+
+    </binding>
+        <binding>
+<command>property-toggle</command>
+                <property>/sim/model/clicksmall</property>
+    </binding>
+       </action>
+ </animation>-->
+
+
+
+
+      <animation>
+        <type>knob</type>
+        <object-name>PNLLT</object-name>
+        <value>0.0</value> 
+        <axis>
+        <object-name>airsource-axis</object-name>
+        </axis>
+        <action>
+          <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/logo-lights</property>
+          </binding>
+        </action>
+        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>PNLLT</tooltip-id>
+         <label>Tail Flood Lights</label>
+         </binding>
+        </hovered>
+      <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+<animation>
+        <type>rotate</type>
+        <object-name>PNLLT</object-name>
+        <property>controls/lighting/logo-lights</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m> -5.08261 </x-m>
+	    <y-m> 0.254991 </y-m>
+	    <z-m> -0.20666 </z-m>
+        </center>
+    </animation>
+
+
+
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>navlights</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+        <binding>
+<command>property-toggle</command>
+                <property>/sim/model/clicksmall</property>
+    </binding>
+       </action>
+ </animation>
+
+
+      <animation>
+        <type>knob</type>
+        <object-name>taxi</object-name>
+        <value>0.0</value> 
+        <axis>
+        <object-name>airsource-axis</object-name>
+        </axis>
+        <action>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/lighting/taxi-light</property>
+    </binding>
+        </action>
+        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>taxi</tooltip-id>
+         <label>Taxi Lights</label>
+         </binding>
+        </hovered>
+      <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+<animation>
+        <type>rotate</type>
+        <object-name>taxi</object-name>
+        <property>controls/lighting/taxi-light</property>
+        <offset-deg>0</offset-deg>
+        <factor>40</factor>
+        <axis>
+        <object-name>taxi-axis</object-name>
+        </axis>
+
+    </animation>
+
+
+
+      <animation>
+        <type>knob</type>
+        <object-name>navlights</object-name>
+        <value>0.0</value> 
+        <axis>
+        <object-name>airsource-axis</object-name>
+        </axis>
+        <action>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/lighting/nav-lights</property>
+    </binding>
+        </action>
+        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>navlights</tooltip-id>
+         <label>Navigation Lights</label>
+         </binding>
+        </hovered>
+      <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+
+
+
+
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>navlights</object-name>
+        <property>controls/lighting/nav-lights</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m> -5.04721 </x-m>
+            <y-m> 0.288851 </y-m>
+            <z-m> -0.196174 </z-m>
+        </center>
+    </animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>beaconlights</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/lighting/beacon</property>
+    </binding>
+        <binding>
+<command>property-toggle</command>
+                <property>/sim/model/clicksmall</property>
+    </binding>
+       </action>
+ </animation>
+
+
+
+
+
+      <animation>
+        <type>knob</type>
+        <object-name>beaconlights</object-name>
+        <value>0.0</value> 
+        <axis>
+        <object-name>airsource-axis</object-name>
+        </axis>
+        <action>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/lighting/beacon</property>
+    </binding>
+        </action>
+        <hovered>
+         <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>beaconlights</tooltip-id>
+         <label>Beacon Lights</label>
+         </binding>
+        </hovered>
+      <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>beaconlights</object-name>
+        <property>controls/lighting/beacon</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m> -5.04548 </x-m>
+            <y-m> 0.25316 </y-m>
+            <z-m> -0.200124 </z-m>
+        </center>
+    </animation>
+
+
+
+<!--FLCS BIT-->
+<animation>
+        <type>knob</type>
+    <object-name>bit</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/bit</property> 
+                <value>0</value>
+                <value>1</value>             
+                <value>2</value>             
+                <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/bitcvr</property> 
+                <value>0</value>
+                <value>0.01</value>             
+                <value>3</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>bit</tooltip-id>
+                <label>FLCS BIT</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+</animation>
+
+
+<!--FLCS Alt Flap-->
+<animation>
+        <type>knob</type>
+    <object-name>flcsaltflap</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/altflap</property> 
+                <value>0</value>
+                <value>1</value>                       
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>flcsaltflap</tooltip-id>
+                <label>FLCS Alternative flap configuration</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+</animation>
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>flcsaltflap</object-name>
+        <property>/controls/flight/altflap</property>
+        <offset-deg>0</offset-deg>
+        <factor>30</factor>
+        <axis>
+        <object-name>flcsaltflap-axis</object-name>
+        </axis>
+</animation>
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>bit</object-name>
+        <property>/controls/flight/bit</property>
+        <offset-deg>0</offset-deg>
+        <factor>30</factor>
+        <axis>
+        <object-name>bit-axis</object-name>
+        </axis>
+</animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>bitcvr</object-name>
+        <property>/controls/flight/bitcvr</property>
+        <offset-deg>0</offset-deg>
+        <factor>30</factor>
+        <axis>
+        <object-name>bitcvr-axis</object-name>
+        </axis>
+</animation>
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>GPSDLT</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/armament/GPSDLT</property> <!--inverted silly me xd-->
+                <value>-1</value>  
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>GPSDLT</tooltip-id>
+                <label>GPS / DLT Master Switch</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+<animation>
+        <type>rotate</type>
+        <object-name>GPSDLT</object-name>
+        <property>/controls/armament/GPSDLT</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+        <object-name>GPSDLT-axis</object-name>
+        </axis>
+    </animation>
+
+
+<animation>
+        <type>knob</type>
+    <object-name>CAMERAS</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/armament/cameras</property> <!--inverted silly me xd-->
+                <value>-1</value>  
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>GPSDLT</tooltip-id>
+                <label>Sensor Cameras</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+    </animation>
+<animation>
+        <type>rotate</type>
+        <object-name>CAMERAS</object-name>
+        <property>/controls/armament/cameras</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+        <object-name>CAMERAS-axis</object-name>
+        </axis>
+    </animation>
+
+<animation>
+        <type>knob</type>
+    <object-name>ABITSYNC</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/armament/AMRAAMBITSYNCLOCK</property> 
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ABITSYNC</tooltip-id>
+                <label>Aim-120 / Aim-260 BIT</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/clicksmall</property>
+      </binding>
+        </decrease> 
+</animation>
+ 
+<animation>
+        <type>rotate</type>
+        <object-name>ABITSYNC</object-name>
+        <property>/controls/armament/AMRAAMBITSYNCLOCK</property>
+        <offset-deg>0</offset-deg>
+        <factor>-40</factor>
+        <axis>
+        <object-name>ABITSYNC-axis</object-name>
+        </axis>
+</animation>
+
+
+
+ <!-- 
+ 
+__/\\\\\\\\\\\\\\\__/\\\\\\________________________/\\\________________________________________/\\\\\\\\\________________________________________________________________________/\\\\\\_________________        
+ _\/\\\///////////__\////\\\_______________________\/\\\_____________________________________/\\\////////________________________________________________________________________\////\\\_________________       
+  _\/\\\________________\/\\\_____/\\\___/\\\\\\\\__\/\\\_____________/\\\__________________/\\\/___________________________________________/\\\_____________________________________\/\\\_________________      
+   _\/\\\\\\\\\\\________\/\\\____\///___/\\\////\\\_\/\\\__________/\\\\\\\\\\\____________/\\\_________________/\\\\\_____/\\/\\\\\\____/\\\\\\\\\\\__/\\/\\\\\\\______/\\\\\_______\/\\\_____/\\\\\\\\\\_     
+    _\/\\\///////_________\/\\\_____/\\\_\//\\\\\\\\\_\/\\\\\\\\\\__\////\\\////____________\/\\\_______________/\\\///\\\__\/\\\////\\\__\////\\\////__\/\\\/////\\\___/\\\///\\\_____\/\\\____\/\\\//////__    
+     _\/\\\________________\/\\\____\/\\\__\///////\\\_\/\\\/////\\\____\/\\\________________\//\\\_____________/\\\__\//\\\_\/\\\__\//\\\____\/\\\______\/\\\___\///___/\\\__\//\\\____\/\\\____\/\\\\\\\\\\_   
+      _\/\\\________________\/\\\____\/\\\__/\\_____\\\_\/\\\___\/\\\____\/\\\_/\\_____________\///\\\__________\//\\\__/\\\__\/\\\___\/\\\____\/\\\_/\\__\/\\\_________\//\\\__/\\\_____\/\\\____\////////\\\_  
+       _\/\\\______________/\\\\\\\\\_\/\\\_\//\\\\\\\\__\/\\\___\/\\\____\//\\\\\________________\////\\\\\\\\\__\///\\\\\/___\/\\\___\/\\\____\//\\\\\___\/\\\__________\///\\\\\/____/\\\\\\\\\__/\\\\\\\\\\_ 
+        _\///______________\/////////__\///___\////////___\///____\///______\/////____________________\/////////_____\/////_____\///____\///______\/////____\///_____________\/////_____\/////////__\//////////__
+ flight controls
+ -->
+
+
+<!--
+<animation>
+        <type>knob</type>
+    <object-name>ALTFLAP</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/altflap</property> 
+                <value>-1</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALTFLAP</tooltip-id>
+                <label>Flaps Extend \ Auto</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+</animation>
+ 
+<animation>
+        <type>rotate</type>
+        <object-name>ALTFLAP</object-name>
+        <property>/controls/flight/altflap</property>
+        <offset-deg>0</offset-deg>
+        <factor>-30</factor>
+        <axis>
+        <object-name>ALTFLAP-axis</object-name>
+        </axis>
+</animation>
+
+
+<animation>
+        <type>knob</type>
+    <object-name>TSWTSN</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/TSWTSN</property> 
+                <value>-1</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALTFLAP</tooltip-id>
+                <label>TSW/TSN Left / Right</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+</animation>
+ 
+<animation>
+        <type>rotate</type>
+        <object-name>TSWTSN</object-name>
+        <property>/controls/flight/TSWTSN</property>
+        <offset-deg>0</offset-deg>
+        <factor>-20</factor>
+        <axis>
+        <object-name>TSWTSN-axis</object-name>
+        </axis>
+</animation>
+
+
+<animation>
+        <type>knob</type>
+    <object-name>APC</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/APC</property> 
+                <value>-1</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALTFLAP</tooltip-id>
+                <label>APC On / Off</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+</animation>
+ 
+<animation>
+        <type>rotate</type>
+        <object-name>APC</object-name>
+        <property>/controls/flight/APC</property>
+        <offset-deg>0</offset-deg>
+        <factor>-20</factor>
+        <axis>
+        <object-name>APC-axis</object-name>
+        </axis>
+</animation>-->
+
+
+<animation>
+        <type>knob</type>
+    <object-name>FBW</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/FBW/Switch</property> 
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALTFLAP</tooltip-id>
+                <label>FBW Normal / Overide</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+</animation>
+ 
+<animation>
+        <type>rotate</type>
+        <object-name>FBW</object-name>
+        <property>/controls/FBW/Switch</property>
+        <offset-deg>0</offset-deg>
+        <factor>-20</factor>
+        <axis>
+        <object-name>FBW-axis</object-name>
+        </axis>
+</animation>
+<animation>
+        <type>rotate</type>
+        <object-name>FBWCVR</object-name>
+        <property>/controls/FBW/Switch</property>
+        <offset-deg>0</offset-deg>
+        <factor>-70</factor>
+        <axis>
+        <object-name>FBWCVR-axis</object-name>
+        </axis>
+</animation>
+
+
+
+
+<animation>
+        <type>knob</type>
+    <object-name>ARC</object-name>
+        <value>0.0</value> 
+        <axis>
+   <object-name>apustart-axis</object-name>
+        </axis>
+        <action>
+            <binding>
+                <command>property-cycle</command>
+                <property>/controls/flight/ARC</property> 
+                <value>0</value>
+                <value>1</value>             
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ARC</tooltip-id>
+                <label>ARC Brake / Off</label>
+            </binding>
+        </hovered>
+  <increase>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </increase>
+        <decrease>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+        </decrease> 
+</animation>
+ 
+<animation>
+        <type>rotate</type>
+        <object-name>ARC</object-name>
+        <property>/controls/flight/ARC</property>
+        <offset-deg>0</offset-deg>
+        <factor>-20</factor>
+        <axis>
+        <object-name>ARC-axis</object-name>
+        </axis>
+</animation>
+<animation>
+        <type>rotate</type>
+        <object-name>ARCCVR</object-name>
+        <property>/controls/flight/ARC</property>
+        <offset-deg>0</offset-deg>
+        <factor>-70</factor>
+        <axis>
+        <object-name>ARCCVR-axis</object-name>
+        </axis>
+</animation>
+
+
+
+
+
+<animation>
+        <type>rotate</type>
+
+        <object-name>lthrot</object-name>
+        <property>f22/throttlel</property>
+        <offset-deg>-27</offset-deg>
+        <factor>70</factor>
+        <axis>
+        <object-name>mainthrot-axis</object-name>
+        </axis>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>rthrot2</object-name>
+        <object-name>rthrot</object-name>
+        <object-name>throtbutton</object-name>
+        <property>f22/throttler</property>
+        <offset-deg>-27</offset-deg>
+        <factor>70</factor>
+        <axis>
+        <object-name>mainthrot-axis</object-name>
+        </axis>
+    </animation>
+
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>Stick</object-name>
+        <property>controls/flight/aileron</property>
+        <offset-deg>-15</offset-deg>
+        <factor>8</factor>
+        <axis>
+<object-name>stickaileron</object-name>
+        </axis>
+    </animation>
+
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>Stick</object-name>
+        <property>controls/flight/elevator</property>
+        <offset-deg>0</offset-deg>
+        <factor>8</factor>
+        <axis>
+<object-name>stickelevator</object-name>
+        </axis>
+        
+    </animation>
+
+
+
+<!--
+MFD Buttons
+__/\\\\____________/\\\\__/\\\\\\\\\\\\\\\__/\\\\\\\\\\\\_______________/\\\\\\\\\\\\\______________________________________________________________________________________        
+ _\/\\\\\\________/\\\\\\_\/\\\///////////__\/\\\////////\\\____________\/\\\/////////\\\____________________________________________________________________________________       
+  _\/\\\//\\\____/\\\//\\\_\/\\\_____________\/\\\______\//\\\___________\/\\\_______\/\\\___________________/\\\__________/\\\_______________________________________________      
+   _\/\\\\///\\\/\\\/_\/\\\_\/\\\\\\\\\\\_____\/\\\_______\/\\\___________\/\\\\\\\\\\\\\\___/\\\____/\\\__/\\\\\\\\\\\__/\\\\\\\\\\\_____/\\\\\_____/\\/\\\\\\____/\\\\\\\\\\_     
+    _\/\\\__\///\\\/___\/\\\_\/\\\///////______\/\\\_______\/\\\___________\/\\\/////////\\\_\/\\\___\/\\\_\////\\\////__\////\\\////____/\\\///\\\__\/\\\////\\\__\/\\\//////__    
+     _\/\\\____\///_____\/\\\_\/\\\_____________\/\\\_______\/\\\___________\/\\\_______\/\\\_\/\\\___\/\\\____\/\\\_________\/\\\_______/\\\__\//\\\_\/\\\__\//\\\_\/\\\\\\\\\\_   
+      _\/\\\_____________\/\\\_\/\\\_____________\/\\\_______/\\\____________\/\\\_______\/\\\_\/\\\___\/\\\____\/\\\_/\\_____\/\\\_/\\__\//\\\__/\\\__\/\\\___\/\\\_\////////\\\_  
+       _\/\\\_____________\/\\\_\/\\\_____________\/\\\\\\\\\\\\/_____________\/\\\\\\\\\\\\\/__\//\\\\\\\\\_____\//\\\\\______\//\\\\\____\///\\\\\/___\/\\\___\/\\\__/\\\\\\\\\\_ 
+        _\///______________\///__\///______________\////////////_______________\/////////////_____\/////////_______\/////________\/////_______\/////_____\///____\///__\//////////_
+-->
+
+
+
+<!--lower-->
+
+<animation>
+  <type>pick</type>
+   <object-name>LLFCR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdll</property>
+               <value>0</value>
+               <value>2</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LLFCR-btn</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LLFCR-btn</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LLFCR</object-name>
+		<property>systems/MFD/LLFCR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>LLSMS</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdll</property>
+               <value>0</value>
+               <value>1</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LLSMS-btn</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LLSMS-btn</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LLSMS</object-name>
+		<property>systems/MFD/LLSMS-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LLWEP</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdll</property>
+               <value>0</value>
+               <value>3</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LLWEP-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/LLWEP-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LLWEP</object-name>
+		<property>systems/MFD/LLWEP-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LLFLT</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdll</property>
+               <value>4</value>
+               <value>4</value> <!--7-->
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LLFLT-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/LLFLT-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LLFLT</object-name>
+		<property>systems/MFD/LLFLT-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>LLRWR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdll</property>
+               <value>0</value>
+               <value>5</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LLRWR-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/LLRWR-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LLRWR</object-name>
+		<property>systems/MFD/LLRWR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+<!--Main Lower Rows-->
+
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CSMS</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdc</property>
+               <value>8</value>
+               <value>8</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CSMS-btn</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CSMS-btn</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>CFCR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.mode();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CFCR-btn</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CFCR-btn</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LFCR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdl</property>
+               <value>0</value>
+               <value>0</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LFCR-btn</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LFCR-btn</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>RFCR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdr</property>
+               <value>0</value>
+               <value>0</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RFCR-btn</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RFCR-btn</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+	<animation>
+		<type>translate</type>
+		<object-name>RFCR</object-name>
+		<property>systems/MFD/RFCR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+    
+	<animation>
+		<type>translate</type>
+		<object-name>LFCR</object-name>
+		<property>systems/MFD/LFCR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+    
+	<animation>
+		<type>translate</type>
+		<object-name>CFCR</object-name>
+		<property>systems/MFD/CFCR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+
+
+
+	<animation>
+		<type>translate</type>
+		<object-name>CSMS</object-name>
+		<property>systems/MFD/CSMS-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CWEP</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdc</property>
+               <value>0</value>
+               <value>0</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CWEP-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/CWEP-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CWEP</object-name>
+		<property>systems/MFD/CWEP-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CFLT</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdc</property>
+               <value>0</value>
+               <value>4</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CFLT-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/CFLT-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CFLT</object-name>
+		<property>systems/MFD/CFLT-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>CRWR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdc</property>
+               <value>8</value>
+               <value>8</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CRWR-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/CRWR-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CRWR</object-name>
+		<property>systems/MFD/CRWR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+<!--Left MFD buttons-->
+
+<animation>
+  <type>pick</type>
+   <object-name>LSMS</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdl</property>
+               <value>1</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LSMS-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/LSMS-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LSMS</object-name>
+		<property>systems/MFD/LSMS-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LWEP</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdl</property>
+               <value>10</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LWEP-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/LWEP-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LWEP</object-name>
+		<property>systems/MFD/LWEP-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LFLT</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdl</property>
+               <value>7</value>
+               <value>7</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LFLT-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/LFLT-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LFLT</object-name>
+		<property>systems/MFD/LFLT-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>LRWR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdl</property>
+               <value>6</value>
+               <value>6</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LRWR-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/LRWR-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LRWR</object-name>
+		<property>systems/MFD/LRWR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<!--Right MFD buttons-->
+
+<animation>
+  <type>pick</type>
+   <object-name>RSMS</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdr</property>
+               <value>1</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RSMS-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/RSMS-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>RSMS</object-name>
+		<property>systems/MFD/RSMS-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>RWEP</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdr</property>
+               <value>10</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RWEP-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/RWEP-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>RWEP</object-name>
+		<property>systems/MFD/RWEP-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>RFLT</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdr</property>
+               <value>7</value>
+               <value>7</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RFLT-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/RFLT-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>RFLT</object-name>
+		<property>systems/MFD/RFLT-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>RRWR</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+               <command>property-cycle</command>
+               <property>systems/MFD/modemfdr</property>
+               <value>6</value>
+               <value>6</value>
+               <wrap>true</wrap>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RRWR-btn</property>
+		   <value>1</value>
+	   </binding>
+	   <mod-up>
+		   <binding>
+			   <command>property-assign</command>
+			   <property>systems/MFD/RRWR-btn</property>
+			   <value>0</value>
+		   </binding>
+	   </mod-up>
+
+       </action>
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>RRWR</object-name>
+		<property>systems/MFD/RRWR-btn</property>
+		<factor>0.004</factor>
+		<axis>
+			<x>-1</x>
+			<z>-0.175925926</z>
+		</axis>
+	</animation>
+
+
+
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LLL5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>
+
+    var rng = getprop("controls/PRF/range");
+# 10,20,40,60,160,300
+if (rng == 5){
+    setprop("controls/PRF/range", 10);
+}
+elsif (rng == 10) {
+    setprop("controls/PRF/range", 20);
+} elsif (rng == 20){
+    # InLRease it
+    setprop("controls/PRF/range", 40);
+} elsif (rng == 40){
+    # InLRease it
+    setprop("controls/PRF/range", 60);
+} elsif (rng == 60){
+    # InLRease it
+    setprop("controls/PRF/range", 160);
+} elsif (rng == 160){
+    setprop("controls/PRF/range", 300);
+} elsif (rng == 300){
+    setprop("controls/PRF/range", 300);
+}
+
+        </script>
+    </binding>
+    </action>
+	
+ </animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LLL4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>
+
+           # DeLRease Radar Range
+    var rng = getprop("controls/PRF/range");
+# 10,20,40,60,160,300
+if (rng == 5){
+    print("Cant decrease it anymore");
+}
+elsif (rng == 10) {
+    setprop("controls/PRF/range", 5);
+} elsif (rng == 20){
+    # InLRease it
+    setprop("controls/PRF/range", 10);
+} elsif (rng == 40){
+    # InLRease it
+    setprop("controls/PRF/range", 20);
+} elsif (rng == 60){
+    # InLRease it
+    setprop("controls/PRF/range", 40);
+} elsif (rng == 160){
+    setprop("controls/PRF/range", 60);
+} elsif (rng == 300){
+    setprop("controls/PRF/range", 160);
+}
+        
+
+        </script>
+    </binding>
+    </action>
+	
+ </animation>
+
+
+
+
+
+
+<!--Center MFD Left Row-->
+
+
+<!-- Nasal scripting:  MFD1.CL1();   MFD 1 is the left MFD 2 is the center MFD 3 is the right   .CL1 means CenterMFD Left row. Lowest button-->
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CL1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CL1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CL1</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CL1</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CL2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CL2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CL2</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CL2</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CL3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CL3();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CL3</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CL3</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CL4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CL4();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CL4</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CL4</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CL5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CL5();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CL5</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CL5</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>CR1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CR1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CR1</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CR1</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>CR2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CR2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CR2</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CR2</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>CR3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CR3();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CR3</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CR3</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>CR4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CR4();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CR4</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CR4</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>CR5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD2.CR5();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/CR5</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/CR5</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+<!--Left MFD-->
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>LR1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LR1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LR1</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LR1</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>LR2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LR2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LR2</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LR2</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>LR3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LR3();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LR3</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LR3</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>LR4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LR4();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LR4</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LR4</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>LR5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LR5();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LR5</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LR5</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+
+
+
+ 
+<animation>
+  <type>pick</type>
+   <object-name>LL1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LL1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LL1</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LL1</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>LL2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LL2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LL2</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LL2</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>LL3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LL3();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LL3</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LL3</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>LL4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LL4();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LL4</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LL4</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+ <animation>
+  <type>pick</type>
+   <object-name>LL5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD1.LL5();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/LL5</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/LL5</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+ <!--Right MFD-->
+
+
+
+ <animation>
+  <type>pick</type>
+   <object-name>RR1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RR1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RR1</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RR1</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>RR2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RR2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RR2</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RR2</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>RR3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RR3();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RR3</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RR3</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>RR4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RR4();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RR4</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RR4</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>RR5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RR5();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RR5</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RR5</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+
+
+
+ 
+<animation>
+  <type>pick</type>
+   <object-name>RL1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RL1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RL1</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RL1</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>RL2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RL2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RL2</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RL2</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>RL3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RL3();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RL3</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RL3</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+ <animation>
+  <type>pick</type>
+   <object-name>RL4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RL4();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RL4</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RL4</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+ <animation>
+  <type>pick</type>
+   <object-name>RL5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+
+    <binding>
+        <command>nasal</command>
+        <script>MFD3.RL5();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>systems/MFD/RL5</property>
+		   <value>1</value>
+	   </binding>
+    <mod-up>
+		<binding>
+			<command>property-assign</command>
+			<property>systems/MFD/RL5</property>
+			<value>0</value>
+		</binding>
+	</mod-up>
+    </action>
+	
+ </animation>
+
+
+
+<animation>
+  <type>pick</type>
+   <object-name>t2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.aamode();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/t2</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/t2</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>t2</object-name>
+		<property>/controls/buttons-pressed/t2</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+
+<animation>
+  <type>pick</type>
+   <object-name>t3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.agmode();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/t3</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/t3</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>t3</object-name>
+		<property>/controls/buttons-pressed/t3</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>t1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.nav();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/t1</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/t1</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+	<animation>
+		<type>translate</type>
+		<object-name>t1</object-name>
+		<property>/controls/buttons-pressed/t1</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+<!--
+
+ICP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+<!--Numbers-->
+<animation>
+  <type>pick</type>
+   <object-name>i1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(1);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i1</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i1</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>i1</object-name>
+		<property>/controls/buttons-pressed/i1</property>
+		<factor>-0.005</factor>
+		<axis>
+		<x>0.647</x>
+		<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(2);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i2</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i2</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i2</object-name>
+		<property>/controls/buttons-pressed/i2</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i3</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(3);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i3</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i3</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i3</object-name>
+		<property>/controls/buttons-pressed/i3</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i4</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(4);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i4</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i4</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i4</object-name>
+		<property>/controls/buttons-pressed/i4</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i5</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(5);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i5</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i5</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i5</object-name>
+		<property>/controls/buttons-pressed/i5</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i6</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(6);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i6</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i6</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i6</object-name>
+		<property>/controls/buttons-pressed/i6</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i7</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(7);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i7</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i7</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i7</object-name>
+		<property>/controls/buttons-pressed/i7</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i8</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(8);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i8</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i8</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i8</object-name>
+		<property>/controls/buttons-pressed/i8</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i9</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(9);</script>
+    </binding>
+	   <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i9</property>
+		  <value>1</value>
+	  </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i9</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i9</object-name>
+		<property>/controls/buttons-pressed/i9</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>i0</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.setnum(0);</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/i0</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/i0</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>i0</object-name>
+		<property>/controls/buttons-pressed/i0</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<!--Function buttons-->
+
+<animation>
+  <type>pick</type>
+   <object-name>iclr</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.clearnum();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/iclr</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/iclr</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>iclr</object-name>
+		<property>/controls/buttons-pressed/iclr</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>tsend1</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.addtocomm1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/tsend1</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/tsend1</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>tsend1</object-name>
+		<property>/controls/buttons-pressed/tsend1</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>tsend2</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.addtocomm2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/tsend2</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/tsend2</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>tsend2</object-name>
+		<property>/controls/buttons-pressed/tsend2</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+
+<animation>
+  <type>pick</type>
+   <object-name>c1swap</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.swapc1();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/c1swap</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/c1swap</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<!--<animation>
+		<type>translate</type>
+		<object-name>c1swap</object-name>
+		<property>/controls/buttons-pressed/c1swap</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+	I commented this out because the lettering isn't part of and doesn't move with the model.-->
+
+
+<animation>
+  <type>pick</type>
+   <object-name>c2swap</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.swapc2();</script>
+    </binding>
+	   <binding>
+		   <command>property-assign</command>
+		   <property>/controls/buttons-pressed/c2swap</property>
+		   <value>1</value>
+	   </binding>
+  <mod-up>
+	  <binding>
+		  <command>property-assign</command>
+		  <property>/controls/buttons-pressed/c2swap</property>
+		  <value>0</value>
+	  </binding>
+	</mod-up>
+    </action>	
+ </animation>
+
+	<!--<animation>
+		<type>translate</type>
+		<object-name>c2swap</object-name>
+		<property>/controls/buttons-pressed/c2swap</property>
+		<factor>-0.005</factor>
+		<axis>
+			<x>0.647</x>
+			<z>0.11</z>
+		</axis>
+	</animation>
+	I commented this out because the lettering isn't part of and doesn't move with the model.-->
+	
+<animation>
+  <type>pick</type>
+   <object-name>dlnkupdat</object-name> 
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+        <command>nasal</command>
+        <script>fc.addtodlink();</script>
+    </binding>
+  <mod-up>
+
+	</mod-up>
+    </action>	
+ </animation>
+<!--
+
+
+
+
+Eject handle
+
+
+
+
+
+-->
+
+<animation>
+  <type>pick</type>
+   <object-name>EJECT</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>nasal</command>
+  <script>f22.eject();</script>
+</binding>
+       </action>
+ </animation>
+
+
+
+
+<!--Todo Make an eject arm lever
+
+
+<animation>
+  <type>pick</type>
+   <object-name>EJECT-ARM</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+   <binding>
+  <command>property-toggle</command>
+		<property>controls/seat/ejection-safety-lever</property>
+	   <value>1</value>
+	   <value>0</value>
+</binding>
+   <binding>
+  <command>nasal</command>
+  <script>setprop("/sim/messages/atc", "Arm state:"~ getprop("controls/seat/ejection-safety-lever"));</script> 
+
+</binding>
+       </action>
+ </animation>
+-->
+<animation>
+	<type>pick</type>
+	<object-name>LDGHNDL</object-name>
+	<action>
+	    <button>0</button>
+	    <repeatable>false</repeatable>
+	    <interval-sec>0.2</interval-sec>
+	    <binding>
+			<command>property-toggle</command>
+			<property>/controls/gear/gear-down</property>
+	    </binding>
+	</action>
+</animation>
+<animation>
+	<type>rotate</type>
+	<object-name>LDGHNDL</object-name>
+	<property>/controls/gear/gear-down</property>
+	<factor>60</factor>
+	<offset-deg>-60</offset-deg>
+	<center>
+		<x-m>-5.64718</x-m>
+		<y-m>-0.285744</y-m>
+		<z-m>-0.263653</z-m>
+	</center>
+	<axis>
+		<y>1</y>
+	</axis>
+</animation>
+
+
+<!--Lighting
+	<model>
+ <name>floodl</name>
+ <path>Aircraft/Generic/spotlight.xml</path>
+ <offsets>
+			<x-m>-5.7</x-m>
+			<y-m>-0.2</y-m>
+			<z-m>0.14</z-m>
+ </offsets>
+ <overlay>
+  <params>
+   <name>floodlight1</name>
+   <power-source>controls/lighting/actualflood</power-source>
+   <direction>
+    <x>0</x>
+    <y>0</y>
+    <z>1</z>
+   </direction>
+   <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+   </ambient>
+   <specular>
+    <r>0.1</r>
+    <g>0.1</g>
+    <b>0.1</b>
+   </specular>
+  </params>
+ </overlay>
+</model>-->
+
+
+
+
+    <light>
+        <name>floodL</name>
+        <type>spot</type>
+        <position>
+			<x-m>-5.7</x-m>
+			<y-m>-0.3</y-m>
+			<z-m>0.44</z-m>
+        </position>
+        <direction>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </direction>
+        <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </diffuse>
+        <specular>
+    		<r>0</r>
+    		<g>0</g>
+    		<b>0</b>
+            <a>0</a>
+        </specular>
+        <dim-factor>
+            <property>controls/lighting/actualflood</property>
+        </dim-factor>
+        <attenuation>
+    <c>0.375</c>
+    <l>0.01</l>
+    <q>0.0001</q>
+        </attenuation>
+        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>45</spot-exponent>
+        <range-m>1800</range-m>
+    </light>
+
+    <light>
+        <name>floodC</name>
+        <type>spot</type>
+        <position>
+			<x-m>-5.7</x-m>
+			<y-m>-0.0</y-m>
+			<z-m>0.44</z-m>
+        </position>
+        <direction>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </direction>
+        <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </diffuse>
+        <specular>
+    		<r>0</r>
+    		<g>0</g>
+    		<b>0</b>
+            <a>0</a>
+        </specular>
+        <dim-factor>
+            <property>controls/lighting/actualflood</property>
+        </dim-factor>
+        <attenuation>
+    <c>0.375</c>
+    <l>0.01</l>
+    <q>0.0001</q>
+        </attenuation>
+        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>45</spot-exponent>
+        <range-m>1800</range-m>
+    </light>
+
+
+    <light>
+        <name>floodC</name>
+        <type>spot</type>
+        <position>
+			<x-m>-5.7</x-m>
+			<y-m>-0.15</y-m>
+			<z-m>0.44</z-m>
+        </position>
+        <direction>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </direction>
+        <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </diffuse>
+        <specular>
+    		<r>0</r>
+    		<g>0</g>
+    		<b>0</b>
+            <a>0</a>
+        </specular>
+        <dim-factor>
+            <property>controls/lighting/actualflood</property>
+        </dim-factor>
+        <attenuation>
+    <c>0.375</c>
+    <l>0.01</l>
+    <q>0.0001</q>
+        </attenuation>
+        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>45</spot-exponent>
+        <range-m>1800</range-m>
+    </light>
+
+
+    <light>
+        <name>floodC</name>
+        <type>spot</type>
+        <position>
+			<x-m>-5.7</x-m>
+			<y-m>0.15</y-m>
+			<z-m>0.44</z-m>
+        </position>
+        <direction>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </direction>
+        <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </diffuse>
+        <specular>
+    		<r>0</r>
+    		<g>0</g>
+    		<b>0</b>
+            <a>0</a>
+        </specular>
+        <dim-factor>
+            <property>controls/lighting/actualflood</property>
+        </dim-factor>
+        <attenuation>
+    <c>0.375</c>
+    <l>0.01</l>
+    <q>0.0001</q>
+        </attenuation>
+        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>45</spot-exponent>
+        <range-m>1800</range-m>
+    </light>
+
+
+
+    <light>
+        <name>floodR</name>
+        <type>spot</type>
+        <position>
+			<x-m>-5.7</x-m>
+			<y-m>0.3</y-m>
+			<z-m>0.44</z-m>
+        </position>
+        <direction>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </direction>
+        <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </diffuse>
+        <specular>
+    		<r>0</r>
+    		<g>0</g>
+    		<b>0</b>
+            <a>0</a>
+        </specular>
+        <dim-factor>
+            <property>controls/lighting/actualflood</property>
+        </dim-factor>
+        <attenuation>
+    <c>0.375</c>
+    <l>0.01</l>
+    <q>0.0001</q>
+        </attenuation>
+        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>45</spot-exponent>
+        <range-m>1800</range-m>
+    </light>
+
+
+
+
+    <light>
+        <name>floodL1</name>
+        <type>spot</type>
+        <position>
+			<x-m>-5.7</x-m>
+			<y-m>-0.2</y-m>
+			<z-m>0.14</z-m>
+        </position>
+        <direction>
+            <x>1</x>
+            <y>0</y>
+            <z>-1</z>
+        </direction>
+        <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </diffuse>
+        <specular>
+    		<r>0</r>
+    		<g>0</g>
+    		<b>0</b>
+            <a>0</a>
+        </specular>
+        <dim-factor>
+            <property>controls/lighting/actualflood</property>
+        </dim-factor>
+        <attenuation>
+    <c>0.375</c>
+    <l>0.01</l>
+    <q>0.0001</q>
+        </attenuation>
+        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>45</spot-exponent>
+        <range-m>1800</range-m>
+    </light>
+
+
+
+
+    <light>
+        <name>floodR1</name>
+        <type>spot</type>
+        <position>
+			<x-m>-5.7</x-m>
+			<y-m>0.2</y-m>
+			<z-m>0.14</z-m>
+        </position>
+        <direction>
+            <x>1</x>
+            <y>0</y>
+            <z>-1</z>
+        </direction>
+        <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </ambient>
+        <diffuse>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+            <a>0</a>
+        </diffuse>
+        <specular>
+    		<r>0</r>
+    		<g>0</g>
+    		<b>0</b>
+            <a>0</a>
+        </specular>
+        <dim-factor>
+            <property>controls/lighting/actualflood</property>
+        </dim-factor>
+        <attenuation>
+    <c>0.375</c>
+    <l>0.01</l>
+    <q>0.0001</q>
+        </attenuation>
+        <spot-cutoff>60</spot-cutoff>
+        <spot-exponent>45</spot-exponent>
+        <range-m>1800</range-m>
+    </light>
+
+<!--
+	<model>
+ <name>floodR1</name>
+ <path>Aircraft/Generic/spotlight.xml</path>
+ <offsets>
+			<x-m>-5.7</x-m>
+			<y-m>0.2</y-m>
+			<z-m>0.14</z-m>
+ </offsets>
+ <overlay>
+  <params>
+   <name>floodlight21</name>
+   <power-source>controls/lighting/actualflood</power-source>
+   <direction>
+    <x>-1</x>
+    <y>0</y>
+    <z>1</z>
+   </direction>
+   <ambient>
+    <r>0.0</r>
+    <g>0.5</g>
+    <b>0.6</b>
+   </ambient>
+   <specular>
+    <r>0.0</r>
+    <g>0.0</g>
+    <b>0.0</b>
+   </specular>
+  </params>
+ </overlay>
+</model>-->
+
+</PropertyList>

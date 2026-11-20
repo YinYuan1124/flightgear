@@ -1,0 +1,177 @@
+#ACS SAU and AP helper functions 
+
+
+########################################
+#To do :
+#the PNK altitude and speed are set by the
+# pilot in HOLD and similar methods implement and replace the fixed values below !!!
+#########################################
+var getPNKspeed= func(){
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 0){return 285}  #return 0.8 mach ==> Here the pilot should decide 
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 1){
+	return getprop("su-27/instrumentation/PNK-10/manual-speed")*661.47} else {return 0} 
+	}
+	
+var getPNKaltitude = func(){
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 0){return 3200}  #TO REPLACE, the pilot should decide 
+	if(getprop("su-27/instrumentation/PNK-10/guidance-mode")== 1){
+	return getprop("su-27/instrumentation/PNK-10/manual-alt")*1000* 3.048} else {return 0} 
+}
+	
+var HoldBaroAlt = func {
+	var SAU_Active = getprop("systems/SAU/active");
+	var SAU_Ready = getprop("systems/SAU/ready");
+	var SAU_serviceable = getprop("systems/SAU/serviceable");
+	var Current_BarAlt = getprop("position/altitude-ft");
+	if (SAU_Ready == 1 and SAU_Active == 1 and Current_BarAlt > 0)  # and SAU_serviceable == "true"
+	   { 
+	   setprop("autopilot/settings/target-altitude-ft" , Current_BarAlt);
+	   setprop("autopilot/locks/altitude" , "altitude-hold"); 
+	   print ("SAU:Hold BarAltitude engaged ! Altitude set : " , Current_BarAlt );
+	   }   
+}
+
+var SAUNavigHold = func {
+	var SAU_Active = getprop("systems/SAU/active");
+	var PNK10_Active = getprop("su-27/instrumentation/PNK-10/active");
+#	if (getprop("su-27/instrumentation/PNK-10/active")==1{
+#	var SAU_serviceable = getprop("systems/SAU/serviceable");
+	var Current_BarAlt = getprop("position/altitude-ft");
+
+	if (PNK10_Active == 1 and SAU_Active == 1 and Current_BarAlt > 200)  # for test !! , min altitude for AP between 200 & 300 meters !!
+	   {
+	   
+	var RoutMgrActive = getprop("autopilot/route-manager/active");
+	var PNK_Mode = getprop("su-27/instrumentation/PNK-10/active-mode");
+	var PNK_Speed = getprop("su-27/instrumentation/PNK-10/active-mode");
+	
+#	   if (RoutMgrActive == 1) {
+#	   setprop("autopilot/locks/heading" , "true-heading-hold");
+#	   print ("SAU:Navig mode engaged ! Route: Active");
+#	   }
+#	   else {setprop("systems/SAU/ready" , 0);
+#	   print ("SAU:Navig mode NOT engaged ! No active route !");
+#	   }
+#	   }   
+	
+		if(PNK_Mode == 0)
+		{
+		if (RoutMgrActive == 1)
+		{
+			setprop("autopilot/locks/heading" , "true-heading-hold");
+#			setprop("autopilot/locks/speed" , "speed-with-throttle");
+#			setprop("autopilot/locks/altitude" , "altitude-hold"); 
+#			print ("target speed : " ~ getPNKspeed());
+#			setprop("autopilot/settings/target-speed-kt" , getPNKspeed());
+		print ("SAU engaged : Following PNK-10 'PROGRAM' route mode ")
+		
+		}else 
+		{
+			setprop("systems/SAU/ready" , 0);
+		   print ("SAU:Navig mode NOT engaged ! No active route !");
+	    }
+		}
+	
+	
+		if (PNK_Mode == 1){setprop("autopilot/locks/heading" ,"nav1-hold");
+			HoldBaroAlt();
+			setprop("autopilot/locks/altitude" , "altitude-hold"); 
+			print ("SAU engaged : Following PNK-10 'RSBN NAVIG' mode ");
+		}
+	
+	}	
+
+#	}else{
+#	gui.popupTip("Autostarting...");
+#	return;}
+}
+
+
+var SAU_Reset = func {
+    setprop("autopilot/locks/heading" , "");
+    setprop("autopilot/locks/altitude" , "");
+	  setprop("autopilot/locks/speed" , "");
+		setprop("systems/SAU/ready", 1);
+}
+
+var SAU_Auto =func {
+	var SAU_Active = getprop("systems/SAU/active");
+	var SAU_Ready = getprop("systems/SAU/ready");
+	var SAU_serviceable = getprop("autopilot/SAU/serviceable");
+	var Current_Pitch = getprop("orientation/pitch-deg");
+	var Current_roll = getprop("orientation/roll-deg"); 
+	var Current_BarAlt = getprop("position/altitude-ft");
+	if (SAU_Ready == 1 and SAU_Active == 1 and Current_BarAlt > 0)  # and SAU_serviceable == "true"
+	{
+	setprop("autopilot/settings/target-pitch-deg" , Current_Pitch);
+	setprop("autopilot/locks/altitude" , "pitch-hold");
+	setprop("autopilot/internal/target-roll-deg" , Current_roll);
+	setprop("autopilot/locks/heading" , "roll-hold");
+
+	print ("SAU:Auto Mode engaged ! pitch set : " , Current_Pitch ,"Roll set : " ,Current_roll);
+	}
+}
+
+var gs_follow =func{
+	var SAU_Active = getprop("systems/SAU/active");
+	var SAU_Ready = getprop("systems/SAU/ready");
+	var SAU_LOC = getprop("autopilot/locks/heading");
+	if (SAU_Ready == 1 and SAU_Active == 1 and SAU_LOC =="LOC")
+	{
+	if (getprop("instrumentation/nav/gs-in-range")==1){setprop("autopilot/locks/altitude" ,"gs1-hold");}
+	}
+	settimer(gs_follow, 1.0);
+}
+
+var SAU_Land =func {
+	var SAU_Active = getprop("systems/SAU/active");
+	var SAU_Ready = getprop("systems/SAU/ready");
+	var PNK_Mode = getprop("su-27/instrumentation/PNK-10/active-mode" );
+	print ("SAU:LOC Mode requested ! ");
+	if (SAU_Ready == 1 and SAU_Active == 1 and PNK_Mode == 2)  # and SAU_serviceable == "true"<-- removed cause verif shloud be done on "SAU active" switching>
+	{
+	setprop("autopilot/locks/heading" ,"LOC");
+	setprop("autopilot/settings/target-altitude-ft",2800);
+	setprop("autopilot/locks/altitude","altitude-hold");
+	
+	gs_follow();
+	print ("SAU:LOC Mode engaged ! ");
+
+	}
+	
+}
+
+var SAU_Nav1Follow =func {
+	var SAU_Active = getprop("systems/SAU/active");
+	var SAU_Ready = getprop("systems/SAU/ready");
+	if (SAU_Ready == 1 and SAU_Active == 1)  # and SAU_serviceable == "true"<-- removed cause verif shloud be done on "SAU active" switching>
+	{
+	setprop("autopilot/locks/heading" ,"nav1-hold");
+
+
+	print ("SAU:Nav1 follow Mode engaged ! ");
+
+	}
+	
+}
+
+var SAU_AutoLevel =func {
+#This does what expected from the stick Leveller button(Called sometimes "dont panic button")
+	var SAU_Active = getprop("systems/SAU/active");
+	var SAU_Ready = getprop("systems/SAU/ready");
+	if (SAU_Ready == 1 and SAU_Active == 1)  # and SAU_serviceable == "true"<-- removed cause verif shloud be done on "SAU active" switching>
+	{
+	if (getprop("autopilot/locks/heading")!="wing-leveler"){
+	setprop("autopilot/settings/target-pitch-deg" ,1);
+	setprop("autopilot/locks/heading" ,"wing-leveler");
+	setprop("autopilot/locks/altitude" ,"pitch-hold");
+	print ("SAU:Wings leveller Mode engaged ! ");
+	}
+	else{
+	setprop("autopilot/locks/heading" ,"");
+	setprop("autopilot/locks/altitude" ,"");	
+	}
+	}
+	
+}
+

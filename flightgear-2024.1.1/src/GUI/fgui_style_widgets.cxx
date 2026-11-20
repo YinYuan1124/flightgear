@@ -478,7 +478,31 @@ void fguiDrawButtonBody(puButton* button, int dx, int dy)
     glEnd();
 
     const char* legend = button->getLegend();
-    if (legend && legend[0]) {
+
+    // 关闭按钮画成矢量叉形图标。
+    // FlightGear 约定：对话框右上角的关闭按钮 `<legend>X</legend>`。
+    // 中文界面里这个 X 会被翻译表（Translations/zh_CN/dialog.xml）映射成
+    // "关闭"两个字，挤在 20x20 的小按钮里既局促又不像图标。这里对单字母
+    // X/x 的 legend 改画两条交叉线：不依赖字体、任何语言下大小一致。
+    const bool closeIcon = legend && (legend[0] == 'X' || legend[0] == 'x') &&
+                           legend[1] == '\0';
+    if (closeIcon) {
+        const float cx = (x1 + x2) * 0.5f;
+        const float cy = (y1 + y2) * 0.5f;
+        // 叉形半边长取按钮短边的 22%，并保证至少 3px 可见
+        float half = std::min(x2 - x1, y2 - y1) * 0.22f;
+        if (half < 3.0f)
+            half = 3.0f;
+        glColor4f(textColor.r(), textColor.g(), textColor.b(), textColor.a());
+        glLineWidth(1.5f);
+        glBegin(GL_LINES);
+        glVertex2f(cx - half, cy - half);
+        glVertex2f(cx + half, cy + half);
+        glVertex2f(cx - half, cy + half);
+        glVertex2f(cx + half, cy - half);
+        glEnd();
+        glLineWidth(1.0f);
+    } else if (legend && legend[0]) {
         const float textWidth = legendFont.getFloatStringWidth(legend);
         const int textX = int((x1 + x2) * 0.5f - textWidth * 0.5f + 0.5f);
         glColor4f(textColor.r(), textColor.g(), textColor.b(), textColor.a());
@@ -741,24 +765,39 @@ void FGThemeText::draw(int dx, int dy)
     else
         wrapWidth = (x2 - x1) - 2.0f * PUSTR_LGAP;
 
-    const bool wrap = fguiTheme::enabled() && fguiTheme::metrics().textWrap &&
-                      wrapWidth > pointSize * 0.5f;
-
-    std::vector<std::string> lines =
-        fguiWrapTextLines(font, text, wrap ? wrapWidth : 0.0f);
-    if (lines.empty())
-        return;
-
     // 行距系数：换行步进 = 字号 × lineSpacing；主题未启用时保持原 1.0 行距。
     const float lineSpacing = fguiTheme::enabled()
                                   ? fguiTheme::metrics().lineSpacing
                                   : 1.0f;
     const float lineHeight = pointSize * lineSpacing;
 
+    // 【只给"能装下两行"的盒子换行】
+    // 对话框标题这类单行控件，布局是按初始占位文本（overlay-select.xml 里是
+    // 字面量 "$name"，宽约 60px）算出的盒宽；运行后 Nasal 才把真实标题写进标签
+    // （例如"选择装备""General Dynamics F-16CJ Block 52"），盒宽却不会重算。
+    // 若仍按这个过窄的宽度换行，标题会被切成"选择装／备"两行，且多出的行会被
+    // 垂直居中推到对话框框体之外（2026-11-20 实测）。
+    // 因此只有盒子高度足够容纳两行时（真正的长文本区）才启用换行；
+    // 单行盒子一律按单行绘制，宁可横向溢出也不竖着撑破标题栏。
+    // 1.9 倍行高：布局给多行文本框算出的高度就是 行数×行高（外加内边距），
+    // 单行标题的盒子高度约等于 1 倍行高，因此这个阈值能干净地区分两者。
+    const bool canMultiLine = (y2 - y1) >= lineHeight * 1.9f;
+    const bool wrap = fguiTheme::enabled() && fguiTheme::metrics().textWrap &&
+                      canMultiLine && wrapWidth > pointSize * 0.5f;
+
+    std::vector<std::string> lines =
+        fguiWrapTextLines(font, text, wrap ? wrapWidth : 0.0f);
+    if (lines.empty())
+        return;
+
     // 文本块整体在 abox 内垂直居中（puText 的 abox 通常是一条布局盒）。
     const float blockHeight = lineHeight * float(lines.size());
     const float centerY = (y1 + y2) * 0.5f;
-    const float top = centerY + blockHeight * 0.5f;
+    float top = centerY + blockHeight * 0.5f;
+    // 多行文本块比盒子高时，从盒子底边向上排，避免首行画到框外
+    //（顶 = 盒底减去块高，这里 top 表示块底边）。
+    if (top - blockHeight < y1)
+        top = y2;
 
     // puText 的标签语义：标签画在盒子右侧（layout.cxx 为 text 设置了
     // x -= 5 / width = 0），这里在左边缘补回 PUSTR_LGAP 的间距。

@@ -634,6 +634,36 @@ NewGUI::setupFont (SGPropertyNode *node)
 {
 #if defined(HAVE_PUI)
     _font = FGFontCache::instance()->get(node);
+
+    // 主题启用时强制使用主题的 Unicode 字体（如 cn/simhei.ttf）。
+    //
+    // 内置位图字体（guiFonts）只有 256 个单字节 Latin-1 字形：一旦样式表
+    // 解析不到中文字体、或字体文件尚未装入 FGFontCache，get() 会回退到它，
+    // 整个界面（菜单栏、对话框）的中文就会被逐字节渲染成 "æ–‡ä»¶" 这类乱码。
+    // GUI 重置后会重新走一遍 setStyle()，是最容易触发该回退的时机
+    //（2026-11-20 实际事故：点击重置后菜单栏变成乱码）。
+    // 这里显式 loadFont 后按同一字号/斜体重新解析，保证拿到的是主题字体。
+    if (fguiTheme::enabled()) {
+        const std::string themeFontName = fguiTheme::fontName();
+        if (!themeFontName.empty()) {
+            FGFontCache::instance()->loadFont(themeFontName);
+            puFont* themeFont =
+                FGFontCache::instance()->get(themeFontName,
+                                             node->getFloatValue("size", 15.0f),
+                                             node->getFloatValue("slant", 0.0f));
+            if (themeFont)
+                _font = themeFont;
+        }
+    }
+
+    // 诊断日志：GUI 重置/换样式时会重新走本函数，若这里解析到的不是主题字体，
+    // 界面中文就会变成 "æ–‡ä»¶" 这类乱码，日志能直接定位到出问题的字号/名字。
+    SG_LOG(SG_GUI, SG_INFO,
+           "NewGUI::setupFont: 样式字体 '" << node->getStringValue("name")
+           << "'，主题字体 '"
+           << (fguiTheme::enabled() ? fguiTheme::fontName() : std::string("<主题未启用>"))
+           << "'");
+
     puSetDefaultFonts(*_font, *_font);
 #endif
     return;

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+
+
+		<path>Aircraft/F-22/Models/Interior/Instruments/MFD/RWRpage.ac</path>
+
+	<!---->
+    <animation>
+        <object-name>bkg</object-name>
+        <type>material</type>
+        <emission>
+            <red>  1</red>
+            <green>1</green>
+            <blue> 1</blue>
+        </emission>
+    </animation>
+
+   <animation>
+  <type>material</type>
+  <object-name>spike</object-name>
+  <ambient>
+    <red>0.0</red>
+    <green>1.0</green>
+    <blue>0.0</blue>
+  </ambient>
+  <diffuse>
+    <red>0.0</red>
+    <green>0.1</green>
+    <blue>0.0</blue>
+  </diffuse>
+  <emission>
+    <red>0.3</red>
+    <green>0.8</green>
+    <blue>0.3</blue>
+  </emission> 
+ </animation>
+ 
+
+
+	
+ 	 <text>
+  <name>spike</name>
+  <font>condensed.txf</font>
+  <character-size type="double">0.0035</character-size>
+  <offsets>
+  <x-m>0.01</x-m>
+   <z-m>-0.040</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+   <type type="string">string</type>
+   <format type="string">RADAR SPIKE FROM   %s</format>
+  <truncate type="bool">true</truncate>
+  <property>/payload/armament/spikee</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-top</alignment>
+ </text>
+ 	 <text>
+  <name>spike</name>
+  <font>condensed.txf</font>
+  <character-size type="double">0.0035</character-size>
+  <offsets>
+  <x-m>0.01</x-m>
+   <z-m>-0.050</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+   <type type="string">string</type>
+   <format type="string">ACTIVE MISSILE FROM   %s</format>
+  <truncate type="bool">true</truncate>
+  <property>/payload/armament/MAW-active-callsign</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-top</alignment>
+ </text>
+ 	 <text>
+  <name>spike</name>
+  <font>condensed.txf</font>
+  <character-size type="double">0.0035</character-size>
+  <offsets>
+  <x-m>0.01</x-m>
+   <z-m>-0.70</z-m>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment>
+   <type type="string">number-value</type>
+   <format type="string">ACTIVE MISSILE BRG  %5.0f DEG</format>
+  <truncate type="bool">true</truncate>
+  <property>/payload/armament/MAW-active-bearing</property>
+  <draw-text type="bool">true</draw-text>
+  <alignment>left-top</alignment>
+ </text>
+
+</PropertyList>

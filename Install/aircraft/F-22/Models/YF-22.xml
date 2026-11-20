@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<!--YF-22A 3d Model author: CadNav: link: https://www.cadnav.com/3d-models/model-46660.html   Non comercial license-->
+
+<PropertyList>
+<nasal>
+  <load>
+    <!--
+      ##############################################################################
+      # The on-load Nasal is not executed when this file is loaded as the user
+      # aircraft. The code is only executed if the file is loaded for a remote
+      # aircraft in Multi-Player mode (MP)
+      ##############################################################################
+    -->
+    <![CDATA[
+      var livery_update = aircraft.livery_update.new("Aircraft/F-22/Models/Liveries");
+
+	  #this is suppose to go here?
+ var rplayer = cmdarg();
+   # Set up property aliases for animations.
+   rplayer.getNode("orientation/alpha-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[17]")); #for vapor
+   rplayer.getNode("controls/engines/engine/throttle", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[18]")); #for AB
+   rplayer.getNode("velocities/airspeed-kt", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[19]")); #for vapor (2)
+    ]]>
+
+    </load>
+  
+ <unload><![CDATA[
+    livery_update.stop();
+  ]]></unload>
+</nasal>
+
+
+
+  <path>Aircraft/F-22/Models/YF22/YF22.ac</path>
+
+
+<!--Controls-->
+
+
+<!-- Elevator animations -->
+
+	<animation>
+		<type>rotate</type>
+			<object-name>relev</object-name>
+				<!-- <property>fdm/jsbsim/fcs/right-stabilator-pos-deg2</property> -->
+	<property>sim/multiplay/generic/float[21]</property>
+					<factor>20</factor>
+						<axis>
+						<object-name>relev-axis</object-name>
+		</axis>
+	</animation>
+<animation>
+		<type>rotate</type>
+			<object-name>right-elevator</object-name>
+				
+	<property>sim/multiplay/generic/float[26]</property>
+					<factor>-20</factor>
+						<axis>
+						<object-name>relev-axis</object-name>
+		</axis>
+	</animation>
+
+
+	<animation>
+		<type>rotate</type>
+			<object-name>left-elevator</object-name>
+
+	<property>sim/multiplay/generic/float[21]</property>
+						<factor>20</factor>
+							<center>
+								<x-m>7.12347</x-m>
+								<y-m>-1.9012</y-m>
+								<z-m>-0.465787</z-m>
+							</center>
+						<axis>
+					<x>0</x>
+				<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+<animation>
+		<type>rotate</type>
+			<object-name>left-elevator</object-name>
+
+	<property>sim/multiplay/generic/float[26]</property>
+						<factor>20</factor>
+							<center>
+								<x-m>7.12347</x-m>
+								<y-m>-1.9012</y-m>
+								<z-m>-0.465787</z-m>
+							</center>
+						<axis>
+					<x>0</x>
+				<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+
+
+
+</PropertyList>
+

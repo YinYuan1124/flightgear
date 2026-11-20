@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<PropertyList>
+
+  <path>Aircraft/Mirage-2000/Missiles/SmokePod/SmokePod.ac</path>
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>R550</object-name>
+    <object-name>ailettes</object-name>
+    <!-- Objets transparents -->
+  </animation>
+  <animation>
+    <enable-hot type="bool">false</enable-hot>
+  </animation>
+
+</PropertyList>

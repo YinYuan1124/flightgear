@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>Altimeter-UV-30.ac</path>
+
+<animation>
+ <type>material</type>
+ <object-name>UV-30-3.needle1</object-name>
+ <object-name>UV-30-3.needle2</object-name>
+ <object-name>UV-30-3.DC1</object-name>
+ <object-name>UV-30-3.DC2</object-name>
+ <object-name>UV-30-3.DC3</object-name>
+ <object-name>UV-30-3.Cm</object-name>
+ <object-name>UV-30-3.PD1</object-name>
+ <object-name>UV-30-3.PD2</object-name>
+ <object-name>Altimeter-UV-30-3.Face</object-name>
+		 <condition>
+			 <greater-than>
+				 <property>systems/electrical/VDC-bus[1]</property>
+			   <value>20</value>
+			 </greater-than>
+		 </condition>
+	  <emission>
+	    <factor-prop>controls/lighting/instruments-norm</factor-prop>
+	    <red>1.00</red>
+	    <green>1.00</green>
+	    <blue>0.78</blue>
+	  </emission>
+</animation>
+
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <object-name>glass</object-name>
+ </animation>
+
+	<model>
+		<name>shadow</name>
+    <path>Aircraft/SU-27SK/Models/Interior/Instruments/divers/shadow2.ac</path>
+		<offsets>
+			<x-m>0.0 </x-m>
+			<y-m>-0.0002 </y-m>
+			<z-m>0.0002 </z-m>
+		</offsets>
+  </model>
+	 <animation>
+	 <object-name>shadow</object-name>
+    <type>scale</type>
+    <x-offset>0.96</x-offset>
+    <y-offset>0.96</y-offset>
+    <z-offset>0.96</z-offset>
+   </animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>UV-30-3.needle1</object-name>
+ <property>su-27/instrumentation/UV-30-3/indicated-altitude-m</property>
+ <interpolation>
+  <entry><ind>-1000</ind><dep> -360</dep></entry>
+  <entry><ind>    0</ind><dep>    0</dep></entry>
+  <entry><ind>30000</ind><dep>10800</dep></entry>
+ </interpolation>
+ <axis>
+  <x>-1</x>
+  <y>0</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>UV-30-3.needle2</object-name>
+ <property>su-27/instrumentation/UV-30-3/indicated-altitude-m</property>
+ <interpolation>
+  <entry><ind>-7500</ind><dep>-90</dep></entry>
+  <entry><ind>    0</ind><dep>  0</dep></entry>
+  <entry><ind>10000</ind><dep>360</dep></entry>
+ </interpolation>
+ <axis>
+  <x>-1</x>
+  <y>0</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+    <animation>
+		<type>knob</type>
+		<object-name>UV-30-3.knob</object-name>
+	  <property>instrumentation/altimeter/setting-inhg</property>
+	  <factor>30</factor>
+		<center>
+			<x-m>0.001906</x-m><y-m>-0.033838</y-m><z-m>-0.038597</z-m>
+		</center>
+		<axis>
+			<x>1</x><y>0</y><z>0.0</z>
+		</axis>
+		<action>
+			<binding>
+			  <command>property-adjust</command>
+			  <property>instrumentation/altimeter/setting-inhg</property>
+			  <factor>0.03</factor>
+<!--
+	              <min>0</min>
+	              <max>1</max>                
+-->
+	              <wrap>false</wrap>
+			</binding>
+			
+			<binding>
+			  <command>nasal</command>
+			  <script>
+				  var press_set = getprop("instrumentation/altimeter/setting-inhg");
+				gui.popupTip(sprintf("Altimeter Hg setting : %.2f",  press_set));
+			  
+			  </script>
+			</binding>
+			
+		</action>
+
+	</animation>	
+
+<!--
+These Altimeter devices should be implemented later
+-->
+<!--
+<animation>
+ <type>rotate</type>
+ <object-name>UV-30-3.DC1</object-name>
+ <property>mig29/instrumentation/UV-30-3/setting-mmhg-1</property>
+ <factor>36</factor>
+ <center>
+  <x-m>-0.014</x-m>
+  <y-m>-0.006</y-m>
+  <z-m>-0.030</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>UV-30-3.DC2</object-name>
+ <property>mig29/instrumentation/UV-30-3/setting-mmhg-2</property>
+ <factor>36</factor>
+ <center>
+  <x-m>-0.014</x-m>
+  <y-m>0.000</y-m>
+  <z-m>-0.030</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>UV-30-3.DC3</object-name>
+ <property>mig29/instrumentation/UV-30-3/setting-mmhg-3a</property>
+ <factor>36</factor>
+ <center>
+  <x-m>-0.014</x-m>
+  <y-m>0.006</y-m>
+  <z-m>-0.030</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>rotate</type>
+ <object-name>UV-30-3.Cm</object-name>
+ <property>mig29/instrumentation/UV-30-3/setting-mmhg-3a</property>
+ <factor>3.6</factor>
+ <center>
+  <x-m>-0.014</x-m>
+  <y-m>0.007</y-m>
+  <z-m>-0.030</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+<animation>
+ <type>textranslate</type>
+ <object-name>UV-30-3.PD1</object-name>
+ <property>mig29/instrumentation/UV-30-3/indicated-altitude-m</property>
+ <factor>0.00001</factor>
+ <step>10000.0</step>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+<animation>
+ <type>textranslate</type>
+ <object-name>UV-30-3.PD2</object-name>
+ <property>mig29/instrumentation/UV-30-3/indicated-altitude-m</property>
+ <factor>0.0001</factor>
+ <step>1000.0</step>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+-->
+
+</PropertyList>

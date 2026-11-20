@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+
+	<name>stpt-help</name>
+	<layout>vbox</layout>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>F-16 快速转向点指南</label>
+		</text>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+
+	<text>
+		<halign>left</halign>
+	    <label>#000 至 #099 预留给航线（只读）。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#100 至 #199 为 HSD 第 1 行（只读）。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#200 至 #299 为 HSD 第 2 行（只读）。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#300 至 #314 用于威胁圈。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#350 至 #359 用于飞行员助记符。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#400 至 #404 为已方 OFLY/TGP 标记。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#450 至 #454 用于数据链标记。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#500 为武器程序 GPS 坐标。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#555 为靶心（Bulls-eye）。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#600 至 #699 为 HSD 第 3 行（只读）。</label>
+	    <height>25</height>
+	</text>
+	<text>
+		<halign>left</halign>
+	    <label>#700 至 #799 为 HSD 第 4 行（只读）。</label>
+	    <height>25</height>
+	</text>
+
+	<empty><stretch>1</stretch></empty>
+
+</PropertyList>

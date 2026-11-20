@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- General Dynamics F-16 Autoflight System -->
+<!-- (c) 2018 Josh Davidson (Octal450) -->
+
+<PropertyList>
+
+	<name>autopilot-help</name>
+	<layout>vbox</layout>
+
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>F-16 自动飞行系统帮助</label>
+		</text>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+	
+	<text>
+		<halign>left</halign>
+		<label>如何使用 F-16 自动飞行系统</label>
+	</text>
+	
+	<hrule/>
+	
+	<group>
+		<layout>table</layout>
+		
+		<group>
+			<visible>
+				<less-than>
+					<property>/sim/variant-id</property>
+					<value>2</value>
+				</less-than>
+			</visible>
+			<row>0</row>
+			<col>0</col>
+			<layout>vbox</layout>
+			
+			<text>
+				<halign>left</halign>
+				<label>通用：</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>自动驾驶的滚转和俯仰轴均启用，当</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>自动驾驶总开关处于接通（向上）位置。</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>如果移动操纵杆，整个自动驾驶将断开，</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>并在操纵杆回中时重新接通。</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>这确保飞行员在需要时可以接管自动驾驶。</label>
+			</text>
+			
+			<hrule/>
+			
+			<text>
+				<halign>left</halign>
+				<label>滚转：</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>HDG SEL：保持 HSI 上选择的航向</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>ATT HOLD：保持当前滚转</label>
+			</text>
+			
+			<hrule/>
+			
+			<text>
+				<halign>left</halign>
+				<label>俯仰：</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>ALT HOLD：保持当前高度</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>ATT HOLD：保持当前俯仰</label>
+			</text>
+			
+		</group>
+		
+		<group>
+			<visible>
+				<greater-than-equals>
+					<property>/sim/variant-id</property>
+					<value>2</value>
+				</greater-than-equals>
+			</visible>
+			<row>0</row>
+			<col>0</col>
+			<layout>vbox</layout>
+			
+			<text>
+				<halign>left</halign>
+				<label>通用：</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>自动驾驶的滚转和俯仰轴均启用，当</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>俯仰开关不在 A/P OFF 位置。</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>如果移动操纵杆，整个自动驾驶将断开，</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>并在操纵杆回中时重新接通。</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>这确保飞行员在需要时可以接管自动驾驶。</label>
+			</text>
+			
+			<hrule/>
+			
+			<text>
+				<halign>left</halign>
+				<label>滚转：</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>HDG SEL：保持 HSI 上选择的航向</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>ATT HOLD：保持当前滚转</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>STRG SEL：跟随航线管理器</label>
+			</text>
+			
+			<hrule/>
+			
+			<text>
+				<halign>left</halign>
+				<label>俯仰：</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>ALT HOLD：保持当前高度</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>A/P OFF：关闭自动驾驶</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>ATT HOLD：保持当前俯仰</label>
+			</text>
+			
+		</group>
+	
+	</group>
+
+</PropertyList>

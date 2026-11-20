@@ -23,7 +23,7 @@ cmake-build-*/
 cmake-build-*_/
 out/
 dist/
-Install/*
+Install/flightgear
 installdir/
 
 

@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+
+<system name="hook">
+
+    <!--
+      Set these to the root hook position in the aircraft:
+          systems/hook/tailhook-offset-x-in
+          systems/hook/tailhook-offset-y-in
+          systems/hook/tailhook-offset-z-in
+      Set these also:
+          systems/hook/tailhook-length-ft
+          systems/hook/tailhook-pos-min-deg
+          systems/hook/tailhook-pos-max-deg
+      Write to systems/hook/tailhook-release-cmd to release hook, but its also auto released when velocity is low.
+      Write to systems/hook/force to set force in LBF
+      Write to systems/hook/tailhook-pos-norm to extend or retract.
+          It is read by JSBSim together with systems/hook/tailhook-pos-min-deg and systems/hook/tailhook-pos-max-deg to get final pos in degrees
+      Readonly: external_reactions/hook/magnitude to get force.
+      Readonly: systems/hook/tailhook-pos-deg to get position
+      Readonly: systems/hook/arrestor-wire-engaged-hook to check if engaged
+
+      Source: JSBSim.cxx
+    -->
+
+    <channel name="Hook">
+
+    <!--
+      GR1F-16CJ-1 page 1-118
+      The hook is electrically controlled and pneumatically
+      operated. Pneumatic pressure is supplied by the
+      LG/hook emergency pneumatic bottle which contains
+      sufficient pressure to lower the LG and hook.
+      When extended, pneumatic pressure holds the hook
+      on the runway. When subsequently retracted, the
+      hook rises enough to allow the cable to drop off the
+      hook or to be disengaged. The hook is spring-loaded
+      partially up to allow taxiing over a cable. The hook
+      must be raised manually to reset it to the stowed
+      position.
+
+      How to handle partial retraction:
+      Use the tailhook handle to trigger two switches.
+      One switch (a) goes from 0 to 0.75 and back, the other (b) latches to 0.25.
+      The output of the switches is summed, giving the cmd for the tailhook:
+        handle:0 -> handle:1 -> handle:0 -> handle:1 -> handle:0
+           0     ->    1     ->   0.25   ->    1     ->   0.25
+      A third switch latches the cmd once it reaches 0.25:
+        handle:0 -> handle:1 -> handle:0 -> handle:1 -> handle:0
+           0     ->    1     ->   0.25   ->   0.25   ->   0.25
+      The cmd can be reset by resetting switch a and b and the latch.
+    -->
+
+        <switch name="systems/hook/tailhook-cmd-norm-a">
+            <default value="0"/>
+            <test logic="AND" value="0.75">
+                /f16/cockpit/tailhook-handle == 1
+                elec/bus/batt-2 ge 20
+            </test>
+        </switch>
+        <switch name="systems/hook/tailhook-cmd-norm-b">
+            <default value="systems/hook/tailhook-cmd-norm-b"/>
+            <test logic="AND" value="0.25">
+                /f16/cockpit/tailhook-handle == 1
+                elec/bus/batt-2 ge 20
+            </test>
+        </switch>
+        <summer name="systems/hook/tailhook-cmd-norm-ab">
+            <input>systems/hook/tailhook-cmd-norm-a</input>
+            <input>systems/hook/tailhook-cmd-norm-b</input>
+        </summer>
+
+        <switch name="systems/hook/tailhook-cmd-norm">
+            <default value="systems/hook/tailhook-cmd-norm-ab"/>
+            <test value="0.25">
+                systems/hook/tailhook-cmd-norm == 0.25
+            </test>
+        </switch>
+
+        <kinematic name="systems/hook/tailhook-control">
+            <input>systems/hook/tailhook-cmd-norm</input>
+            <traverse>
+                <setting>
+                    <position> 0 </position>
+                    <time>     0 </time>
+                </setting>
+                <setting>
+                    <position> 1 </position>
+                    <time>     1.5 </time>
+                </setting>
+            </traverse>
+            <output>systems/hook/tailhook-pos-norm</output>
+        </kinematic>
+
+        <switch name="systems/hook/ready">
+            <default value="0"/>
+            <test  logic="AND" value="1">
+                systems/hook/tailhook-pos-norm gt 0.99
+                systems/hook/serviceable eq 1
+            </test>
+        </switch>
+
+        <scheduled_gain name="systems/hook/hook-decel-multiplier">
+            <input>systems/hook/ready</input>
+            <table>
+                <independentVar lookup="row">gear/unit[1]/wheel-speed-fps</independentVar>
+                <tableData>
+                    0     0.00
+                    1     0.00
+                    80    2.20
+                </tableData>
+            </table>
+        </scheduled_gain>
+
+        <pure_gain name="systems/hook/hook-decel-force">
+            <input>systems/hook/hook-decel-multiplier</input>
+            <gain>inertia/weight-lbs</gain>
+        </pure_gain>
+
+        <pure_gain name="systems/hook/hook-thrust-force">
+            <input>forces/fbx-prop-lbs</input>
+            <gain>systems/hook/ready</gain>
+        </pure_gain>
+
+        <summer name="systems/hook/force">
+            <input>systems/hook/hook-decel-force</input>
+            <input>systems/hook/hook-thrust-force</input>
+        </summer>
+
+    </channel>
+
+    <channel name="Hook anim" execrate="8">
+
+        <fcs_function name="systems/hook/animation-norm">
+            <function>
+                <product>
+                    <sum>
+                        <property>systems/hook/tailhook-pos-deg</property>
+                        <product>
+                            <property>systems/hook/tailhook-pos-min-deg</property>
+                            <value>-1</value>
+                        </product>
+                    </sum>
+                    <quotient>
+                        <value>1</value>
+                        <difference>
+                            <property>systems/hook/tailhook-pos-max-deg</property>
+                            <property>systems/hook/tailhook-pos-min-deg</property>
+                        </difference>
+                    </quotient>
+                </product>
+            </function>
+            <output>gear/tailhook-pos-norm</output>
+        </fcs_function>
+
+    </channel>
+
+</system>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<PropertyList>
+
+<sim>
+  <model>
+    <livery>
+      <name type="string">042 AF FF</name>     
+      <texture-FFfuselage>Liveries/maps/body.dds</texture-FFfuselage>
+ <texture-sides>Liveries/elevs.png</texture-sides>
+ <texture-left-elev-top>Liveries/FF/leftelev.dds</texture-left-elev-top>
+ <texture-right-elev-top>Liveries/FF/rightelev.dds</texture-right-elev-top>
+      <texture-tailR>Liveries/FF/FF-TAIL-R.png</texture-tailR>
+      <texture-tailL>Liveries/FF/FF-TAIL-L.png</texture-tailL>
+ <texture-wing>Liveries/FF/wing.dds</texture-wing>
+  <texture-wing-right>Liveries/FF/wingright.dds</texture-wing-right>
+ <texture-control>Liveries/wing.png</texture-control>
+  <texture-nose>Liveries/FF/attemptnose.dds</texture-nose>
+
+
+  <texture-inner-tail>Liveries/INNER-TAIL.png</texture-inner-tail>
+
+
+    </livery>
+  </model>
+</sim>
+
+</PropertyList>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+
+	<title>Mirage 2000</title>
+
+	<key>
+		<name>}</name>
+		<desc>Engine Autostart</desc>
+	</key>
+
+	<key>
+		<name>d</name>
+		<desc>Open/Close pilot canopy</desc>
+	</key>
+
+	<key>
+		<name>D</name>
+		<desc>Open/Close backseat canopy</desc>
+	</key>
+
+	<key>
+		<name>b</name> <!-- not in m2000-5-keyboard.xml -->
+		<desc>On ground : brakes. In flight : airbrakes (while holding)</desc>
+	</key>
+
+	<key>
+		<name>B</name>
+		<desc>Toggle parking brake on or off</desc>
+	</key>
+
+	<key n="106">
+		<name>j</name>
+		<desc>Retract airbrakes</desc>
+	</key>
+
+	<key n="107">
+		<name>k</name>
+		<desc>Extend airbrakes</desc>
+	</key>
+
+	<key>
+		<name>o</name>
+		<desc>Only on ground: Deploy or release the brake parachute</desc>
+	</key>
+
+	<key>
+		<name>Ctrl-E</name>
+		<desc>3 times in a second: Pilot ejection</desc>
+	</key>
+
+	<key>
+		<name>Y</name>
+		<desc>Radar antenna set neutral</desc>
+	</key>
+
+	<key>
+		<name>i</name>
+		<desc>Radar antenna up</desc>
+	</key>
+
+	<key>
+		<name>I</name>
+		<desc>Radar antenna down</desc>
+	</key>
+
+	<key>
+		<name>R</name>
+		<desc>Increase radar range</desc>
+	</key>
+
+	<key>
+		<name>E</name>
+		<desc>Decrease radar range</desc>
+	</key>
+
+	<key>
+		<name>Q</name>
+		<desc>Cycle radar root modes</desc>
+	</key>
+
+	<key>
+		<name>Ctrl-Q</name>
+		<desc>Cycle radar mode within root mode</desc>
+	</key>
+
+	<key>
+		<name>y</name>
+		<desc>Next TWS Target select</desc>
+	</key>
+
+	<key>
+		<name>Ctrl-Y</name>
+		<desc>Target deselect</desc>
+	</key>
+
+	<key>
+		<name>w</name>
+		<desc>Cycle stick weapon mode selector</desc>
+	</key>
+
+	<key>
+		<name>W</name>
+		<desc>Designate sniped target as target</desc>
+	</key>
+
+	<key>
+		<name>Ctrl-W</name>
+		<desc>Toggle drop mode CCRP/CCIP</desc>
+	</key>
+
+	<key>
+		<name>m</name>
+		<desc>Toggle master arm switch</desc>
+	</key>
+
+	<key>
+		<name>M</name>
+		<desc>Cycle Through Weapon Guidance Modes (Radar, Laser, GPS, Radiation)</desc>
+	</key>
+
+	<key>
+		<name>e</name>
+		<desc>Trigger for guns/missiles</desc>
+	</key>
+
+	<key>
+		<name>q</name>
+		<desc>Dispense counter-measures</desc>
+	</key>
+
+	<key>
+		<name>L</name>
+		<desc>Toggle landing lights</desc>
+	</key>
+
+	<key>
+		<name>F6</name>
+		<desc>Enable automatic tracking by FLIR camera</desc>
+	</key>
+
+	<key>
+		<name>J</name>
+		<desc>Jettison fuel tanks</desc>
+	</key>
+
+	<key>
+		<name>Arrow keys</name>
+		<desc>Move cursor on VTM (radar)</desc>
+	</key>
+
+	<key>
+		<name>l</name>
+		<desc>Cursor designate</desc>
+	</key>
+
+	<key>
+		<name>Ctrl-L</name>
+		<desc>Fast snipe and designate clicked target for laser</desc>
+	</key>
+
+	<key>
+		<name>f</name>
+		<desc>Flight Mode Take-Off</desc>
+	</key>
+
+	<key>
+		<name>F</name>
+		<desc>Flight Mode Approach</desc>
+	</key>
+
+	<key>
+		<name>h</name>
+		<desc>Flight Mode Navigation</desc>
+	</key>
+
+	<key>
+		<name>H</name>
+		<desc>Flight Mode Attack</desc>
+	</key>
+
+	<key>
+		<name>Ctrl-N</name>
+		<desc>Reset view</desc>
+	</key>
+
+	<key>
+		<name>n</name>
+		<desc>View left MFD</desc>
+	</key>
+
+	<key>
+		<name>N</name>
+		<desc>View right MFD</desc>
+	</key>
+
+	<key>
+		<name>- (Minus)</name>
+		<desc>View VTM</desc>
+	</key>
+
+	<text>Two PDF manuals are located in the Mirage-2000/Docs/ folder - e.g. accessible through the menu Mirage 2000 > New | Old PDF Manual.</text>
+</PropertyList>

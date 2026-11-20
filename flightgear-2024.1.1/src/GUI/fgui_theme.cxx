@@ -587,6 +587,11 @@ bool enabled()
   return _enabled;
 }
 
+std::string fontName()
+{
+  return _fontName;
+}
+
 std::string mode()
 {
   return _effectiveMode;

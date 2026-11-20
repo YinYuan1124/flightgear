@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!-- this is actuall the left screen -->
+
+<PropertyList>
+
+ <!--  Front HUD computer -->
+ 
+   <model>
+		<path>Aircraft/F-22/Models/Interior/Instruments/MFD/ai/smallwarn.xml</path>
+			<offsets>
+				<x-m>-4.7998</x-m>
+					<y-m>-0.190</y-m>
+				<z-m>0.81</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+ 
+
+</PropertyList>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<PropertyList>
+	<name>savefail</name>
+  	<modal>true</modal>
+  	<layout>vbox</layout>
+  	<draggable>true</draggable>
+    <resizable>false</resizable>
+    <!--<width>250</width>
+    <height>550</height>-->
+    <color>
+		<red>1</red>
+		<green>0.5</green>
+		<blue>0.5</blue>
+	</color>
+
+    <group>
+		<layout>hbox</layout>
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>保存失败</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<legend></legend>
+			<default>1</default>
+			<keynum>27</keynum>
+			<border>2</border>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<color>
+			<red>1</red>
+			<green>0</green>
+			<blue>0</blue>
+		</color>
+		</button>
+	</group>
+
+	<text>
+	    <label>您很可能试图保存到不具备权限的位置，该位置</label>
+	    <height>25</height>
+	</text>
+	
+	<text>
+	    <label>FlightGear 飞机没有写入权限。</label>
+	    <height>25</height>
+	</text>
+		
+	<text>
+	    <label>请尝试此文件夹：</label>
+	    <height>25</height>
+	</text>
+	
+	<text>
+	    <label></label>
+	    <height>10</height>
+	</text>
+	
+	<text>
+		<halign>left</halign>
+	    <property>sim/fg-home-export</property>
+	    <height>25</height>
+	</text>
+	
+	<text>
+	    <label></label>
+	    <height>10</height>
+	</text>	
+
+</PropertyList>

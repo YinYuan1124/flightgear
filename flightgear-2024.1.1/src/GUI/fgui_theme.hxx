@@ -108,6 +108,14 @@ namespace fguiTheme
   bool enabled();
 
   /**
+   * 主题字体名（相对 $FG_ROOT/Fonts 的路径，如 "cn/simhei.ttf"）。
+   * 主题未加载或未配置 <font><name> 时返回空串。
+   * NewGUI::setupFont 用它强制使用 Unicode 字体，避免样式回退到位图字体后
+   * 中文被按 Latin-1 渲染成乱码。
+   */
+  std::string fontName();
+
+  /**
    * 当前生效的模式：init 之后为解析后的 "day" 或 "night"。
    * （/sim/gui/theme-mode 为 auto 时，这里返回自动检测得到的实际值。）
    */
